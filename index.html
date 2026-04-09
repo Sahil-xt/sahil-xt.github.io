@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahil Tamboli — Senior UX Designer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0e0e0f; color: #e8e6e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+    .logo { font-size: 15px; font-weight: 500; color: #f0ece4; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 13px; color: #888780; text-decoration: none; cursor: pointer; }
+    .nav-links a:hover, .nav-links a.active { color: #f0ece4; }
+    .section { display: none; padding: 3rem 2.5rem; }
+    .section.active { display: block; }
+    .hero { padding: 5rem 2.5rem 4rem; }
+    .hero-tag { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1.5rem; }
+    .hero h1 { font-size: 48px; font-weight: 500; line-height: 1.15; color: #f0ece4; margin-bottom: 1.5rem; max-width: 640px; }
+    .hero h1 span { color: #5DCAA5; }
+    .hero-sub { font-size: 16px; color: #888780; line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; }
+    .btn-primary { display: inline-block; padding: 12px 28px; background: #f0ece4; color: #0e0e0f; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; margin-right: 12px; }
+    .btn-primary:hover { background: #fff; }
+    .btn-ghost { display: inline-block; padding: 12px 28px; border: 0.5px solid rgba(255,255,255,0.2); color: #e8e6e0; border-radius: 8px; font-size: 14px; cursor: pointer; background: transparent; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.4); }
+    .stat-row { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 0.5px solid rgba(255,255,255,0.08); }
+    .stat-num { font-size: 32px; font-weight: 500; color: #f0ece4; }
+    .stat-label { font-size: 12px; color: #5F5E5A; margin-top: 4px; letter-spacing: 0.05em; }
+    .section-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1rem; }
+    .section-title { font-size: 28px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; }
+    .section-sub { font-size: 15px; color: #888780; line-height: 1.7; max-width: 520px; margin-bottom: 3rem; }
+    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .case-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.75rem; cursor: pointer; }
+    .case-card:hover { border-color: rgba(255,255,255,0.18); background: #1a1a1c; }
+    .case-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5DCAA5; margin-bottom: 1rem; }
+    .case-title { font-size: 17px; font-weight: 500; color: #f0ece4; margin-bottom: 0.5rem; line-height: 1.4; }
+    .case-desc { font-size: 13px; color: #888780; line-height: 1.6; margin-bottom: 1.5rem; }
+    .case-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.06); color: #B4B2A9; }
+    .img-placeholder { height: 160px; background: #1f1f22; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; }
+    .img-ph-text { font-size: 11px; color: #444441; letter-spacing: 0.06em; text-transform: uppercase; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .about-bio { font-size: 15px; color: #B4B2A9; line-height: 1.8; }
+    .about-bio p { margin-bottom: 1.25rem; }
+    .about-bio strong { color: #f0ece4; font-weight: 500; }
+    .skill-group { margin-bottom: 2rem; }
+    .skill-group-title { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.75rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag { font-size: 12px; padding: 5px 12px; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; color: #B4B2A9; }
+    .contact-wrap { max-width: 480px; }
+    .contact-intro { font-size: 15px; color: #888780; line-height: 1.7; margin-bottom: 2.5rem; }
+    .contact-link { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 12px; cursor: pointer; text-decoration: none; }
+    .contact-link:hover { border-color: rgba(255,255,255,0.2); }
+    .contact-link-label { font-size: 13px; color: #888780; }
+    .contact-link-val { font-size: 14px; font-weight: 500; color: #f0ece4; margin-top: 2px; }
+    .contact-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: #888780; flex-shrink: 0; }
+    .avail-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #5DCAA5; padding: 5px 12px; border: 0.5px solid rgba(93,202,165,0.3); border-radius: 20px; margin-bottom: 2rem; }
+    .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #5DCAA5; }
+    footer { padding: 2rem 2.5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+    .footer-text { font-size: 12px; color: #444441; }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      .hero h1 { font-size: 32px; }
+      .section { padding: 2rem 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .stat-row { gap: 1.5rem; }
+      footer { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Sahil Tamboli</div>
+    <div class="nav-links">
+      <a class="active" onclick="show('home', this)">Home</a>
+      <a onclick="show('work', this)">Work</a>
+      <a onclick="show('about', this)">About</a>
+      <a onclick="show('contact', this)">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <div id="home" class="section active" style="padding:0;">
+    <div class="hero">
+      <div class="hero-tag">Senior UX Designer — Bengaluru</div>
+      <h1>Designing experiences that <span>make sense</span> at scale</h1>
+      <p class="hero-sub">8+ years crafting product experiences — from zero-to-one features to complex platform redesigns. I lead with systems thinking and a bias for clarity.</p>
+      <button class="btn-primary" onclick="show('work', document.querySelectorAll('.nav-links a')[1])">View my work</button>
+      <button class="btn-ghost" onclick="show('contact', document.querySelectorAll('.nav-links a')[3])">Get in touch</button>
+      <div class="stat-row">
+        <div><div class="stat-num">8+</div><div class="stat-label">Years experience</div></div>
+        <div><div class="stat-num">20+</div><div class="stat-label">Products shipped</div></div>
+        <div><div class="stat-num">3</div><div class="stat-label">Industries</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <div id="work" class="section">
+    <div class="section-eyebrow">Selected work</div>
+    <h2 class="section-title">Case studies</h2>
+    <p class="section-sub">A selection of projects that show my range — from complex system redesigns to zero-to-one product launches.</p>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="img-placeholder"><span class="img-ph-text">Project image</span></div>
+        <div class="case-tag">Project 1</div>
+        <div class="case-title">Add your first case study title here</div>
+        <div class="case-desc">A short 2–3 sentence description of the problem you solved and the impact it had.</div>
+        <div class="case-meta"><span class="pill">Your role</span><span class="pill">Platform</span><span class="pill">Year</span></div>
+      </div>
+      <div class="case-card">
+        <div class="img-placeholder"><span class="img-ph-text">Project image</span></div>
+        <div class="case-tag">Project 2</div>
+        <div class="case-title">Add your second case study title here</div>
+        <div class="case-desc">A short 2–3 sentence description of the problem you solved and the impact it had.</div>
+        <div class="case-meta"><span class="pill">Your role</span><span class="pill">Platform</span><span class="pill">Year</span></div>
+      </div>
+      <div class="case-card">
+        <div class="img-placeholder"><span class="img-ph-text">Project image</span></div>
+        <div class="case-tag">Project 3</div>
+        <div class="case-title">Add your third case study title here</div>
+        <div class="case-desc">A short 2–3 sentence description of the problem you solved and the impact it had.</div>
+        <div class="case-meta"><span class="pill">Your role</span><span class="pill">Platform</span><span class="pill">Year</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section">
+    <div class="section-eyebrow">About</div>
+    <h2 class="section-title">Sahil Tamboli</h2>
+    <p class="section-sub">Senior UX Designer with 8+ years of experience</p>
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>I'm a Senior UX Designer based in <strong>Bengaluru</strong>, with over 8 years of experience designing digital products across industries. I specialise in turning complex problems into clear, intuitive experiences.</p>
+        <p>I work best at the intersection of <strong>user needs and business goals</strong> — bridging research, strategy, and execution into products that actually ship and perform.</p>
+        <p>Currently open to <strong>Lead and Manager roles</strong> where I can shape design strategy and grow a team.</p>
+      </div>
+      <div>
+        <div class="skill-group">
+          <div class="skill-group-title">Design</div>
+          <div class="skill-tags">
+            <span class="skill-tag">UX Research</span>
+            <span class="skill-tag">Interaction Design</span>
+            <span class="skill-tag">Design Systems</span>
+            <span class="skill-tag">Prototyping</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Protopie</span>
+            <span class="skill-tag">Maze</span>
+            <span class="skill-tag">Miro</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Soft skills</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Stakeholder alignment</span>
+            <span class="skill-tag">Mentoring</span>
+            <span class="skill-tag">Facilitation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="section">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-title">Let's talk</h2>
+    <div class="contact-wrap">
+      <div class="avail-badge"><span class="avail-dot"></span>Open to new opportunities</div>
+      <p class="contact-intro">I'm currently exploring Senior UX and Lead roles. If you're working on something interesting, I'd love to hear about it.</p>
+      <div class="contact-link">
+        <div class="contact-icon">@</div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-val">sahil.tamboli@email.com</div>
+        </div>
+      </div>
+      <div class="contact-link">
+        <div class="contact-icon">in</div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-val">linkedin.com/in/sahiltamboli</div>
+        </div>
+      </div>
+      <div class="contact-link">
+        <div class="contact-icon">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#888780" stroke-width="1"/><path d="M8 5v3.5l2 2" stroke="#888780" stroke-width="1" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="contact-link-label">Based in</div>
+          <div class="contact-link-val">Bengaluru, India — open to remote</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-text">Sahil Tamboli — Senior UX Designer</span>
+    <span class="footer-text">2026</span>
+  </footer>
+
+  <script>
+    function show(id, el) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      if (el) el.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
