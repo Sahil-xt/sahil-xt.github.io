@@ -7,12 +7,12 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: #0e0e0f; color: #e8e6e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); position: sticky; top: 0; background: #0e0e0f; z-index: 100; }
     .logo { font-size: 15px; font-weight: 500; color: #f0ece4; letter-spacing: 0.02em; }
     .nav-links { display: flex; gap: 2rem; }
     .nav-links a { font-size: 13px; color: #888780; text-decoration: none; cursor: pointer; }
     .nav-links a:hover, .nav-links a.active { color: #f0ece4; }
-    .section { display: none; padding: 3rem 2.5rem; }
+    .section { display: none; padding: 3rem 2.5rem 5rem; }
     .section.active { display: block; }
     .hero { padding: 5rem 2.5rem 4rem; }
     .hero-tag { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1.5rem; }
@@ -29,16 +29,20 @@
     .section-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1rem; }
     .section-title { font-size: 28px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; }
     .section-sub { font-size: 15px; color: #888780; line-height: 1.7; max-width: 520px; margin-bottom: 3rem; }
-    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .case-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.75rem; cursor: pointer; }
-    .case-card:hover { border-color: rgba(255,255,255,0.18); background: #1a1a1c; }
-    .case-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5DCAA5; margin-bottom: 1rem; }
-    .case-title { font-size: 17px; font-weight: 500; color: #f0ece4; margin-bottom: 0.5rem; line-height: 1.4; }
-    .case-desc { font-size: 13px; color: #888780; line-height: 1.6; margin-bottom: 1.5rem; }
-    .case-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .case-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.75rem; }
+    .case-card:hover { border-color: rgba(255,255,255,0.2); background: #1a1a1c; }
+    .case-num { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5DCAA5; margin-bottom: 1rem; }
+    .case-title { font-size: 17px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; line-height: 1.35; }
+    .case-desc { font-size: 13px; color: #888780; line-height: 1.7; margin-bottom: 1.25rem; }
+    .case-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
     .pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.06); color: #B4B2A9; }
-    .img-placeholder { height: 160px; background: #1f1f22; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; }
-    .img-ph-text { font-size: 11px; color: #444441; letter-spacing: 0.06em; text-transform: uppercase; }
+    .case-divider { border: none; border-top: 0.5px solid rgba(255,255,255,0.06); margin: 1.25rem 0; }
+    .case-section-label { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.5rem; margin-top: 1rem; }
+    .case-body { font-size: 13px; color: #888780; line-height: 1.7; }
+    .case-expand { font-size: 12px; color: #5DCAA5; cursor: pointer; background: none; border: none; padding: 0; margin-top: 0.75rem; display: block; }
+    .case-detail { display: none; }
+    .case-detail.open { display: block; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
     .about-bio { font-size: 15px; color: #B4B2A9; line-height: 1.8; }
     .about-bio p { margin-bottom: 1.25rem; }
@@ -49,11 +53,11 @@
     .skill-tag { font-size: 12px; padding: 5px 12px; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; color: #B4B2A9; }
     .contact-wrap { max-width: 480px; }
     .contact-intro { font-size: 15px; color: #888780; line-height: 1.7; margin-bottom: 2.5rem; }
-    .contact-link { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 12px; cursor: pointer; text-decoration: none; }
+    .contact-link { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 12px; text-decoration: none; }
     .contact-link:hover { border-color: rgba(255,255,255,0.2); }
     .contact-link-label { font-size: 13px; color: #888780; }
     .contact-link-val { font-size: 14px; font-weight: 500; color: #f0ece4; margin-top: 2px; }
-    .contact-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: #888780; flex-shrink: 0; }
+    .contact-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #888780; flex-shrink: 0; }
     .avail-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #5DCAA5; padding: 5px 12px; border: 0.5px solid rgba(93,202,165,0.3); border-radius: 20px; margin-bottom: 2rem; }
     .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #5DCAA5; }
     footer { padding: 2rem 2.5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
@@ -61,11 +65,11 @@
     @media (max-width: 640px) {
       nav { padding: 1rem 1.25rem; }
       .hero { padding: 3rem 1.25rem 2.5rem; }
-      .hero h1 { font-size: 32px; }
-      .section { padding: 2rem 1.25rem; }
+      .hero h1 { font-size: 30px; }
+      .section { padding: 2rem 1.25rem 4rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .stat-row { gap: 1.5rem; }
-      footer { padding: 1.5rem 1.25rem; }
+      footer { padding: 1.5rem 1.25rem; flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
@@ -74,10 +78,10 @@
   <nav>
     <div class="logo">Sahil Tamboli</div>
     <div class="nav-links">
-      <a class="active" onclick="show('home', this)">Home</a>
-      <a onclick="show('work', this)">Work</a>
-      <a onclick="show('about', this)">About</a>
-      <a onclick="show('contact', this)">Contact</a>
+      <a class="active" onclick="show('home',this)">Home</a>
+      <a onclick="show('work',this)">Work</a>
+      <a onclick="show('about',this)">About</a>
+      <a onclick="show('contact',this)">Contact</a>
     </div>
   </nav>
 
@@ -86,13 +90,13 @@
     <div class="hero">
       <div class="hero-tag">Senior UX Designer — Bengaluru</div>
       <h1>Designing experiences that <span>make sense</span> at scale</h1>
-      <p class="hero-sub">8+ years crafting product experiences — from zero-to-one features to complex platform redesigns. I lead with systems thinking and a bias for clarity.</p>
+      <p class="hero-sub">8+ years crafting product experiences across HRMS, workforce management, and enterprise tools. I lead with systems thinking, close collaboration with engineering, and a bias for clarity.</p>
       <button class="btn-primary" onclick="show('work', document.querySelectorAll('.nav-links a')[1])">View my work</button>
       <button class="btn-ghost" onclick="show('contact', document.querySelectorAll('.nav-links a')[3])">Get in touch</button>
       <div class="stat-row">
         <div><div class="stat-num">8+</div><div class="stat-label">Years experience</div></div>
-        <div><div class="stat-num">20+</div><div class="stat-label">Products shipped</div></div>
-        <div><div class="stat-num">3</div><div class="stat-label">Industries</div></div>
+        <div><div class="stat-num">15+</div><div class="stat-label">Modules shipped</div></div>
+        <div><div class="stat-num">500k+</div><div class="stat-label">End users reached</div></div>
       </div>
     </div>
   </div>
@@ -101,29 +105,75 @@
   <div id="work" class="section">
     <div class="section-eyebrow">Selected work</div>
     <h2 class="section-title">Case studies</h2>
-    <p class="section-sub">A selection of projects that show my range — from complex system redesigns to zero-to-one product launches.</p>
+    <p class="section-sub">Three projects from my time at Mewurk — an all-in-one HRMS platform for Indian SMEs. Each shows a different design challenge: hardware UX, system-level thinking, and building trust on both sides of a product.</p>
     <div class="case-grid">
+
+      <!-- Case 1 -->
       <div class="case-card">
-        <div class="img-placeholder"><span class="img-ph-text">Project image</span></div>
-        <div class="case-tag">Project 1</div>
-        <div class="case-title">Add your first case study title here</div>
-        <div class="case-desc">A short 2–3 sentence description of the problem you solved and the impact it had.</div>
-        <div class="case-meta"><span class="pill">Your role</span><span class="pill">Platform</span><span class="pill">Year</span></div>
+        <div class="case-num">Case study 01 · Attendance & Kiosk</div>
+        <div class="case-title">Face scan attendance — from mobile chaos to hardware kiosk</div>
+        <div class="case-desc">Redesigning how 500k+ employees clock in every day — and extending it to a dedicated face-recognition kiosk for factory and field settings.</div>
+        <div class="case-meta">
+          <span class="pill">Lead designer</span><span class="pill">Mobile + Hardware</span><span class="pill">Mewurk</span>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section-label">The problem</div>
+        <div class="case-body">HR managers at SMEs were spending hours reconciling attendance records. Employees were gaming location-based check-ins. Factory floors needed a touchless, zero-training solution for workers with low digital literacy.</div>
+        <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
+        <div class="case-detail">
+          <div class="case-section-label">My role</div>
+          <div class="case-body">I led UX end-to-end — from early discovery with HR managers and field employees to shipped mobile flows and the kiosk interface. I worked closely with the PM and hardware engineering team throughout.</div>
+          <div class="case-section-label">Key decisions</div>
+          <div class="case-body">The kiosk UI had to work for workers with no smartphone experience. I stripped it down to a single action per screen, used large visual feedback states (green/red face frame), and replaced all text instructions with iconography and audio cues. On the admin side, I redesigned the dashboard to surface exceptions first — late arrivals, missed punches, anomalies — rather than raw logs.</div>
+          <div class="case-section-label">What shipped</div>
+          <div class="case-body">A face-scan kiosk experience requiring zero training, deployed across 1000+ SME customers. Mobile attendance with geo-fencing, selfie verification, and field visit tracking integrated into a single flow.</div>
+        </div>
       </div>
+
+      <!-- Case 2 -->
       <div class="case-card">
-        <div class="img-placeholder"><span class="img-ph-text">Project image</span></div>
-        <div class="case-tag">Project 2</div>
-        <div class="case-title">Add your second case study title here</div>
-        <div class="case-desc">A short 2–3 sentence description of the problem you solved and the impact it had.</div>
-        <div class="case-meta"><span class="pill">Your role</span><span class="pill">Platform</span><span class="pill">Year</span></div>
+        <div class="case-num">Case study 02 · Design system</div>
+        <div class="case-title">Building Mewurk's design system from the ground up</div>
+        <div class="case-desc">As the product scaled to 15+ modules, inconsistency was slowing down design and engineering. I led the effort to identify patterns, document components, and ship a shared system.</div>
+        <div class="case-meta">
+          <span class="pill">Lead designer</span><span class="pill">Design systems</span><span class="pill">Mewurk</span>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section-label">The problem</div>
+        <div class="case-body">With 15+ modules built over time by multiple hands, the product had accumulated UI debt — inconsistent spacing, duplicate components, no shared language between design and engineering. New features took longer to ship as teams reinvented patterns each time.</div>
+        <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
+        <div class="case-detail">
+          <div class="case-section-label">My role</div>
+          <div class="case-body">I owned the design system initiative — auditing existing UI, identifying recurring patterns, defining component specs, and aligning with engineering on implementation. This ran alongside active product work, not as a separate project.</div>
+          <div class="case-section-label">Key decisions</div>
+          <div class="case-body">Rather than building a "perfect" system first, I took an incremental approach — documenting what existed, standardising the most-used patterns first (forms, tables, modals, notifications), and letting the system grow from real usage. I prioritised the admin-facing UI since that's where most complexity lived.</div>
+          <div class="case-section-label">What shipped</div>
+          <div class="case-body">A Figma component library covering core UI patterns, a pattern documentation wiki shared with engineering, and a naming convention adopted across all new modules. Reduced design-to-handoff time noticeably for new features.</div>
+        </div>
       </div>
+
+      <!-- Case 3 -->
       <div class="case-card">
-        <div class="img-placeholder"><span class="img-ph-text">Project image</span></div>
-        <div class="case-tag">Project 3</div>
-        <div class="case-title">Add your third case study title here</div>
-        <div class="case-desc">A short 2–3 sentence description of the problem you solved and the impact it had.</div>
-        <div class="case-meta"><span class="pill">Your role</span><span class="pill">Platform</span><span class="pill">Year</span></div>
+        <div class="case-num">Case study 03 · Payroll & Field visits</div>
+        <div class="case-title">Making payroll transparent and field tracking non-intrusive</div>
+        <div class="case-desc">Two modules with the same core tension — powerful for admins, anxiety-inducing for employees. The challenge was building trust on both sides of the product.</div>
+        <div class="case-meta">
+          <span class="pill">Lead designer</span><span class="pill">Mobile + Web</span><span class="pill">Mewurk</span>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section-label">The problem</div>
+        <div class="case-body">Payroll errors are one of the top reasons employees distrust HR software — one wrong cycle destroys credibility. Field visit tracking felt surveillance-heavy to employees. Both modules needed to serve admin efficiency without alienating the people they affected most.</div>
+        <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
+        <div class="case-detail">
+          <div class="case-section-label">My role</div>
+          <div class="case-body">I led design for both modules, running research sessions with HR managers and field employees separately to understand the trust gap. I worked closely with PM and engineering to define the right data boundaries for location tracking.</div>
+          <div class="case-section-label">Key decisions</div>
+          <div class="case-body">For payroll, I designed a pre-payroll review step that let HR managers catch issues before finalising — reducing errors at source. For employees, I added a payslip breakdown view explaining every deduction in plain language. For field visits, I advocated for employee-visible tracking — employees could see exactly what data was shared, which significantly reduced resistance to adoption.</div>
+          <div class="case-section-label">What shipped</div>
+          <div class="case-body">A payroll module with pre-run validation, employee-facing payslip breakdowns, and bulk correction flows for HR. A field visit module with transparent location sharing, visit history, and expense linking — used across 10+ industries.</div>
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -134,18 +184,20 @@
     <p class="section-sub">Senior UX Designer with 8+ years of experience</p>
     <div class="about-grid">
       <div class="about-bio">
-        <p>I'm a Senior UX Designer based in <strong>Bengaluru</strong>, with over 8 years of experience designing digital products across industries. I specialise in turning complex problems into clear, intuitive experiences.</p>
-        <p>I work best at the intersection of <strong>user needs and business goals</strong> — bridging research, strategy, and execution into products that actually ship and perform.</p>
-        <p>Currently open to <strong>Lead and Manager roles</strong> where I can shape design strategy and grow a team.</p>
+        <p>I'm a Senior UX Designer based in <strong>Bengaluru</strong>, with 8+ years of experience building digital products — most recently at <strong>Mewurk</strong>, an all-in-one HRMS platform for Indian SMEs.</p>
+        <p>I've led design across 15+ product modules, working with both the admin side (HR managers, business owners) and the employee side (field workers, factory staff). I care about making complex systems feel simple — especially for users who don't have the luxury of a learning curve.</p>
+        <p>I work closely with <strong>product and engineering</strong> — comfortable in sprint planning, comfortable in a research session, and comfortable pushing back when a design decision doesn't serve the user.</p>
+        <p>Currently exploring <strong>UX Lead and Manager roles</strong> where I can shape design strategy, build systems, and grow a team.</p>
       </div>
       <div>
         <div class="skill-group">
           <div class="skill-group-title">Design</div>
           <div class="skill-tags">
             <span class="skill-tag">UX Research</span>
-            <span class="skill-tag">Interaction Design</span>
-            <span class="skill-tag">Design Systems</span>
+            <span class="skill-tag">Interaction design</span>
+            <span class="skill-tag">Design systems</span>
             <span class="skill-tag">Prototyping</span>
+            <span class="skill-tag">Information architecture</span>
           </div>
         </div>
         <div class="skill-group">
@@ -158,11 +210,21 @@
           </div>
         </div>
         <div class="skill-group">
-          <div class="skill-group-title">Soft skills</div>
+          <div class="skill-group-title">Domain</div>
+          <div class="skill-tags">
+            <span class="skill-tag">HRMS / workforce tools</span>
+            <span class="skill-tag">Enterprise SaaS</span>
+            <span class="skill-tag">Mobile apps</span>
+            <span class="skill-tag">Hardware UX</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Leadership</div>
           <div class="skill-tags">
             <span class="skill-tag">Stakeholder alignment</span>
-            <span class="skill-tag">Mentoring</span>
-            <span class="skill-tag">Facilitation</span>
+            <span class="skill-tag">Design critique</span>
+            <span class="skill-tag">Pattern documentation</span>
+            <span class="skill-tag">Cross-functional collaboration</span>
           </div>
         </div>
       </div>
@@ -175,24 +237,24 @@
     <h2 class="section-title">Let's talk</h2>
     <div class="contact-wrap">
       <div class="avail-badge"><span class="avail-dot"></span>Open to new opportunities</div>
-      <p class="contact-intro">I'm currently exploring Senior UX and Lead roles. If you're working on something interesting, I'd love to hear about it.</p>
-      <div class="contact-link">
+      <p class="contact-intro">I'm currently exploring Senior UX and Lead roles. If you're building something complex that needs a designer who can go deep — I'd love to hear about it.</p>
+      <a class="contact-link" href="mailto:sahilxt@gmail.com">
         <div class="contact-icon">@</div>
         <div>
           <div class="contact-link-label">Email</div>
-          <div class="contact-link-val">sahil.tamboli@email.com</div>
+          <div class="contact-link-val">sahilxt@gmail.com</div>
         </div>
-      </div>
-      <div class="contact-link">
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/sahilxt" target="_blank">
         <div class="contact-icon">in</div>
         <div>
           <div class="contact-link-label">LinkedIn</div>
-          <div class="contact-link-val">linkedin.com/in/sahiltamboli</div>
+          <div class="contact-link-val">linkedin.com/in/sahilxt</div>
         </div>
-      </div>
+      </a>
       <div class="contact-link">
         <div class="contact-icon">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#888780" stroke-width="1"/><path d="M8 5v3.5l2 2" stroke="#888780" stroke-width="1" stroke-linecap="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="#888780" stroke-width="1.2"/><path d="M2.5 13.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="#888780" stroke-width="1.2" stroke-linecap="round"/></svg>
         </div>
         <div>
           <div class="contact-link-label">Based in</div>
@@ -214,6 +276,11 @@
       document.getElementById(id).classList.add('active');
       if (el) el.classList.add('active');
       window.scrollTo(0, 0);
+    }
+    function toggle(btn) {
+      const detail = btn.nextElementSibling;
+      const open = detail.classList.toggle('open');
+      btn.textContent = open ? 'Read less ↑' : 'Read more ↓';
     }
   </script>
 </body>
