@@ -23,26 +23,33 @@
     .btn-primary:hover { background: #fff; }
     .btn-ghost { display: inline-block; padding: 12px 28px; border: 0.5px solid rgba(255,255,255,0.2); color: #e8e6e0; border-radius: 8px; font-size: 14px; cursor: pointer; background: transparent; }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.4); }
-    .stat-row { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 0.5px solid rgba(255,255,255,0.08); }
+    .stat-row { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 0.5px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
     .stat-num { font-size: 32px; font-weight: 500; color: #f0ece4; }
     .stat-label { font-size: 12px; color: #5F5E5A; margin-top: 4px; letter-spacing: 0.05em; }
     .section-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1rem; }
     .section-title { font-size: 28px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; }
-    .section-sub { font-size: 15px; color: #888780; line-height: 1.7; max-width: 520px; margin-bottom: 3rem; }
+    .section-sub { font-size: 15px; color: #888780; line-height: 1.7; max-width: 560px; margin-bottom: 3rem; }
     .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .case-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.75rem; }
+    .case-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.75rem; transition: border-color 0.15s, background 0.15s; }
     .case-card:hover { border-color: rgba(255,255,255,0.2); background: #1a1a1c; }
-    .case-num { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5DCAA5; margin-bottom: 1rem; }
+    .case-card.featured { border-color: rgba(93,202,165,0.25); }
+    .featured-badge { display: inline-block; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: #5DCAA5; background: rgba(93,202,165,0.1); border: 0.5px solid rgba(93,202,165,0.25); border-radius: 4px; padding: 3px 8px; margin-bottom: 0.75rem; }
+    .case-num { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.5rem; }
     .case-title { font-size: 17px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; line-height: 1.35; }
     .case-desc { font-size: 13px; color: #888780; line-height: 1.7; margin-bottom: 1.25rem; }
     .case-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
     .pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.06); color: #B4B2A9; }
+    .pill-mobile { background: rgba(93,202,165,0.08); color: #5DCAA5; }
     .case-divider { border: none; border-top: 0.5px solid rgba(255,255,255,0.06); margin: 1.25rem 0; }
     .case-section-label { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.5rem; margin-top: 1rem; }
     .case-body { font-size: 13px; color: #888780; line-height: 1.7; }
     .case-expand { font-size: 12px; color: #5DCAA5; cursor: pointer; background: none; border: none; padding: 0; margin-top: 0.75rem; display: block; }
     .case-detail { display: none; }
     .case-detail.open { display: block; }
+    .mobile-banner { background: rgba(93,202,165,0.06); border: 0.5px solid rgba(93,202,165,0.15); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .mobile-banner-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .mobile-banner-title { font-size: 14px; font-weight: 500; color: #f0ece4; margin-bottom: 4px; }
+    .mobile-banner-body { font-size: 13px; color: #888780; line-height: 1.6; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
     .about-bio { font-size: 15px; color: #B4B2A9; line-height: 1.8; }
     .about-bio p { margin-bottom: 1.25rem; }
@@ -90,13 +97,14 @@
     <div class="hero">
       <div class="hero-tag">Senior UX Designer — Bengaluru</div>
       <h1>Designing experiences that <span>make sense</span> at scale</h1>
-      <p class="hero-sub">8+ years crafting product experiences across HRMS, workforce management, and enterprise tools. I lead with systems thinking, close collaboration with engineering, and a bias for clarity.</p>
+      <p class="hero-sub">8+ years crafting product experiences across HRMS, workforce management, and enterprise tools — on web and mobile. I lead with systems thinking, close collaboration with engineering, and a bias for clarity.</p>
       <button class="btn-primary" onclick="show('work', document.querySelectorAll('.nav-links a')[1])">View my work</button>
       <button class="btn-ghost" onclick="show('contact', document.querySelectorAll('.nav-links a')[3])">Get in touch</button>
       <div class="stat-row">
         <div><div class="stat-num">8+</div><div class="stat-label">Years experience</div></div>
         <div><div class="stat-num">15+</div><div class="stat-label">Modules shipped</div></div>
         <div><div class="stat-num">500k+</div><div class="stat-label">End users reached</div></div>
+        <div><div class="stat-num">Web + App</div><div class="stat-label">Platforms covered</div></div>
       </div>
     </div>
   </div>
@@ -105,7 +113,18 @@
   <div id="work" class="section">
     <div class="section-eyebrow">Selected work</div>
     <h2 class="section-title">Case studies</h2>
-    <p class="section-sub">Three projects from my time at Mewurk — an all-in-one HRMS platform for Indian SMEs. Each shows a different design challenge: hardware UX, system-level thinking, and building trust on both sides of a product.</p>
+    <p class="section-sub">Four projects from my time at Mewurk — an all-in-one HRMS platform for Indian SMEs. Each shows a different challenge: hardware UX, system-level design, employee trust, and cross-platform adaptation from web to mobile.</p>
+
+    <div class="mobile-banner">
+      <div class="mobile-banner-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="5" y="1" width="10" height="18" rx="2" stroke="#5DCAA5" stroke-width="1.2"/><circle cx="10" cy="16" r="1" fill="#5DCAA5"/></svg>
+      </div>
+      <div>
+        <div class="mobile-banner-title">Web to mobile — a thread across all projects</div>
+        <div class="mobile-banner-body">Across all modules, I was responsible for translating web designs into the Mewurk mobile app — rethinking information hierarchy, touch interactions, and context-of-use for employees on the go. This wasn't just resizing; it meant redesigning flows that worked for a factory worker checking in on a phone with one hand.</div>
+      </div>
+    </div>
+
     <div class="case-grid">
 
       <!-- Case 1 -->
@@ -114,29 +133,62 @@
         <div class="case-title">Face scan attendance — from mobile chaos to hardware kiosk</div>
         <div class="case-desc">Redesigning how 500k+ employees clock in every day — and extending it to a dedicated face-recognition kiosk for factory and field settings.</div>
         <div class="case-meta">
-          <span class="pill">Lead designer</span><span class="pill">Mobile + Hardware</span><span class="pill">Mewurk</span>
+          <span class="pill">Lead designer</span>
+          <span class="pill">Web + Mobile</span>
+          <span class="pill pill-mobile">Hardware kiosk</span>
         </div>
         <hr class="case-divider">
         <div class="case-section-label">The problem</div>
-        <div class="case-body">HR managers at SMEs were spending hours reconciling attendance records. Employees were gaming location-based check-ins. Factory floors needed a touchless, zero-training solution for workers with low digital literacy.</div>
+        <div class="case-body">HR managers were spending hours reconciling attendance records. Employees were gaming location-based check-ins. Factory floors needed a touchless, zero-training solution for workers with low digital literacy.</div>
         <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
         <div class="case-detail">
           <div class="case-section-label">My role</div>
-          <div class="case-body">I led UX end-to-end — from early discovery with HR managers and field employees to shipped mobile flows and the kiosk interface. I worked closely with the PM and hardware engineering team throughout.</div>
+          <div class="case-body">I led UX end-to-end — discovery with HR managers and field employees, shipped mobile flows, the admin web dashboard, and the kiosk interface. I worked closely with the PM and hardware engineering team throughout.</div>
+          <div class="case-section-label">Web to mobile</div>
+          <div class="case-body">The admin dashboard was designed for web first — dense data tables with filters and drill-downs. For mobile, I stripped it to the essentials: today's summary, flagged exceptions, and one-tap approvals. Managers didn't need full reports on the go — they needed to act fast.</div>
           <div class="case-section-label">Key decisions</div>
-          <div class="case-body">The kiosk UI had to work for workers with no smartphone experience. I stripped it down to a single action per screen, used large visual feedback states (green/red face frame), and replaced all text instructions with iconography and audio cues. On the admin side, I redesigned the dashboard to surface exceptions first — late arrivals, missed punches, anomalies — rather than raw logs.</div>
+          <div class="case-body">The kiosk UI had to work for workers with no smartphone experience. I stripped it to a single action per screen, used large visual feedback states (green/red face frame), and replaced all text instructions with iconography and audio cues. On admin, I redesigned the dashboard to surface exceptions first — late arrivals, missed punches, anomalies — rather than raw logs.</div>
           <div class="case-section-label">What shipped</div>
-          <div class="case-body">A face-scan kiosk experience requiring zero training, deployed across 1000+ SME customers. Mobile attendance with geo-fencing, selfie verification, and field visit tracking integrated into a single flow.</div>
+          <div class="case-body">A face-scan kiosk requiring zero training, deployed across 1000+ SME customers. Mobile attendance with geo-fencing, selfie verification, and field visit tracking in a single flow.</div>
         </div>
       </div>
 
       <!-- Case 2 -->
-      <div class="case-card">
-        <div class="case-num">Case study 02 · Design system</div>
-        <div class="case-title">Building Mewurk's design system from the ground up</div>
-        <div class="case-desc">As the product scaled to 15+ modules, inconsistency was slowing down design and engineering. I led the effort to identify patterns, document components, and ship a shared system.</div>
+      <div class="case-card featured">
+        <div class="featured-badge">Standalone module</div>
+        <div class="case-num">Case study 02 · Leave & Holidays</div>
+        <div class="case-title">Designing leave management that works for everyone — not just HR</div>
+        <div class="case-desc">Leave is one of the most emotionally loaded features in any HRMS. Getting it wrong affects trust, morale, and compliance. I led the full design — policy configuration for admins and a transparent, frictionless experience for employees.</div>
         <div class="case-meta">
-          <span class="pill">Lead designer</span><span class="pill">Design systems</span><span class="pill">Mewurk</span>
+          <span class="pill">Lead designer</span>
+          <span class="pill">Web + Mobile</span>
+          <span class="pill pill-mobile">Policy-driven UX</span>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section-label">The problem</div>
+        <div class="case-body">SMEs in India have highly varied leave policies — different accrual rules, carry-forward limits, holiday calendars by location, and approval chains. The existing approach was too rigid for admins and too opaque for employees, who often didn't know their balance or why a request was rejected.</div>
+        <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
+        <div class="case-detail">
+          <div class="case-section-label">My role</div>
+          <div class="case-body">I led design for both the admin configuration side and the employee-facing experience — running separate research sessions with HR managers and employees to understand the gap between how policies were set and how they were experienced.</div>
+          <div class="case-section-label">Web to mobile</div>
+          <div class="case-body">On web, admins needed rich policy configuration — leave types, accrual rules, holiday calendars, approval chains. On mobile, employees needed the opposite: a clear balance, a simple apply flow, and real-time visibility into approval status. I redesigned the mobile apply flow to be under 3 taps, with plain-language policy summaries inline so employees always knew what they were entitled to.</div>
+          <div class="case-section-label">Key decisions</div>
+          <div class="case-body">The hardest design challenge was the policy builder — admins needed flexibility without complexity. I introduced a progressive disclosure approach: sensible defaults upfront, with advanced rules tucked behind an "advanced settings" toggle. For employees, I added a leave calendar that showed team availability alongside personal balance — reducing the back-and-forth with managers about "when is a good time."</div>
+          <div class="case-section-label">What shipped</div>
+          <div class="case-body">A flexible leave policy builder supporting multiple leave types, accrual rules, and location-specific holiday calendars. An employee mobile experience with a clear balance summary, 3-tap apply flow, real-time approval tracking, and inline policy explanations.</div>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="case-card">
+        <div class="case-num">Case study 03 · Design system</div>
+        <div class="case-title">Building Mewurk's design system from the ground up</div>
+        <div class="case-desc">As the product scaled to 15+ modules across web and mobile, inconsistency was slowing down design and engineering. I led the effort to audit, document, and ship a shared system.</div>
+        <div class="case-meta">
+          <span class="pill">Lead designer</span>
+          <span class="pill">Web + Mobile</span>
+          <span class="pill pill-mobile">Pattern library</span>
         </div>
         <hr class="case-divider">
         <div class="case-section-label">The problem</div>
@@ -144,33 +196,39 @@
         <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
         <div class="case-detail">
           <div class="case-section-label">My role</div>
-          <div class="case-body">I owned the design system initiative — auditing existing UI, identifying recurring patterns, defining component specs, and aligning with engineering on implementation. This ran alongside active product work, not as a separate project.</div>
+          <div class="case-body">I owned the design system initiative — auditing existing UI across web and mobile, identifying recurring patterns, defining component specs, and aligning with engineering on implementation. This ran alongside active product work, not as a dedicated project.</div>
+          <div class="case-section-label">Web to mobile</div>
+          <div class="case-body">One of the core challenges was that web and mobile had evolved independently — different spacing scales, different component names, different interaction patterns for the same actions. I created a shared token layer that both platforms could reference, so a "primary action" meant the same thing everywhere even if it rendered differently.</div>
           <div class="case-section-label">Key decisions</div>
-          <div class="case-body">Rather than building a "perfect" system first, I took an incremental approach — documenting what existed, standardising the most-used patterns first (forms, tables, modals, notifications), and letting the system grow from real usage. I prioritised the admin-facing UI since that's where most complexity lived.</div>
+          <div class="case-body">Rather than building a perfect system first, I took an incremental approach — documenting what existed, standardising the most-used patterns first (forms, tables, modals, notifications), and letting the system grow from real usage. I prioritised the admin-facing web UI first since that's where most complexity lived, then mapped each component to its mobile equivalent.</div>
           <div class="case-section-label">What shipped</div>
-          <div class="case-body">A Figma component library covering core UI patterns, a pattern documentation wiki shared with engineering, and a naming convention adopted across all new modules. Reduced design-to-handoff time noticeably for new features.</div>
+          <div class="case-body">A Figma component library covering core UI patterns for web and mobile, a pattern documentation wiki shared with engineering, and a naming convention adopted across all new modules. Reduced design-to-handoff time noticeably for new features.</div>
         </div>
       </div>
 
-      <!-- Case 3 -->
+      <!-- Case 4 -->
       <div class="case-card">
-        <div class="case-num">Case study 03 · Payroll & Field visits</div>
+        <div class="case-num">Case study 04 · Payroll & Field visits</div>
         <div class="case-title">Making payroll transparent and field tracking non-intrusive</div>
         <div class="case-desc">Two modules with the same core tension — powerful for admins, anxiety-inducing for employees. The challenge was building trust on both sides of the product.</div>
         <div class="case-meta">
-          <span class="pill">Lead designer</span><span class="pill">Mobile + Web</span><span class="pill">Mewurk</span>
+          <span class="pill">Lead designer</span>
+          <span class="pill">Web + Mobile</span>
+          <span class="pill pill-mobile">Trust-driven design</span>
         </div>
         <hr class="case-divider">
         <div class="case-section-label">The problem</div>
-        <div class="case-body">Payroll errors are one of the top reasons employees distrust HR software — one wrong cycle destroys credibility. Field visit tracking felt surveillance-heavy to employees. Both modules needed to serve admin efficiency without alienating the people they affected most.</div>
+        <div class="case-body">Payroll errors destroy employee trust fast — one wrong cycle and credibility takes months to rebuild. Field visit tracking felt surveillance-heavy. Both modules needed to serve admin efficiency without alienating the people they affected most.</div>
         <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
         <div class="case-detail">
           <div class="case-section-label">My role</div>
-          <div class="case-body">I led design for both modules, running research sessions with HR managers and field employees separately to understand the trust gap. I worked closely with PM and engineering to define the right data boundaries for location tracking.</div>
+          <div class="case-body">I led design for both modules, running research sessions with HR managers and field employees separately. I worked closely with PM and engineering to define the right data boundaries for location tracking.</div>
+          <div class="case-section-label">Web to mobile</div>
+          <div class="case-body">Payroll on web was a dense multi-step process for HR — run configuration, review, approve, publish. On mobile for employees, it became a single payslip view with a plain-language breakdown. For field visits, the web admin view showed maps, routes, and visit logs — the mobile employee view focused on check-in simplicity and transparent data visibility so employees always knew what was being tracked.</div>
           <div class="case-section-label">Key decisions</div>
-          <div class="case-body">For payroll, I designed a pre-payroll review step that let HR managers catch issues before finalising — reducing errors at source. For employees, I added a payslip breakdown view explaining every deduction in plain language. For field visits, I advocated for employee-visible tracking — employees could see exactly what data was shared, which significantly reduced resistance to adoption.</div>
+          <div class="case-body">For payroll, I designed a pre-payroll review step to catch errors before finalising — reducing errors at source. For employees, a payslip breakdown explained every deduction in plain language. For field visits, I advocated for employee-visible tracking — employees could see exactly what data was shared, which reduced resistance to adoption significantly.</div>
           <div class="case-section-label">What shipped</div>
-          <div class="case-body">A payroll module with pre-run validation, employee-facing payslip breakdowns, and bulk correction flows for HR. A field visit module with transparent location sharing, visit history, and expense linking — used across 10+ industries.</div>
+          <div class="case-body">A payroll module with pre-run validation, employee-facing payslip breakdowns, and bulk correction flows. A field visit module with transparent location sharing, visit history, and expense linking — used across 10+ industries.</div>
         </div>
       </div>
 
@@ -181,11 +239,12 @@
   <div id="about" class="section">
     <div class="section-eyebrow">About</div>
     <h2 class="section-title">Sahil Tamboli</h2>
-    <p class="section-sub">Senior UX Designer with 8+ years of experience</p>
+    <p class="section-sub">Senior UX Designer with 8+ years of experience across web and mobile</p>
     <div class="about-grid">
       <div class="about-bio">
         <p>I'm a Senior UX Designer based in <strong>Bengaluru</strong>, with 8+ years of experience building digital products — most recently at <strong>Mewurk</strong>, an all-in-one HRMS platform for Indian SMEs.</p>
-        <p>I've led design across 15+ product modules, working with both the admin side (HR managers, business owners) and the employee side (field workers, factory staff). I care about making complex systems feel simple — especially for users who don't have the luxury of a learning curve.</p>
+        <p>I've led design across 15+ product modules on both web and mobile — working with HR managers and business owners on the admin side, and field workers and factory staff on the employee side. I care about making complex systems feel simple, especially for users who don't have the luxury of a learning curve.</p>
+        <p>A consistent thread in my work has been <strong>translating web products to mobile</strong> — not just adapting layouts, but rethinking what matters most when someone is using a product on a phone in a factory, on a field visit, or between meetings.</p>
         <p>I work closely with <strong>product and engineering</strong> — comfortable in sprint planning, comfortable in a research session, and comfortable pushing back when a design decision doesn't serve the user.</p>
         <p>Currently exploring <strong>UX Lead and Manager roles</strong> where I can shape design strategy, build systems, and grow a team.</p>
       </div>
@@ -198,6 +257,7 @@
             <span class="skill-tag">Design systems</span>
             <span class="skill-tag">Prototyping</span>
             <span class="skill-tag">Information architecture</span>
+            <span class="skill-tag">Web to mobile adaptation</span>
           </div>
         </div>
         <div class="skill-group">
