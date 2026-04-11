@@ -16,7 +16,7 @@
     .section.active { display: block; }
     .hero { padding: 5rem 2.5rem 4rem; }
     .hero-tag { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1.5rem; }
-    .hero h1 { font-size: 48px; font-weight: 500; line-height: 1.15; color: #f0ece4; margin-bottom: 1.5rem; max-width: 640px; }
+    .hero h1 { font-size: 46px; font-weight: 500; line-height: 1.15; color: #f0ece4; margin-bottom: 1.5rem; max-width: 640px; }
     .hero h1 span { color: #5DCAA5; }
     .hero-sub { font-size: 16px; color: #888780; line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; }
     .btn-primary { display: inline-block; padding: 12px 28px; background: #f0ece4; color: #0e0e0f; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; margin-right: 12px; }
@@ -24,38 +24,49 @@
     .btn-ghost { display: inline-block; padding: 12px 28px; border: 0.5px solid rgba(255,255,255,0.2); color: #e8e6e0; border-radius: 8px; font-size: 14px; cursor: pointer; background: transparent; }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.4); }
     .stat-row { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 0.5px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
-    .stat-num { font-size: 32px; font-weight: 500; color: #f0ece4; }
-    .stat-label { font-size: 12px; color: #5F5E5A; margin-top: 4px; letter-spacing: 0.05em; }
+    .stat-item { display: flex; align-items: center; gap: 12px; }
+    .stat-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .stat-num { font-size: 26px; font-weight: 500; color: #f0ece4; }
+    .stat-label { font-size: 11px; color: #5F5E5A; margin-top: 2px; letter-spacing: 0.04em; }
     .section-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1rem; }
     .section-title { font-size: 28px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; }
     .section-sub { font-size: 15px; color: #888780; line-height: 1.7; max-width: 560px; margin-bottom: 3rem; }
-    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
     .case-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.75rem; transition: border-color 0.15s, background 0.15s; }
-    .case-card:hover { border-color: rgba(255,255,255,0.2); background: #1a1a1c; }
-    .case-card.featured { border-color: rgba(93,202,165,0.25); }
-    .featured-badge { display: inline-block; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: #5DCAA5; background: rgba(93,202,165,0.1); border: 0.5px solid rgba(93,202,165,0.25); border-radius: 4px; padding: 3px 8px; margin-bottom: 0.75rem; }
+    .case-card:hover { border-color: rgba(255,255,255,0.18); background: #1a1a1c; }
+    .case-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
     .case-num { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.5rem; }
     .case-title { font-size: 17px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; line-height: 1.35; }
     .case-desc { font-size: 13px; color: #888780; line-height: 1.7; margin-bottom: 1.25rem; }
     .case-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
     .pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.06); color: #B4B2A9; }
-    .pill-mobile { background: rgba(93,202,165,0.08); color: #5DCAA5; }
     .case-divider { border: none; border-top: 0.5px solid rgba(255,255,255,0.06); margin: 1.25rem 0; }
-    .case-section-label { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.5rem; margin-top: 1rem; }
+    .case-section-label { display: flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.5rem; margin-top: 1rem; }
     .case-body { font-size: 13px; color: #888780; line-height: 1.7; }
-    .case-expand { font-size: 12px; color: #5DCAA5; cursor: pointer; background: none; border: none; padding: 0; margin-top: 0.75rem; display: block; }
+    .case-body strong { color: #B4B2A9; font-weight: 500; }
+    .case-expand { font-size: 12px; color: #5DCAA5; cursor: pointer; background: none; border: none; padding: 0; margin-top: 0.75rem; display: flex; align-items: center; gap: 5px; }
     .case-detail { display: none; }
     .case-detail.open { display: block; }
-    .mobile-banner { background: rgba(93,202,165,0.06); border: 0.5px solid rgba(93,202,165,0.15); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: flex-start; gap: 1rem; }
-    .mobile-banner-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-    .mobile-banner-title { font-size: 14px; font-weight: 500; color: #f0ece4; margin-bottom: 4px; }
-    .mobile-banner-body { font-size: 13px; color: #888780; line-height: 1.6; }
+    .insight-block { background: rgba(93,202,165,0.05); border-left: 2px solid rgba(93,202,165,0.3); border-radius: 0; padding: 10px 14px; margin-top: 0.75rem; font-size: 12px; color: #888780; line-height: 1.6; }
+    .insight-block strong { color: #5DCAA5; font-weight: 500; }
+    .w2m-section { border-top: 0.5px solid rgba(255,255,255,0.08); padding-top: 3rem; margin-top: 1rem; }
+    .w2m-title { font-size: 20px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
+    .w2m-sub { font-size: 14px; color: #888780; line-height: 1.7; max-width: 560px; margin-bottom: 2rem; }
+    .w2m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .w2m-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1.25rem; }
+    .w2m-card-icon { margin-bottom: 0.75rem; }
+    .w2m-card-title { font-size: 13px; font-weight: 500; color: #f0ece4; margin-bottom: 4px; }
+    .w2m-card-body { font-size: 12px; color: #888780; line-height: 1.6; }
+    .about-header { display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 3rem; }
+    .about-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: top center; border: 2px solid rgba(255,255,255,0.1); flex-shrink: 0; }
+    .about-header-text h2 { font-size: 24px; font-weight: 500; color: #f0ece4; margin-bottom: 4px; }
+    .about-header-text p { font-size: 14px; color: #888780; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
     .about-bio { font-size: 15px; color: #B4B2A9; line-height: 1.8; }
     .about-bio p { margin-bottom: 1.25rem; }
     .about-bio strong { color: #f0ece4; font-weight: 500; }
     .skill-group { margin-bottom: 2rem; }
-    .skill-group-title { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.75rem; }
+    .skill-group-title { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .skill-tag { font-size: 12px; padding: 5px 12px; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; color: #B4B2A9; }
     .contact-wrap { max-width: 480px; }
@@ -64,15 +75,16 @@
     .contact-link:hover { border-color: rgba(255,255,255,0.2); }
     .contact-link-label { font-size: 13px; color: #888780; }
     .contact-link-val { font-size: 14px; font-weight: 500; color: #f0ece4; margin-top: 2px; }
-    .contact-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #888780; flex-shrink: 0; }
-    .avail-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #5DCAA5; padding: 5px 12px; border: 0.5px solid rgba(93,202,165,0.3); border-radius: 20px; margin-bottom: 2rem; }
-    .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #5DCAA5; }
+    .contact-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .avail-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #5DCAA5; padding: 5px 14px; border: 0.5px solid rgba(93,202,165,0.3); border-radius: 20px; margin-bottom: 2rem; }
+    .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #5DCAA5; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     footer { padding: 2rem 2.5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
     .footer-text { font-size: 12px; color: #444441; }
     @media (max-width: 640px) {
       nav { padding: 1rem 1.25rem; }
       .hero { padding: 3rem 1.25rem 2.5rem; }
-      .hero h1 { font-size: 30px; }
+      .hero h1 { font-size: 28px; }
       .section { padding: 2rem 1.25rem 4rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .stat-row { gap: 1.5rem; }
@@ -97,14 +109,26 @@
     <div class="hero">
       <div class="hero-tag">Senior UX Designer — Bengaluru</div>
       <h1>Designing experiences that <span>make sense</span> at scale</h1>
-      <p class="hero-sub">8+ years crafting product experiences across HRMS, workforce management, and enterprise tools — on web and mobile. I lead with systems thinking, close collaboration with engineering, and a bias for clarity.</p>
+      <p class="hero-sub">8+ years crafting product experiences across HRMS, workforce management, and enterprise tools — on web and mobile. Systems thinking, close collaboration with engineering, and a bias for clarity.</p>
       <button class="btn-primary" onclick="show('work', document.querySelectorAll('.nav-links a')[1])">View my work</button>
       <button class="btn-ghost" onclick="show('contact', document.querySelectorAll('.nav-links a')[3])">Get in touch</button>
       <div class="stat-row">
-        <div><div class="stat-num">8+</div><div class="stat-label">Years experience</div></div>
-        <div><div class="stat-num">15+</div><div class="stat-label">Modules shipped</div></div>
-        <div><div class="stat-num">500k+</div><div class="stat-label">End users reached</div></div>
-        <div><div class="stat-num">Web + App</div><div class="stat-label">Platforms covered</div></div>
+        <div class="stat-item">
+          <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#5DCAA5" stroke-width="1.2"/><path d="M9 5v4l2.5 2.5" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div><div class="stat-num">8+</div><div class="stat-label">Years experience</div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#5DCAA5" stroke-width="1.2"/><path d="M6 7h6M6 10h4" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div><div class="stat-num">15+</div><div class="stat-label">Modules shipped</div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="3" stroke="#5DCAA5" stroke-width="1.2"/><path d="M3 15c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div><div class="stat-num">500k+</div><div class="stat-label">End users reached</div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="8" height="14" rx="1.5" stroke="#5DCAA5" stroke-width="1.2"/><rect x="12" y="5" width="4" height="9" rx="1" stroke="#5DCAA5" stroke-width="1.2"/><circle cx="6" cy="13" r="1" fill="#5DCAA5"/></svg></div>
+          <div><div class="stat-num">Web + App</div><div class="stat-label">Platforms covered</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -113,178 +137,261 @@
   <div id="work" class="section">
     <div class="section-eyebrow">Selected work</div>
     <h2 class="section-title">Case studies</h2>
-    <p class="section-sub">Four projects from my time at Mewurk — an all-in-one HRMS platform for Indian SMEs. Each shows a different challenge: hardware UX, system-level design, employee trust, and cross-platform adaptation from web to mobile.</p>
-
-    <div class="mobile-banner">
-      <div class="mobile-banner-icon">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="5" y="1" width="10" height="18" rx="2" stroke="#5DCAA5" stroke-width="1.2"/><circle cx="10" cy="16" r="1" fill="#5DCAA5"/></svg>
-      </div>
-      <div>
-        <div class="mobile-banner-title">Web to mobile — a thread across all projects</div>
-        <div class="mobile-banner-body">Across all modules, I was responsible for translating web designs into the Mewurk mobile app — rethinking information hierarchy, touch interactions, and context-of-use for employees on the go. This wasn't just resizing; it meant redesigning flows that worked for a factory worker checking in on a phone with one hand.</div>
-      </div>
-    </div>
+    <p class="section-sub">Four projects from Mewurk — an all-in-one HRMS platform for Indian SMEs used by 500k+ employees. Each tackles a distinct design challenge at the intersection of complexity, trust, and scale.</p>
 
     <div class="case-grid">
 
-      <!-- Case 1 -->
+      <!-- Case 1: Attendance & Kiosk -->
       <div class="case-card">
-        <div class="case-num">Case study 01 · Attendance & Kiosk</div>
-        <div class="case-title">Face scan attendance — from mobile chaos to hardware kiosk</div>
-        <div class="case-desc">Redesigning how 500k+ employees clock in every day — and extending it to a dedicated face-recognition kiosk for factory and field settings.</div>
+        <div class="case-icon" style="background:rgba(93,202,165,0.1);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#5DCAA5" stroke-width="1.3"/><path d="M10 6v4.5l3 2" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="case-num">Case study 01</div>
+        <div class="case-title">Attendance & face scan kiosk</div>
+        <div class="case-desc">Redesigning how 500k+ employees across 1000+ SMEs clock in daily — and building a face-recognition hardware kiosk where zero training was non-negotiable.</div>
         <div class="case-meta">
-          <span class="pill">Lead designer</span>
-          <span class="pill">Web + Mobile</span>
-          <span class="pill pill-mobile">Hardware kiosk</span>
+          <span class="pill">Lead designer</span><span class="pill">Web + Mobile</span><span class="pill">Hardware kiosk</span>
         </div>
         <hr class="case-divider">
-        <div class="case-section-label">The problem</div>
-        <div class="case-body">HR managers were spending hours reconciling attendance records. Employees were gaming location-based check-ins. Factory floors needed a touchless, zero-training solution for workers with low digital literacy.</div>
-        <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
+        <div class="case-section-label">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M6 4v2.5l1.5 1" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+          The problem
+        </div>
+        <div class="case-body">HR managers spent hours reconciling attendance records across 15+ status types (present, absent, half-day, error, missed punch, overtime, and more). Employees gamed location-based check-ins. Factory floors needed a touchless solution for workers with low digital literacy — and it had to work without any onboarding or training.</div>
+        <button class="case-expand" onclick="toggle(this)">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Read more
+        </button>
         <div class="case-detail">
-          <div class="case-section-label">My role</div>
-          <div class="case-body">I led UX end-to-end — discovery with HR managers and field employees, shipped mobile flows, the admin web dashboard, and the kiosk interface. I worked closely with the PM and hardware engineering team throughout.</div>
-          <div class="case-section-label">Web to mobile</div>
-          <div class="case-body">The admin dashboard was designed for web first — dense data tables with filters and drill-downs. For mobile, I stripped it to the essentials: today's summary, flagged exceptions, and one-tap approvals. Managers didn't need full reports on the go — they needed to act fast.</div>
-          <div class="case-section-label">Key decisions</div>
-          <div class="case-body">The kiosk UI had to work for workers with no smartphone experience. I stripped it to a single action per screen, used large visual feedback states (green/red face frame), and replaced all text instructions with iconography and audio cues. On admin, I redesigned the dashboard to surface exceptions first — late arrivals, missed punches, anomalies — rather than raw logs.</div>
-          <div class="case-section-label">What shipped</div>
-          <div class="case-body">A face-scan kiosk requiring zero training, deployed across 1000+ SME customers. Mobile attendance with geo-fencing, selfie verification, and field visit tracking in a single flow.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            My role
+          </div>
+          <div class="case-body">Led UX end-to-end — discovery with HR managers and field employees, shipped mobile flows, the admin web dashboard, and the kiosk interface. Worked closely with PM and hardware engineering throughout.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            Key decisions
+          </div>
+          <div class="case-body">The kiosk UI was stripped to a single action per screen — large green/red face-frame feedback, iconography and audio cues replacing all text instructions. No onboarding required. Geo-fencing (min 50m radius) was introduced for mobile clock-in, with selfie-based face recognition to prevent proxy attendance. On the admin side, I redesigned the dashboard to surface exceptions first — missed punches, errors, overtime anomalies — rather than raw log tables. For the mobile reminder system, employees set preferred clock-in/out times using a rolling time picker with snooze (10 or 20 min) and dismiss, with edge cases like timezone changes and already-clocked-in states handled gracefully.</div>
+          <div class="insight-block"><strong>Product detail:</strong> The attendance system handled 15+ status types — P, A, E, L, WO, P(H), P(W), A½, P½ and more. The admin correction flow let HR update any status with shift-aware time insertion, so "Mark as Present" automatically populated the correct shift in/out times rather than leaving blanks.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#5F5E5A" stroke-width="1.2" stroke-linecap="round"/></svg>
+            What shipped
+          </div>
+          <div class="case-body">A face-scan kiosk requiring zero training, deployed across 1000+ SME customers. Mobile attendance with geo-fencing, selfie verification, personalised reminders, and bulk kiosk photo import. A bulk manual correction flow for HR to fix attendance errors at month-end without one-by-one editing.</div>
         </div>
       </div>
 
-      <!-- Case 2 -->
-      <div class="case-card featured">
-        <div class="featured-badge">Standalone module</div>
-        <div class="case-num">Case study 02 · Leave & Holidays</div>
-        <div class="case-title">Designing leave management that works for everyone — not just HR</div>
-        <div class="case-desc">Leave is one of the most emotionally loaded features in any HRMS. Getting it wrong affects trust, morale, and compliance. I led the full design — policy configuration for admins and a transparent, frictionless experience for employees.</div>
-        <div class="case-meta">
-          <span class="pill">Lead designer</span>
-          <span class="pill">Web + Mobile</span>
-          <span class="pill pill-mobile">Policy-driven UX</span>
-        </div>
-        <hr class="case-divider">
-        <div class="case-section-label">The problem</div>
-        <div class="case-body">SMEs in India have highly varied leave policies — different accrual rules, carry-forward limits, holiday calendars by location, and approval chains. The existing approach was too rigid for admins and too opaque for employees, who often didn't know their balance or why a request was rejected.</div>
-        <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
-        <div class="case-detail">
-          <div class="case-section-label">My role</div>
-          <div class="case-body">I led design for both the admin configuration side and the employee-facing experience — running separate research sessions with HR managers and employees to understand the gap between how policies were set and how they were experienced.</div>
-          <div class="case-section-label">Web to mobile</div>
-          <div class="case-body">On web, admins needed rich policy configuration — leave types, accrual rules, holiday calendars, approval chains. On mobile, employees needed the opposite: a clear balance, a simple apply flow, and real-time visibility into approval status. I redesigned the mobile apply flow to be under 3 taps, with plain-language policy summaries inline so employees always knew what they were entitled to.</div>
-          <div class="case-section-label">Key decisions</div>
-          <div class="case-body">The hardest design challenge was the policy builder — admins needed flexibility without complexity. I introduced a progressive disclosure approach: sensible defaults upfront, with advanced rules tucked behind an "advanced settings" toggle. For employees, I added a leave calendar that showed team availability alongside personal balance — reducing the back-and-forth with managers about "when is a good time."</div>
-          <div class="case-section-label">What shipped</div>
-          <div class="case-body">A flexible leave policy builder supporting multiple leave types, accrual rules, and location-specific holiday calendars. An employee mobile experience with a clear balance summary, 3-tap apply flow, real-time approval tracking, and inline policy explanations.</div>
-        </div>
-      </div>
-
-      <!-- Case 3 -->
+      <!-- Case 2: Leave & Holidays -->
       <div class="case-card">
-        <div class="case-num">Case study 03 · Design system</div>
-        <div class="case-title">Building Mewurk's design system from the ground up</div>
-        <div class="case-desc">As the product scaled to 15+ modules across web and mobile, inconsistency was slowing down design and engineering. I led the effort to audit, document, and ship a shared system.</div>
+        <div class="case-icon" style="background:rgba(127,119,221,0.1);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2" stroke="#7F77DD" stroke-width="1.3"/><path d="M7 2v4M13 2v4M3 9h14" stroke="#7F77DD" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="13" r="1" fill="#7F77DD"/><circle cx="10" cy="13" r="1" fill="#7F77DD"/><circle cx="13" cy="13" r="1" fill="#7F77DD"/></svg>
+        </div>
+        <div class="case-num">Case study 02</div>
+        <div class="case-title">Leave & holidays management</div>
+        <div class="case-desc">Leave is one of the most emotionally loaded features in any HRMS. I designed a flexible, configurable system for HR admins and a transparent, trust-building experience for employees.</div>
         <div class="case-meta">
-          <span class="pill">Lead designer</span>
-          <span class="pill">Web + Mobile</span>
-          <span class="pill pill-mobile">Pattern library</span>
+          <span class="pill">Lead designer</span><span class="pill">Web + Mobile</span><span class="pill">Policy-driven UX</span>
         </div>
         <hr class="case-divider">
-        <div class="case-section-label">The problem</div>
-        <div class="case-body">With 15+ modules built over time by multiple hands, the product had accumulated UI debt — inconsistent spacing, duplicate components, no shared language between design and engineering. New features took longer to ship as teams reinvented patterns each time.</div>
-        <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
+        <div class="case-section-label">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M6 4v2.5l1.5 1" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+          The problem
+        </div>
+        <div class="case-body">Indian SMEs have highly varied leave policies — different accrual rules per leave type, carry-forward and encashment limits, state-specific holiday calendars, comp-off, short leave, optional holidays, and multi-level approval chains. The existing system was too rigid for admins to configure and too opaque for employees, who often didn't know their balance or why a request was rejected.</div>
+        <button class="case-expand" onclick="toggle(this)">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Read more
+        </button>
         <div class="case-detail">
-          <div class="case-section-label">My role</div>
-          <div class="case-body">I owned the design system initiative — auditing existing UI across web and mobile, identifying recurring patterns, defining component specs, and aligning with engineering on implementation. This ran alongside active product work, not as a dedicated project.</div>
-          <div class="case-section-label">Web to mobile</div>
-          <div class="case-body">One of the core challenges was that web and mobile had evolved independently — different spacing scales, different component names, different interaction patterns for the same actions. I created a shared token layer that both platforms could reference, so a "primary action" meant the same thing everywhere even if it rendered differently.</div>
-          <div class="case-section-label">Key decisions</div>
-          <div class="case-body">Rather than building a perfect system first, I took an incremental approach — documenting what existed, standardising the most-used patterns first (forms, tables, modals, notifications), and letting the system grow from real usage. I prioritised the admin-facing web UI first since that's where most complexity lived, then mapped each component to its mobile equivalent.</div>
-          <div class="case-section-label">What shipped</div>
-          <div class="case-body">A Figma component library covering core UI patterns for web and mobile, a pattern documentation wiki shared with engineering, and a naming convention adopted across all new modules. Reduced design-to-handoff time noticeably for new features.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            My role
+          </div>
+          <div class="case-body">Led design for both the admin configuration side and the employee experience. Ran separate research sessions with HR managers and employees to understand the gap between how policies were set and how they were experienced.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            Key decisions
+          </div>
+          <div class="case-body">The policy builder used progressive disclosure — sensible defaults upfront (annual leave, sick leave, casual leave), with accrual rules, carry-forward limits, and encashment settings behind an "advanced" toggle. I introduced the leave accrual summary view so employees could see every grant and deduction and understand exactly why their balance changed. The team leave calendar showed colleague availability alongside personal balance, reducing back-and-forth with managers. On mobile, the apply flow was redesigned to under 3 taps with inline policy constraints shown in real time — past-date limits, notice period restrictions, and documentation requirements visible before submit, not as errors after.</div>
+          <div class="insight-block"><strong>Product complexity handled:</strong> Short leave (a few hours, at start/end/break of day), comp-off with expiry rules, optional holidays requiring manager approval, leave types credited in hours or days, and state-specific regional holidays based on office location — all in a single, coherent leave system.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#5F5E5A" stroke-width="1.2" stroke-linecap="round"/></svg>
+            What shipped
+          </div>
+          <div class="case-body">A flexible leave policy builder supporting multiple leave types, accrual rules, carry-forward/encashment, and location-specific holiday calendars. An employee experience with leave accrual summary, team availability calendar, 3-tap apply flow, and real-time policy constraints inline.</div>
         </div>
       </div>
 
-      <!-- Case 4 -->
+      <!-- Case 3: Design System -->
       <div class="case-card">
-        <div class="case-num">Case study 04 · Payroll & Field visits</div>
-        <div class="case-title">Making payroll transparent and field tracking non-intrusive</div>
-        <div class="case-desc">Two modules with the same core tension — powerful for admins, anxiety-inducing for employees. The challenge was building trust on both sides of the product.</div>
+        <div class="case-icon" style="background:rgba(239,159,39,0.1);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="6" height="6" rx="1.5" stroke="#EF9F27" stroke-width="1.3"/><rect x="11" y="3" width="6" height="6" rx="1.5" stroke="#EF9F27" stroke-width="1.3"/><rect x="3" y="11" width="6" height="6" rx="1.5" stroke="#EF9F27" stroke-width="1.3"/><rect x="11" y="11" width="6" height="6" rx="1.5" stroke="#EF9F27" stroke-width="1.3"/></svg>
+        </div>
+        <div class="case-num">Case study 03</div>
+        <div class="case-title">Design system & pattern library</div>
+        <div class="case-desc">As Mewurk scaled to 15+ modules across web and mobile, UI debt was slowing design and engineering. I led the effort to identify, document, and systematise — using Atomic Design principles and Figma's component architecture.</div>
         <div class="case-meta">
-          <span class="pill">Lead designer</span>
-          <span class="pill">Web + Mobile</span>
-          <span class="pill pill-mobile">Trust-driven design</span>
+          <span class="pill">Lead designer</span><span class="pill">Web + Mobile</span><span class="pill">Figma library</span>
         </div>
         <hr class="case-divider">
-        <div class="case-section-label">The problem</div>
-        <div class="case-body">Payroll errors destroy employee trust fast — one wrong cycle and credibility takes months to rebuild. Field visit tracking felt surveillance-heavy. Both modules needed to serve admin efficiency without alienating the people they affected most.</div>
-        <button class="case-expand" onclick="toggle(this)">Read more ↓</button>
+        <div class="case-section-label">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M6 4v2.5l1.5 1" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+          The problem
+        </div>
+        <div class="case-body">A design team of 4, each working on different modules simultaneously, no shared library, no naming conventions, no documented patterns. Stakeholders kept flagging inconsistencies in demos. The root cause: lack of communication across module teams, each designer using their own components, and no defined design process to follow.</div>
+        <button class="case-expand" onclick="toggle(this)">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Read more
+        </button>
         <div class="case-detail">
-          <div class="case-section-label">My role</div>
-          <div class="case-body">I led design for both modules, running research sessions with HR managers and field employees separately. I worked closely with PM and engineering to define the right data boundaries for location tracking.</div>
-          <div class="case-section-label">Web to mobile</div>
-          <div class="case-body">Payroll on web was a dense multi-step process for HR — run configuration, review, approve, publish. On mobile for employees, it became a single payslip view with a plain-language breakdown. For field visits, the web admin view showed maps, routes, and visit logs — the mobile employee view focused on check-in simplicity and transparent data visibility so employees always knew what was being tracked.</div>
-          <div class="case-section-label">Key decisions</div>
-          <div class="case-body">For payroll, I designed a pre-payroll review step to catch errors before finalising — reducing errors at source. For employees, a payslip breakdown explained every deduction in plain language. For field visits, I advocated for employee-visible tracking — employees could see exactly what data was shared, which reduced resistance to adoption significantly.</div>
-          <div class="case-section-label">What shipped</div>
-          <div class="case-body">A payroll module with pre-run validation, employee-facing payslip breakdowns, and bulk correction flows. A field visit module with transparent location sharing, visit history, and expense linking — used across 10+ industries.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            My role
+          </div>
+          <div class="case-body">Owned the initiative — ran a team workshop to identify inconsistencies, audited all existing screens by dumping them into one Figma canvas to spot patterns, defined the component architecture, and aligned with engineering on implementation. This ran alongside active product work, not as a separate project.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            Key decisions
+          </div>
+          <div class="case-body">We adopted Atomic Design (atoms → molecules → organisms → templates → pages), starting by listing all components — input controls, navigation, informational elements — then categorising them correctly. An early mistake was mapping components to the wrong atomic level; after debugging with the team and research, we corrected the categorisation and documented the rules in a wiki. I used Figma's variant feature for component states (default, hover, disabled, error) and nested components for modularity, with version control to track changes. CSS/XML code snippets were generated per component to reduce handoff ambiguity. I also discovered a reusable "Policy Creation" pattern across attendance, leave, holidays, shifts, and WFH — all sharing the same 3-part structure: header → parameters → applicable employees.</div>
+          <div class="insight-block"><strong>Key pattern identified:</strong> Policy creation across all 6+ modules followed the same structure — policy header (name + description), policy parameters (module-specific rules), and policy applicable to (employee assignment). Standardising this single pattern eliminated a huge class of inconsistency across the product.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#5F5E5A" stroke-width="1.2" stroke-linecap="round"/></svg>
+            What shipped
+          </div>
+          <div class="case-body">A Figma component library with atomic structure, variants, and nested components. A pattern documentation wiki covering interaction patterns, language standards, visual consistency, and IA. 5 consistency pillars defined and acted on. Naming conventions adopted across all new modules. Reduced design-to-handoff time noticeably for new features.</div>
         </div>
       </div>
 
+      <!-- Case 4: Payroll & Field -->
+      <div class="case-card">
+        <div class="case-icon" style="background:rgba(216,90,48,0.1);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="11" rx="2" stroke="#D85A30" stroke-width="1.3"/><path d="M7 9h6M7 12h4" stroke="#D85A30" stroke-width="1.3" stroke-linecap="round"/><path d="M10 2v4" stroke="#D85A30" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="case-num">Case study 04</div>
+        <div class="case-title">Payroll & field visit tracking</div>
+        <div class="case-desc">Two modules with the same tension — powerful for admins, anxiety-inducing for employees. The challenge was building trust on both sides while handling real Indian statutory complexity.</div>
+        <div class="case-meta">
+          <span class="pill">Lead designer</span><span class="pill">Web + Mobile</span><span class="pill">Trust-driven design</span>
+        </div>
+        <hr class="case-divider">
+        <div class="case-section-label">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M6 4v2.5l1.5 1" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+          The problem
+        </div>
+        <div class="case-body">Indian payroll involves PF, ESI, TDS, PT, LWF, Form 16, and state-specific statutory rules — all behind an interface used by SME HR managers with no accounting background. One wrong cycle destroys trust. Field tracking, meanwhile, felt like surveillance to employees. Both modules needed to serve admin efficiency without alienating the people they affected most.</div>
+        <button class="case-expand" onclick="toggle(this)">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Read more
+        </button>
+        <div class="case-detail">
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            My role
+          </div>
+          <div class="case-body">Led design for both modules. Ran separate research sessions with HR managers and field employees to understand the trust gap. Worked with PM and engineering to define the right data visibility boundaries for location tracking.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            Key decisions
+          </div>
+          <div class="case-body">For payroll, I designed a pre-run finalization flow — before exporting, HR sees each employee's pending leave requests, attendance errors, and approved overtime, and can take action to resolve them before the cycle is locked. This reduced errors at source rather than correcting after payout. The employee payslip broke down every deduction in plain language, not accounting shorthand. Role-based access (Admin, HR, Manager, Employee) was mapped to distinct UI states. The payroll export was designed to be compatible with Tally, Zoho, and Saral Pay — requiring careful field mapping UX. For field visits, I advocated for employee-visible tracking — employees could see exactly what location data was shared and when — significantly reducing resistance to adoption.</div>
+          <div class="insight-block"><strong>Payroll finalization flow:</strong> Before export, HR reviews pending requests for everyone in the payroll group, views attendance error counts per employee, and can approve/reject requests inline — all before the data is locked. Once exported, the file cannot be modified. This single pre-run step prevented a whole class of after-the-fact payroll corrections.</div>
+          <div class="case-section-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#5F5E5A" stroke-width="1.2" stroke-linecap="round"/></svg>
+            What shipped
+          </div>
+          <div class="case-body">A payroll export module with pre-run validation, role-specific views, plain-language payslip breakdowns, and compatibility with major Indian payroll tools. A field visit module with transparent location sharing, visit history, and expense linking — used across 10+ industries.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Web to Mobile -->
+    <div class="w2m-section">
+      <div class="w2m-title">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="8" height="16" rx="1.5" stroke="#5DCAA5" stroke-width="1.3"/><circle cx="6" cy="15" r="0.8" fill="#5DCAA5"/><rect x="13" y="5" width="5" height="11" rx="1" stroke="#5DCAA5" stroke-width="1.3"/><path d="M10 8l3-2" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="1.5 1.5"/></svg>
+        Web to mobile — a thread across all projects
+      </div>
+      <p class="w2m-sub">Across all modules, I was responsible for translating web designs into the Mewurk mobile app — available on Android 9+ and iOS 12+. Not just resizing: rethinking flows for context, touch, and field conditions.</p>
+      <div class="w2m-grid">
+        <div class="w2m-card">
+          <div class="w2m-card-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11h14M11 4l7 7-7 7" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          <div class="w2m-card-title">Rethinking information hierarchy</div>
+          <div class="w2m-card-body">The web admin dashboard showed dense tables with 40+ fields. On mobile, I distilled it to today's summary, flagged exceptions, and one-tap approvals — what managers need on the go.</div>
+        </div>
+        <div class="w2m-card">
+          <div class="w2m-card-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="7" y="3" width="8" height="16" rx="1.5" stroke="#7F77DD" stroke-width="1.3"/><circle cx="11" cy="16" r="0.8" fill="#7F77DD"/></svg></div>
+          <div class="w2m-card-title">Touch-first interactions</div>
+          <div class="w2m-card-body">Multi-step web flows redesigned for one-handed use — rolling time pickers, bottom sheets, swipe actions, and thumb-reachable primary actions throughout all modules.</div>
+        </div>
+        <div class="w2m-card">
+          <div class="w2m-card-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="9" r="4" stroke="#EF9F27" stroke-width="1.3"/><path d="M5 18c0-3 2.7-5 6-5s6 2 6 5" stroke="#EF9F27" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          <div class="w2m-card-title">Designing for field users</div>
+          <div class="w2m-card-body">Factory workers and field staff with low digital literacy — every mobile screen had to be self-evident. The kiosk UI took this furthest: no text, no training, just a face in a frame.</div>
+        </div>
+        <div class="w2m-card">
+          <div class="w2m-card-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="5" width="16" height="12" rx="2" stroke="#D85A30" stroke-width="1.3"/><path d="M7 9h8M7 12h5" stroke="#D85A30" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          <div class="w2m-card-title">Shared token layer</div>
+          <div class="w2m-card-body">Built a shared token system in Figma so web and mobile referenced the same values — consistent meaning, different rendering. A "primary action" looked right on both platforms.</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ABOUT -->
   <div id="about" class="section">
     <div class="section-eyebrow">About</div>
-    <h2 class="section-title">Sahil Tamboli</h2>
-    <p class="section-sub">Senior UX Designer with 8+ years of experience across web and mobile</p>
+    <div class="about-header">
+      <img src="sahil.jpg" alt="Sahil Tamboli" class="about-photo" />
+      <div class="about-header-text">
+        <h2>Sahil Tamboli</h2>
+        <p>Senior UX Designer · Bengaluru, India</p>
+      </div>
+    </div>
     <div class="about-grid">
       <div class="about-bio">
-        <p>I'm a Senior UX Designer based in <strong>Bengaluru</strong>, with 8+ years of experience building digital products — most recently at <strong>Mewurk</strong>, an all-in-one HRMS platform for Indian SMEs.</p>
-        <p>I've led design across 15+ product modules on both web and mobile — working with HR managers and business owners on the admin side, and field workers and factory staff on the employee side. I care about making complex systems feel simple, especially for users who don't have the luxury of a learning curve.</p>
-        <p>A consistent thread in my work has been <strong>translating web products to mobile</strong> — not just adapting layouts, but rethinking what matters most when someone is using a product on a phone in a factory, on a field visit, or between meetings.</p>
+        <p>I'm a Senior UX Designer with 8+ years of experience building digital products — most recently at <strong>Mewurk</strong>, an all-in-one HRMS platform for Indian SMEs used by 500k+ employees across 1000+ companies.</p>
+        <p>I've led design across 15+ product modules on both web and mobile — working with HR managers and business owners on the admin side, and field workers, factory staff, and blue-collar employees on the employee side. I care about making complex systems feel simple, especially for users who don't have the luxury of a learning curve.</p>
+        <p>A consistent thread in my work has been <strong>translating web products to mobile</strong> — rethinking what matters most when someone is on a factory floor, checking in from a field visit, or approving a request between meetings.</p>
         <p>I work closely with <strong>product and engineering</strong> — comfortable in sprint planning, comfortable in a research session, and comfortable pushing back when a design decision doesn't serve the user.</p>
         <p>Currently exploring <strong>UX Lead and Manager roles</strong> where I can shape design strategy, build systems, and grow a team.</p>
       </div>
       <div>
         <div class="skill-group">
-          <div class="skill-group-title">Design</div>
+          <div class="skill-group-title">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="4" height="4" rx="1" stroke="#5F5E5A" stroke-width="1"/><rect x="7" y="1" width="4" height="4" rx="1" stroke="#5F5E5A" stroke-width="1"/><rect x="1" y="7" width="4" height="4" rx="1" stroke="#5F5E5A" stroke-width="1"/><rect x="7" y="7" width="4" height="4" rx="1" stroke="#5F5E5A" stroke-width="1"/></svg>
+            Design
+          </div>
           <div class="skill-tags">
-            <span class="skill-tag">UX Research</span>
-            <span class="skill-tag">Interaction design</span>
-            <span class="skill-tag">Design systems</span>
-            <span class="skill-tag">Prototyping</span>
-            <span class="skill-tag">Information architecture</span>
-            <span class="skill-tag">Web to mobile adaptation</span>
+            <span class="skill-tag">UX Research</span><span class="skill-tag">Interaction design</span><span class="skill-tag">Design systems</span><span class="skill-tag">Prototyping</span><span class="skill-tag">Information architecture</span><span class="skill-tag">Web to mobile</span>
           </div>
         </div>
         <div class="skill-group">
-          <div class="skill-group-title">Tools</div>
+          <div class="skill-group-title">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="2" width="8" height="8" rx="1" stroke="#5F5E5A" stroke-width="1"/><path d="M4 6h4M6 4v4" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            Tools
+          </div>
           <div class="skill-tags">
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">Protopie</span>
-            <span class="skill-tag">Maze</span>
-            <span class="skill-tag">Miro</span>
+            <span class="skill-tag">Figma</span><span class="skill-tag">Protopie</span><span class="skill-tag">Maze</span><span class="skill-tag">Miro</span>
           </div>
         </div>
         <div class="skill-group">
-          <div class="skill-group-title">Domain</div>
+          <div class="skill-group-title">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M4 6c0-1.1.9-2 2-2s2 .9 2 2" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            Domain
+          </div>
           <div class="skill-tags">
-            <span class="skill-tag">HRMS / workforce tools</span>
-            <span class="skill-tag">Enterprise SaaS</span>
-            <span class="skill-tag">Mobile apps</span>
-            <span class="skill-tag">Hardware UX</span>
+            <span class="skill-tag">HRMS / workforce tools</span><span class="skill-tag">Enterprise SaaS</span><span class="skill-tag">Mobile apps</span><span class="skill-tag">Hardware UX</span>
           </div>
         </div>
         <div class="skill-group">
-          <div class="skill-group-title">Leadership</div>
+          <div class="skill-group-title">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2.2 1.8-3.5 4-3.5s4 1.3 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
+            Leadership
+          </div>
           <div class="skill-tags">
-            <span class="skill-tag">Stakeholder alignment</span>
-            <span class="skill-tag">Design critique</span>
-            <span class="skill-tag">Pattern documentation</span>
-            <span class="skill-tag">Cross-functional collaboration</span>
+            <span class="skill-tag">Stakeholder alignment</span><span class="skill-tag">Design critique</span><span class="skill-tag">Pattern documentation</span><span class="skill-tag">Cross-functional collaboration</span>
           </div>
         </div>
       </div>
@@ -299,27 +406,16 @@
       <div class="avail-badge"><span class="avail-dot"></span>Open to new opportunities</div>
       <p class="contact-intro">I'm currently exploring Senior UX and Lead roles. If you're building something complex that needs a designer who can go deep — I'd love to hear about it.</p>
       <a class="contact-link" href="mailto:sahilxt@gmail.com">
-        <div class="contact-icon">@</div>
-        <div>
-          <div class="contact-link-label">Email</div>
-          <div class="contact-link-val">sahilxt@gmail.com</div>
-        </div>
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#888780" stroke-width="1.2"/><path d="M2 6l7 5 7-5" stroke="#888780" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="contact-link-label">Email</div><div class="contact-link-val">sahilxt@gmail.com</div></div>
       </a>
       <a class="contact-link" href="https://www.linkedin.com/in/sahilxt" target="_blank">
-        <div class="contact-icon">in</div>
-        <div>
-          <div class="contact-link-label">LinkedIn</div>
-          <div class="contact-link-val">linkedin.com/in/sahilxt</div>
-        </div>
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="#888780" stroke-width="1.2"/><path d="M6 8v5M6 6v.5" stroke="#888780" stroke-width="1.3" stroke-linecap="round"/><path d="M9 13v-2.5c0-1 .6-1.5 1.5-1.5s1.5.5 1.5 1.5V13" stroke="#888780" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">linkedin.com/in/sahilxt</div></div>
       </a>
       <div class="contact-link">
-        <div class="contact-icon">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="#888780" stroke-width="1.2"/><path d="M2.5 13.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="#888780" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <div class="contact-link-label">Based in</div>
-          <div class="contact-link-val">Bengaluru, India — open to remote</div>
-        </div>
+        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.2 2 4 4.2 4 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" stroke="#888780" stroke-width="1.2"/><circle cx="9" cy="7" r="1.5" stroke="#888780" stroke-width="1.2"/></svg></div>
+        <div><div class="contact-link-label">Based in</div><div class="contact-link-val">Bengaluru, India — open to remote</div></div>
       </div>
     </div>
   </div>
@@ -340,7 +436,9 @@
     function toggle(btn) {
       const detail = btn.nextElementSibling;
       const open = detail.classList.toggle('open');
-      btn.textContent = open ? 'Read less ↑' : 'Read more ↓';
+      const path = btn.querySelector('svg path');
+      if (path) path.setAttribute('d', open ? 'M2 8l4-4 4 4' : 'M2 4l4 4 4-4');
+      btn.lastChild.textContent = open ? ' Read less' : ' Read more';
     }
   </script>
 </body>
