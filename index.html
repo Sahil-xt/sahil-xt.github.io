@@ -105,6 +105,30 @@
     .mentoring-body strong{color:#c4bfb7;font-weight:500;}
 
     /* CERTS */
+    /* EXPERIENCE TIMELINE */
+    .exp-section{margin-bottom:3rem;}
+    .exp-eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
+    .exp-list{display:flex;flex-direction:column;gap:0;}
+    .exp-item{display:grid;grid-template-columns:120px 1fr;gap:0 1.5rem;position:relative;padding-bottom:1.75rem;}
+    .exp-item:last-child{padding-bottom:0;}
+    .exp-left{text-align:right;padding-top:3px;}
+    .exp-dates{font-size:11px;color:var(--muted);line-height:1.5;}
+    .exp-line{position:absolute;left:120px;top:8px;bottom:0;width:1px;background:var(--border);}
+    .exp-item:last-child .exp-line{display:none;}
+    .exp-dot{position:absolute;left:calc(120px + 1.5rem - 4px);top:6px;width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+    .exp-right{padding-left:1.5rem;}
+    .exp-title{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:2px;}
+    .exp-company{font-size:13px;color:var(--teal);margin-bottom:6px;}
+    .exp-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+    /* EDUCATION */
+    .edu-section{margin-bottom:3rem;}
+    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.25rem;display:flex;gap:12px;align-items:flex-start;}
+    .edu-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .edu-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px;}
+    .edu-sub{font-size:12px;color:var(--muted);line-height:1.5;}
+    .edu-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;margin-top:5px;font-weight:500;}
+    /* CERTS */
     .certs-section{margin-bottom:2rem;}
     .certs-eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
     .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
@@ -136,6 +160,7 @@
       .about-grid{grid-template-columns:1fr;}.about-hero{flex-direction:column;gap:1.25rem;}
       .case-grid{grid-template-columns:1fr;}.w2m-cards{grid-template-columns:1fr 1fr;}
       .cert-grid{grid-template-columns:1fr 1fr;}.mentoring-block{flex-direction:column;gap:1rem;}
+      .edu-grid{grid-template-columns:1fr;}
       footer{padding:1.5rem 1.25rem;}
     }
     @media(max-width:480px){.stat-row{grid-template-columns:repeat(2,1fr);}.w2m-cards{grid-template-columns:1fr;}.hero-ctas{flex-direction:column;}.cert-grid{grid-template-columns:1fr;}}
@@ -272,15 +297,16 @@
 
       <div class="about-grid">
         <div class="about-bio">
-          <p>I'm a Senior UX Designer with 8+ years of experience — most recently at <strong>Mewurk</strong>, an all-in-one HRMS for Indian SMEs used by 500k+ employees across 1000+ companies.</p>
-          <p>I've designed 15+ modules on web and mobile — HR managers on the admin side, factory workers and field staff on the employee side. I care about making <strong>complex systems feel simple</strong> for users with no margin for confusion.</p>
-          <p>A constant thread in my work: <strong>translating web to mobile</strong> — rethinking what matters most when someone is on a factory floor, clocking in with one hand, or approving a request between meetings.</p>
+          <p>I'm a Senior UX Designer with 8+ years of experience — currently at <strong>Mewurk</strong>, an all-in-one HRMS for Indian SMEs used by 500k+ employees across 1000+ companies. Previously at <strong>FIGmd</strong>, designing US Healthcare SaaS products.</p>
+          <p>I hold a B.Tech from <strong>IIT Hyderabad</strong> and ranked in the top 20 nationally in the NID entrance exam. Early in my career I worked as a Technical Consultant building <strong>data models and dashboards in R and MySQL</strong> — a background that makes me unusually comfortable in engineer conversations and helps me translate between design intent and technical constraints.</p>
+          <p>I care about making <strong>complex systems feel simple</strong>, especially for users with no margin for confusion — from factory floor workers clocking in on a kiosk to HR managers navigating Indian payroll compliance.</p>
           <p>Currently exploring <strong>UX Lead and Manager roles</strong> where I can shape design strategy, build systems, and grow a team.</p>
         </div>
         <div>
           <div class="skill-grp"><div class="skill-grp-title">Design</div><div class="skill-chips"><span class="chip">UX Research</span><span class="chip">Interaction design</span><span class="chip">Design systems</span><span class="chip">Prototyping</span><span class="chip">Information architecture</span><span class="chip">Web to mobile</span></div></div>
           <div class="skill-grp"><div class="skill-grp-title">Tools</div><div class="skill-chips"><span class="chip">Figma</span><span class="chip">Protopie</span><span class="chip">Maze</span><span class="chip">Miro</span></div></div>
-          <div class="skill-grp"><div class="skill-grp-title">Domain</div><div class="skill-chips"><span class="chip">HRMS</span><span class="chip">Enterprise SaaS</span><span class="chip">Mobile apps</span><span class="chip">Hardware UX</span></div></div>
+          <div class="skill-grp"><div class="skill-grp-title">Domain</div><div class="skill-chips"><span class="chip">HRMS</span><span class="chip">Enterprise SaaS</span><span class="chip">Mobile apps</span><span class="chip">Hardware UX</span><span class="chip">US Healthcare</span></div></div>
+          <div class="skill-grp"><div class="skill-grp-title">Technical background</div><div class="skill-chips"><span class="chip">Data modelling</span><span class="chip">MySQL</span><span class="chip">R / R-Shiny</span><span class="chip">Dashboard development</span></div></div>
           <div class="skill-grp"><div class="skill-grp-title">Leadership</div><div class="skill-chips"><span class="chip">Stakeholder alignment</span><span class="chip">Design critique</span><span class="chip">Pattern documentation</span><span class="chip">Mentoring</span></div></div>
         </div>
       </div>
@@ -293,6 +319,73 @@
         <div>
           <div class="mentoring-title">Mentoring 70+ aspiring UX designers</div>
           <div class="mentoring-body">Through <strong>Designerrs Academy's "UI UX Design from Scratch"</strong> course, I've mentored 70+ mentees — reviewing portfolios, giving design critique, sharing real-world product insights, and helping beginners break into the field.</div>
+        </div>
+      </div>
+
+      <!-- Experience timeline -->
+      <div class="exp-section">
+        <div class="exp-eyebrow">Experience</div>
+        <div class="exp-list">
+
+          <div class="exp-item">
+            <div class="exp-left"><div class="exp-dates">2019<br>Present</div></div>
+            <div class="exp-line"></div>
+            <div class="exp-dot" style="background:var(--teal);"></div>
+            <div class="exp-right">
+              <div class="exp-title">Senior UX Designer</div>
+              <div class="exp-company">Mewurk · Bengaluru</div>
+              <div class="exp-desc">All-in-one HRMS platform for Indian SMEs — 500k+ employees, 1000+ companies. Led design across 15+ modules on web and mobile: attendance, kiosk, leave, payroll, field visits, expense, onboarding, notifications, and the product's first design system.</div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-left"><div class="exp-dates">2018<br>2019</div></div>
+            <div class="exp-line"></div>
+            <div class="exp-dot" style="background:var(--lavender);"></div>
+            <div class="exp-right">
+              <div class="exp-title">UI/UX Designer</div>
+              <div class="exp-company">FIGmd Pvt. Ltd. · Pune</div>
+              <div class="exp-desc">US Healthcare SaaS — designed EHR and insurance claims platform (PayerHub), a CMS compliance product for medical practices (MIPS), and a mental wellness app (InfiHeal). Worked across clinical registries, dashboards, and multi-stakeholder workflows.</div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-left"><div class="exp-dates">2016<br>2017</div></div>
+            <div class="exp-line"></div>
+            <div class="exp-dot" style="background:var(--amber);"></div>
+            <div class="exp-right">
+              <div class="exp-title">Technical Consultant</div>
+              <div class="exp-company">Entransys Pvt. Ltd. &amp; Yash Technologies · Hyderabad</div>
+              <div class="exp-desc">Data modelling, normalisation (MySQL), and dynamic dashboard development using R and R-Shiny. This technical foundation — understanding data structures, querying, and how engineers think about systems — directly shapes how I collaborate with developers today as a designer.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Education & credentials -->
+      <div class="edu-section">
+        <div class="exp-eyebrow">Education & credentials</div>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-icon" style="background:var(--teal-dim);">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 7l7-4 7 4-7 4-7-4z" stroke="#4ecba0" stroke-width="1.2" stroke-linejoin="round"/><path d="M5 9v4c0 1.1 1.8 2 4 2s4-.9 4-2V9" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="edu-title">B.Tech — Mechanical Engineering</div>
+              <div class="edu-sub">IIT Hyderabad<br>Indian Institute of Technology</div>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-icon" style="background:var(--amber-dim);">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#f5a623" stroke-width="1.2"/><path d="M6 9l2 2 4-4" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="edu-title">National Institute of Design</div>
+              <div class="edu-sub">Entrance exam — NID</div>
+              <span class="edu-badge" style="background:var(--amber-dim);color:var(--amber);">Under Top 20 nationally</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -359,9 +452,9 @@
       <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Exploring Senior UX and Lead roles. If you're building something complex that needs a designer who goes deep — I'd love to hear about it.</p>
       <div class="avail-pill" style="margin-bottom:2rem;display:inline-flex;"><span class="avail-dot"></span>Open to new opportunities</div>
       <div class="contact-cards">
-        <a class="contact-card" href="mailto:sahilxt@gmail.com">
+        <a class="contact-card" href="/cdn-cgi/l/email-protection#3546545d5c594d41755258545c591b565a58">
           <div class="c-icon" style="background:var(--teal-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#4ecba0" stroke-width="1.2"/><path d="M2 6l7 5 7-5" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div><div class="c-label">Email</div><div class="c-val">sahilxt@gmail.com</div></div>
+          <div><div class="c-label">Email</div><div class="c-val"><span class="__cf_email__" data-cfemail="b8cbd9d0d1d4c0ccf8dfd5d9d1d496dbd7d5">[email&#160;protected]</span></div></div>
         </a>
         <a class="contact-card" href="https://www.linkedin.com/in/sahilxt" target="_blank">
           <div class="c-icon" style="background:var(--lavender-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="#a89be8" stroke-width="1.2"/><path d="M6 8v5M6 6v.5" stroke="#a89be8" stroke-width="1.3" stroke-linecap="round"/><path d="M9 13v-2.5c0-1 .6-1.5 1.5-1.5s1.5.5 1.5 1.5V13" stroke="#a89be8" stroke-width="1.2" stroke-linecap="round"/></svg></div>
@@ -377,15 +470,8 @@
 
   <footer><span class="footer-name">Sahil Tamboli</span><span class="footer-copy">© 2026 · Built with care</span></footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function show(id,el){
       document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
       document.querySelectorAll('.nav-links a,.mobile-menu a').forEach(a=>a.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      if(el)el.classList.add('active');
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-    function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-  </script>
-</body>
-</html>
+      document.getElementById(id).c
