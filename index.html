@@ -1,339 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sahil Tamboli — Senior UX Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #0e0e0f; color: #e8e6e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); position: sticky; top: 0; background: #0e0e0f; z-index: 100; }
-    .logo { font-size: 15px; font-weight: 500; color: #f0ece4; letter-spacing: 0.02em; }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { font-size: 13px; color: #888780; text-decoration: none; cursor: pointer; }
-    .nav-links a:hover, .nav-links a.active { color: #f0ece4; }
-    .section { display: none; padding: 3rem 2.5rem 5rem; }
-    .section.active { display: block; }
-    .hero { padding: 5rem 2.5rem 4rem; }
-    .hero-tag { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1.5rem; }
-    .hero h1 { font-size: 46px; font-weight: 500; line-height: 1.15; color: #f0ece4; margin-bottom: 1.5rem; max-width: 640px; }
-    .hero h1 span { color: #5DCAA5; }
-    .hero-sub { font-size: 16px; color: #888780; line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; }
-    .btn-primary { display: inline-block; padding: 12px 28px; background: #f0ece4; color: #0e0e0f; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; margin-right: 12px; }
-    .btn-primary:hover { background: #fff; }
-    .btn-ghost { display: inline-block; padding: 12px 28px; border: 0.5px solid rgba(255,255,255,0.2); color: #e8e6e0; border-radius: 8px; font-size: 14px; cursor: pointer; background: transparent; }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.4); }
-    .stat-row { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 0.5px solid rgba(255,255,255,0.08); flex-wrap: wrap; }
-    .stat-item { display: flex; align-items: center; gap: 12px; }
-    .stat-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .stat-num { font-size: 26px; font-weight: 500; color: #f0ece4; }
-    .stat-label { font-size: 11px; color: #5F5E5A; margin-top: 2px; letter-spacing: 0.04em; }
-    .section-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 1rem; }
-    .section-title { font-size: 28px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; }
-    .section-sub { font-size: 15px; color: #888780; line-height: 1.7; max-width: 560px; margin-bottom: 3rem; }
-    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-    .case-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.75rem; transition: border-color 0.15s, background 0.15s; }
-    .case-card:hover { border-color: rgba(255,255,255,0.18); background: #1a1a1c; }
-    .case-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
-    .case-num { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.5rem; }
-    .case-title { font-size: 17px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; line-height: 1.35; }
-    .case-desc { font-size: 13px; color: #888780; line-height: 1.7; margin-bottom: 1.25rem; }
-    .case-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
-    .pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.06); color: #B4B2A9; }
-    .case-divider { border: none; border-top: 0.5px solid rgba(255,255,255,0.06); margin: 1.25rem 0; }
-    .case-section-label { display: flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.5rem; margin-top: 1rem; }
-    .case-body { font-size: 13px; color: #888780; line-height: 1.7; }
-    .case-body strong { color: #B4B2A9; font-weight: 500; }
-    .case-expand { font-size: 12px; color: #5DCAA5; cursor: pointer; background: none; border: none; padding: 0; margin-top: 0.75rem; display: flex; align-items: center; gap: 5px; }
-    .case-detail { display: none; }
-    .case-detail.open { display: block; }
-    .insight-block { background: rgba(93,202,165,0.05); border-left: 2px solid rgba(93,202,165,0.3); border-radius: 0; padding: 10px 14px; margin-top: 0.75rem; font-size: 12px; color: #888780; line-height: 1.6; }
-    .insight-block strong { color: #5DCAA5; font-weight: 500; }
-    .w2m-section { border-top: 0.5px solid rgba(255,255,255,0.08); padding-top: 3rem; margin-top: 1rem; }
-    .w2m-title { font-size: 20px; font-weight: 500; color: #f0ece4; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
-    .w2m-sub { font-size: 14px; color: #888780; line-height: 1.7; max-width: 560px; margin-bottom: 2rem; }
-    .w2m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-    .w2m-card { background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1.25rem; }
-    .w2m-card-icon { margin-bottom: 0.75rem; }
-    .w2m-card-title { font-size: 13px; font-weight: 500; color: #f0ece4; margin-bottom: 4px; }
-    .w2m-card-body { font-size: 12px; color: #888780; line-height: 1.6; }
-    .about-header { display: flex; align-items: flex-start; gap: 2rem; margin-bottom: 3rem; }
-    .about-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: top center; border: 2px solid rgba(255,255,255,0.1); flex-shrink: 0; }
-    .about-header-text h2 { font-size: 24px; font-weight: 500; color: #f0ece4; margin-bottom: 4px; }
-    .about-header-text p { font-size: 14px; color: #888780; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    .about-bio { font-size: 15px; color: #B4B2A9; line-height: 1.8; }
-    .about-bio p { margin-bottom: 1.25rem; }
-    .about-bio strong { color: #f0ece4; font-weight: 500; }
-    .skill-group { margin-bottom: 2rem; }
-    .skill-group-title { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5F5E5A; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-tag { font-size: 12px; padding: 5px 12px; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 6px; color: #B4B2A9; }
-    .contact-wrap { max-width: 480px; }
-    .contact-intro { font-size: 15px; color: #888780; line-height: 1.7; margin-bottom: 2.5rem; }
-    .contact-link { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; background: #161618; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; margin-bottom: 12px; text-decoration: none; }
-    .contact-link:hover { border-color: rgba(255,255,255,0.2); }
-    .contact-link-label { font-size: 13px; color: #888780; }
-    .contact-link-val { font-size: 14px; font-weight: 500; color: #f0ece4; margin-top: 2px; }
-    .contact-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .avail-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #5DCAA5; padding: 5px 14px; border: 0.5px solid rgba(93,202,165,0.3); border-radius: 20px; margin-bottom: 2rem; }
-    .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #5DCAA5; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-    footer { padding: 2rem 2.5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
-    .footer-text { font-size: 12px; color: #444441; }
-    @media (max-width: 640px) {
-      nav { padding: 1rem 1.25rem; }
-      .hero { padding: 3rem 1.25rem 2.5rem; }
-      .hero h1 { font-size: 28px; }
-      .section { padding: 2rem 1.25rem 4rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .stat-row { gap: 1.5rem; }
-      footer { padding: 1.5rem 1.25rem; flex-direction: column; gap: 8px; text-align: center; }
+    :root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--faint:rgba(255,255,255,0.06);--border:rgba(255,255,255,0.09);--teal:#4ecba0;--teal-dim:rgba(78,203,160,0.12);--amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--lavender:#a89be8;--lavender-dim:rgba(168,155,232,0.1);--coral:#e87c5a;--coral-dim:rgba(232,124,90,0.1);--blue:#5a9ee8;--blue-dim:rgba(90,158,232,0.1);--r:14px;--r-lg:20px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
+    .logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);letter-spacing:-0.02em;text-decoration:none;cursor:pointer;}
+    .logo span{color:var(--teal);font-style:italic;}
+    .nav-links{display:flex;gap:1.75rem;}
+    .nav-links a{font-size:13px;color:var(--muted);text-decoration:none;cursor:pointer;transition:color 0.2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--teal);transition:width 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--cream);}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);}
+    .mobile-menu{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--border);overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
+    .mobile-menu.open{max-height:300px;}
+    .mobile-menu a{padding:1rem 2rem;font-size:15px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);cursor:pointer;transition:color 0.2s,background 0.2s;}
+    .mobile-menu a:hover,.mobile-menu a.active{color:var(--cream);background:var(--faint);}
+    .section{display:none;}.section.active{display:block;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .section.active>*{animation:fadeUp 0.35s ease both;}
+
+    /* HERO */
+    .hero{padding:5rem 2rem 4rem;max-width:900px;margin:0 auto;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
+    .hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--teal);}
+    .hero h1{font-family:'Fraunces',serif;font-size:clamp(36px,7vw,70px);font-weight:600;line-height:1.05;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
+    .hero h1 em{font-style:italic;color:var(--teal);}
+    .hero-sub{font-size:clamp(15px,2vw,17px);color:var(--muted);line-height:1.7;max-width:500px;margin-bottom:2.5rem;}
+    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:4rem;}
+    .btn-fill{padding:13px 28px;background:var(--teal);color:#0a1f17;border-radius:100px;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:transform 0.15s,background 0.15s;font-family:'DM Sans',sans-serif;}
+    .btn-fill:hover{background:#6dd8b0;transform:translateY(-1px);}
+    .btn-outline{padding:13px 28px;background:transparent;color:var(--cream);border:1px solid var(--border);border-radius:100px;font-size:14px;cursor:pointer;transition:border-color 0.15s,transform 0.15s;font-family:'DM Sans',sans-serif;}
+    .btn-outline:hover{border-color:rgba(255,255,255,0.3);transform:translateY(-1px);}
+    .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+    .stat-cell{background:var(--surface);padding:1.25rem 1.5rem;transition:background 0.2s;}
+    .stat-cell:hover{background:var(--surface2);}
+    .stat-num{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--cream);letter-spacing:-0.02em;line-height:1;margin-bottom:4px;}
+    .stat-num .accent{color:var(--teal);}
+    .stat-lbl{font-size:12px;color:var(--muted);}
+
+    /* WORK */
+    .work-wrap{max-width:960px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+    .page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+    .page-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--teal);}
+    .page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,38px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;}
+    .page-sub{font-size:15px;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:3rem;}
+    .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:4rem;}
+    .case-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color 0.2s,transform 0.2s;text-decoration:none;display:block;}
+    .case-card:hover{border-color:rgba(255,255,255,0.2);transform:translateY(-3px);}
+    .case-thumb{height:160px;display:flex;align-items:center;justify-content:center;}
+    .case-body{padding:1.4rem;}
+    .case-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+    .tag{font-size:10px;padding:3px 9px;border-radius:100px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;}
+    .tag-teal{background:var(--teal-dim);color:var(--teal);}
+    .tag-amber{background:var(--amber-dim);color:var(--amber);}
+    .tag-lavender{background:var(--lavender-dim);color:var(--lavender);}
+    .tag-coral{background:var(--coral-dim);color:var(--coral);}
+    .tag-blue{background:var(--blue-dim);color:var(--blue);}
+    .case-title{font-family:'Fraunces',serif;font-size:17px;font-weight:600;letter-spacing:-0.02em;color:var(--cream);line-height:1.3;margin-bottom:8px;}
+    .case-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
+    .case-cta{font-size:13px;color:var(--teal);display:flex;align-items:center;gap:6px;}
+
+    /* W2M */
+    .w2m-section{border-top:1px solid var(--border);padding-top:3.5rem;}
+    .w2m-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
+    .w2m-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;transition:transform 0.2s,border-color 0.2s;}
+    .w2m-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.16);}
+    .w2m-icon{margin-bottom:0.75rem;}
+    .w2m-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:4px;}
+    .w2m-body{font-size:12px;color:var(--muted);line-height:1.6;}
+
+    /* ABOUT */
+    .about-wrap{max-width:900px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+    .about-hero{display:flex;align-items:flex-start;gap:2rem;margin-bottom:3rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;}
+    .about-photo{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--border);flex-shrink:0;}
+    .about-name{font-family:'Fraunces',serif;font-size:clamp(22px,3.5vw,30px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:4px;}
+    .about-role{font-size:14px;color:var(--muted);margin-bottom:1rem;}
+    .avail-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--teal);border:1px solid rgba(78,203,160,0.25);border-radius:100px;padding:4px 12px;background:var(--teal-dim);}
+    .avail-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2s infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;}
+    .about-bio{font-size:15px;color:#a8a49e;line-height:1.8;}
+    .about-bio p{margin-bottom:1.25rem;}
+    .about-bio strong{color:var(--cream);font-weight:500;}
+    .skill-grp{margin-bottom:1.75rem;}
+    .skill-grp-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
+    .skill-chips{display:flex;flex-wrap:wrap;gap:8px;}
+    .chip{font-size:12px;padding:5px 13px;border:1px solid var(--border);border-radius:100px;color:#c4bfb7;transition:border-color 0.2s,color 0.2s;}
+    .chip:hover{border-color:rgba(255,255,255,0.25);color:var(--cream);}
+
+    /* MENTORING */
+    .mentoring-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;margin-bottom:3rem;display:flex;align-items:flex-start;gap:1.5rem;}
+    .mentoring-icon{width:48px;height:48px;border-radius:12px;background:var(--teal-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .mentoring-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:6px;letter-spacing:-0.01em;}
+    .mentoring-body{font-size:14px;color:var(--muted);line-height:1.7;}
+    .mentoring-body strong{color:#c4bfb7;font-weight:500;}
+
+    /* CERTS */
+    .certs-section{margin-bottom:2rem;}
+    .certs-eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
+    .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+    .cert-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;display:flex;gap:10px;align-items:flex-start;}
+    .cert-img{width:44px;height:32px;border-radius:4px;object-fit:cover;flex-shrink:0;opacity:0.8;}
+    .cert-name{font-size:12px;color:var(--cream);font-weight:500;line-height:1.4;margin-bottom:3px;}
+    .cert-meta{font-size:11px;color:var(--muted);}
+    .cert-badge{display:inline-block;font-size:9px;padding:2px 7px;border-radius:100px;margin-top:4px;font-weight:500;}
+    .cert-best{background:rgba(78,203,160,0.12);color:var(--teal);}
+    .cert-top{background:rgba(245,166,35,0.1);color:var(--amber);}
+
+    /* CONTACT */
+    .contact-wrap{max-width:600px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+    .contact-cards{display:flex;flex-direction:column;gap:12px;margin-top:2rem;}
+    .contact-card{display:flex;align-items:center;gap:14px;padding:1.1rem 1.4rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);text-decoration:none;transition:border-color 0.2s,transform 0.15s;}
+    .contact-card:hover{border-color:rgba(255,255,255,0.2);transform:translateX(4px);}
+    .c-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .c-label{font-size:12px;color:var(--muted);}
+    .c-val{font-size:14px;font-weight:500;color:var(--cream);margin-top:1px;}
+
+    footer{padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+    .footer-name{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);}
+    .footer-copy{font-size:12px;color:#443e38;}
+
+    @media(max-width:768px){
+      nav{padding:1rem 1.25rem;}.nav-links{display:none;}.hamburger{display:flex;}.mobile-menu{display:flex;}
+      .hero{padding:3rem 1.25rem 3rem;}.stat-row{grid-template-columns:repeat(2,1fr);}
+      .work-wrap,.about-wrap,.contact-wrap{padding:2.5rem 1.25rem 4rem;}
+      .about-grid{grid-template-columns:1fr;}.about-hero{flex-direction:column;gap:1.25rem;}
+      .case-grid{grid-template-columns:1fr;}.w2m-cards{grid-template-columns:1fr 1fr;}
+      .cert-grid{grid-template-columns:1fr 1fr;}.mentoring-block{flex-direction:column;gap:1rem;}
+      footer{padding:1.5rem 1.25rem;}
     }
+    @media(max-width:480px){.stat-row{grid-template-columns:repeat(2,1fr);}.w2m-cards{grid-template-columns:1fr;}.hero-ctas{flex-direction:column;}.cert-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
-
   <nav>
-    <div class="logo">Sahil Tamboli</div>
+    <a class="logo" onclick="show('home',document.querySelectorAll('.nav-links a')[0])">Sahil <span>Tamboli</span></a>
     <div class="nav-links">
       <a class="active" onclick="show('home',this)">Home</a>
       <a onclick="show('work',this)">Work</a>
       <a onclick="show('about',this)">About</a>
       <a onclick="show('contact',this)">Contact</a>
     </div>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="active" onclick="show('home',this);toggleMenu()">Home</a>
+    <a onclick="show('work',this);toggleMenu()">Work</a>
+    <a onclick="show('about',this);toggleMenu()">About</a>
+    <a onclick="show('contact',this);toggleMenu()">Contact</a>
+  </div>
 
   <!-- HOME -->
-  <div id="home" class="section active" style="padding:0;">
+  <div id="home" class="section active">
     <div class="hero">
-      <div class="hero-tag">Senior UX Designer — Bengaluru</div>
-      <h1>Designing experiences that <span>make sense</span> at scale</h1>
-      <p class="hero-sub">8+ years crafting product experiences across HRMS, workforce management, and enterprise tools — on web and mobile. Systems thinking, close collaboration with engineering, and a bias for clarity.</p>
-      <button class="btn-primary" onclick="show('work', document.querySelectorAll('.nav-links a')[1])">View my work</button>
-      <button class="btn-ghost" onclick="show('contact', document.querySelectorAll('.nav-links a')[3])">Get in touch</button>
+      <div class="hero-eyebrow">Senior UX Designer · Bengaluru</div>
+      <h1>Making <em>complex</em> things feel effortless</h1>
+      <p class="hero-sub">8+ years designing HRMS and workforce tools at scale — web and mobile. I live where systems thinking meets human empathy.</p>
+      <div class="hero-ctas">
+        <button class="btn-fill" onclick="show('work',document.querySelectorAll('.nav-links a')[1])">See my work</button>
+        <button class="btn-outline" onclick="show('contact',document.querySelectorAll('.nav-links a')[3])">Say hello</button>
+      </div>
       <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#5DCAA5" stroke-width="1.2"/><path d="M9 5v4l2.5 2.5" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div><div class="stat-num">8+</div><div class="stat-label">Years experience</div></div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#5DCAA5" stroke-width="1.2"/><path d="M6 7h6M6 10h4" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div><div class="stat-num">15+</div><div class="stat-label">Modules shipped</div></div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="3" stroke="#5DCAA5" stroke-width="1.2"/><path d="M3 15c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div><div class="stat-num">500k+</div><div class="stat-label">End users reached</div></div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="8" height="14" rx="1.5" stroke="#5DCAA5" stroke-width="1.2"/><rect x="12" y="5" width="4" height="9" rx="1" stroke="#5DCAA5" stroke-width="1.2"/><circle cx="6" cy="13" r="1" fill="#5DCAA5"/></svg></div>
-          <div><div class="stat-num">Web + App</div><div class="stat-label">Platforms covered</div></div>
-        </div>
+        <div class="stat-cell"><div class="stat-num">8<span class="accent">+</span></div><div class="stat-lbl">Years experience</div></div>
+        <div class="stat-cell"><div class="stat-num">15<span class="accent">+</span></div><div class="stat-lbl">Modules shipped</div></div>
+        <div class="stat-cell"><div class="stat-num">500<span class="accent">k</span></div><div class="stat-lbl">End users</div></div>
+        <div class="stat-cell"><div class="stat-num">70<span class="accent">+</span></div><div class="stat-lbl">Mentees guided</div></div>
       </div>
     </div>
   </div>
 
   <!-- WORK -->
   <div id="work" class="section">
-    <div class="section-eyebrow">Selected work</div>
-    <h2 class="section-title">Case studies</h2>
-    <p class="section-sub">Four projects from Mewurk — an all-in-one HRMS platform for Indian SMEs used by 500k+ employees. Each tackles a distinct design challenge at the intersection of complexity, trust, and scale.</p>
+    <div class="work-wrap">
+      <div class="page-eyebrow">Selected work</div>
+      <h2 class="page-title">Case studies</h2>
+      <p class="page-sub">Five projects from Mewurk — an all-in-one HRMS for Indian SMEs. Each follows a structured UX process from discovery to shipped product.</p>
 
-    <div class="case-grid">
-
-      <!-- Case 1: Attendance & Kiosk -->
-      <div class="case-card">
-        <div class="case-icon" style="background:rgba(93,202,165,0.1);">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#5DCAA5" stroke-width="1.3"/><path d="M10 6v4.5l3 2" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </div>
-        <div class="case-num">Case study 01</div>
-        <div class="case-title">Attendance & face scan kiosk</div>
-        <div class="case-desc">Redesigning how 500k+ employees across 1000+ SMEs clock in daily — and building a face-recognition hardware kiosk where zero training was non-negotiable.</div>
-        <div class="case-meta">
-          <span class="pill">Lead designer</span><span class="pill">Web + Mobile</span><span class="pill">Hardware kiosk</span>
-        </div>
-        <hr class="case-divider">
-        <div class="case-section-label">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M6 4v2.5l1.5 1" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-          The problem
-        </div>
-        <div class="case-body">HR managers spent hours reconciling attendance records across 15+ status types (present, absent, half-day, error, missed punch, overtime, and more). Employees gamed location-based check-ins. Factory floors needed a touchless solution for workers with low digital literacy — and it had to work without any onboarding or training.</div>
-        <button class="case-expand" onclick="toggle(this)">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Read more
-        </button>
-        <div class="case-detail">
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            My role
+      <div class="case-grid">
+        <a class="case-card" href="case-attendance.html">
+          <div class="case-thumb" style="background:linear-gradient(135deg,#0d2b21,#1a1917);">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><circle cx="28" cy="28" r="22" stroke="#4ecba0" stroke-width="1.5"/><path d="M28 16v14l9 6" stroke="#4ecba0" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
-          <div class="case-body">Led UX end-to-end — discovery with HR managers and field employees, shipped mobile flows, the admin web dashboard, and the kiosk interface. Worked closely with PM and hardware engineering throughout.</div>
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            Key decisions
+          <div class="case-body">
+            <div class="case-tags"><span class="tag tag-teal">Attendance</span><span class="tag tag-teal">Kiosk</span><span class="tag tag-teal">Mobile</span></div>
+            <div class="case-title">Attendance & face scan kiosk</div>
+            <div class="case-desc">Zero-training kiosk + mobile redesign for 500k+ daily users across 1000+ SMEs.</div>
+            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/></svg></div>
           </div>
-          <div class="case-body">The kiosk UI was stripped to a single action per screen — large green/red face-frame feedback, iconography and audio cues replacing all text instructions. No onboarding required. Geo-fencing (min 50m radius) was introduced for mobile clock-in, with selfie-based face recognition to prevent proxy attendance. On the admin side, I redesigned the dashboard to surface exceptions first — missed punches, errors, overtime anomalies — rather than raw log tables. For the mobile reminder system, employees set preferred clock-in/out times using a rolling time picker with snooze (10 or 20 min) and dismiss, with edge cases like timezone changes and already-clocked-in states handled gracefully.</div>
-          <div class="insight-block"><strong>Product detail:</strong> The attendance system handled 15+ status types — P, A, E, L, WO, P(H), P(W), A½, P½ and more. The admin correction flow let HR update any status with shift-aware time insertion, so "Mark as Present" automatically populated the correct shift in/out times rather than leaving blanks.</div>
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#5F5E5A" stroke-width="1.2" stroke-linecap="round"/></svg>
-            What shipped
+        </a>
+        <a class="case-card" href="case-leave.html">
+          <div class="case-thumb" style="background:linear-gradient(135deg,#1a1530,#1a1917);">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="8" y="12" width="40" height="36" rx="5" stroke="#a89be8" stroke-width="1.5"/><path d="M18 6v14M38 6v14M8 24h40" stroke="#a89be8" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="36" r="2.5" fill="#a89be8"/><circle cx="28" cy="36" r="2.5" fill="#a89be8"/><circle cx="36" cy="36" r="2.5" fill="#a89be8"/></svg>
           </div>
-          <div class="case-body">A face-scan kiosk requiring zero training, deployed across 1000+ SME customers. Mobile attendance with geo-fencing, selfie verification, personalised reminders, and bulk kiosk photo import. A bulk manual correction flow for HR to fix attendance errors at month-end without one-by-one editing.</div>
-        </div>
+          <div class="case-body">
+            <div class="case-tags"><span class="tag tag-lavender">Leave</span><span class="tag tag-lavender">Holidays</span><span class="tag tag-lavender">Policy UX</span></div>
+            <div class="case-title">Leave & holidays management</div>
+            <div class="case-desc">Flexible policy builder for HR + transparent, trust-building experience for employees.</div>
+            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#a89be8" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          </div>
+        </a>
+        <a class="case-card" href="case-design-system.html">
+          <div class="case-thumb" style="background:linear-gradient(135deg,#2b1f0a,#1a1917);">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="6" y="6" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="32" y="6" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="6" y="32" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="32" y="32" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/></svg>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span class="tag tag-amber">Design System</span><span class="tag tag-amber">Atomic Design</span></div>
+            <div class="case-title">Design system & pattern library</div>
+            <div class="case-desc">Mewurk's first design system — from inconsistency audit to a shared Figma library.</div>
+            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          </div>
+        </a>
+        <a class="case-card" href="case-payroll.html">
+          <div class="case-thumb" style="background:linear-gradient(135deg,#2b1108,#1a1917);">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="8" y="14" width="40" height="30" rx="5" stroke="#e87c5a" stroke-width="1.5"/><path d="M18 24h20M18 32h12" stroke="#e87c5a" stroke-width="1.5" stroke-linecap="round"/><path d="M28 6v10" stroke="#e87c5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span class="tag tag-coral">Payroll</span><span class="tag tag-coral">Trust UX</span></div>
+            <div class="case-title">Payroll — powerful but not scary</div>
+            <div class="case-desc">Pre-run validation + plain-language payslips for HR managers navigating PF, TDS, ESI.</div>
+            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#e87c5a" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          </div>
+        </a>
+        <a class="case-card" href="case-field.html">
+          <div class="case-thumb" style="background:linear-gradient(135deg,#0a1f2b,#1a1917);">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><path d="M28 8C20.3 8 14 14.3 14 22c0 12 14 26 14 26s14-14 14-26c0-7.7-6.3-14-14-14z" stroke="#5a9ee8" stroke-width="1.5"/><circle cx="28" cy="22" r="5" stroke="#5a9ee8" stroke-width="1.5"/></svg>
+          </div>
+          <div class="case-body">
+            <div class="case-tags"><span class="tag tag-blue">Field Visits</span><span class="tag tag-blue">Location UX</span><span class="tag tag-blue">Mobile</span></div>
+            <div class="case-title">Field visit tracking</div>
+            <div class="case-desc">Employee-visible location tracking — turning surveillance anxiety into trust through transparency.</div>
+            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#5a9ee8" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          </div>
+        </a>
       </div>
 
-      <!-- Case 2: Leave & Holidays -->
-      <div class="case-card">
-        <div class="case-icon" style="background:rgba(127,119,221,0.1);">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2" stroke="#7F77DD" stroke-width="1.3"/><path d="M7 2v4M13 2v4M3 9h14" stroke="#7F77DD" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="13" r="1" fill="#7F77DD"/><circle cx="10" cy="13" r="1" fill="#7F77DD"/><circle cx="13" cy="13" r="1" fill="#7F77DD"/></svg>
-        </div>
-        <div class="case-num">Case study 02</div>
-        <div class="case-title">Leave & holidays management</div>
-        <div class="case-desc">Leave is one of the most emotionally loaded features in any HRMS. I designed a flexible, configurable system for HR admins and a transparent, trust-building experience for employees.</div>
-        <div class="case-meta">
-          <span class="pill">Lead designer</span><span class="pill">Web + Mobile</span><span class="pill">Policy-driven UX</span>
-        </div>
-        <hr class="case-divider">
-        <div class="case-section-label">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M6 4v2.5l1.5 1" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-          The problem
-        </div>
-        <div class="case-body">Indian SMEs have highly varied leave policies — different accrual rules per leave type, carry-forward and encashment limits, state-specific holiday calendars, comp-off, short leave, optional holidays, and multi-level approval chains. The existing system was too rigid for admins to configure and too opaque for employees, who often didn't know their balance or why a request was rejected.</div>
-        <button class="case-expand" onclick="toggle(this)">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Read more
-        </button>
-        <div class="case-detail">
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            My role
-          </div>
-          <div class="case-body">Led design for both the admin configuration side and the employee experience. Ran separate research sessions with HR managers and employees to understand the gap between how policies were set and how they were experienced.</div>
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            Key decisions
-          </div>
-          <div class="case-body">The policy builder used progressive disclosure — sensible defaults upfront (annual leave, sick leave, casual leave), with accrual rules, carry-forward limits, and encashment settings behind an "advanced" toggle. I introduced the leave accrual summary view so employees could see every grant and deduction and understand exactly why their balance changed. The team leave calendar showed colleague availability alongside personal balance, reducing back-and-forth with managers. On mobile, the apply flow was redesigned to under 3 taps with inline policy constraints shown in real time — past-date limits, notice period restrictions, and documentation requirements visible before submit, not as errors after.</div>
-          <div class="insight-block"><strong>Product complexity handled:</strong> Short leave (a few hours, at start/end/break of day), comp-off with expiry rules, optional holidays requiring manager approval, leave types credited in hours or days, and state-specific regional holidays based on office location — all in a single, coherent leave system.</div>
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#5F5E5A" stroke-width="1.2" stroke-linecap="round"/></svg>
-            What shipped
-          </div>
-          <div class="case-body">A flexible leave policy builder supporting multiple leave types, accrual rules, carry-forward/encashment, and location-specific holiday calendars. An employee experience with leave accrual summary, team availability calendar, 3-tap apply flow, and real-time policy constraints inline.</div>
-        </div>
-      </div>
-
-      <!-- Case 3: Design System -->
-      <div class="case-card">
-        <div class="case-icon" style="background:rgba(239,159,39,0.1);">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="6" height="6" rx="1.5" stroke="#EF9F27" stroke-width="1.3"/><rect x="11" y="3" width="6" height="6" rx="1.5" stroke="#EF9F27" stroke-width="1.3"/><rect x="3" y="11" width="6" height="6" rx="1.5" stroke="#EF9F27" stroke-width="1.3"/><rect x="11" y="11" width="6" height="6" rx="1.5" stroke="#EF9F27" stroke-width="1.3"/></svg>
-        </div>
-        <div class="case-num">Case study 03</div>
-        <div class="case-title">Design system & pattern library</div>
-        <div class="case-desc">As Mewurk scaled to 15+ modules across web and mobile, UI debt was slowing design and engineering. I led the effort to identify, document, and systematise — using Atomic Design principles and Figma's component architecture.</div>
-        <div class="case-meta">
-          <span class="pill">Lead designer</span><span class="pill">Web + Mobile</span><span class="pill">Figma library</span>
-        </div>
-        <hr class="case-divider">
-        <div class="case-section-label">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M6 4v2.5l1.5 1" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-          The problem
-        </div>
-        <div class="case-body">A design team of 4, each working on different modules simultaneously, no shared library, no naming conventions, no documented patterns. Stakeholders kept flagging inconsistencies in demos. The root cause: lack of communication across module teams, each designer using their own components, and no defined design process to follow.</div>
-        <button class="case-expand" onclick="toggle(this)">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Read more
-        </button>
-        <div class="case-detail">
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            My role
-          </div>
-          <div class="case-body">Owned the initiative — ran a team workshop to identify inconsistencies, audited all existing screens by dumping them into one Figma canvas to spot patterns, defined the component architecture, and aligned with engineering on implementation. This ran alongside active product work, not as a separate project.</div>
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            Key decisions
-          </div>
-          <div class="case-body">We adopted Atomic Design (atoms → molecules → organisms → templates → pages), starting by listing all components — input controls, navigation, informational elements — then categorising them correctly. An early mistake was mapping components to the wrong atomic level; after debugging with the team and research, we corrected the categorisation and documented the rules in a wiki. I used Figma's variant feature for component states (default, hover, disabled, error) and nested components for modularity, with version control to track changes. CSS/XML code snippets were generated per component to reduce handoff ambiguity. I also discovered a reusable "Policy Creation" pattern across attendance, leave, holidays, shifts, and WFH — all sharing the same 3-part structure: header → parameters → applicable employees.</div>
-          <div class="insight-block"><strong>Key pattern identified:</strong> Policy creation across all 6+ modules followed the same structure — policy header (name + description), policy parameters (module-specific rules), and policy applicable to (employee assignment). Standardising this single pattern eliminated a huge class of inconsistency across the product.</div>
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#5F5E5A" stroke-width="1.2" stroke-linecap="round"/></svg>
-            What shipped
-          </div>
-          <div class="case-body">A Figma component library with atomic structure, variants, and nested components. A pattern documentation wiki covering interaction patterns, language standards, visual consistency, and IA. 5 consistency pillars defined and acted on. Naming conventions adopted across all new modules. Reduced design-to-handoff time noticeably for new features.</div>
-        </div>
-      </div>
-
-      <!-- Case 4: Payroll & Field -->
-      <div class="case-card">
-        <div class="case-icon" style="background:rgba(216,90,48,0.1);">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="11" rx="2" stroke="#D85A30" stroke-width="1.3"/><path d="M7 9h6M7 12h4" stroke="#D85A30" stroke-width="1.3" stroke-linecap="round"/><path d="M10 2v4" stroke="#D85A30" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </div>
-        <div class="case-num">Case study 04</div>
-        <div class="case-title">Payroll & field visit tracking</div>
-        <div class="case-desc">Two modules with the same tension — powerful for admins, anxiety-inducing for employees. The challenge was building trust on both sides while handling real Indian statutory complexity.</div>
-        <div class="case-meta">
-          <span class="pill">Lead designer</span><span class="pill">Web + Mobile</span><span class="pill">Trust-driven design</span>
-        </div>
-        <hr class="case-divider">
-        <div class="case-section-label">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M6 4v2.5l1.5 1" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-          The problem
-        </div>
-        <div class="case-body">Indian payroll involves PF, ESI, TDS, PT, LWF, Form 16, and state-specific statutory rules — all behind an interface used by SME HR managers with no accounting background. One wrong cycle destroys trust. Field tracking, meanwhile, felt like surveillance to employees. Both modules needed to serve admin efficiency without alienating the people they affected most.</div>
-        <button class="case-expand" onclick="toggle(this)">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Read more
-        </button>
-        <div class="case-detail">
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            My role
-          </div>
-          <div class="case-body">Led design for both modules. Ran separate research sessions with HR managers and field employees to understand the trust gap. Worked with PM and engineering to define the right data visibility boundaries for location tracking.</div>
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            Key decisions
-          </div>
-          <div class="case-body">For payroll, I designed a pre-run finalization flow — before exporting, HR sees each employee's pending leave requests, attendance errors, and approved overtime, and can take action to resolve them before the cycle is locked. This reduced errors at source rather than correcting after payout. The employee payslip broke down every deduction in plain language, not accounting shorthand. Role-based access (Admin, HR, Manager, Employee) was mapped to distinct UI states. The payroll export was designed to be compatible with Tally, Zoho, and Saral Pay — requiring careful field mapping UX. For field visits, I advocated for employee-visible tracking — employees could see exactly what location data was shared and when — significantly reducing resistance to adoption.</div>
-          <div class="insight-block"><strong>Payroll finalization flow:</strong> Before export, HR reviews pending requests for everyone in the payroll group, views attendance error counts per employee, and can approve/reject requests inline — all before the data is locked. Once exported, the file cannot be modified. This single pre-run step prevented a whole class of after-the-fact payroll corrections.</div>
-          <div class="case-section-label">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#5F5E5A" stroke-width="1.2" stroke-linecap="round"/></svg>
-            What shipped
-          </div>
-          <div class="case-body">A payroll export module with pre-run validation, role-specific views, plain-language payslip breakdowns, and compatibility with major Indian payroll tools. A field visit module with transparent location sharing, visit history, and expense linking — used across 10+ industries.</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Web to Mobile -->
-    <div class="w2m-section">
-      <div class="w2m-title">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="8" height="16" rx="1.5" stroke="#5DCAA5" stroke-width="1.3"/><circle cx="6" cy="15" r="0.8" fill="#5DCAA5"/><rect x="13" y="5" width="5" height="11" rx="1" stroke="#5DCAA5" stroke-width="1.3"/><path d="M10 8l3-2" stroke="#5DCAA5" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="1.5 1.5"/></svg>
-        Web to mobile — a thread across all projects
-      </div>
-      <p class="w2m-sub">Across all modules, I was responsible for translating web designs into the Mewurk mobile app — available on Android 9+ and iOS 12+. Not just resizing: rethinking flows for context, touch, and field conditions.</p>
-      <div class="w2m-grid">
-        <div class="w2m-card">
-          <div class="w2m-card-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11h14M11 4l7 7-7 7" stroke="#5DCAA5" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          <div class="w2m-card-title">Rethinking information hierarchy</div>
-          <div class="w2m-card-body">The web admin dashboard showed dense tables with 40+ fields. On mobile, I distilled it to today's summary, flagged exceptions, and one-tap approvals — what managers need on the go.</div>
-        </div>
-        <div class="w2m-card">
-          <div class="w2m-card-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="7" y="3" width="8" height="16" rx="1.5" stroke="#7F77DD" stroke-width="1.3"/><circle cx="11" cy="16" r="0.8" fill="#7F77DD"/></svg></div>
-          <div class="w2m-card-title">Touch-first interactions</div>
-          <div class="w2m-card-body">Multi-step web flows redesigned for one-handed use — rolling time pickers, bottom sheets, swipe actions, and thumb-reachable primary actions throughout all modules.</div>
-        </div>
-        <div class="w2m-card">
-          <div class="w2m-card-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="9" r="4" stroke="#EF9F27" stroke-width="1.3"/><path d="M5 18c0-3 2.7-5 6-5s6 2 6 5" stroke="#EF9F27" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          <div class="w2m-card-title">Designing for field users</div>
-          <div class="w2m-card-body">Factory workers and field staff with low digital literacy — every mobile screen had to be self-evident. The kiosk UI took this furthest: no text, no training, just a face in a frame.</div>
-        </div>
-        <div class="w2m-card">
-          <div class="w2m-card-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="5" width="16" height="12" rx="2" stroke="#D85A30" stroke-width="1.3"/><path d="M7 9h8M7 12h5" stroke="#D85A30" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          <div class="w2m-card-title">Shared token layer</div>
-          <div class="w2m-card-body">Built a shared token system in Figma so web and mobile referenced the same values — consistent meaning, different rendering. A "primary action" looked right on both platforms.</div>
+      <!-- Web to Mobile -->
+      <div class="w2m-section">
+        <div class="page-eyebrow">Cross-platform</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.5rem;">Web to mobile — a thread across everything</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:480px;">Not just resizing. Rethinking what matters when someone is on a factory floor or between meetings.</p>
+        <div class="w2m-cards">
+          <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M10 4l6 6-6 6" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Rethinking hierarchy</div><div class="w2m-body">Dense admin dashboards → focused summaries with flagged exceptions.</div></div>
+          <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="6" y="2" width="8" height="16" rx="1.5" stroke="#a89be8" stroke-width="1.3"/><circle cx="10" cy="15" r="0.8" fill="#a89be8"/></svg></div><div class="w2m-title">Touch-first patterns</div><div class="w2m-body">Rolling pickers, bottom sheets, swipe actions — thumb-reachable throughout.</div></div>
+          <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#f5a623" stroke-width="1.3"/><path d="M4 17c0-3 2.7-5 6-5s6 2 6 5" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Field user design</div><div class="w2m-body">Every screen self-evident. The kiosk: no text, no training, just a face in a frame.</div></div>
+          <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="10" rx="2" stroke="#e87c5a" stroke-width="1.3"/><path d="M6 9h8M6 12h5" stroke="#e87c5a" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Shared tokens</div><div class="w2m-body">One Figma token system — consistent meaning, platform-appropriate rendering.</div></div>
         </div>
       </div>
     </div>
@@ -341,57 +260,91 @@
 
   <!-- ABOUT -->
   <div id="about" class="section">
-    <div class="section-eyebrow">About</div>
-    <div class="about-header">
-      <img src="sahil.jpg" alt="Sahil Tamboli" class="about-photo" />
-      <div class="about-header-text">
-        <h2>Sahil Tamboli</h2>
-        <p>Senior UX Designer · Bengaluru, India</p>
+    <div class="about-wrap">
+      <div class="about-hero">
+        <img src="sahil.jpg" alt="Sahil Tamboli" class="about-photo"/>
+        <div>
+          <div class="about-name">Sahil Tamboli</div>
+          <div class="about-role">Senior UX Designer · Bengaluru, India</div>
+          <div class="avail-pill"><span class="avail-dot"></span>Open to new opportunities</div>
+        </div>
       </div>
-    </div>
-    <div class="about-grid">
-      <div class="about-bio">
-        <p>I'm a Senior UX Designer with 8+ years of experience building digital products — most recently at <strong>Mewurk</strong>, an all-in-one HRMS platform for Indian SMEs used by 500k+ employees across 1000+ companies.</p>
-        <p>I've led design across 15+ product modules on both web and mobile — working with HR managers and business owners on the admin side, and field workers, factory staff, and blue-collar employees on the employee side. I care about making complex systems feel simple, especially for users who don't have the luxury of a learning curve.</p>
-        <p>A consistent thread in my work has been <strong>translating web products to mobile</strong> — rethinking what matters most when someone is on a factory floor, checking in from a field visit, or approving a request between meetings.</p>
-        <p>I work closely with <strong>product and engineering</strong> — comfortable in sprint planning, comfortable in a research session, and comfortable pushing back when a design decision doesn't serve the user.</p>
-        <p>Currently exploring <strong>UX Lead and Manager roles</strong> where I can shape design strategy, build systems, and grow a team.</p>
+
+      <div class="about-grid">
+        <div class="about-bio">
+          <p>I'm a Senior UX Designer with 8+ years of experience — most recently at <strong>Mewurk</strong>, an all-in-one HRMS for Indian SMEs used by 500k+ employees across 1000+ companies.</p>
+          <p>I've designed 15+ modules on web and mobile — HR managers on the admin side, factory workers and field staff on the employee side. I care about making <strong>complex systems feel simple</strong> for users with no margin for confusion.</p>
+          <p>A constant thread in my work: <strong>translating web to mobile</strong> — rethinking what matters most when someone is on a factory floor, clocking in with one hand, or approving a request between meetings.</p>
+          <p>Currently exploring <strong>UX Lead and Manager roles</strong> where I can shape design strategy, build systems, and grow a team.</p>
+        </div>
+        <div>
+          <div class="skill-grp"><div class="skill-grp-title">Design</div><div class="skill-chips"><span class="chip">UX Research</span><span class="chip">Interaction design</span><span class="chip">Design systems</span><span class="chip">Prototyping</span><span class="chip">Information architecture</span><span class="chip">Web to mobile</span></div></div>
+          <div class="skill-grp"><div class="skill-grp-title">Tools</div><div class="skill-chips"><span class="chip">Figma</span><span class="chip">Protopie</span><span class="chip">Maze</span><span class="chip">Miro</span></div></div>
+          <div class="skill-grp"><div class="skill-grp-title">Domain</div><div class="skill-chips"><span class="chip">HRMS</span><span class="chip">Enterprise SaaS</span><span class="chip">Mobile apps</span><span class="chip">Hardware UX</span></div></div>
+          <div class="skill-grp"><div class="skill-grp-title">Leadership</div><div class="skill-chips"><span class="chip">Stakeholder alignment</span><span class="chip">Design critique</span><span class="chip">Pattern documentation</span><span class="chip">Mentoring</span></div></div>
+        </div>
       </div>
-      <div>
-        <div class="skill-group">
-          <div class="skill-group-title">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="4" height="4" rx="1" stroke="#5F5E5A" stroke-width="1"/><rect x="7" y="1" width="4" height="4" rx="1" stroke="#5F5E5A" stroke-width="1"/><rect x="1" y="7" width="4" height="4" rx="1" stroke="#5F5E5A" stroke-width="1"/><rect x="7" y="7" width="4" height="4" rx="1" stroke="#5F5E5A" stroke-width="1"/></svg>
-            Design
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">UX Research</span><span class="skill-tag">Interaction design</span><span class="skill-tag">Design systems</span><span class="skill-tag">Prototyping</span><span class="skill-tag">Information architecture</span><span class="skill-tag">Web to mobile</span>
-          </div>
+
+      <!-- Mentoring -->
+      <div class="mentoring-block">
+        <div class="mentoring-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="#4ecba0" stroke-width="1.3"/><path d="M3 18c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/><circle cx="18" cy="9" r="2" stroke="#4ecba0" stroke-width="1.2"/><path d="M18 14c1.5 0 3.5.8 3.5 3" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="2" width="8" height="8" rx="1" stroke="#5F5E5A" stroke-width="1"/><path d="M4 6h4M6 4v4" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            Tools
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Figma</span><span class="skill-tag">Protopie</span><span class="skill-tag">Maze</span><span class="skill-tag">Miro</span>
-          </div>
+        <div>
+          <div class="mentoring-title">Mentoring 70+ aspiring UX designers</div>
+          <div class="mentoring-body">Through <strong>Designerrs Academy's "UI UX Design from Scratch"</strong> course, I've mentored 70+ mentees — reviewing portfolios, giving design critique, sharing real-world product insights, and helping beginners break into the field.</div>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#5F5E5A" stroke-width="1"/><path d="M4 6c0-1.1.9-2 2-2s2 .9 2 2" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            Domain
+      </div>
+
+      <!-- Certifications -->
+      <div class="certs-section">
+        <div class="certs-eyebrow">Certifications — Interaction Design Foundation</div>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <img src="cert-physicality.jpg" alt="certificate" class="cert-img"/>
+            <div>
+              <div class="cert-name">How to Create Intuitive Products by Imitating Physicality</div>
+              <div class="cert-meta">IxDF · Jan 2025</div>
+              <span class="cert-badge cert-top">Top 10% in class</span>
+            </div>
           </div>
-          <div class="skill-tags">
-            <span class="skill-tag">HRMS / workforce tools</span><span class="skill-tag">Enterprise SaaS</span><span class="skill-tag">Mobile apps</span><span class="skill-tag">Hardware UX</span>
+          <div class="cert-card">
+            <img src="cert-ux-scratch.jpg" alt="certificate" class="cert-img"/>
+            <div>
+              <div class="cert-name">Become a UX Designer from Scratch</div>
+              <div class="cert-meta">IxDF · 2021–2024 · 19 hrs</div>
+              <span class="cert-badge cert-top">Top 10% in class</span>
+            </div>
           </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="4" r="2" stroke="#5F5E5A" stroke-width="1"/><path d="M2 10c0-2.2 1.8-3.5 4-3.5s4 1.3 4 3.5" stroke="#5F5E5A" stroke-width="1" stroke-linecap="round"/></svg>
-            Leadership
+          <div class="cert-card">
+            <img src="cert-usability-testing.jpg" alt="certificate" class="cert-img"/>
+            <div>
+              <div class="cert-name">Conducting Usability Testing</div>
+              <div class="cert-meta">IxDF · 2019–2020 · 10 hrs</div>
+              <span class="cert-badge cert-best">Best in class</span>
+            </div>
           </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Stakeholder alignment</span><span class="skill-tag">Design critique</span><span class="skill-tag">Pattern documentation</span><span class="skill-tag">Cross-functional collaboration</span>
+          <div class="cert-card">
+            <img src="cert-web-usability.jpg" alt="certificate" class="cert-img"/>
+            <div>
+              <div class="cert-name">Web Design for Usability</div>
+              <div class="cert-meta">IxDF · 2019–2021 · 17 hrs</div>
+              <span class="cert-badge cert-top">Top 10% in class</span>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img src="cert-hci.jpg" alt="certificate" class="cert-img"/>
+            <div>
+              <div class="cert-name">Human-Computer Interaction — HCI</div>
+              <div class="cert-meta">IxDF · 2019 · 36 hrs</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img src="cert-disruptive.jpg" alt="certificate" class="cert-img"/>
+            <div>
+              <div class="cert-name">Disruptive Design: Is your UX future-proof?</div>
+              <div class="cert-meta">IxDF Master Class</div>
+            </div>
           </div>
         </div>
       </div>
@@ -400,46 +353,39 @@
 
   <!-- CONTACT -->
   <div id="contact" class="section">
-    <div class="section-eyebrow">Contact</div>
-    <h2 class="section-title">Let's talk</h2>
     <div class="contact-wrap">
-      <div class="avail-badge"><span class="avail-dot"></span>Open to new opportunities</div>
-      <p class="contact-intro">I'm currently exploring Senior UX and Lead roles. If you're building something complex that needs a designer who can go deep — I'd love to hear about it.</p>
-      <a class="contact-link" href="mailto:sahilxt@gmail.com">
-        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#888780" stroke-width="1.2"/><path d="M2 6l7 5 7-5" stroke="#888780" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-        <div><div class="contact-link-label">Email</div><div class="contact-link-val">sahilxt@gmail.com</div></div>
-      </a>
-      <a class="contact-link" href="https://www.linkedin.com/in/sahilxt" target="_blank">
-        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="#888780" stroke-width="1.2"/><path d="M6 8v5M6 6v.5" stroke="#888780" stroke-width="1.3" stroke-linecap="round"/><path d="M9 13v-2.5c0-1 .6-1.5 1.5-1.5s1.5.5 1.5 1.5V13" stroke="#888780" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-        <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">linkedin.com/in/sahilxt</div></div>
-      </a>
-      <div class="contact-link">
-        <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.2 2 4 4.2 4 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" stroke="#888780" stroke-width="1.2"/><circle cx="9" cy="7" r="1.5" stroke="#888780" stroke-width="1.2"/></svg></div>
-        <div><div class="contact-link-label">Based in</div><div class="contact-link-val">Bengaluru, India — open to remote</div></div>
+      <div class="page-eyebrow">Get in touch</div>
+      <h2 class="page-title">Let's talk</h2>
+      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Exploring Senior UX and Lead roles. If you're building something complex that needs a designer who goes deep — I'd love to hear about it.</p>
+      <div class="avail-pill" style="margin-bottom:2rem;display:inline-flex;"><span class="avail-dot"></span>Open to new opportunities</div>
+      <div class="contact-cards">
+        <a class="contact-card" href="mailto:sahilxt@gmail.com">
+          <div class="c-icon" style="background:var(--teal-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#4ecba0" stroke-width="1.2"/><path d="M2 6l7 5 7-5" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div><div class="c-label">Email</div><div class="c-val">sahilxt@gmail.com</div></div>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/sahilxt" target="_blank">
+          <div class="c-icon" style="background:var(--lavender-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="#a89be8" stroke-width="1.2"/><path d="M6 8v5M6 6v.5" stroke="#a89be8" stroke-width="1.3" stroke-linecap="round"/><path d="M9 13v-2.5c0-1 .6-1.5 1.5-1.5s1.5.5 1.5 1.5V13" stroke="#a89be8" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div><div class="c-label">LinkedIn</div><div class="c-val">linkedin.com/in/sahilxt</div></div>
+        </a>
+        <div class="contact-card">
+          <div class="c-icon" style="background:var(--amber-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.2 2 4 4.2 4 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" stroke="#f5a623" stroke-width="1.2"/><circle cx="9" cy="7" r="1.5" stroke="#f5a623" stroke-width="1.2"/></svg></div>
+          <div><div class="c-label">Based in</div><div class="c-val">Bengaluru, India — open to remote</div></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <footer>
-    <span class="footer-text">Sahil Tamboli — Senior UX Designer</span>
-    <span class="footer-text">2026</span>
-  </footer>
+  <footer><span class="footer-name">Sahil Tamboli</span><span class="footer-copy">© 2026 · Built with care</span></footer>
 
   <script>
-    function show(id, el) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    function show(id,el){
+      document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+      document.querySelectorAll('.nav-links a,.mobile-menu a').forEach(a=>a.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-      if (el) el.classList.add('active');
-      window.scrollTo(0, 0);
+      if(el)el.classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
     }
-    function toggle(btn) {
-      const detail = btn.nextElementSibling;
-      const open = detail.classList.toggle('open');
-      const path = btn.querySelector('svg path');
-      if (path) path.setAttribute('d', open ? 'M2 8l4-4 4 4' : 'M2 4l4 4 4-4');
-      btn.lastChild.textContent = open ? ' Read less' : ' Read more';
-    }
+    function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
   </script>
 </body>
 </html>

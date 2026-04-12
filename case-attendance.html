@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance & Kiosk — Sahil Tamboli</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#0f0e0d;--surface:#1a1917;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#4ecba0;--accent-dim:rgba(78,203,160,0.1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
+    .logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}
+    .logo span{color:#4ecba0;font-style:italic;}
+    .back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+    .back:hover{color:var(--cream);}
+    .wrap{max-width:760px;margin:0 auto;padding:4rem 2rem 6rem;}
+    .eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
+    .eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
+    h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,48px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
+    h1 em{font-style:italic;color:var(--accent);}
+    .meta-row{display:flex;gap:2rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+    .meta-item{font-size:13px;color:var(--muted);}
+    .meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
+    .hero-thumb{width:100%;height:280px;background:linear-gradient(135deg,#0d2b21,#1a1917);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:3rem;border:1px solid rgba(78,203,160,0.12);}
+    .thumb-hint{font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.12);text-align:center;margin-top:10px;}
+    .step{margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
+    .step:last-child{border-bottom:none;}
+    .step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+    .step-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
+    h2{font-family:'Fraunces',serif;font-size:clamp(20px,3vw,26px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;line-height:1.2;}
+    p{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:1rem;}
+    p strong{color:#d4cfc7;font-weight:500;}
+    p:last-child{margin-bottom:0;}
+    ul{padding-left:1.2rem;margin-bottom:1rem;}
+    li{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:3px;}
+    li strong{color:#d4cfc7;font-weight:500;}
+    .insight{background:rgba(78,203,160,0.05);border-left:2px solid rgba(78,203,160,0.3);padding:10px 14px;margin:1.25rem 0;border-radius:0 6px 6px 0;font-size:13px;color:#8ab8a8;line-height:1.65;}
+    .insight strong{color:var(--accent);font-weight:500;}
+    .img-ph{width:100%;height:220px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;margin:1.25rem 0;}
+    .img-ph-sm{height:160px;}
+    .img-ph-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);}
+    .img-ph-hint{font-size:11px;color:#443e38;text-align:center;max-width:220px;line-height:1.5;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0;}
+    .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:1.25rem 0;}
+    .oc{background:var(--surface);padding:1rem;text-align:center;}
+    .oc-num{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--accent);margin-bottom:3px;}
+    .oc-lbl{font-size:11px;color:var(--muted);}
+    footer{padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+    .fn{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);}
+    .fc{font-size:12px;color:#443e38;}
+    @media(max-width:640px){nav{padding:1rem 1.25rem;}.wrap{padding:2.5rem 1.25rem 4rem;}.two-col{grid-template-columns:1fr;}.outcomes{grid-template-columns:1fr 1fr;}.meta-row{gap:1.25rem;}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">Sahil <span>Tamboli</span></a>
+    <a href="index.html" class="back"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 3L2 6.5 6 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> All work</a>
+  </nav>
+
+  <div class="wrap">
+    <div class="eyebrow">Case study 01 · Attendance & Kiosk</div>
+    <h1>Face scan attendance — <em>zero training</em> on the factory floor</h1>
+    <div class="meta-row">
+      <div class="meta-item"><strong>Role</strong>Lead UX Designer</div>
+      <div class="meta-item"><strong>Platform</strong>Web · Mobile · Hardware</div>
+      <div class="meta-item"><strong>Users</strong>500k+ employees, 1000+ SMEs</div>
+    </div>
+
+    <div class="hero-thumb">
+      <div style="text-align:center;">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.3"><circle cx="28" cy="28" r="22" stroke="#4ecba0" stroke-width="1.5"/><path d="M28 16v14l9 6" stroke="#4ecba0" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="thumb-hint">Add hero screenshot of attendance dashboard or kiosk UI here</div>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-label">Empathise</div>
+      <h2>Three users, three very different realities</h2>
+      <p>HR managers spent 2–3 hours every Monday fixing last week's attendance errors — wrong locations, missed punches, employees marking themselves present from outside the office. Factory workers had never used a smartphone app. Office staff found geo-fencing unreliable near building entrances.</p>
+      <p>I ran discovery sessions across three user contexts: HR managers at desks, office employees during commute, and factory floor supervisors. Each had a completely different relationship with attendance tracking.</p>
+      <div class="insight"><strong>Key insight:</strong> Three contexts, three interface layers needed — admin reconciliation dashboard, mobile employee flow, and a hardware kiosk that needed zero onboarding.</div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-label">Define</div>
+      <h2>15+ status types, one coherent system</h2>
+      <p>The attendance system handled 15+ status types — P, A, E, L, WO, P(H), A½ and more. Each had different correction rules and payroll implications. HR managers needed to surface anomalies fast; factory workers needed a sub-5-second clock-in with no decisions.</p>
+      <ul>
+        <li><strong>HR problem:</strong> Find and fix anomalies without wading through raw logs</li>
+        <li><strong>Employee problem:</strong> Reliable clock-in that works without workarounds</li>
+        <li><strong>Factory problem:</strong> Zero-training touchless attendance for low digital-literacy workers</li>
+      </ul>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-label">Ideate</div>
+      <h2>Single action per screen. Colour does the talking.</h2>
+      <p>For the kiosk: stripped to one action per screen, large green/red face-frame feedback, audio confirmation replacing all text. Geo-fence (50m minimum) + selfie face recognition for mobile. Admin dashboard redesigned exceptions-first — anomalies and missed punches surfaced at the top, not buried in log tables.</p>
+      <p>For mobile reminders: rolling time picker (consistent with other modules), 10/20 min snooze, platform-native dismiss interactions. Default times: 8:50 AM clock-in, 6:10 PM clock-out.</p>
+      <div class="two-col">
+        <div class="img-ph img-ph-sm"><div class="img-ph-label">Kiosk concept sketches</div><div class="img-ph-hint">[Add kiosk wireframe explorations]</div></div>
+        <div class="img-ph img-ph-sm"><div class="img-ph-label">Dashboard exceptions-first concept</div><div class="img-ph-hint">[Add admin dashboard wireframe]</div></div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step">
+      <div class="step-label">Prototype</div>
+      <h2>Tested on tablet, tested on real factory floors</h2>
+      <p>Kiosk prototyped first as a Figma file on a tablet to simulate the hardware form factor. The face frame size was set at 60% screen height — large enough to guide positioning without any text instruction. The correction flow for admins covered all 15+ status types with shift-aware auto-filled times.</p>
+      <div class="img-ph"><div class="img-ph-label">Kiosk prototype screens — idle, detecting, success, error</div><div class="img-ph-hint">[Add 4-state kiosk Figma screens]</div></div>
+      <div class="two-col">
+        <div class="img-ph img-ph-sm"><div class="img-ph-label">Mobile clock-in flow</div><div class="img-ph-hint">[Add mobile screens]</div></div>
+        <div class="img-ph img-ph-sm"><div class="img-ph-label">Admin correction flow</div><div class="img-ph-hint">[Add admin web screens]</div></div>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step">
+      <div class="step-label">Test & Ship</div>
+      <h2>Audio feedback was the unexpected hero</h2>
+      <p>Factory floor testing revealed: workers looked away before seeing the green success frame. Silent confirmation caused them to stand and wait. Adding an audio beep resolved this completely. Battery saver mode on Android silently blocked reminders — we added an in-app prompt to disable it.</p>
+      <div class="outcomes">
+        <div class="oc"><div class="oc-num">1000<span style="font-size:14px">+</span></div><div class="oc-lbl">SMEs deployed</div></div>
+        <div class="oc"><div class="oc-num">0</div><div class="oc-lbl">Training required</div></div>
+        <div class="oc"><div class="oc-num">15<span style="font-size:14px">+</span></div><div class="oc-lbl">Attendance states</div></div>
+      </div>
+      <p><strong>Shipped:</strong> Zero-training face-scan kiosk with audio + visual feedback, mobile attendance with geo-fencing + selfie verification + personalised reminders, admin exceptions-first dashboard with bulk correction and shift-aware time insertion.</p>
+    </div>
+  </div>
+
+  <footer><span class="fn">Sahil Tamboli</span><span class="fc">© 2026</span></footer>
+</body>
+</html>

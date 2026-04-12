@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Field Visit Tracking — Sahil Tamboli</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#0f0e0d;--surface:#1a1917;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#5a9ee8;--accent-dim:rgba(90,158,232,0.1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
+    .logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}
+    .logo span{color:#4ecba0;font-style:italic;}
+    .back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+    .back:hover{color:var(--cream);}
+    .wrap{max-width:760px;margin:0 auto;padding:4rem 2rem 6rem;}
+    .eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
+    .eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
+    h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,48px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
+    h1 em{font-style:italic;color:var(--accent);}
+    .meta-row{display:flex;gap:2rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+    .meta-item{font-size:13px;color:var(--muted);}
+    .meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
+    .hero-thumb{width:100%;height:280px;background:linear-gradient(135deg,#0a1f2b,#1a1917);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:3rem;border:1px solid rgba(90,158,232,0.12);}
+    .thumb-hint{font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.12);text-align:center;margin-top:10px;}
+    .step{margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
+    .step:last-child{border-bottom:none;}
+    .step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+    .step-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
+    h2{font-family:'Fraunces',serif;font-size:clamp(20px,3vw,26px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;line-height:1.2;}
+    p{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:1rem;}
+    p strong{color:#d4cfc7;font-weight:500;}
+    p:last-child{margin-bottom:0;}
+    ul{padding-left:1.2rem;margin-bottom:1rem;}
+    li{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:3px;}
+    li strong{color:#d4cfc7;font-weight:500;}
+    .insight{background:rgba(90,158,232,0.05);border-left:2px solid rgba(90,158,232,0.3);padding:10px 14px;margin:1.25rem 0;border-radius:0 6px 6px 0;font-size:13px;color:#7aaae0;line-height:1.65;}
+    .insight strong{color:var(--accent);font-weight:500;}
+    .img-ph{width:100%;height:220px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;margin:1.25rem 0;}
+    .img-ph-sm{height:160px;}
+    .img-ph-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);}
+    .img-ph-hint{font-size:11px;color:#443e38;text-align:center;max-width:220px;line-height:1.5;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0;}
+    .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:1.25rem 0;}
+    .oc{background:var(--surface);padding:1rem;text-align:center;}
+    .oc-num{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--accent);margin-bottom:3px;}
+    .oc-lbl{font-size:11px;color:var(--muted);}
+    footer{padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+    .fn{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);}
+    .fc{font-size:12px;color:#443e38;}
+    @media(max-width:640px){nav{padding:1rem 1.25rem;}.wrap{padding:2.5rem 1.25rem 4rem;}.two-col{grid-template-columns:1fr;}.outcomes{grid-template-columns:1fr 1fr;}.meta-row{gap:1.25rem;}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">Sahil <span>Tamboli</span></a>
+    <a href="index.html" class="back"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 3L2 6.5 6 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> All work</a>
+  </nav>
+
+  <div class="wrap">
+    <div class="eyebrow">Case study 05 · Field Visit Tracking</div>
+    <h1>Location tracking that <em>employees actually trust</em></h1>
+    <div class="meta-row">
+      <div class="meta-item"><strong>Role</strong>Lead UX Designer</div>
+      <div class="meta-item"><strong>Platform</strong>Mobile · Web admin</div>
+      <div class="meta-item"><strong>Users</strong>Field employees, 10+ industries</div>
+    </div>
+
+    <div class="hero-thumb">
+      <div style="text-align:center;">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.3"><path d="M28 8C20.3 8 14 14.3 14 22c0 12 14 26 14 26s14-14 14-26c0-7.7-6.3-14-14-14z" stroke="#5a9ee8" stroke-width="1.5"/><circle cx="28" cy="22" r="5" stroke="#5a9ee8" stroke-width="1.5"/></svg>
+        <div class="thumb-hint">Add field visit map view or visit history screens</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-label">Empathise</div>
+      <h2>Surveillance anxiety is real — and rational</h2>
+      <p>Field employees — sales reps, service technicians, delivery staff — reacted strongly to location tracking. "My company will know where I am every minute. What if the GPS shows me somewhere wrong? What if I stop for tea?" These weren't irrational fears. They reflected real experiences with opaque systems that offered no way to verify or dispute the data.</p>
+      <p>Managers and admins, meanwhile, needed reliable visit records, distance tracking, and visit duration to verify field work and process expense claims. The same data felt completely different from each side.</p>
+      <div class="insight"><strong>Root insight:</strong> The problem wasn't tracking — it was opacity. Employees had no visibility into what was being recorded about them. That information asymmetry was the source of distrust, not the tracking itself.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-label">Define</div>
+      <h2>Give employees the same view their manager has</h2>
+      <p>The defining design decision came from the research: if employees could see their own location data — the same view their manager sees — resistance would drop. Transparency, not restriction, was the answer.</p>
+      <ul>
+        <li><strong>Employee problem:</strong> No visibility into what's tracked, when, or how it's used</li>
+        <li><strong>Manager problem:</strong> Visit records scattered, expense claims separate, no clear distance and duration data</li>
+        <li><strong>Key constraint:</strong> Location tracking should only be active during declared visits — not continuously</li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <div class="step-label">Ideate</div>
+      <h2>Visit timeline + expense linking in one flow</h2>
+      <p>The mobile experience centred on a visit timeline: check-in location on a map, distance from last stop, time at each location, check-out. Employees could see their entire day's visit history — the same data their manager viewed.</p>
+      <p>Expense linking was built into the check-out flow: "Did you incur any expenses during this visit?" — capturing expenses at the point of visit rather than requiring a separate submission later. This reduced the friction that caused many field employees to under-report or skip expense claims entirely.</p>
+      <div class="two-col">
+        <div class="img-ph img-ph-sm"><div class="img-ph-label">Visit check-in flow — employee mobile</div><div class="img-ph-hint">[Add mobile check-in screen with map]</div></div>
+        <div class="img-ph img-ph-sm"><div class="img-ph-label">Admin — visit history with distance + duration</div><div class="img-ph-hint">[Add admin web view of field visit log]</div></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-label">Prototype</div>
+      <h2>Testing the transparency principle</h2>
+      <p>The employee mobile prototype showed full visit history with map, timestamps, and distance. The admin prototype showed the same data with additional analytics — average visit duration, total distance, visit frequency per client. Expense linking was tested as a slide-up during check-out, keeping the flow in one screen rather than navigating away.</p>
+      <div class="img-ph"><div class="img-ph-label">Employee app — visit list, map view, expense linking at check-out</div><div class="img-ph-hint">[Add 3-screen mobile prototype screenshots]</div></div>
+    </div>
+
+    <div class="step">
+      <div class="step-label">Test & Ship</div>
+      <h2>Transparency worked exactly as predicted</h2>
+      <p>Post-test interviews with field employees who could see their own data showed significantly lower resistance compared to those who couldn't. Expense linking during check-out captured expenses at a far higher rate than the previous separate submission flow. GPS inaccuracy in poor-signal areas remained a concern — we added a manual location correction option as a fallback so employees could flag a wrong location without needing to contact HR.</p>
+      <div class="outcomes">
+        <div class="oc"><div class="oc-num">↓</div><div class="oc-lbl">Adoption resistance</div></div>
+        <div class="oc"><div class="oc-num">10<span style="font-size:14px">+</span></div><div class="oc-lbl">Industries deployed</div></div>
+        <div class="oc"><div class="oc-num">↑</div><div class="oc-lbl">Expense capture rate</div></div>
+      </div>
+      <p><strong>Shipped:</strong> Employee-visible visit history with map and timeline, distance and duration tracking, expense linking at check-out, manual location correction fallback, admin analytics dashboard with visit frequency and route summary.</p>
+    </div>
+  </div>
+  <footer><span class="fn">Sahil Tamboli</span><span class="fc">© 2026</span></footer>
+</body>
+</html>
