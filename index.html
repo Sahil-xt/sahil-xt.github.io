@@ -1,519 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sahil Tamboli — Senior UX Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--faint:rgba(255,255,255,0.06);--border:rgba(255,255,255,0.09);--teal:#4ecba0;--teal-dim:rgba(78,203,160,0.12);--amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--lavender:#a89be8;--lavender-dim:rgba(168,155,232,0.1);--coral:#e87c5a;--coral-dim:rgba(232,124,90,0.1);--blue:#5a9ee8;--blue-dim:rgba(90,158,232,0.1);--r:14px;--r-lg:20px;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
-    nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
-    .logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);letter-spacing:-0.02em;text-decoration:none;cursor:pointer;}
-    .logo span{color:var(--teal);font-style:italic;}
-    .nav-links{display:flex;gap:1.75rem;}
-    .nav-links a{font-size:13px;color:var(--muted);text-decoration:none;cursor:pointer;transition:color 0.2s;position:relative;}
-    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--teal);transition:width 0.2s;}
-    .nav-links a:hover,.nav-links a.active{color:var(--cream);}
-    .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-    .hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);}
-    .mobile-menu{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--border);overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
-    .mobile-menu.open{max-height:300px;}
-    .mobile-menu a{padding:1rem 2rem;font-size:15px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);cursor:pointer;transition:color 0.2s,background 0.2s;}
-    .mobile-menu a:hover,.mobile-menu a.active{color:var(--cream);background:var(--faint);}
-    .section{display:none;}.section.active{display:block;}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    .section.active>*{animation:fadeUp 0.35s ease both;}
-
-    /* HERO */
-    .hero{padding:0;max-width:100%;margin:0;min-height:calc(100vh - 58px);display:flex;flex-direction:column;}
-    .hero-inner{display:grid;grid-template-columns:1fr 420px;min-height:calc(100vh - 58px);max-width:1200px;margin:0 auto;width:100%;padding:0 2rem;}
-    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:3rem 2rem 3rem 0;}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
-    .hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--teal);}
-    .hero h1{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,62px);font-weight:600;line-height:1.05;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
-    .hero h1 em{font-style:italic;color:var(--teal);}
-    .hero-sub{font-size:clamp(14px,1.5vw,16px);color:var(--muted);line-height:1.7;max-width:460px;margin-bottom:2.5rem;}
-    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:3rem;}
-    .hero-photo-col{position:relative;display:flex;align-items:stretch;overflow:hidden;}
-    .hero-photo-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
-    .hero-photo-fade{position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 35%),linear-gradient(to top,var(--bg) 0%,transparent 30%);}
-    .btn-fill{padding:13px 28px;background:var(--teal);color:#0a1f17;border-radius:100px;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:transform 0.15s,background 0.15s;font-family:'DM Sans',sans-serif;}
-    .btn-fill:hover{background:#6dd8b0;transform:translateY(-1px);}
-    .btn-outline{padding:13px 28px;background:transparent;color:var(--cream);border:1px solid var(--border);border-radius:100px;font-size:14px;cursor:pointer;transition:border-color 0.15s,transform 0.15s;font-family:'DM Sans',sans-serif;}
-    .btn-outline:hover{border-color:rgba(255,255,255,0.3);transform:translateY(-1px);}
-    .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;width:100%;}
-    .stat-cell{background:var(--surface);padding:1.25rem 1.5rem;transition:background 0.2s;}
-    .stat-cell:hover{background:var(--surface2);}
-    .stat-num{font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:var(--cream);letter-spacing:-0.02em;line-height:1;margin-bottom:4px;}
-    .stat-num .accent{color:var(--teal);}
-    .stat-lbl{font-size:12px;color:var(--muted);}
-
-    /* WORK */
-    .work-wrap{max-width:960px;margin:0 auto;padding:3.5rem 2rem 5rem;}
-    .page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
-    .page-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--teal);}
-    .page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,38px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;}
-    .page-sub{font-size:15px;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:3rem;}
-    .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:4rem;}
-    .case-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color 0.2s,transform 0.2s;text-decoration:none;display:block;}
-    .case-card:hover{border-color:rgba(255,255,255,0.2);transform:translateY(-3px);}
-    .case-thumb{height:160px;display:flex;align-items:center;justify-content:center;}
-    .case-body{padding:1.4rem;}
-    .case-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
-    .tag{font-size:10px;padding:3px 9px;border-radius:100px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;}
-    .tag-teal{background:var(--teal-dim);color:var(--teal);}
-    .tag-amber{background:var(--amber-dim);color:var(--amber);}
-    .tag-lavender{background:var(--lavender-dim);color:var(--lavender);}
-    .tag-coral{background:var(--coral-dim);color:var(--coral);}
-    .tag-blue{background:var(--blue-dim);color:var(--blue);}
-    .case-title{font-family:'Fraunces',serif;font-size:17px;font-weight:600;letter-spacing:-0.02em;color:var(--cream);line-height:1.3;margin-bottom:8px;}
-    .case-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
-    .case-cta{font-size:13px;color:var(--teal);display:flex;align-items:center;gap:6px;}
-
-    /* W2M */
-    .w2m-section{border-top:1px solid var(--border);padding-top:3.5rem;}
-    .w2m-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
-    .w2m-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;transition:transform 0.2s,border-color 0.2s;}
-    .w2m-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.16);}
-    .w2m-icon{margin-bottom:0.75rem;}
-    .w2m-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:4px;}
-    .w2m-body{font-size:12px;color:var(--muted);line-height:1.6;}
-
-    /* ABOUT */
-    .about-wrap{max-width:900px;margin:0 auto;padding:3.5rem 2rem 5rem;}
-    .about-hero{display:flex;align-items:flex-start;gap:2rem;margin-bottom:3rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;}
-    .about-photo{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--border);flex-shrink:0;}
-    .about-name{font-family:'Fraunces',serif;font-size:clamp(22px,3.5vw,30px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:4px;}
-    .about-role{font-size:14px;color:var(--muted);margin-bottom:1rem;}
-    .avail-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--teal);border:1px solid rgba(78,203,160,0.25);border-radius:100px;padding:4px 12px;background:var(--teal-dim);}
-    .avail-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2s infinite;}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;}
-    .about-bio{font-size:15px;color:#a8a49e;line-height:1.8;}
-    .about-bio p{margin-bottom:1.25rem;}
-    .about-bio strong{color:var(--cream);font-weight:500;}
-    .skill-grp{margin-bottom:1.75rem;}
-    .skill-grp-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
-    .skill-chips{display:flex;flex-wrap:wrap;gap:8px;}
-    .chip{font-size:12px;padding:5px 13px;border:1px solid var(--border);border-radius:100px;color:#c4bfb7;transition:border-color 0.2s,color 0.2s;}
-    .chip:hover{border-color:rgba(255,255,255,0.25);color:var(--cream);}
-
-    /* MENTORING */
-    .mentoring-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;margin-bottom:3rem;display:flex;align-items:flex-start;gap:1.5rem;}
-    .mentoring-icon{width:48px;height:48px;border-radius:12px;background:var(--teal-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .mentoring-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:6px;letter-spacing:-0.01em;}
-    .mentoring-body{font-size:14px;color:var(--muted);line-height:1.7;}
-    .mentoring-body strong{color:#c4bfb7;font-weight:500;}
-
-    /* CERTS */
-    /* EXPERIENCE TIMELINE */
-    .exp-section{margin-bottom:3rem;}
-    .exp-eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
-    .exp-list{display:flex;flex-direction:column;gap:0;}
-    .exp-item{display:grid;grid-template-columns:120px 1fr;gap:0 1.5rem;position:relative;padding-bottom:1.75rem;}
-    .exp-item:last-child{padding-bottom:0;}
-    .exp-left{text-align:right;padding-top:3px;}
-    .exp-dates{font-size:11px;color:var(--muted);line-height:1.5;}
-    .exp-line{position:absolute;left:120px;top:8px;bottom:0;width:1px;background:var(--border);}
-    .exp-item:last-child .exp-line{display:none;}
-    .exp-dot{position:absolute;left:calc(120px + 1.5rem - 4px);top:6px;width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;}
-    .exp-right{padding-left:1.5rem;}
-    .exp-title{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:2px;}
-    .exp-company{font-size:13px;color:var(--teal);margin-bottom:6px;}
-    .exp-desc{font-size:13px;color:var(--muted);line-height:1.65;}
-    /* EDUCATION */
-    .edu-section{margin-bottom:3rem;}
-    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-    .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.25rem;display:flex;gap:12px;align-items:flex-start;}
-    .edu-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .edu-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px;}
-    .edu-sub{font-size:12px;color:var(--muted);line-height:1.5;}
-    .edu-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;margin-top:5px;font-weight:500;}
-    /* CERTS */
-    .certs-section{margin-bottom:2rem;}
-    .certs-eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
-    #cert-modal{display:none;}
-    #cert-modal.open{display:flex!important;}
-    .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
-    .cert-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:border-color 0.2s,transform 0.15s;position:relative;}
-    .cert-card:hover{border-color:rgba(255,255,255,0.22);transform:translateY(-2px);}
-    .cert-card:hover .cert-preview-hint{opacity:1;}
-    .cert-img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;opacity:0.9;}
-    .cert-info{padding:0.85rem 1rem;}
-    .cert-name{font-size:13px;color:var(--cream);font-weight:500;line-height:1.45;margin-bottom:4px;}
-    .cert-meta{font-size:12px;color:var(--muted);}
-    .cert-badge{display:inline-block;font-size:10px;padding:3px 9px;border-radius:100px;margin-top:6px;font-weight:500;}
-    .cert-best{background:rgba(78,203,160,0.12);color:var(--teal);}
-    .cert-top{background:rgba(245,166,35,0.1);color:var(--amber);}
-    .cert-preview-hint{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.6);color:#f0ece3;font-size:11px;padding:3px 9px;border-radius:100px;opacity:0;transition:opacity 0.2s;}
-
-    /* CONTACT */
-    .contact-wrap{max-width:600px;margin:0 auto;padding:3.5rem 2rem 5rem;}
-    .contact-cards{display:flex;flex-direction:column;gap:12px;margin-top:2rem;}
-    .contact-card{display:flex;align-items:center;gap:14px;padding:1.1rem 1.4rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);text-decoration:none;transition:border-color 0.2s,transform 0.15s;}
-    .contact-card:hover{border-color:rgba(255,255,255,0.2);transform:translateX(4px);}
-    .c-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .c-label{font-size:12px;color:var(--muted);}
-    .c-val{font-size:14px;font-weight:500;color:var(--cream);margin-top:1px;}
-
-    footer{padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
-    .footer-name{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);}
-    .footer-copy{font-size:12px;color:#443e38;}
-
-    @media(max-width:768px){
-      nav{padding:1rem 1.25rem;}.nav-links{display:none;}.hamburger{display:flex;}.mobile-menu{display:flex;}
-      .hero-inner{grid-template-columns:1fr;min-height:auto;padding:0 1.25rem;}
-      .hero-left{padding:3rem 0 2rem;}
-      .hero-photo-col{display:none;}
-      .stat-row{grid-template-columns:repeat(2,1fr);}
-      .work-wrap,.about-wrap,.contact-wrap{padding:2.5rem 1.25rem 4rem;}
-      .about-grid{grid-template-columns:1fr;}.about-hero{flex-direction:column;gap:1.25rem;}
-      .case-grid{grid-template-columns:1fr;}.w2m-cards{grid-template-columns:1fr 1fr;}
-      .cert-grid{grid-template-columns:1fr 1fr;}.mentoring-block{flex-direction:column;gap:1rem;}
-      #cert-modal{padding:1rem;}
-      .edu-grid{grid-template-columns:1fr;}
-      footer{padding:1.5rem 1.25rem;}
-    }
-    @media(max-width:480px){.stat-row{grid-template-columns:repeat(2,1fr);}.w2m-cards{grid-template-columns:1fr;}.hero-ctas{flex-direction:column;}.cert-grid{grid-template-columns:1fr;}}
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sahil Tamboli - Senior UX Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--faint:rgba(255,255,255,0.06);--border:rgba(255,255,255,0.09);--teal:#4ecba0;--teal-dim:rgba(78,203,160,0.12);--amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--lavender:#a89be8;--lavender-dim:rgba(168,155,232,0.1);--coral:#e87c5a;--coral-dim:rgba(232,124,90,0.1);--blue:#5a9ee8;--blue-dim:rgba(90,158,232,0.1);--r:14px;--r-lg:20px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.95);backdrop-filter:blur(12px);z-index:100;}
+.logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);letter-spacing:-0.02em;cursor:pointer;text-decoration:none;}
+.logo span{color:var(--teal);font-style:italic;}
+.nav-links{display:flex;gap:1.75rem;}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;cursor:pointer;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--teal);transition:width 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--cream);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);}
+.mobile-menu{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--border);overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
+.mobile-menu.open{max-height:300px;}
+.mobile-menu a{padding:1rem 2rem;font-size:15px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);cursor:pointer;transition:color 0.2s,background 0.2s;}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--cream);background:var(--faint);}
+.section{display:none;}.section.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.section.active > *{animation:fadeUp 0.35s ease both;}
+.hero{padding:0;width:100%;}
+.hero-inner{display:grid;grid-template-columns:1fr 400px;min-height:calc(100vh - 58px);max-width:1200px;margin:0 auto;padding:0 2rem;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:3rem 3rem 3rem 0;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
+.hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--teal);}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(32px,4.5vw,60px);font-weight:600;line-height:1.06;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
+.hero h1 em{font-style:italic;color:var(--teal);}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.75;max-width:440px;margin-bottom:2.5rem;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:3rem;}
+.hero-photo-col{position:relative;overflow:hidden;}
+.hero-photo-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+.hero-photo-fade{position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,rgba(15,14,13,0.3) 40%,transparent 65%),linear-gradient(to top,var(--bg) 0%,transparent 25%);}
+.btn-fill{padding:13px 28px;background:var(--teal);color:#0a1f17;border-radius:100px;font-size:14px;font-weight:500;cursor:pointer;border:none;transition:transform 0.15s,background 0.15s;font-family:'DM Sans',sans-serif;}
+.btn-fill:hover{background:#6dd8b0;transform:translateY(-1px);}
+.btn-outline{padding:13px 28px;background:transparent;color:var(--cream);border:1px solid var(--border);border-radius:100px;font-size:14px;cursor:pointer;transition:border-color 0.15s,transform 0.15s;font-family:'DM Sans',sans-serif;}
+.btn-outline:hover{border-color:rgba(255,255,255,0.3);transform:translateY(-1px);}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+.stat-cell{background:var(--surface);padding:1.1rem 1.25rem;transition:background 0.2s;}
+.stat-cell:hover{background:var(--surface2);}
+.stat-num{font-family:'Fraunces',serif;font-size:24px;font-weight:600;color:var(--cream);letter-spacing:-0.02em;line-height:1;margin-bottom:4px;}
+.stat-num .accent{color:var(--teal);}
+.stat-lbl{font-size:11px;color:var(--muted);}
+.work-wrap{max-width:960px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+.page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.page-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--teal);}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,38px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;}
+.page-sub{font-size:15px;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:3rem;}
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:4rem;}
+.case-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color 0.2s,transform 0.2s;text-decoration:none;display:block;}
+.case-card:hover{border-color:rgba(255,255,255,0.2);transform:translateY(-3px);}
+.case-thumb{height:160px;display:flex;align-items:center;justify-content:center;}
+.case-body{padding:1.4rem;}
+.case-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.tag{font-size:10px;padding:3px 9px;border-radius:100px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;}
+.tag-teal{background:var(--teal-dim);color:var(--teal);}
+.tag-amber{background:var(--amber-dim);color:var(--amber);}
+.tag-lavender{background:var(--lavender-dim);color:var(--lavender);}
+.tag-coral{background:var(--coral-dim);color:var(--coral);}
+.tag-blue{background:var(--blue-dim);color:var(--blue);}
+.case-title{font-family:'Fraunces',serif;font-size:17px;font-weight:600;letter-spacing:-0.02em;color:var(--cream);line-height:1.3;margin-bottom:8px;}
+.case-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:1rem;}
+.case-cta{font-size:13px;color:var(--teal);display:flex;align-items:center;gap:6px;}
+.w2m-section{border-top:1px solid var(--border);padding-top:3.5rem;}
+.w2m-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
+.w2m-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;transition:transform 0.2s,border-color 0.2s;}
+.w2m-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.16);}
+.w2m-icon{margin-bottom:0.75rem;}
+.w2m-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:4px;}
+.w2m-body{font-size:12px;color:var(--muted);line-height:1.6;}
+.about-wrap{max-width:900px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+.about-hero{display:flex;align-items:flex-start;gap:2rem;margin-bottom:3rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;}
+.about-photo{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--border);flex-shrink:0;}
+.about-name{font-family:'Fraunces',serif;font-size:clamp(22px,3.5vw,30px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:4px;}
+.about-role{font-size:14px;color:var(--muted);margin-bottom:1rem;}
+.avail-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--teal);border:1px solid rgba(78,203,160,0.25);border-radius:100px;padding:4px 12px;background:var(--teal-dim);}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;}
+.about-bio{font-size:15px;color:#a8a49e;line-height:1.8;}
+.about-bio p{margin-bottom:1.25rem;}
+.about-bio strong{color:var(--cream);font-weight:500;}
+.skill-grp{margin-bottom:1.75rem;}
+.skill-grp-title{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
+.skill-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-size:12px;padding:5px 13px;border:1px solid var(--border);border-radius:100px;color:#c4bfb7;transition:border-color 0.2s,color 0.2s;}
+.chip:hover{border-color:rgba(255,255,255,0.25);color:var(--cream);}
+.exp-section{margin-bottom:3rem;}
+.exp-eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
+.exp-list{display:flex;flex-direction:column;}
+.exp-item{display:grid;grid-template-columns:100px 1fr;gap:0 1.5rem;position:relative;padding-bottom:1.75rem;}
+.exp-item:last-child{padding-bottom:0;}
+.exp-left{text-align:right;padding-top:3px;}
+.exp-dates{font-size:11px;color:var(--muted);line-height:1.5;}
+.exp-line{position:absolute;left:100px;top:8px;bottom:0;width:1px;background:var(--border);}
+.exp-item:last-child .exp-line{display:none;}
+.exp-dot{position:absolute;left:calc(100px + 1.5rem - 4px);top:6px;width:8px;height:8px;border-radius:50%;}
+.exp-right{padding-left:1.5rem;}
+.exp-title{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:2px;}
+.exp-company{font-size:13px;color:var(--teal);margin-bottom:6px;}
+.exp-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+.edu-section{margin-bottom:3rem;}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.edu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.25rem;display:flex;gap:12px;align-items:flex-start;}
+.edu-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.edu-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px;}
+.edu-sub{font-size:12px;color:var(--muted);line-height:1.5;}
+.edu-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;margin-top:5px;font-weight:500;}
+.mentoring-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;margin-bottom:3rem;display:flex;align-items:flex-start;gap:1.5rem;}
+.mentoring-icon{width:48px;height:48px;border-radius:12px;background:var(--teal-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mentoring-title{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:6px;letter-spacing:-0.01em;}
+.mentoring-body{font-size:14px;color:var(--muted);line-height:1.7;}
+.mentoring-body strong{color:#c4bfb7;font-weight:500;}
+.certs-section{margin-bottom:2rem;}
+.certs-eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:border-color 0.2s,transform 0.15s;position:relative;}
+.cert-card:hover{border-color:rgba(255,255,255,0.22);transform:translateY(-2px);}
+.cert-card:hover .cert-hint{opacity:1;}
+.cert-img{width:100%;height:140px;object-fit:cover;object-position:top;display:block;}
+.cert-info{padding:0.85rem 1rem;}
+.cert-name{font-size:13px;color:var(--cream);font-weight:500;line-height:1.45;margin-bottom:4px;}
+.cert-meta{font-size:12px;color:var(--muted);}
+.cert-badge{display:inline-block;font-size:10px;padding:3px 9px;border-radius:100px;margin-top:6px;font-weight:500;}
+.cert-best{background:rgba(78,203,160,0.12);color:var(--teal);}
+.cert-top{background:rgba(245,166,35,0.1);color:var(--amber);}
+.cert-hint{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.65);color:#f0ece3;font-size:11px;padding:3px 10px;border-radius:100px;opacity:0;transition:opacity 0.2s;pointer-events:none;}
+.cert-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:999;align-items:center;justify-content:center;padding:2rem;}
+.cert-modal.open{display:flex;}
+.cert-modal-inner{max-width:880px;width:100%;position:relative;}
+.cert-modal-close{position:absolute;top:-38px;right:0;background:none;border:none;color:#f0ece3;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;padding:0;}
+.cert-modal-img{width:100%;border-radius:10px;display:block;}
+.cert-modal-title{text-align:center;margin-top:12px;font-size:13px;color:#7a7670;}
+.contact-wrap{max-width:600px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+.contact-cards{display:flex;flex-direction:column;gap:12px;margin-top:2rem;}
+.contact-card{display:flex;align-items:center;gap:14px;padding:1.1rem 1.4rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);text-decoration:none;transition:border-color 0.2s,transform 0.15s;}
+.contact-card:hover{border-color:rgba(255,255,255,0.2);transform:translateX(4px);}
+.c-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.c-label{font-size:12px;color:var(--muted);}
+.c-val{font-size:14px;font-weight:500;color:var(--cream);margin-top:1px;}
+footer{padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.footer-name{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);}
+.footer-copy{font-size:12px;color:#443e38;}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;padding:0 1.25rem;}.hero-left{padding:3rem 0 2rem;}.hero-photo-col{display:none;}.stat-row{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){nav{padding:1rem 1.25rem;}.nav-links{display:none;}.hamburger{display:flex;}.mobile-menu{display:flex;}.work-wrap,.about-wrap,.contact-wrap{padding:2.5rem 1.25rem 4rem;}.about-grid{grid-template-columns:1fr;gap:2rem;}.about-hero{flex-direction:column;gap:1.25rem;}.case-grid{grid-template-columns:1fr;}.w2m-cards{grid-template-columns:1fr 1fr;}.cert-grid{grid-template-columns:1fr 1fr;}.edu-grid{grid-template-columns:1fr;}.mentoring-block{flex-direction:column;gap:1rem;}footer{padding:1.5rem 1.25rem;}}
+@media(max-width:480px){.stat-row{grid-template-columns:repeat(2,1fr);}.w2m-cards{grid-template-columns:1fr;}.cert-grid{grid-template-columns:1fr;}.hero-ctas{flex-direction:column;}}
+</style>
 </head>
 <body>
-  <nav>
-    <a class="logo" onclick="show('home',document.querySelectorAll('.nav-links a')[0])">Sahil <span>Tamboli</span></a>
-    <div class="nav-links">
-      <a class="active" onclick="show('home',this)">Home</a>
-      <a onclick="show('work',this)">Work</a>
-      <a onclick="show('about',this)">About</a>
-      <a onclick="show('contact',this)">Contact</a>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a class="active" onclick="show('home',this);toggleMenu()">Home</a>
-    <a onclick="show('work',this);toggleMenu()">Work</a>
-    <a onclick="show('about',this);toggleMenu()">About</a>
-    <a onclick="show('contact',this);toggleMenu()">Contact</a>
+<nav>
+  <a class="logo" onclick="showSection('home',document.querySelectorAll('.nav-links a')[0])">Sahil <span>Tamboli</span></a>
+  <div class="nav-links">
+    <a class="active" onclick="showSection('home',this)">Home</a>
+    <a onclick="showSection('work',this)">Work</a>
+    <a onclick="showSection('about',this)">About</a>
+    <a onclick="showSection('contact',this)">Contact</a>
   </div>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a class="active" onclick="showSection('home',this);toggleMenu()">Home</a>
+  <a onclick="showSection('work',this);toggleMenu()">Work</a>
+  <a onclick="showSection('about',this);toggleMenu()">About</a>
+  <a onclick="showSection('contact',this);toggleMenu()">Contact</a>
+</div>
 
-  <!-- HOME -->
-  <div id="home" class="section active">
-    <div class="hero">
-      <div class="hero-inner">
-        <div class="hero-left">
-          <div class="hero-eyebrow">Senior UX Designer · Bengaluru</div>
-          <h1>Making <em>complex</em> things feel effortless</h1>
-          <p class="hero-sub">8+ years designing HRMS and workforce tools at scale — web and mobile. I live where systems thinking meets human empathy.</p>
-          <div class="hero-ctas">
-            <button class="btn-fill" onclick="show('work',document.querySelectorAll('.nav-links a')[1])">See my work</button>
-            <button class="btn-outline" onclick="show('contact',document.querySelectorAll('.nav-links a')[3])">Say hello</button>
-          </div>
-          <div class="stat-row">
-            <div class="stat-cell"><div class="stat-num">8<span class="accent">+</span></div><div class="stat-lbl">Years experience</div></div>
-            <div class="stat-cell"><div class="stat-num">15<span class="accent">+</span></div><div class="stat-lbl">Modules shipped</div></div>
-            <div class="stat-cell"><div class="stat-num">500<span class="accent">k</span></div><div class="stat-lbl">End users</div></div>
-            <div class="stat-cell"><div class="stat-num">70<span class="accent">+</span></div><div class="stat-lbl">Mentees guided</div></div>
-          </div>
+<div id="home" class="section active">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Senior UX Designer - Bengaluru</div>
+        <h1>Making <em>complex</em> things feel effortless</h1>
+        <p class="hero-sub">8+ years designing HRMS and workforce tools at scale - web and mobile. I live where systems thinking meets human empathy.</p>
+        <div class="hero-ctas">
+          <button class="btn-fill" onclick="showSection('work',document.querySelectorAll('.nav-links a')[1])">See my work</button>
+          <button class="btn-outline" onclick="showSection('contact',document.querySelectorAll('.nav-links a')[3])">Say hello</button>
         </div>
-        <div class="hero-photo-col">
-          <img src="sahil.jpg" alt="Sahil Tamboli" class="hero-photo-img"/>
-          <div class="hero-photo-fade"></div>
+        <div class="stat-row">
+          <div class="stat-cell"><div class="stat-num">8<span class="accent">+</span></div><div class="stat-lbl">Years experience</div></div>
+          <div class="stat-cell"><div class="stat-num">15<span class="accent">+</span></div><div class="stat-lbl">Modules shipped</div></div>
+          <div class="stat-cell"><div class="stat-num">500<span class="accent">k</span></div><div class="stat-lbl">End users</div></div>
+          <div class="stat-cell"><div class="stat-num">70<span class="accent">+</span></div><div class="stat-lbl">Mentees guided</div></div>
         </div>
+      </div>
+      <div class="hero-photo-col">
+        <img src="sahil.jpg" alt="Sahil Tamboli" class="hero-photo-img"/>
+        <div class="hero-photo-fade"></div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- WORK -->
-  <div id="work" class="section">
-    <div class="work-wrap">
-      <div class="page-eyebrow">Selected work</div>
-      <h2 class="page-title">Case studies</h2>
-      <p class="page-sub">Five projects from Mewurk — an all-in-one HRMS for Indian SMEs. Each follows a structured UX process from discovery to shipped product.</p>
-
-      <div class="case-grid">
-        <a class="case-card" href="case-attendance.html">
-          <div class="case-thumb" style="background:linear-gradient(135deg,#0d2b21,#1a1917);">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><circle cx="28" cy="28" r="22" stroke="#4ecba0" stroke-width="1.5"/><path d="M28 16v14l9 6" stroke="#4ecba0" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <div class="case-body">
-            <div class="case-tags"><span class="tag tag-teal">Attendance</span><span class="tag tag-teal">Kiosk</span><span class="tag tag-teal">Mobile</span></div>
-            <div class="case-title">Attendance & face scan kiosk</div>
-            <div class="case-desc">Zero-training kiosk + mobile redesign for 500k+ daily users across 1000+ SMEs.</div>
-            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          </div>
-        </a>
-        <a class="case-card" href="case-leave.html">
-          <div class="case-thumb" style="background:linear-gradient(135deg,#1a1530,#1a1917);">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="8" y="12" width="40" height="36" rx="5" stroke="#a89be8" stroke-width="1.5"/><path d="M18 6v14M38 6v14M8 24h40" stroke="#a89be8" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="36" r="2.5" fill="#a89be8"/><circle cx="28" cy="36" r="2.5" fill="#a89be8"/><circle cx="36" cy="36" r="2.5" fill="#a89be8"/></svg>
-          </div>
-          <div class="case-body">
-            <div class="case-tags"><span class="tag tag-lavender">Leave</span><span class="tag tag-lavender">Holidays</span><span class="tag tag-lavender">Policy UX</span></div>
-            <div class="case-title">Leave & holidays management</div>
-            <div class="case-desc">Flexible policy builder for HR + transparent, trust-building experience for employees.</div>
-            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#a89be8" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          </div>
-        </a>
-        <a class="case-card" href="case-design-system.html">
-          <div class="case-thumb" style="background:linear-gradient(135deg,#2b1f0a,#1a1917);">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="6" y="6" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="32" y="6" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="6" y="32" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="32" y="32" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/></svg>
-          </div>
-          <div class="case-body">
-            <div class="case-tags"><span class="tag tag-amber">Design System</span><span class="tag tag-amber">Atomic Design</span></div>
-            <div class="case-title">Design system & pattern library</div>
-            <div class="case-desc">Mewurk's first design system — from inconsistency audit to a shared Figma library.</div>
-            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          </div>
-        </a>
-        <a class="case-card" href="case-payroll.html">
-          <div class="case-thumb" style="background:linear-gradient(135deg,#2b1108,#1a1917);">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="8" y="14" width="40" height="30" rx="5" stroke="#e87c5a" stroke-width="1.5"/><path d="M18 24h20M18 32h12" stroke="#e87c5a" stroke-width="1.5" stroke-linecap="round"/><path d="M28 6v10" stroke="#e87c5a" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <div class="case-body">
-            <div class="case-tags"><span class="tag tag-coral">Payroll</span><span class="tag tag-coral">Trust UX</span></div>
-            <div class="case-title">Payroll — powerful but not scary</div>
-            <div class="case-desc">Pre-run validation + plain-language payslips for HR managers navigating PF, TDS, ESI.</div>
-            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#e87c5a" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          </div>
-        </a>
-        <a class="case-card" href="case-field.html">
-          <div class="case-thumb" style="background:linear-gradient(135deg,#0a1f2b,#1a1917);">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><path d="M28 8C20.3 8 14 14.3 14 22c0 12 14 26 14 26s14-14 14-26c0-7.7-6.3-14-14-14z" stroke="#5a9ee8" stroke-width="1.5"/><circle cx="28" cy="22" r="5" stroke="#5a9ee8" stroke-width="1.5"/></svg>
-          </div>
-          <div class="case-body">
-            <div class="case-tags"><span class="tag tag-blue">Field Visits</span><span class="tag tag-blue">Location UX</span><span class="tag tag-blue">Mobile</span></div>
-            <div class="case-title">Field visit tracking</div>
-            <div class="case-desc">Employee-visible location tracking — turning surveillance anxiety into trust through transparency.</div>
-            <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#5a9ee8" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Web to Mobile -->
-      <div class="w2m-section">
-        <div class="page-eyebrow">Cross-platform</div>
-        <h3 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.5rem;">Web to mobile — a thread across everything</h3>
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:480px;">Not just resizing. Rethinking what matters when someone is on a factory floor or between meetings.</p>
-        <div class="w2m-cards">
-          <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M10 4l6 6-6 6" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Rethinking hierarchy</div><div class="w2m-body">Dense admin dashboards → focused summaries with flagged exceptions.</div></div>
-          <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="6" y="2" width="8" height="16" rx="1.5" stroke="#a89be8" stroke-width="1.3"/><circle cx="10" cy="15" r="0.8" fill="#a89be8"/></svg></div><div class="w2m-title">Touch-first patterns</div><div class="w2m-body">Rolling pickers, bottom sheets, swipe actions — thumb-reachable throughout.</div></div>
-          <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#f5a623" stroke-width="1.3"/><path d="M4 17c0-3 2.7-5 6-5s6 2 6 5" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Field user design</div><div class="w2m-body">Every screen self-evident. The kiosk: no text, no training, just a face in a frame.</div></div>
-          <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="10" rx="2" stroke="#e87c5a" stroke-width="1.3"/><path d="M6 9h8M6 12h5" stroke="#e87c5a" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Shared tokens</div><div class="w2m-body">One Figma token system — consistent meaning, platform-appropriate rendering.</div></div>
+<div id="work" class="section">
+  <div class="work-wrap">
+    <div class="page-eyebrow">Selected work</div>
+    <h2 class="page-title">Case studies</h2>
+    <p class="page-sub">Five projects from Mewurk - an all-in-one HRMS for Indian SMEs. Each follows a structured UX process from discovery to shipped product.</p>
+    <div class="case-grid">
+      <a class="case-card" href="case-attendance.html">
+        <div class="case-thumb" style="background:linear-gradient(135deg,#0d2b21,#1a1917);"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><circle cx="28" cy="28" r="22" stroke="#4ecba0" stroke-width="1.5"/><path d="M28 16v14l9 6" stroke="#4ecba0" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="case-body">
+          <div class="case-tags"><span class="tag tag-teal">Attendance</span><span class="tag tag-teal">Kiosk</span><span class="tag tag-teal">Mobile</span></div>
+          <div class="case-title">Attendance and face scan kiosk</div>
+          <div class="case-desc">Zero-training kiosk + mobile redesign for 500k+ daily users across 1000+ SMEs.</div>
+          <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/></svg></div>
         </div>
+      </a>
+      <a class="case-card" href="case-leave.html">
+        <div class="case-thumb" style="background:linear-gradient(135deg,#1a1530,#1a1917);"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="8" y="12" width="40" height="36" rx="5" stroke="#a89be8" stroke-width="1.5"/><path d="M18 6v14M38 6v14M8 24h40" stroke="#a89be8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="case-body">
+          <div class="case-tags"><span class="tag tag-lavender">Leave</span><span class="tag tag-lavender">Holidays</span><span class="tag tag-lavender">Policy UX</span></div>
+          <div class="case-title">Leave and holidays management</div>
+          <div class="case-desc">Flexible policy builder for HR + transparent, trust-building experience for employees.</div>
+          <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#a89be8" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        </div>
+      </a>
+      <a class="case-card" href="case-design-system.html">
+        <div class="case-thumb" style="background:linear-gradient(135deg,#2b1f0a,#1a1917);"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="6" y="6" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="32" y="6" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="6" y="32" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/><rect x="32" y="32" width="18" height="18" rx="3" stroke="#f5a623" stroke-width="1.5"/></svg></div>
+        <div class="case-body">
+          <div class="case-tags"><span class="tag tag-amber">Design System</span><span class="tag tag-amber">Atomic Design</span></div>
+          <div class="case-title">Design system and pattern library</div>
+          <div class="case-desc">Mewurk's first design system - from inconsistency audit to a shared Figma library.</div>
+          <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        </div>
+      </a>
+      <a class="case-card" href="case-payroll.html">
+        <div class="case-thumb" style="background:linear-gradient(135deg,#2b1108,#1a1917);"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><rect x="8" y="14" width="40" height="30" rx="5" stroke="#e87c5a" stroke-width="1.5"/><path d="M18 24h20M18 32h12" stroke="#e87c5a" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="case-body">
+          <div class="case-tags"><span class="tag tag-coral">Payroll</span><span class="tag tag-coral">Trust UX</span></div>
+          <div class="case-title">Payroll - powerful but not scary</div>
+          <div class="case-desc">Pre-run validation + plain-language payslips for HR managers navigating PF, TDS, ESI.</div>
+          <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#e87c5a" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        </div>
+      </a>
+      <a class="case-card" href="case-field.html">
+        <div class="case-thumb" style="background:linear-gradient(135deg,#0a1f2b,#1a1917);"><svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity="0.35"><path d="M28 8C20.3 8 14 14.3 14 22c0 12 14 26 14 26s14-14 14-26c0-7.7-6.3-14-14-14z" stroke="#5a9ee8" stroke-width="1.5"/><circle cx="28" cy="22" r="5" stroke="#5a9ee8" stroke-width="1.5"/></svg></div>
+        <div class="case-body">
+          <div class="case-tags"><span class="tag tag-blue">Field Visits</span><span class="tag tag-blue">Location UX</span><span class="tag tag-blue">Mobile</span></div>
+          <div class="case-title">Field visit tracking</div>
+          <div class="case-desc">Employee-visible location tracking - turning surveillance anxiety into trust through transparency.</div>
+          <div class="case-cta">View case study <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7 3l3.5 3.5L7 10" stroke="#5a9ee8" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        </div>
+      </a>
+    </div>
+    <div class="w2m-section">
+      <div class="page-eyebrow">Cross-platform</div>
+      <h3 style="font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.5rem;">Web to mobile - a thread across everything</h3>
+      <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:480px;">Not just resizing. Rethinking what matters when someone is on a factory floor or between meetings.</p>
+      <div class="w2m-cards">
+        <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M10 4l6 6-6 6" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Rethinking hierarchy</div><div class="w2m-body">Dense admin dashboards condensed to focused summaries with flagged exceptions.</div></div>
+        <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="6" y="2" width="8" height="16" rx="1.5" stroke="#a89be8" stroke-width="1.3"/><circle cx="10" cy="15" r="0.8" fill="#a89be8"/></svg></div><div class="w2m-title">Touch-first patterns</div><div class="w2m-body">Rolling pickers, bottom sheets, swipe actions - thumb-reachable throughout.</div></div>
+        <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#f5a623" stroke-width="1.3"/><path d="M4 17c0-3 2.7-5 6-5s6 2 6 5" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Field user design</div><div class="w2m-body">Every screen self-evident. The kiosk: no text, no training, just a face in a frame.</div></div>
+        <div class="w2m-card"><div class="w2m-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="10" rx="2" stroke="#e87c5a" stroke-width="1.3"/><path d="M6 9h8M6 12h5" stroke="#e87c5a" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="w2m-title">Shared tokens</div><div class="w2m-body">One Figma token system - consistent meaning, platform-appropriate rendering.</div></div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ABOUT -->
-  <div id="about" class="section">
-    <div class="about-wrap">
-      <div class="about-hero">
-        <img src="sahil.jpg" alt="Sahil Tamboli" class="about-photo"/>
-        <div>
-          <div class="about-name">Sahil Tamboli</div>
-          <div class="about-role">Senior UX Designer · Bengaluru, India</div>
-          <div class="avail-pill"><span class="avail-dot"></span>Open to new opportunities</div>
-        </div>
+<div id="about" class="section">
+  <div class="about-wrap">
+    <div class="about-hero">
+      <img src="sahil.jpg" alt="Sahil Tamboli" class="about-photo"/>
+      <div>
+        <div class="about-name">Sahil Tamboli</div>
+        <div class="about-role">Senior UX Designer - Bengaluru, India</div>
+        <div class="avail-pill"><span class="avail-dot"></span>Open to new opportunities</div>
       </div>
-
-      <div class="about-grid">
-        <div class="about-bio">
-          <p>I'm a Senior UX Designer with 8+ years of experience — currently at <strong>Mewurk</strong>, an all-in-one HRMS for Indian SMEs used by 500k+ employees across 1000+ companies. Previously at <strong>FIGmd</strong>, designing US Healthcare SaaS products.</p>
-          <p>I hold a B.Tech from <strong>IIT Hyderabad</strong> and ranked in the top 20 nationally in the NID entrance exam. Early in my career I worked as a Technical Consultant building <strong>data models and dashboards in R and MySQL</strong> — a background that makes me unusually comfortable in engineer conversations and helps me translate between design intent and technical constraints.</p>
-          <p>I care about making <strong>complex systems feel simple</strong>, especially for users with no margin for confusion — from factory floor workers clocking in on a kiosk to HR managers navigating Indian payroll compliance.</p>
-          <p>Currently exploring <strong>UX Lead and Manager roles</strong> where I can shape design strategy, build systems, and grow a team.</p>
-        </div>
-        <div>
-          <div class="skill-grp"><div class="skill-grp-title">Design</div><div class="skill-chips"><span class="chip">UX Research</span><span class="chip">Interaction design</span><span class="chip">Design systems</span><span class="chip">Prototyping</span><span class="chip">Information architecture</span><span class="chip">Web to mobile</span></div></div>
-          <div class="skill-grp"><div class="skill-grp-title">Tools</div><div class="skill-chips"><span class="chip">Figma</span><span class="chip">Adobe XD</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span><span class="chip">InVision</span><span class="chip">Adobe Suite</span><span class="chip">Protopie</span><span class="chip">Maze</span><span class="chip">Miro</span></div></div>
-          <div class="skill-grp"><div class="skill-grp-title">Domain</div><div class="skill-chips"><span class="chip">HRMS</span><span class="chip">Enterprise SaaS</span><span class="chip">Mobile apps</span><span class="chip">Hardware UX</span><span class="chip">US Healthcare</span></div></div>
-          <div class="skill-grp"><div class="skill-grp-title">Technical background</div><div class="skill-chips"><span class="chip">Data modelling</span><span class="chip">MySQL</span><span class="chip">R / R-Shiny</span><span class="chip">Dashboard development</span></div></div>
-          <div class="skill-grp"><div class="skill-grp-title">Leadership</div><div class="skill-chips"><span class="chip">Stakeholder alignment</span><span class="chip">Design critique</span><span class="chip">Pattern documentation</span><span class="chip">Mentoring</span></div></div>
-        </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>I'm a Senior UX Designer with 8+ years of experience - currently at <strong>Mewurk</strong>, an all-in-one HRMS for Indian SMEs used by 500k+ employees across 1000+ companies. Previously at <strong>FIGmd</strong>, designing US Healthcare SaaS products.</p>
+        <p>I hold a B.Tech from <strong>IIT Hyderabad</strong> and ranked in the top 20 nationally in the NID entrance exam. Early in my career I worked as a Technical Consultant building <strong>data models and dashboards in R and MySQL</strong> - a background that makes me unusually comfortable in engineer conversations and helps me translate between design intent and technical constraints.</p>
+        <p>I care about making <strong>complex systems feel simple</strong>, especially for users with no margin for confusion - from factory floor workers clocking in on a kiosk to HR managers navigating Indian payroll compliance.</p>
+        <p>Currently exploring <strong>UX Lead and Manager roles</strong> where I can shape design strategy, build systems, and grow a team.</p>
       </div>
-
-      <!-- Mentoring -->
-      <div class="mentoring-block">
-        <div class="mentoring-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="#4ecba0" stroke-width="1.3"/><path d="M3 18c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/><circle cx="18" cy="9" r="2" stroke="#4ecba0" stroke-width="1.2"/><path d="M18 14c1.5 0 3.5.8 3.5 3" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <div class="mentoring-title">Mentoring 70+ aspiring UX designers</div>
-          <div class="mentoring-body">Through <strong>Designerrs Academy's "UI UX Design from Scratch"</strong> course, I've mentored 70+ mentees — reviewing portfolios, giving design critique, sharing real-world product insights, and helping beginners break into the field.</div>
-        </div>
+      <div>
+        <div class="skill-grp"><div class="skill-grp-title">Design</div><div class="skill-chips"><span class="chip">UX Research</span><span class="chip">Interaction design</span><span class="chip">Design systems</span><span class="chip">Prototyping</span><span class="chip">Information architecture</span><span class="chip">Web to mobile</span></div></div>
+        <div class="skill-grp"><div class="skill-grp-title">Tools</div><div class="skill-chips"><span class="chip">Figma</span><span class="chip">Adobe XD</span><span class="chip">Photoshop</span><span class="chip">Illustrator</span><span class="chip">InVision</span><span class="chip">Adobe Suite</span><span class="chip">Protopie</span><span class="chip">Maze</span><span class="chip">Miro</span></div></div>
+        <div class="skill-grp"><div class="skill-grp-title">Domain</div><div class="skill-chips"><span class="chip">HRMS</span><span class="chip">Enterprise SaaS</span><span class="chip">Mobile apps</span><span class="chip">Hardware UX</span><span class="chip">US Healthcare</span></div></div>
+        <div class="skill-grp"><div class="skill-grp-title">Technical background</div><div class="skill-chips"><span class="chip">Data modelling</span><span class="chip">MySQL</span><span class="chip">R / R-Shiny</span><span class="chip">Dashboard development</span></div></div>
+        <div class="skill-grp"><div class="skill-grp-title">Leadership</div><div class="skill-chips"><span class="chip">Stakeholder alignment</span><span class="chip">Design critique</span><span class="chip">Pattern documentation</span><span class="chip">Mentoring</span></div></div>
       </div>
-
-      <!-- Experience timeline -->
-      <div class="exp-section">
-        <div class="exp-eyebrow">Experience</div>
-        <div class="exp-list">
-
-          <div class="exp-item">
-            <div class="exp-left"><div class="exp-dates">2019<br>Present</div></div>
-            <div class="exp-line"></div>
-            <div class="exp-dot" style="background:var(--teal);"></div>
-            <div class="exp-right">
-              <div class="exp-title">Senior UX Designer</div>
-              <div class="exp-company">Mewurk · Bengaluru</div>
-              <div class="exp-desc">All-in-one HRMS platform for Indian SMEs — 500k+ employees, 1000+ companies. Led design across 15+ modules on web and mobile: attendance, kiosk, leave, payroll, field visits, expense, onboarding, notifications, and the product's first design system.</div>
-            </div>
+    </div>
+    <div class="exp-section">
+      <div class="exp-eyebrow">Experience</div>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-left"><div class="exp-dates">2019<br>Present</div></div>
+          <div class="exp-line"></div>
+          <div class="exp-dot" style="background:var(--teal);"></div>
+          <div class="exp-right">
+            <div class="exp-title">Senior UX Designer</div>
+            <div class="exp-company">Mewurk - Bengaluru</div>
+            <div class="exp-desc">All-in-one HRMS platform for Indian SMEs - 500k+ employees, 1000+ companies. Led design across 15+ modules on web and mobile: attendance, kiosk, leave, payroll, field visits, expense, onboarding, notifications, and the product's first design system.</div>
           </div>
-
-          <div class="exp-item">
-            <div class="exp-left"><div class="exp-dates">2018<br>2019</div></div>
-            <div class="exp-line"></div>
-            <div class="exp-dot" style="background:var(--lavender);"></div>
-            <div class="exp-right">
-              <div class="exp-title">UI/UX Designer</div>
-              <div class="exp-company">FIGmd Pvt. Ltd. · Pune</div>
-              <div class="exp-desc">US Healthcare SaaS — designed EHR and insurance claims platform (PayerHub), a CMS compliance product for medical practices (MIPS), and a mental wellness app (InfiHeal). Worked across clinical registries, dashboards, and multi-stakeholder workflows.</div>
-            </div>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-left"><div class="exp-dates">2016<br>2017</div></div>
-            <div class="exp-line"></div>
-            <div class="exp-dot" style="background:var(--amber);"></div>
-            <div class="exp-right">
-              <div class="exp-title">Technical Consultant</div>
-              <div class="exp-company">Entransys Pvt. Ltd. &amp; Yash Technologies · Hyderabad</div>
-              <div class="exp-desc">Data modelling, normalisation (MySQL), and dynamic dashboard development using R and R-Shiny. This technical foundation — understanding data structures, querying, and how engineers think about systems — directly shapes how I collaborate with developers today as a designer.</div>
-            </div>
-          </div>
-
         </div>
-      </div>
-
-      <!-- Education & credentials -->
-      <div class="edu-section">
-        <div class="exp-eyebrow">Education & credentials</div>
-        <div class="edu-grid">
-          <div class="edu-card">
-            <div class="edu-icon" style="background:var(--teal-dim);">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 7l7-4 7 4-7 4-7-4z" stroke="#4ecba0" stroke-width="1.2" stroke-linejoin="round"/><path d="M5 9v4c0 1.1 1.8 2 4 2s4-.9 4-2V9" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <div class="edu-title">B.Tech — Mechanical Engineering</div>
-              <div class="edu-sub">IIT Hyderabad<br>Indian Institute of Technology</div>
-            </div>
+        <div class="exp-item">
+          <div class="exp-left"><div class="exp-dates">2018<br>2019</div></div>
+          <div class="exp-line"></div>
+          <div class="exp-dot" style="background:var(--lavender);"></div>
+          <div class="exp-right">
+            <div class="exp-title">UI/UX Designer</div>
+            <div class="exp-company">FIGmd Pvt. Ltd. - Pune</div>
+            <div class="exp-desc">US Healthcare SaaS - designed EHR and insurance claims platform (PayerHub), CMS compliance product for medical practices (MIPS), and mental wellness app (InfiHeal). Worked across clinical registries, dashboards, and multi-stakeholder workflows.</div>
           </div>
-          <div class="edu-card">
-            <div class="edu-icon" style="background:var(--amber-dim);">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#f5a623" stroke-width="1.2"/><path d="M6 9l2 2 4-4" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <div class="edu-title">National Institute of Design</div>
-              <div class="edu-sub">Entrance exam — NID</div>
-              <span class="edu-badge" style="background:var(--amber-dim);color:var(--amber);">Under Top 20 nationally</span>
-            </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-left"><div class="exp-dates">2016<br>2017</div></div>
+          <div class="exp-line"></div>
+          <div class="exp-dot" style="background:var(--amber);"></div>
+          <div class="exp-right">
+            <div class="exp-title">Technical Consultant</div>
+            <div class="exp-company">Entransys Pvt. Ltd. and Yash Technologies - Hyderabad</div>
+            <div class="exp-desc">Data modelling, normalisation (MySQL), and dynamic dashboard development using R and R-Shiny. This technical foundation directly shapes how I collaborate with developers as a designer today.</div>
           </div>
         </div>
       </div>
-
-      <!-- Certifications -->
-      <div class="certs-section">
-        <div class="certs-eyebrow">Certifications — Interaction Design Foundation</div>
-        <div class="cert-grid">
-          <div class="cert-card" onclick="openCert('cert-physicality.jpg','How to Create Intuitive Products by Imitating Physicality')">
-            <img src="cert-physicality.jpg" alt="certificate" class="cert-img"/>
-            <div class="cert-info">
-              <div class="cert-name">How to Create Intuitive Products by Imitating Physicality</div>
-              <div class="cert-meta">IxDF · Jan 2025</div>
-              <span class="cert-badge cert-top">Top 10% in class</span>
-            </div>
-            <div class="cert-preview-hint">Click to view</div>
+    </div>
+    <div class="edu-section">
+      <div class="exp-eyebrow">Education and credentials</div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-icon" style="background:var(--teal-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 7l7-4 7 4-7 4-7-4z" stroke="#4ecba0" stroke-width="1.2" stroke-linejoin="round"/><path d="M5 9v4c0 1.1 1.8 2 4 2s4-.9 4-2V9" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div>
+            <div class="edu-title">B.Tech - Mechanical Engineering</div>
+            <div class="edu-sub">IIT Hyderabad<br>Indian Institute of Technology</div>
           </div>
-          <div class="cert-card" onclick="openCert('cert-ux-scratch.jpg','Become a UX Designer from Scratch')">
-            <img src="cert-ux-scratch.jpg" alt="certificate" class="cert-img"/>
-            <div class="cert-info">
-              <div class="cert-name">Become a UX Designer from Scratch</div>
-              <div class="cert-meta">IxDF · 2021–2024 · 19 hrs</div>
-              <span class="cert-badge cert-top">Top 10% in class</span>
-            </div>
-            <div class="cert-preview-hint">Click to view</div>
-          </div>
-          <div class="cert-card" onclick="openCert('cert-usability-testing.jpg','Conducting Usability Testing')">
-            <img src="cert-usability-testing.jpg" alt="certificate" class="cert-img"/>
-            <div class="cert-info">
-              <div class="cert-name">Conducting Usability Testing</div>
-              <div class="cert-meta">IxDF · 2019–2020 · 10 hrs</div>
-              <span class="cert-badge cert-best">Best in class</span>
-            </div>
-            <div class="cert-preview-hint">Click to view</div>
-          </div>
-          <div class="cert-card" onclick="openCert('cert-web-usability.jpg','Web Design for Usability')">
-            <img src="cert-web-usability.jpg" alt="certificate" class="cert-img"/>
-            <div class="cert-info">
-              <div class="cert-name">Web Design for Usability</div>
-              <div class="cert-meta">IxDF · 2019–2021 · 17 hrs</div>
-              <span class="cert-badge cert-top">Top 10% in class</span>
-            </div>
-            <div class="cert-preview-hint">Click to view</div>
-          </div>
-          <div class="cert-card" onclick="openCert('cert-hci.jpg','Human-Computer Interaction — HCI')">
-            <img src="cert-hci.jpg" alt="certificate" class="cert-img"/>
-            <div class="cert-info">
-              <div class="cert-name">Human-Computer Interaction — HCI</div>
-              <div class="cert-meta">IxDF · 2019</div>
-            </div>
-            <div class="cert-preview-hint">Click to view</div>
-          </div>
-          <div class="cert-card" onclick="openCert('cert-disruptive.jpg','Disruptive Design: Is your UX future-proof?')">
-            <img src="cert-disruptive.jpg" alt="certificate" class="cert-img"/>
-            <div class="cert-info">
-              <div class="cert-name">Disruptive Design: Is your UX future-proof?</div>
-              <div class="cert-meta">IxDF Master Class</div>
-            </div>
-            <div class="cert-preview-hint">Click to view</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon" style="background:var(--amber-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#f5a623" stroke-width="1.2"/><path d="M6 9l2 2 4-4" stroke="#f5a623" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          <div>
+            <div class="edu-title">National Institute of Design</div>
+            <div class="edu-sub">Entrance exam - NID</div>
+            <span class="edu-badge" style="background:var(--amber-dim);color:var(--amber);">Under Top 20 nationally</span>
           </div>
         </div>
       </div>
-
-      <!-- Certificate modal -->
-      <div id="cert-modal" onclick="closeCert()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;align-items:center;justify-content:center;padding:2rem;">
-        <div onclick="event.stopPropagation()" style="max-width:860px;width:100%;position:relative;">
-          <button onclick="closeCert()" style="position:absolute;top:-40px;right:0;background:none;border:none;color:#f0ece3;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Close
-          </button>
-          <img id="cert-modal-img" src="" alt="Certificate" style="width:100%;border-radius:10px;display:block;"/>
-          <div id="cert-modal-title" style="text-align:center;margin-top:12px;font-size:13px;color:#7a7670;"></div>
+    </div>
+    <div class="mentoring-block">
+      <div class="mentoring-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="#4ecba0" stroke-width="1.3"/><path d="M3 18c0-3.3 2.7-5 6-5s6 1.7 6 5" stroke="#4ecba0" stroke-width="1.3" stroke-linecap="round"/><circle cx="18" cy="9" r="2" stroke="#4ecba0" stroke-width="1.2"/><path d="M18 14c1.5 0 3.5.8 3.5 3" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <div>
+        <div class="mentoring-title">Mentoring 70+ aspiring UX designers</div>
+        <div class="mentoring-body">Through <strong>Designerrs Academy's "UI UX Design from Scratch"</strong> course, I've mentored 70+ mentees - reviewing portfolios, giving design critique, sharing real-world product insights, and helping beginners break into the field.</div>
+      </div>
+    </div>
+    <div class="certs-section">
+      <div class="certs-eyebrow">Certifications - Interaction Design Foundation</div>
+      <div class="cert-grid">
+        <div class="cert-card" onclick="openCert('cert-physicality.jpg','How to Create Intuitive Products by Imitating Physicality')">
+          <img src="cert-physicality.jpg" alt="IxDF Certificate" class="cert-img"/>
+          <div class="cert-info"><div class="cert-name">How to Create Intuitive Products by Imitating Physicality</div><div class="cert-meta">IxDF - Jan 2025</div><span class="cert-badge cert-top">Top 10% in class</span></div>
+          <div class="cert-hint">Click to view</div>
+        </div>
+        <div class="cert-card" onclick="openCert('cert-ux-scratch.jpg','Become a UX Designer from Scratch')">
+          <img src="cert-ux-scratch.jpg" alt="IxDF Certificate" class="cert-img"/>
+          <div class="cert-info"><div class="cert-name">Become a UX Designer from Scratch</div><div class="cert-meta">IxDF - 2021 to 2024 - 19 hrs</div><span class="cert-badge cert-top">Top 10% in class</span></div>
+          <div class="cert-hint">Click to view</div>
+        </div>
+        <div class="cert-card" onclick="openCert('cert-usability-testing.jpg','Conducting Usability Testing')">
+          <img src="cert-usability-testing.jpg" alt="IxDF Certificate" class="cert-img"/>
+          <div class="cert-info"><div class="cert-name">Conducting Usability Testing</div><div class="cert-meta">IxDF - 2019 to 2020 - 10 hrs</div><span class="cert-badge cert-best">Best in class</span></div>
+          <div class="cert-hint">Click to view</div>
+        </div>
+        <div class="cert-card" onclick="openCert('cert-web-usability.jpg','Web Design for Usability')">
+          <img src="cert-web-usability.jpg" alt="IxDF Certificate" class="cert-img"/>
+          <div class="cert-info"><div class="cert-name">Web Design for Usability</div><div class="cert-meta">IxDF - 2019 to 2021 - 17 hrs</div><span class="cert-badge cert-top">Top 10% in class</span></div>
+          <div class="cert-hint">Click to view</div>
+        </div>
+        <div class="cert-card" onclick="openCert('cert-hci.jpg','Human-Computer Interaction HCI')">
+          <img src="cert-hci.jpg" alt="IxDF Certificate" class="cert-img"/>
+          <div class="cert-info"><div class="cert-name">Human-Computer Interaction - HCI</div><div class="cert-meta">IxDF - 2019</div></div>
+          <div class="cert-hint">Click to view</div>
+        </div>
+        <div class="cert-card" onclick="openCert('cert-disruptive.jpg','Disruptive Design: Is your UX future-proof?')">
+          <img src="cert-disruptive.jpg" alt="IxDF Certificate" class="cert-img"/>
+          <div class="cert-info"><div class="cert-name">Disruptive Design: Is your UX future-proof?</div><div class="cert-meta">IxDF Master Class</div></div>
+          <div class="cert-hint">Click to view</div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- CONTACT -->
-  <div id="contact" class="section">
-    <div class="contact-wrap">
-      <div class="page-eyebrow">Get in touch</div>
-      <h2 class="page-title">Let's talk</h2>
-      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Exploring Senior UX and Lead roles. If you're building something complex that needs a designer who goes deep — I'd love to hear about it.</p>
-      <div class="avail-pill" style="margin-bottom:2rem;display:inline-flex;"><span class="avail-dot"></span>Open to new opportunities</div>
-      <div class="contact-cards">
-        <a class="contact-card" href="/cdn-cgi/l/email-protection#6f1c0e070603171b340e1b3208020e0603410c0002">
-          <div class="c-icon" style="background:var(--teal-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#4ecba0" stroke-width="1.2"/><path d="M2 6l7 5 7-5" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div><div class="c-label">Email</div><div class="c-val">sahilxt[at]gmail.com</div></div>
-        </a>
-        <a class="contact-card" href="https://www.linkedin.com/in/sahilxt" target="_blank">
-          <div class="c-icon" style="background:var(--lavender-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="#a89be8" stroke-width="1.2"/><path d="M6 8v5M6 6v.5" stroke="#a89be8" stroke-width="1.3" stroke-linecap="round"/><path d="M9 13v-2.5c0-1 .6-1.5 1.5-1.5s1.5.5 1.5 1.5V13" stroke="#a89be8" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div><div class="c-label">LinkedIn</div><div class="c-val">linkedin.com/in/sahilxt</div></div>
-        </a>
-        <div class="contact-card">
-          <div class="c-icon" style="background:var(--amber-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.2 2 4 4.2 4 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" stroke="#f5a623" stroke-width="1.2"/><circle cx="9" cy="7" r="1.5" stroke="#f5a623" stroke-width="1.2"/></svg></div>
-          <div><div class="c-label">Based in</div><div class="c-val">Bengaluru, India — open to remote</div></div>
-        </div>
+<div id="contact" class="section">
+  <div class="contact-wrap">
+    <div class="page-eyebrow">Get in touch</div>
+    <h2 class="page-title">Let's talk</h2>
+    <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:1rem;">Exploring Senior UX and Lead roles. If you're building something complex that needs a designer who goes deep - I'd love to hear about it.</p>
+    <div class="avail-pill" style="margin-bottom:2rem;display:inline-flex;"><span class="avail-dot"></span>Open to new opportunities</div>
+    <div class="contact-cards">
+      <a class="contact-card" href="mailto:sahilxt@gmail.com">
+        <div class="c-icon" style="background:var(--teal-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#4ecba0" stroke-width="1.2"/><path d="M2 6l7 5 7-5" stroke="#4ecba0" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="c-label">Email</div><div class="c-val">sahilxt@gmail.com</div></div>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/sahilxt" target="_blank">
+        <div class="c-icon" style="background:var(--lavender-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="#a89be8" stroke-width="1.2"/><path d="M6 8v5M6 6v.5" stroke="#a89be8" stroke-width="1.3" stroke-linecap="round"/><path d="M9 13v-2.5c0-1 .6-1.5 1.5-1.5s1.5.5 1.5 1.5V13" stroke="#a89be8" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div><div class="c-label">LinkedIn</div><div class="c-val">linkedin.com/in/sahilxt</div></div>
+      </a>
+      <div class="contact-card">
+        <div class="c-icon" style="background:var(--amber-dim);"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.2 2 4 4.2 4 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" stroke="#f5a623" stroke-width="1.2"/><circle cx="9" cy="7" r="1.5" stroke="#f5a623" stroke-width="1.2"/></svg></div>
+        <div><div class="c-label">Based in</div><div class="c-val">Bengaluru, India - open to remote</div></div>
       </div>
     </div>
   </div>
+</div>
 
-  <footer><span class="footer-name">Sahil Tamboli</span><span class="footer-copy">© 2026 · Built with care</span></footer>
+<footer>
+  <span class="footer-name">Sahil Tamboli</span>
+  <span class="footer-copy">2026 Built with care</span>
+</footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    function show(id,el){
-      document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-      document.querySelectorAll('.nav-links a,.mobile-menu a').forEach(a=>a.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      if(el)el.classList.add('active');
-      window.scrollTo({
+<div id="certModal" class="cert-modal" onclick="closeCert()">
+  <div class="cert-modal-inner" onclick="event.stopPropagation()">
+    <button class="cert-modal-close" onclick="closeCert()">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Close
+    </button>
+    <img id="certModalImg" src="" alt="Certificate" class="cert-modal-img"/>
+    <div id="certModalTitle" class="cert-modal-title"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function showSection(id, el) {
+  var sections = document.querySelectorAll('.section');
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].classList.remove('active');
+  }
+  var links = document.querySelectorAll('.nav-links a, .mobile-menu a');
+  for (var j = 0; j < links.length; j++) {
+    links[j].classList.remove('active');
+  }
+  document.getElementById(id).classList.add('active');
+  if (el) { el.classList.add('active'); }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+function openCert(src, title) {
+  document.getElementById('certModalImg').src = src;
+  document.getElementById('certModalTitle').textContent = title;
+  document.getElementById('certModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCert() {
+  document.getElementById('certModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeCert(); }
+});
+</script>
+</body>
+</html>
