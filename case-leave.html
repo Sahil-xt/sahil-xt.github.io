@@ -1,123 +1,525 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Leave & Holidays — Sahil Tamboli</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root{--bg:#0f0e0d;--surface:#1a1917;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#a89be8;--accent-dim:rgba(168,155,232,0.1);}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
-    nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
-    .logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}
-    .logo span{color:#4ecba0;font-style:italic;}
-    .back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
-    .back:hover{color:var(--cream);}
-    .wrap{max-width:760px;margin:0 auto;padding:0 2.5rem 6rem}
-    .eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
-    .eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
-    h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,48px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
-    h1 em{font-style:italic;color:var(--accent);}
-    .meta-row{display:flex;gap:2rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
-    .meta-item{font-size:13px;color:var(--muted);}
-    .meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
-    .hero-thumb{width:100%;display:block;overflow:hidden;margin-bottom:3rem;border-radius:16px;border:1px solid var(--border);}
-    .thumb-hint{font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.12);text-align:center;margin-top:10px;}
-    .step{margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
-    .step:last-child{border-bottom:none;}
-    .step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
-    .step-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
-    h2{font-family:'Fraunces',serif;font-size:clamp(20px,3vw,26px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;line-height:1.2;}
-    p{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:1rem;}
-    p strong{color:#d4cfc7;font-weight:500;}
-    p:last-child{margin-bottom:0;}
-    ul{padding-left:1.2rem;margin-bottom:1rem;}
-    li{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:3px;}
-    li strong{color:#d4cfc7;font-weight:500;}
-    .insight{background:rgba(168,155,232,0.05);border-left:2px solid rgba(168,155,232,0.3);padding:10px 14px;margin:1.25rem 0;border-radius:0 6px 6px 0;font-size:13px;color:#a89be8;line-height:1.65;}
-    .insight strong{color:var(--accent);font-weight:500;}
-    .img-ph{width:100%;height:220px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;margin:1.25rem 0;}
-    .img-ph-sm{height:160px;}
-    .img-ph-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);}
-    .img-ph-hint{font-size:11px;color:#443e38;text-align:center;max-width:220px;line-height:1.5;}
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0;}
-    .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:1.25rem 0;}
-    .oc{background:var(--surface);padding:1rem;text-align:center;}
-    .oc-num{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--accent);margin-bottom:3px;}
-    .oc-lbl{font-size:11px;color:var(--muted);}
-    footer{padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
-    .fn{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);}
-    .fc{font-size:12px;color:#443e38;}
-    @media(max-width:640px){nav{padding:1rem 1.25rem;}.wrap{padding:2.5rem 1.25rem 4rem;}.two-col{grid-template-columns:1fr;}.outcomes{grid-template-columns:1fr 1fr;}.meta-row{gap:1.25rem;}}
-  </style>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Leave & Holidays — Sahil Tamboli</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#a89be8;--accent-dim:rgba(168,155,232,0.1);--teal:#4ecba0;--teal-dim:rgba(78,203,160,0.1);--coral:#e87c5a;--coral-dim:rgba(232,124,90,0.1);--amber:#f5a623;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
+.logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}
+.logo span{color:#4ecba0;font-style:italic;}
+.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.back:hover{color:var(--cream);}
+.wrap{max-width:780px;margin:0 auto;padding:0 2.5rem 6rem;}
+.eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
+.eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
+h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,48px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
+h1 em{font-style:italic;color:var(--accent);}
+.meta-row{display:flex;gap:2rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+.meta-item{font-size:13px;color:var(--muted);}
+.meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
+.hero-thumb{width:100%;display:block;overflow:hidden;margin-bottom:3rem;border-radius:16px;border:1px solid var(--border);}
+.step{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);}
+.step:last-child{border-bottom:none;}
+.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.step-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
+h2{font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;line-height:1.2;}
+h3{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:0.5rem;margin-top:1.75rem;letter-spacing:-0.01em;}
+p{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:1rem;}
+p strong{color:#d4cfc7;font-weight:500;}
+p:last-child{margin-bottom:0;}
+ul{padding-left:1.2rem;margin-bottom:1rem;}
+li{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:4px;}
+li strong{color:#d4cfc7;font-weight:500;}
+.insight{background:rgba(168,155,232,0.06);border-left:2px solid rgba(168,155,232,0.35);padding:12px 16px;margin:1.5rem 0;border-radius:0 8px 8px 0;font-size:13px;color:#a89be8;line-height:1.7;}
+.insight strong{color:var(--accent);font-weight:500;}
+.section-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;margin-top:2rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
+.persona-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.persona-name{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:2px;}
+.persona-role{font-size:11px;color:var(--muted);margin-bottom:10px;}
+.persona-quad{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.pq{background:var(--surface2);border-radius:8px;padding:8px 10px;}
+.pq-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.pq-text{font-size:12px;color:#a8a49e;line-height:1.55;}
+.pg-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.pg-box{border-radius:8px;padding:8px 10px;}
+.pg-box.pain{background:rgba(232,124,90,0.07);border:1px solid rgba(232,124,90,0.2);}
+.pg-box.gain{background:rgba(78,203,160,0.06);border:1px solid rgba(78,203,160,0.2);}
+.pg-title{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:6px;font-weight:500;}
+.pg-box.pain .pg-title{color:var(--coral);}
+.pg-box.gain .pg-title{color:var(--teal);}
+.pg-list{font-size:12px;color:#a8a49e;line-height:1.6;padding-left:1rem;}
+.pg-list li{margin-bottom:3px;}
+.approach-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:1rem;}
+.approach-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.approach-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:10px;}
+.flow-steps{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.flow-box{font-size:11px;padding:4px 10px;border-radius:6px;background:rgba(168,155,232,0.12);color:var(--accent);border:1px solid rgba(168,155,232,0.2);}
+.flow-box.branch{background:rgba(245,166,35,0.1);color:var(--amber);border-color:rgba(245,166,35,0.2);}
+.flow-box.chosen-step{background:rgba(78,203,160,0.12);color:var(--teal);border-color:rgba(78,203,160,0.25);}
+.flow-arrow{color:var(--muted);font-size:11px;}
+.procon{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.pro{background:rgba(78,203,160,0.06);border-radius:8px;padding:8px 10px;}
+.con{background:rgba(232,124,90,0.06);border-radius:8px;padding:8px 10px;}
+.pro-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
+.con-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--coral);margin-bottom:4px;}
+.pro-text,.con-text{font-size:12px;color:#a8a49e;line-height:1.55;}
+.chosen-card{border-color:rgba(78,203,160,0.4);background:rgba(78,203,160,0.03);}
+.chosen-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--teal);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;}
+.chosen-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);}
+.tf-table{width:100%;border-collapse:collapse;margin:1.5rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.tf-table th{background:rgba(168,155,232,0.12);padding:9px 12px;font-size:11px;font-weight:500;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;text-align:left;border-bottom:1px solid var(--border);}
+.tf-table td{padding:9px 12px;font-size:12px;color:#a8a49e;line-height:1.5;border-bottom:1px solid var(--border);vertical-align:top;background:var(--surface);}
+.tf-table tr:last-child td{border-bottom:none;}
+.tf-table td.phase{background:var(--surface2);font-size:11px;font-weight:500;color:var(--cream);width:100px;}
+.td-pos{background:rgba(78,203,160,0.04) !important;}
+.td-neg{background:rgba(232,124,90,0.04) !important;}
+.td-neu{background:rgba(245,166,35,0.03) !important;}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;}
+.outcome-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.outcome-num{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1;margin-bottom:4px;}
+.outcome-label{font-size:12px;color:var(--muted);line-height:1.5;}
+.emoji-row{display:flex;gap:2px;align-items:flex-end;padding:1rem 0;flex-wrap:wrap;}
+.emoji-item{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:var(--muted);text-align:center;min-width:52px;}
+.emoji-item span{font-size:18px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
+.two-col-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
+.two-col-title{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px;}
+@media(max-width:640px){nav{padding:1rem 1.25rem;}.wrap{padding:2.5rem 1.25rem 4rem;}.persona-grid,.pg-row,.procon,.outcomes,.two-col{grid-template-columns:1fr;}.meta-row{gap:1.25rem;}.tf-table{font-size:11px;}.tf-table th,.tf-table td{padding:7px 8px;}}
+</style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="logo">Sahil <span>Tamboli</span></a>
-    <a href="index.html#work" class="back" onclick="sessionStorage.setItem('section','work')"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 3L2 6.5 6 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> All work</a>
-  </nav>
+<nav>
+  <a href="index.html" class="logo">Sahil <span>Tamboli</span></a>
+  <a href="index.html#work" class="back" onclick="sessionStorage.setItem('section','work')">
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 3L2 6.5 6 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    All work
+  </a>
+</nav>
 
-  <div class="wrap">
-    <div class="eyebrow">Case study 02 · Leave & Holidays</div>
-    <h1>Leave management — <em>trust on both sides</em></h1>
-    <div class="meta-row">
-      <div class="meta-item"><strong>Role</strong>Lead UX Designer</div>
-      <div class="meta-item"><strong>Platform</strong>Web · Mobile</div>
-      <div class="meta-item"><strong>Challenge</strong>Policy complexity + employee trust</div>
-    </div>
+<div class="wrap">
 
-    <div class="hero-thumb"><img src="img-leave.jpg" alt="Leave and Holidays" style="width:100%;height:auto;display:block;"/></div>
+  <div class="eyebrow">Case study 02 - Leave and Holidays</div>
+  <h1>Leave management -- <em>trust on both sides</em></h1>
+  <div class="meta-row">
+    <div class="meta-item"><strong>Role</strong>Lead UX Designer</div>
+    <div class="meta-item"><strong>Platform</strong>Web - Mobile</div>
+    <div class="meta-item"><strong>Users</strong>HR Admins - Managers - Employees</div>
+    <div class="meta-item"><strong>Scope</strong>Policy Setup - Leave Application - Year-end - Reports</div>
+  </div>
 
-<div class="step">
-      <div class="step-label">Empathise</div>
-      <h2>The same system, completely different experiences</h2>
-      <p>HR managers ran policy exceptions in Excel because the system was too rigid. Employees didn't know their leave balance until a request was rejected. Field employees discovered their comp-off had expired months after earning it — nobody told them there was an expiry.</p>
-      <p>I ran separate research sessions with HR managers and employees — because their experience of the same system was so different that a shared session would have skewed the findings.</p>
-      <div class="insight"><strong>Core tension:</strong> HR needed maximum configurability. Employees needed maximum transparency. More policy options = more complexity to explain to employees. Designing for both without sacrificing either was the central challenge.</div>
-    </div>
+  <div class="hero-thumb"><img src="img-leave.jpg" alt="Leave and Holidays" style="width:100%;height:auto;display:block;"/></div>
 
-    <div class="step">
-      <div class="step-label">Define</div>
-      <h2>Two products hiding inside one module</h2>
-      <p>Indian SME leave policies are genuinely complex: annual, sick, casual, comp-off, short leave (at start/end/break of day), optional holidays requiring approval, carry-forward limits, accrual rules, encashment, and state-specific regional holidays by office location.</p>
-      <ul>
-        <li><strong>For HR:</strong> Policy builder flexible enough to handle all scenarios — without needing Excel for exceptions</li>
-        <li><strong>For employees:</strong> Understand entitlements and constraints <em>before</em> applying — not as rejection errors after</li>
-      </ul>
-    </div>
+  <!-- STEP 1 EMPATHISE -->
+  <div class="step">
+    <div class="step-label">Step 1 -- Empathise</div>
+    <h2>The same leave system serves four completely different people.</h2>
+    <p>Leave management in an Indian SME is deceptively complex. On one side, HR admins deal with government compliance, multiple workforce types, and year-end processing chaos. On the other, a blue collar factory worker just wants to know if his leave was approved before salary day. We mapped all four personas through empathy interviews and observations.</p>
 
-    <div class="step">
-      <div class="step-label">Ideate</div>
-      <h2>Progressive disclosure + proactive transparency</h2>
-      <p><strong>Admin side:</strong> Policy builder with sensible defaults upfront, advanced rules (accrual, carry-forward, encashment) revealed on an "advanced settings" toggle. Works for new HR managers and experienced ones equally.</p>
-      <p><strong>Employee side:</strong> Leave accrual summary showing every grant and deduction in plain language ("added", "expired", "rolled over" — not "credited", "lapsed", "carried forward"). Team availability calendar inside the apply flow. Inline policy constraints visible before submit, not as errors after.</p>
-      <div class="two-col">
-        <div class="img-ph img-ph-sm"><div class="img-ph-label">Policy builder — progressive disclosure</div><div class="img-ph-hint">[Add web policy builder screen]</div></div>
-        <div class="img-ph img-ph-sm"><div class="img-ph-label">Mobile — inline constraints during apply</div><div class="img-ph-hint">[Add mobile apply flow with constraints]</div></div>
+    <div class="section-tag">Persona 01 -- Owner / Admin</div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-name">Owner / Admin</div>
+        <div class="persona-role">Defines company-wide leave policies, monitors compliance</div>
+        <div class="persona-quad">
+          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">I want different policies to manage the workforce. Policies should be flexible. I need an overview dashboard. Employees don't take leaves during the whole year.</div></div>
+          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">What leave types to give? Am I following govt rules? Are rules different for labourers? How are employees taking leaves? Should I restrict rules due to past misuse?</div></div>
+          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Researches policies. Takes reference from other companies. Delegates to HR. Requests monthly leave reports. Reviews everything is in place.</div></div>
+          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Anxious about process going wrong. Excited for better policies. Worried about multiple policy assignment. Frustrated with unauthorised absenteeism.</div></div>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Difficulty understanding government policies</li>
+              <li>Employees accumulate leaves and take all at year-end</li>
+              <li>Multiple policy assignment confusion</li>
+              <li>Confusion in terminology of rules</li>
+              <li>Frustrated with unauthorised absenteeism</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Gain</div>
+            <ul class="pg-list">
+              <li>Ready reference of govt policies by state</li>
+              <li>One policy per employee enforced by system</li>
+              <li>Analytics on leave-taking patterns</li>
+              <li>Info tips for each feature with examples</li>
+              <li>Leave summary report as quick access</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="step">
-      <div class="step-label">Prototype</div>
-      <h2>Parallel prototyping — admin and employee together</h2>
-      <p>I prototyped both sides simultaneously, because every admin configuration decision changed what the employee saw. Testing them in isolation would have missed the connection. The comp-off expiry warning (at 30 days) was added after a prototype session where employees consistently missed the expiry date.</p>
-      <div class="img-ph"><div class="img-ph-label">Leave balance screen + accrual summary + apply flow</div><div class="img-ph-hint">[Add 3–4 mobile screens showing the full employee flow]</div></div>
+    <div class="section-tag">Persona 02 -- HR Manager</div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-name">HR Manager</div>
+        <div class="persona-role">Creates policies, manages year-end processing, handles all requests</div>
+        <div class="persona-quad">
+          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">I have to do a lot of paperwork. Policy making is a very difficult process. How do I import live data from the previous software? Managers don't approve requests on time.</div></div>
+          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">Should I act on pending requests on behalf of managers? Are my policies outdated? Should I tweak policies based on employee suggestions?</div></div>
+          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Prepares rough policy draft with stakeholder. Submits leaves on behalf of blue collar workers. Makes attachment mandatory for sick leave. Manually calculates carry-forward in Excel.</div></div>
+          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Frustrated with overloaded work. Anxious when updating data that affects payroll. Frustrated because year-end should be a one-person job but takes 2-3 people.</div></div>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Managers not approving on time -- mess at payroll</li>
+              <li>Tedious to submit leaves for blue collar workers</li>
+              <li>Manually calculating carry-forward in Excel</li>
+              <li>Someone edits policy by mistake -- clueless</li>
+              <li>Unable to import data from previous software</li>
+              <li>Worried about findings in audit</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Gain</div>
+            <ul class="pg-list">
+              <li>Automated reminders to managers before pay period</li>
+              <li>Edit access to few HRs with audit trail</li>
+              <li>Excel-like view to submit leaves for others</li>
+              <li>Import leave balances via Excel sheet</li>
+              <li>Manual adjust leave balance for special cases</li>
+              <li>Policy change notification to all employees</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="step">
-      <div class="step-label">Test & Ship</div>
-      <h2>Plain language fixed the biggest confusion</h2>
-      <p>First round of testing: employees still didn't understand the accrual summary even when it was visible. The language was the problem — "credited" and "lapsed" were HR terms, not everyday words. Rewriting with a non-HR employee to verify each label resolved this. Optional holidays were also merged into the main apply flow after employees looked for them in the wrong place.</p>
-      <div class="outcomes">
-        <div class="oc"><div class="oc-num">3<span style="font-size:14px">tap</span></div><div class="oc-lbl">Apply flow</div></div>
-        <div class="oc"><div class="oc-num">6<span style="font-size:14px">+</span></div><div class="oc-lbl">Leave types</div></div>
-        <div class="oc"><div class="oc-num">0</div><div class="oc-lbl">Post-submit surprises</div></div>
+    <div class="section-tag">Persona 03 -- Manager</div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-name">Team Manager</div>
+        <div class="persona-role">Approves/rejects leaves, plans team resources</div>
+        <div class="persona-quad">
+          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">Give me a list of all requests needing my action. I can only approve 1 day, not 3 due to work pressure. I approved earlier but now need the employee back for a deadline.</div></div>
+          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">Do I have enough resources? Is my reportee taking leaves too frequently? Is he genuinely sick or faking it? Which employee takes most leaves?</div></div>
+          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Approves/rejects leaves. Plans work based on resource availability. Asks employees to work weekends with comp-off. Submits leaves on behalf of reportees in emergencies.</div></div>
+          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Angry when employees inform about leave at last moment. Frustrated when reportees take leaves too frequently. Sad when he has to reject due to work urgency.</div></div>
+        </div>
       </div>
-      <p><strong>Shipped:</strong> Progressive policy builder, leave accrual summary with plain-language labels, 3-tap apply flow with inline constraints, team availability calendar, comp-off expiry warning at 30 days, location-specific holiday calendars.</p>
+      <div class="persona-card">
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Forgets approving requests on time</li>
+              <li>Too many clicks to approve a single request</li>
+              <li>Difficulty planning work without resource visibility</li>
+              <li>Employees inform about leave at last moment</li>
+              <li>Difficulty remembering replacement coverage</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Gain</div>
+            <ul class="pg-list">
+              <li>Quick approve CTA in notification/email</li>
+              <li>Automated reminders before pay period end</li>
+              <li>Team calendar view of who is on leave</li>
+              <li>Access to all leave details of reportees</li>
+              <li>Trend/analytics on leave patterns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-tag">Persona 04 -- Employee (White and Blue Collar)</div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-name">Employee</div>
+        <div class="persona-role">Applies for leave, tracks balance, waits for approval</div>
+        <div class="persona-quad">
+          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">I don't know how to use smartphones. Where do I find my leaves? I was hospitalised, can you apply for me? Send me reminders for expiring leaves.</div></div>
+          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">Do I have enough leaves? Will it be approved? Will salary be impacted? Can I sandwich leaves around a weekend? What happens to leftover leaves?</div></div>
+          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Applies for leave. Checks calendar for extended weekends. Accumulates leaves for later. Forgets to attach documents. Saves leaves that can be encashed.</div></div>
+          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Dumb when unable to find Leaves section. Happy for instant approvals. Frustrated reminding manager to approve. Shocked at heavy unused balance at year-end.</div></div>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Manager forgets approving -- salary gets deducted</li>
+              <li>Forgets to take leave -- it expires</li>
+              <li>Doesn't understand English / no smartphone</li>
+              <li>Runs from manager to manager with paper application</li>
+              <li>Doesn't know difference between CL, PL, SL</li>
+              <li>Applied for leave but plan changed -- can't cancel</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Gain</div>
+            <ul class="pg-list">
+              <li>SMS notifications to blue collar workers</li>
+              <li>Reminders for leaves expiring soon</li>
+              <li>Limitation rules clearly shown while applying</li>
+              <li>Leave cancellation feature</li>
+              <li>Multilingual support in mobile app</li>
+              <li>Automated reminders to manager before pay period</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight"><strong>Key insight from research:</strong> The HR manager's year-end processing was the most painful moment in the entire leave lifecycle -- calling every manager to clear requests, manually calculating carry-forward, updating Excel sheets under payroll pressure. This single scenario became the design anchor for several automation features.</div>
+  </div>
+
+  <!-- STEP 2 DEFINE -->
+  <div class="step">
+    <div class="step-label">Step 2 -- Define</div>
+    <h2>Three distinct problems hiding under one module.</h2>
+    <p>Synthesising across all four personas revealed three separable problem areas, each with a different owner:</p>
+    <ul>
+      <li><strong>Policy complexity (HR/Admin):</strong> India's leave rules vary by state, industry, and employment type. Creating a policy that satisfies legal requirements, company preferences, and blue-vs-white collar differences -- without a single wrong-click causing a payroll error -- was the central challenge.</li>
+      <li><strong>Approval friction (Manager):</strong> Managers saw leave approvals as an interruption to their real work. The system required too many clicks, provided too little context, and sent no proactive reminders -- making approvals consistently late and triggering salary deduction disputes.</li>
+      <li><strong>Transparency gap (Employee):</strong> Employees had no visibility into how leave rules applied to them until they were rejected or deducted. The system assumed knowledge they didn't have -- especially blue collar workers unfamiliar with software or English.</li>
+    </ul>
+    <div class="insight"><strong>HR Admin's expectation from user journey mapping:</strong> "Easy way to create a new policy. The process should be flexible. Should be time saving." -- This became our design benchmark for the entire policy creation flow.</div>
+  </div>
+
+  <!-- STEP 3 IDEATE -->
+  <div class="step">
+    <div class="step-label">Step 3 -- Ideate</div>
+    <h2>Five structural approaches. One question to answer.</h2>
+    <p>The core design question in the policy creation flow: <strong>where does employee assignment happen relative to policy creation?</strong> Doing both in one flow reduces steps but increases cognitive load. Separating them adds flexibility but risks incomplete setup. We explored five variations and converged on one.</p>
+
+    <div class="approach-card">
+      <div class="approach-label">Approach 1</div>
+      <div class="approach-name">Create and assign in one continuous linear flow</div>
+      <div class="flow-steps">
+        <span class="flow-box">Create Policy</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Add Title</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Define Leave Types + Rules</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Select Employees</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Assign Policy</span>
+      </div>
+      <div class="procon">
+        <div class="pro"><div class="pro-label">Pros</div><div class="pro-text">One-time activity for create and assign both.</div></div>
+        <div class="con"><div class="con-label">Cons</div><div class="con-text">Overloaded flow. No draft feature. Cannot finish without assigning. Second-time assignment requires edit mode.</div></div>
+      </div>
+    </div>
+
+    <div class="approach-card">
+      <div class="approach-label">Approach 2</div>
+      <div class="approach-name">Create now, assign as optional later</div>
+      <div class="flow-steps">
+        <span class="flow-box">Create Policy</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Add Title</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Define Leave Types + Rules</span><span class="flow-arrow">-></span>
+        <span class="flow-box branch">Assign Employee? (optional)</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Save</span>
+      </div>
+      <div class="procon">
+        <div class="pro"><div class="pro-label">Pros</div><div class="pro-text">Assign is optional -- HR can do it later.</div></div>
+        <div class="con"><div class="con-label">Cons</div><div class="con-text">Still overloaded. No draft feature. More steps in defining leave types and rules.</div></div>
+      </div>
+    </div>
+
+    <div class="approach-card">
+      <div class="approach-label">Approach 3</div>
+      <div class="approach-name">Merged: employee criteria inside rules section</div>
+      <div class="flow-steps">
+        <span class="flow-box">Create Policy</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Add Title</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Select Employee Criteria</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Define Leave Types + Rules</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Save / Assign</span>
+      </div>
+      <div class="procon">
+        <div class="pro"><div class="pro-label">Premise</div><div class="pro-text">With audience in mind, HR defines title and rules with more confidence. Goal achieved in one continuous process.</div></div>
+        <div class="con"><div class="con-label">Why not chosen</div><div class="con-text">Rules for probation/tenure-based employees live inside the Rules section -- previewing employees before rules creates a disconnect from the actual goal of policy setup.</div></div>
+      </div>
+    </div>
+
+    <div class="approach-card">
+      <div class="approach-label">Approaches 4A and 4B</div>
+      <div class="approach-name">Audience-first -- select employees before defining rules</div>
+      <div class="flow-steps">
+        <span class="flow-box">Create Policy</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Add Title</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Select Employees</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Define Leave Types + Rules (per type)</span><span class="flow-arrow">-></span>
+        <span class="flow-box branch">Save / Assign</span>
+      </div>
+      <div class="procon">
+        <div class="pro"><div class="pro-label">Pros</div><div class="pro-text">One-time create and assign. Employee criteria can be completed in Step 1 of current process.</div></div>
+        <div class="con"><div class="con-label">Cons</div><div class="con-text">Overloaded. No draft. Cannot finish without assigning. Carries cognitive load of leave types and rules for longer -- until employee criteria is finished.</div></div>
+      </div>
+    </div>
+
+    <div class="approach-card chosen-card">
+      <div class="chosen-badge">Chosen approach</div>
+      <div class="approach-label">Approach 5 -- Rule-based Home Setting</div>
+      <div class="approach-name">Modular: create policy independently, assign separately as a distinct action</div>
+      <div class="flow-steps">
+        <span class="flow-box chosen-step">Leave Policy View</span><span class="flow-arrow">-></span>
+        <span class="flow-box chosen-step">Create Policy</span><span class="flow-arrow">-></span>
+        <span class="flow-box chosen-step">Add Title + Leave Types</span><span class="flow-arrow">-></span>
+        <span class="flow-box chosen-step">Save</span>
+      </div>
+      <div class="flow-steps" style="margin-top:4px;">
+        <span class="flow-box">All Policies View</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Select Policy and Assign</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Select Employee Criteria (max 3 combinations)</span><span class="flow-arrow">-></span>
+        <span class="flow-box">Save / Assign</span>
+      </div>
+      <div class="procon" style="margin-top:10px;">
+        <div class="pro"><div class="pro-label">Why we chose this</div><div class="pro-text">Easily adaptable to the current developed process. Less cognitive load -- the whole process can be broken into separate sessions. Edit and assigning can be done separately when the user returns. Draft preserved. Familiar to users who know competitor tools.</div></div>
+        <div class="con"><div class="con-label">Trade-off</div><div class="con-text">Requires completing multiple distinct processes. Slightly less user-friendly for first-time users unfamiliar with the separation.</div></div>
+      </div>
+    </div>
+
+    <div class="insight"><strong>Why Approach 5 won:</strong> HR managers don't always assign policies in the same session they create them. A new policy might be drafted, reviewed by a senior stakeholder, and only then assigned to employees. Keeping create and assign as separate, resumable actions matched the real workflow -- not the ideal one.</div>
+
+    <h3>Holiday Calendar -- a separate ideation thread</h3>
+    <p>In parallel to policy setup, we mapped the HR admin's mental model for defining the annual holiday calendar. The thought process runs in a predictable order: National and Compulsory holidays first, then Optional ones (preferably near weekly offs), then State-level holidays relevant to company locations. We designed the calendar setup to mirror this exact sequence -- not alphabetically or by date, but by priority type.</p>
+  </div>
+
+  <!-- STEP 4 PROTOTYPE -->
+  <div class="step">
+    <div class="step-label">Step 4 -- Prototype</div>
+    <h2>Task flow: HR Admin creating a leave policy and assigning it.</h2>
+    <p>With Approach 5 confirmed, we mapped the complete task flow for the primary HR Admin use case across five phases -- including tasks, emotional states, and improvement areas at each stage.</p>
+
+    <table class="tf-table">
+      <thead>
+        <tr>
+          <th style="width:100px;">Phase</th>
+          <th>Enter and Explore</th>
+          <th>Provide</th>
+          <th>Applicable For</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="phase">Task List</td>
+          <td>Login - Find "Leave" - Find "Leave Policy"</td>
+          <td>Set title - Select/create leave types - Define rules - Save and Next</td>
+          <td>Define/select category or all org - Assign (CTA)</td>
+          <td>Enter edit mode - Update changes - Save</td>
+          <td>Delete policy - Confirmation - Make decision</td>
+        </tr>
+        <tr>
+          <td class="phase">Feeling</td>
+          <td class="td-pos">Delighted with instant login and easy navigation to leave policy</td>
+          <td class="td-pos">Serious due to policy importance. Happy to see one-step process</td>
+          <td class="td-neg">Confusion and frustration due to overlapping assignment scenarios</td>
+          <td class="td-neu">Normal -- learned through previous experience</td>
+          <td class="td-neg">Anxious about future impact of deletion</td>
+        </tr>
+        <tr>
+          <td class="phase">Opportunity</td>
+          <td>Multiple ways to reach target page. Additional navigation options.</td>
+          <td>Reduce number of input fields</td>
+          <td>Minimise overlapping scenarios from back-end database</td>
+          <td>Same as create flow improvements</td>
+          <td>Better ways to show deletion impact. Approval workflow for accidental deletion</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>HR Admin experience curve across the policy creation journey</h3>
+    <p>The emotion curve revealed a critical dip at the "Applicable For" phase -- where overlapping inclusion and exclusion rules caused the most frustration. This directly informed our decision to add an employee overlap validation layer and simplify the assignment UI to a maximum of 3 employee criteria combinations.</p>
+
+    <div class="emoji-row">
+      <div class="emoji-item"><span>😊</span><span>Enter</span></div>
+      <div class="emoji-item"><span>😊</span><span>Explore</span></div>
+      <div class="emoji-item"><span>😐</span><span>Provide</span></div>
+      <div class="emoji-item"><span>😞</span><span>Applicable For</span></div>
+      <div class="emoji-item"><span>😞</span><span>Assign</span></div>
+      <div class="emoji-item"><span>😊</span><span>Update</span></div>
+      <div class="emoji-item"><span>😟</span><span>Delete</span></div>
+    </div>
+
+    <h3>Key prototype decisions from research synthesis</h3>
+    <ul>
+      <li><strong>Default leave types on first entry:</strong> Rather than an empty policy, we pre-populated common leave types (CL, PL, SL) so HR could edit rather than start from scratch.</li>
+      <li><strong>Draft save at every step:</strong> Because policy creation spans multiple sessions and stakeholder reviews, draft state is preserved automatically without manual save.</li>
+      <li><strong>Maximum 3 employee criteria combinations:</strong> Research showed that more than 3 assignment criteria caused confusion and errors. The system enforces this limit with a clear override view.</li>
+      <li><strong>Progressive disclosure per leave type:</strong> Rules for each leave type are set individually per screen -- not all on one page -- reducing cognitive overload while allowing deep configuration.</li>
+      <li><strong>Year-end processing automation:</strong> Automated reminders to managers, bulk approve/reject option for HR, and auto carry-forward calculation eliminated the most painful parts of year-end.</li>
+      <li><strong>Employee-facing policy summary:</strong> When a policy is assigned to an employee, they receive a plain-language summary of their leave entitlements -- not a link to the admin config.</li>
+    </ul>
+
+    <h3>My Info -- the employee UX flow</h3>
+    <p>In parallel to the admin/policy side, we designed the complete employee leave-taking journey -- from the "My Info" dashboard through to application, approval tracking, and balance visibility. Key decisions: a tour guide for new users, leave reminder triggers to managers, and an "apply on behalf" option for hospitalised or non-digital workers.</p>
+    <div class="two-col">
+      <div class="two-col-card">
+        <div class="two-col-title">New employee path</div>
+        <p style="font-size:12px;color:#a8a49e;margin:0;">Tour guide triggered on first login. Explains leave types in plain language. Surfaces available balance and pending requests prominently.</p>
+      </div>
+      <div class="two-col-card">
+        <div class="two-col-title">Experienced employee path</div>
+        <p style="font-size:12px;color:#a8a49e;margin:0;">Direct access to Apply for Leave. Calendar view showing team leaves and holidays. Reminder triggers to manager. Leave cancellation if plans change.</p>
+      </div>
     </div>
   </div>
-  </div><!-- /wrap -->
 
-  <footer><span class="fn">Sahil Tamboli</span><span class="fc">© 2026</span></footer>
+  <!-- STEP 5 TEST AND SHIP -->
+  <div class="step">
+    <div class="step-label">Step 5 -- Test and Ship</div>
+    <h2>Tested with HR managers across industries. Shipped across 1000+ companies.</h2>
+    <p>Usability testing was conducted with HR managers from manufacturing, retail, IT services, and logistics companies. Key findings that changed the design before shipping:</p>
+    <ul>
+      <li><strong>Default policy discovery:</strong> All HR testers went directly to edit the default policy rather than creating a new one -- validating the "pre-populate on entry" decision and saving significant setup time.</li>
+      <li><strong>Applicable For confusion confirmed:</strong> Every tester struggled with the overlap scenario. We added a real-time employee preview that showed exactly who was affected before saving, resolving 80% of the confusion.</li>
+      <li><strong>Year-end automation validated:</strong> Automated manager reminders were the single highest-valued feature across all HR testers. "This alone saves me 2 hours of calling every month."</li>
+      <li><strong>Blue collar SMS adoption:</strong> Testing with factory supervisors confirmed that SMS for leave status updates was the only viable communication channel -- app notifications and emails were not reliable for blue collar workers.</li>
+      <li><strong>Reports flow -- two paths emerged:</strong> Managers wanted quick insights and graphs. HR wanted custom reports they could export and share with owners. We shipped two separate entry points with different defaults.</li>
+    </ul>
+
+    <div class="outcomes">
+      <div class="outcome-card">
+        <div class="outcome-num">3<span style="font-size:18px;color:var(--muted);">-tap</span></div>
+        <div class="outcome-label">Leave application flow from login to submit</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">0</div>
+        <div class="outcome-label">Manual carry-forward calculations at year-end</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">1000<span style="font-size:18px;color:var(--muted);">+</span></div>
+        <div class="outcome-label">Companies using the leave policy setup flow</div>
+      </div>
+    </div>
+
+    <h3>What shipped</h3>
+    <ul>
+      <li><strong>Modular policy creation</strong> (Approach 5) -- create, configure, and assign as separable independent actions</li>
+      <li><strong>Progressive disclosure per leave type</strong> -- rules configured individually per leave type, not all on one screen</li>
+      <li><strong>Year-end automation</strong> -- automated manager reminders, bulk HR actions, and auto carry-forward with exception handling</li>
+      <li><strong>Team availability calendar</strong> -- employees and managers see team leave dates before applying</li>
+      <li><strong>Employee-facing plain-language policy summary</strong> -- communicated at assignment, not buried in admin settings</li>
+      <li><strong>Inline constraint warnings</strong> -- limitation rules shown at application time, not after rejection</li>
+      <li><strong>SMS notifications for blue collar workers</strong> -- leave approval status, expiry reminders, salary impact warnings</li>
+      <li><strong>Leave cancellation</strong> -- employees can cancel approved leaves if plans change, with manager notification</li>
+      <li><strong>Reports with two paths</strong> -- insights and graphs for managers, custom export for HR admins</li>
+    </ul>
+  </div>
+
+</div><!-- /wrap -->
+
+<footer style="padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+  <span style="font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);">Sahil Tamboli</span>
+  <span style="font-size:12px;color:#443e38;">2026 Built with care</span>
+</footer>
+
 </body>
 </html>
