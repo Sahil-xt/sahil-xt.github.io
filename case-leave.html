@@ -276,6 +276,38 @@ li strong{color:#d4cfc7;font-weight:500;}
       </div>
     </div>
 
+    
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:1.5rem 0;">
+      <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:4px;">Mood graph -- HR Admin managing leave policies and year-end processing</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:1.25rem;">Emotional journey across key leave management tasks throughout the year</div>
+      <div style="position:relative;height:100px;margin-bottom:0.5rem;">
+        <svg viewBox="0 0 700 100" preserveAspectRatio="none" fill="none" style="width:100%;height:100%;">
+          <line x1="0" y1="20" x2="700" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="50" x2="700" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="80" x2="700" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <defs><linearGradient id="lvGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a89be8" stop-opacity="0.3"/><stop offset="100%" stop-color="#a89be8" stop-opacity="0"/></linearGradient></defs>
+          <path d="M50,68 C90,72 120,78 150,80 C190,82 220,35 250,28 C290,22 330,25 370,30 C410,35 440,45 470,55 C510,68 540,82 570,85 C600,88 630,40 670,25" stroke="#a89be8" stroke-width="2" fill="none"/>
+          <path d="M50,68 C90,72 120,78 150,80 C190,82 220,35 250,28 C290,22 330,25 370,30 C410,35 440,45 470,55 C510,68 540,82 570,85 C600,88 630,40 670,25 L670,100 L50,100 Z" fill="url(#lvGrad)"/>
+          <circle cx="50"  cy="68" r="4" fill="#f5a623"/>
+          <circle cx="150" cy="80" r="4" fill="#e87c5a"/>
+          <circle cx="250" cy="28" r="4" fill="#a89be8"/>
+          <circle cx="370" cy="30" r="4" fill="#a89be8"/>
+          <circle cx="470" cy="55" r="4" fill="#f5a623"/>
+          <circle cx="570" cy="85" r="4" fill="#e87c5a"/>
+          <circle cx="670" cy="25" r="4" fill="#4ecba0"/>
+        </svg>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;">
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F610;</span>Policy<br/>Creation</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F61F;</span>Assign to<br/>Employees</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Routine<br/>Approvals</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Mid-year<br/>Running</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F610;</span>Year-end<br/>Prep</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F621;</span>Carry-<br/>forward chaos</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60C;</span>New year<br/>policies set</div>
+      </div>
+    </div>
+
     <div class="insight"><strong>Key insight from research:</strong> The HR manager's year-end processing was the most painful moment in the entire leave lifecycle -- calling every manager to clear requests, manually calculating carry-forward, updating Excel sheets under payroll pressure. This single scenario became the design anchor for several automation features.</div>
   </div>
 

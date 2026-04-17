@@ -337,6 +337,39 @@ li strong{color:#d4cfc7;font-weight:500;}
       </div>
     </div>
 
+    
+    <!-- Mood graph for HR Admin payroll lifecycle -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:1.5rem 0;">
+      <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:4px;">Mood graph -- HR Admin managing attendance policy and daily anomalies</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:1.25rem;">Emotional journey across key attendance management tasks</div>
+      <div style="position:relative;height:100px;margin-bottom:0.5rem;">
+        <svg viewBox="0 0 700 100" preserveAspectRatio="none" fill="none" style="width:100%;height:100%;">
+          <line x1="0" y1="20" x2="700" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="50" x2="700" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="80" x2="700" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <defs><linearGradient id="attGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4ecba0" stop-opacity="0.3"/><stop offset="100%" stop-color="#4ecba0" stop-opacity="0"/></linearGradient></defs>
+          <path d="M50,30 C90,25 120,22 150,22 C190,22 220,70 250,78 C290,84 330,82 370,75 C410,68 440,28 470,22 C510,16 550,55 580,65 C610,72 640,35 670,28" stroke="#4ecba0" stroke-width="2" fill="none"/>
+          <path d="M50,30 C90,25 120,22 150,22 C190,22 220,70 250,78 C290,84 330,82 370,75 C410,68 440,28 470,22 C510,16 550,55 580,65 C610,72 640,35 670,28 L670,100 L50,100 Z" fill="url(#attGrad)"/>
+          <circle cx="50"  cy="30" r="4" fill="#4ecba0"/>
+          <circle cx="150" cy="22" r="4" fill="#4ecba0"/>
+          <circle cx="250" cy="78" r="4" fill="#e87c5a"/>
+          <circle cx="370" cy="75" r="4" fill="#e87c5a"/>
+          <circle cx="470" cy="22" r="4" fill="#4ecba0"/>
+          <circle cx="580" cy="65" r="4" fill="#f5a623"/>
+          <circle cx="670" cy="28" r="4" fill="#4ecba0"/>
+        </svg>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;">
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Policy<br/>Setup</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Kiosk<br/>Live</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F61F;</span>Daily<br/>Anomalies</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F61F;</span>Regularise<br/>Requests</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Report<br/>Generated</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F610;</span>Payroll<br/>Lock Wait</div>
+        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Cycle<br/>Complete</div>
+      </div>
+    </div>
+
     <div class="insight"><strong>Key insight from empathy mapping:</strong> The same attendance system is used by a factory floor worker with no smartphone and a college-educated HR manager running policy from a laptop. Designing for both simultaneously — without compromising either — became the central design challenge.</div>
   </div>
 
