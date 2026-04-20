@@ -5,125 +5,73 @@
 <title>Payroll — Sahil Tamboli</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#e87c5a;--teal:#4ecba0;--teal-dim:rgba(78,203,160,0.1);--amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--lavender:#a89be8;}
+:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#e87c5a;--coral:#e87c5a;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--cream);font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;}
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
-.logo{font-family:"Fraunces",serif;font-size:17px;color:var(--cream);text-decoration:none;}
+.logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}
 .logo span{color:#4ecba0;font-style:italic;}
-.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
-.back:hover{color:var(--cream);}
-.wrap{max-width:780px;margin:0 auto;padding:0 2.5rem 6rem;}
+.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 2.5rem 6rem;}
 .eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
-.eyebrow::before{content:"";display:inline-block;width:20px;height:1px;background:var(--accent);}
-h1{font-family:"Fraunces",serif;font-size:clamp(28px,5vw,48px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
+.eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
+h1{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:0.5rem;}
 h1 em{font-style:italic;color:var(--accent);}
-.meta-row{display:flex;gap:2rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+.subhead{font-size:15px;color:var(--muted);margin-bottom:2rem;font-weight:400;}
+.meta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3rem;}
 .meta-item{font-size:13px;color:var(--muted);}
 .meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
 .hero-thumb{width:100%;display:block;overflow:hidden;margin-bottom:3rem;border-radius:16px;border:1px solid var(--border);}
-.step{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);}
+.step{margin-bottom:5rem;padding-bottom:5rem;border-bottom:1px solid var(--border);}
 .step:last-child{border-bottom:none;}
-.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
-.step-label::before{content:"";display:inline-block;width:16px;height:1px;background:var(--accent);}
-h2{font-family:"Fraunces",serif;font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;line-height:1.2;}
-h3{font-family:"Fraunces",serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:0.5rem;margin-top:1.75rem;letter-spacing:-0.01em;}
-p{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:1rem;}
-p strong{color:#d4cfc7;font-weight:500;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:1.2rem;margin-bottom:1rem;}
-li{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:4px;}
-li strong{color:#d4cfc7;font-weight:500;}
-.insight{background:rgba(232,124,90,0.06);border-left:2px solid rgba(232,124,90,0.35);padding:12px 16px;margin:1.5rem 0;border-radius:0 8px 8px 0;font-size:13px;color:#c4907a;line-height:1.7;}
-.insight strong{color:var(--accent);font-weight:500;}
-.section-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;margin-top:2rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;font-weight:500;}
+.step-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
+h2{font-family:'Fraunces',serif;font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:2rem;line-height:1.1;}
+p{font-size:13px;color:#a8a49e;line-height:1.7;margin-bottom:1rem;}
 
-/* ── PERSONA CARD ─────────────────────────────────────── */
-.persona-block{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:1.5rem 0;}
-.persona-header{display:grid;grid-template-columns:180px 1fr;gap:0;}
-.persona-photo-col{background:linear-gradient(160deg,#1e1c1a,#141210);padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:10px;border-right:1px solid var(--border);}
-.persona-avatar{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;}
-.persona-name-big{font-family:"Fraunces",serif;font-size:15px;font-weight:600;color:var(--cream);text-align:center;letter-spacing:-0.01em;}
-.persona-title{font-size:11px;color:var(--muted);text-align:center;line-height:1.4;}
-.persona-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:4px;}
-.ptag{font-size:10px;padding:2px 8px;border-radius:100px;border:1px solid var(--border);color:var(--muted);}
-.persona-stats{padding:1.25rem;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.pstat{background:var(--surface2);border-radius:8px;padding:8px 10px;text-align:center;}
-.pstat-val{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:1px;}
-.pstat-lbl{font-size:10px;color:var(--muted);}
-.persona-quote-bar{padding:0.85rem 1.25rem;background:rgba(232,124,90,0.05);border-top:1px solid var(--border);font-size:13px;color:#c4907a;font-style:italic;line-height:1.6;}
-.persona-body{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-top:1px solid var(--border);}
-.pquad{background:var(--surface);padding:1rem 1.25rem;}
-.pquad-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:5px;}
-.pquad-label::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--accent);}
-.pquad-text{font-size:12px;color:#a8a49e;line-height:1.6;}
-.pg-cols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-top:1px solid var(--border);}
-.pg-col{background:var(--surface);padding:1rem 1.25rem;}
-.pg-col-title{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;font-weight:500;margin-bottom:8px;}
-.pg-col.pain .pg-col-title{color:var(--accent);}
-.pg-col.gain .pg-col-title{color:var(--teal);}
-.pg-list{padding-left:1rem;font-size:12px;color:#a8a49e;line-height:1.65;}
-.pg-list li{margin-bottom:3px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0;}
 
-/* ── MOOD GRAPH ───────────────────────────────────────── */
-.mood-graph{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:1.5rem 0;}
-.mood-title{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:4px;}
-.mood-subtitle{font-size:11px;color:var(--muted);margin-bottom:1.25rem;}
-.mood-chart{position:relative;height:100px;margin-bottom:0.5rem;}
-.mood-chart svg{width:100%;height:100%;}
-.mood-stages{display:flex;justify-content:space-between;margin-top:6px;}
-.mood-stage{text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;}
-.mood-stage .emoji{font-size:16px;display:block;margin-bottom:2px;}
-.mood-axis{display:flex;flex-direction:column;justify-content:space-between;position:absolute;left:0;top:0;height:100%;font-size:9px;color:rgba(255,255,255,0.2);}
+.persona-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;}
+.persona-icon{font-size:40px;margin-bottom:1rem;}
+.persona-name{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:2px;}
+.persona-role{font-size:11px;color:var(--muted);margin-bottom:1rem;}
+.persona-item{font-size:12px;color:#a8a49e;padding:8px 0;border-bottom:1px solid var(--border);}
+.persona-item:last-child{border-bottom:none;}
+.persona-icon-key{font-size:10px;color:var(--accent);font-weight:600;text-transform:uppercase;display:block;margin-bottom:3px;}
 
-/* ── PROBLEM CARDS ────────────────────────────────────── */
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
-.problem-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
-.problem-owner{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-.problem-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px;}
-.problem-body{font-size:12px;color:#a8a49e;line-height:1.6;}
+.insight-box{background:rgba(232,124,90,0.06);border-left:3px solid rgba(232,124,90,0.4);padding:1.5rem;margin:2rem 0;border-radius:0 8px 8px 0;}
+.insight-box p{margin:0;font-size:13px;color:#d4907a;line-height:1.7;}
+.insight-box strong{color:var(--coral);font-weight:600;}
 
-/* ── FLOW ─────────────────────────────────────────────── */
-.flow-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:0.75rem 0;}
-.flow-box{font-size:11px;padding:5px 11px;border-radius:6px;background:rgba(232,124,90,0.1);color:var(--accent);border:1px solid rgba(232,124,90,0.2);}
-.flow-box.ok{background:rgba(78,203,160,0.1);color:var(--teal);border-color:rgba(78,203,160,0.2);}
-.flow-box.warn{background:rgba(245,166,35,0.1);color:var(--amber);border-color:rgba(245,166,35,0.2);}
-.flow-arrow{color:var(--muted);font-size:12px;}
+.payslip{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;margin:2rem 0;}
+.payslip-section{margin-bottom:1.5rem;}
+.section-title{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:1rem;}
+.payslip-row{display:flex;justify-content:space-between;font-size:13px;color:#a8a49e;padding:8px 0;border-bottom:1px solid var(--border);}
+.payslip-row:last-child{border-bottom:none;color:var(--cream);font-weight:600;padding-top:12px;margin-top:8px;border-top:1px solid var(--border);}
+.payslip-highlight{background:rgba(232,124,90,0.08);padding:1.5rem;border-radius:8px;margin-top:1.5rem;text-align:center;}
+.payslip-hero{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.payslip-label{font-size:11px;color:var(--muted);}
 
-/* ── TASK FLOW TABLE ──────────────────────────────────── */
-.tf-table{width:100%;border-collapse:collapse;margin:1.5rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
-.tf-table th{background:rgba(232,124,90,0.1);padding:9px 12px;font-size:11px;font-weight:500;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;text-align:left;border-bottom:1px solid var(--border);}
-.tf-table td{padding:9px 12px;font-size:12px;color:#a8a49e;line-height:1.5;border-bottom:1px solid var(--border);vertical-align:top;background:var(--surface);}
-.tf-table tr:last-child td{border-bottom:none;}
-.tf-table td.phase{background:var(--surface2);font-size:11px;font-weight:500;color:var(--cream);width:90px;}
-.td-pos{background:rgba(78,203,160,0.04) !important;}
-.td-neg{background:rgba(232,124,90,0.04) !important;}
-.td-neu{background:rgba(245,166,35,0.03) !important;}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
+.feature-emoji{font-size:32px;margin-bottom:1rem;display:block;}
+.feature-title{font-size:12px;font-weight:600;color:var(--cream);margin-bottom:6px;}
+.feature-desc{font-size:11px;color:#a8a49e;line-height:1.5;}
 
-/* ── PAYSLIP ──────────────────────────────────────────── */
-.payslip-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
-.payslip-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
-.payslip-heading{font-size:11px;letter-spacing:0.07em;text-transform:uppercase;font-weight:500;margin-bottom:8px;}
-.payslip-heading.earn{color:var(--teal);}
-.payslip-heading.ded{color:var(--accent);}
-.payslip-row{display:flex;justify-content:space-between;font-size:12px;color:#a8a49e;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-.payslip-row:last-child{border-bottom:none;color:var(--cream);font-weight:500;padding-top:8px;margin-top:4px;border-top:1px solid var(--border);}
-.net-card{background:rgba(78,203,160,0.08);border:1px solid rgba(78,203,160,0.2);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;}
-
-/* ── OUTCOMES ─────────────────────────────────────────── */
-.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;}
-.outcome-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
-.outcome-num{font-family:"Fraunces",serif;font-size:28px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1;margin-bottom:4px;}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0;}
+.outcome{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;text-align:center;}
+.outcome-emoji{font-size:28px;display:block;margin-bottom:1rem;}
+.outcome-num{font-family:'Fraunces',serif;font-size:36px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1;margin-bottom:6px;}
 .outcome-label{font-size:12px;color:var(--muted);line-height:1.5;}
 
+@media(max-width:1024px){
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+  .outcomes{grid-template-columns:1fr;}
+}
 @media(max-width:640px){
-  nav{padding:1rem 1.25rem;}
-  .wrap{padding:2.5rem 1.25rem 4rem;}
-  .persona-header{grid-template-columns:1fr;}
-  .persona-stats{grid-template-columns:1fr 1fr;}
-  .persona-body,.pg-cols,.problem-grid,.payslip-grid,.outcomes{grid-template-columns:1fr;}
-  .meta-row{gap:1.25rem;}
-  .tf-table th,.tf-table td{padding:7px 8px;font-size:11px;}
+  .wrap{padding:0 1.5rem 4rem;}
+  .meta-row{gap:1.5rem;}
 }
 </style>
 </head>
@@ -137,499 +85,165 @@ li strong{color:#d4cfc7;font-weight:500;}
 </nav>
 
 <div class="wrap">
-  <div class="eyebrow">Case study 04 - Payroll</div>
-  <h1>Payroll -- <em>powerful for HR, not scary for employees</em></h1>
+  <div class="eyebrow">Case 04 — Payroll</div>
+  <h1>Payroll -- <em>confidence before the lock</em></h1>
+  <p class="subhead">Exceptions-first dashboard + plain-language payslips + auto statutory tracking</p>
   <div class="meta-row">
     <div class="meta-item"><strong>Role</strong>Lead UX Designer</div>
-    <div class="meta-item"><strong>Platform</strong>Web - Mobile</div>
-    <div class="meta-item"><strong>Users</strong>HR Admins - Accounts Managers - Employees</div>
-    <div class="meta-item"><strong>Scope</strong>Pre-run Validation - Payslip - Statutory Compliance - Reports</div>
+    <div class="meta-item"><strong>Platform</strong>Web + Mobile</div>
+    <div class="meta-item"><strong>Users</strong>Accounts managers, HR admins, employees</div>
   </div>
+
   <div class="hero-thumb"><img src="img-payroll.jpg" alt="Payroll" style="width:100%;height:auto;display:block;"/></div>
 
   <!-- STEP 1 -->
   <div class="step">
-    <div class="step-label">Step 1 -- Empathise</div>
-    <h2>Payroll lives at the intersection of anxiety and trust.</h2>
-    <p>For HR managers and accounts managers, payroll is the highest-stakes task in the HRMS cycle -- one wrong value affects every employee. For employees, it is the monthly moment of truth: did the system get it right? We interviewed both sides and built detailed persona profiles grounded in real user research.</p>
+    <div class="step-label">Step 1 — Empathise</div>
+    <h2>Payroll lock is the highest-stakes moment.</h2>
+    <p>One wrong value affects every employee. Researched 30+ companies. The locked payroll is irreversible. HR anxiety peaks month-end.</p>
+    
+    <div class="grid-2">
+      <div class="persona-card">
+        <div class="persona-icon">💼</div>
+        <div class="persona-name">Accounts Manager</div>
+        <div class="persona-role">Verifies salary, taxes, transfers</div>
+        <div class="persona-item"><span class="persona-icon-key">Pain:</span> Arrears calculation hard, investment proof validation tedious, statutory deadlines tricky</div>
+        <div class="persona-item"><span class="persona-icon-key">Need:</span> Auto-flag anomalies, inline doc viewer, deadline countdown</div>
+      </div>
 
-    <div class="section-tag">Persona 01 -- Accounts Manager</div>
-    <div class="persona-block">
-      <div class="persona-header">
-        <div class="persona-photo-col">
-          <div class="persona-avatar" style="background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.2);">&#x1F4BC;</div>
-          <div class="persona-name-big">Bhavesh Shah</div>
-          <div class="persona-title">Accounts Manager<br/>Ahmedabad</div>
-          <div class="persona-tags">
-            <span class="ptag">Introvert</span>
-            <span class="ptag">Thinker</span>
-            <span class="ptag">Tech-savvy</span>
-          </div>
-        </div>
-        <div>
-          <div class="persona-stats">
-            <div class="pstat"><div class="pstat-val">26</div><div class="pstat-lbl">Age</div></div>
-            <div class="pstat"><div class="pstat-val">7 yrs</div><div class="pstat-lbl">Finance exp.</div></div>
-            <div class="pstat"><div class="pstat-val">BCOM</div><div class="pstat-lbl">Education</div></div>
-            <div class="pstat"><div class="pstat-val">Taxation</div><div class="pstat-lbl">Expert</div></div>
-            <div class="pstat"><div class="pstat-val">Tax Law</div><div class="pstat-lbl">Very Good</div></div>
-            <div class="pstat"><div class="pstat-val">Zoho/Keka</div><div class="pstat-lbl">Tools Used</div></div>
-          </div>
-          <div class="persona-quote-bar">"Automated payroll software helps to reduce the work and calculations. So we can finalise the payroll in 2 days."</div>
-        </div>
-      </div>
-      <div class="persona-body">
-        <div class="pquad">
-          <div class="pquad-label">Goals</div>
-          <div class="pquad-text">Finish payments in the time window. Review salary amounts and verify. Check anomalies or mismatches vs previous month values.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Frustrations</div>
-          <div class="pquad-text">Arrears is the most frustrating thing to calculate and manage. Validating investment proofs and verifying amount values. Onboarding new employees mid-cycle.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Does</div>
-          <div class="pquad-text">Runs payroll calculations and compliance. Cross-verifies system salary with manual calculations. Conducts payroll audits. Manages statutory transfers to government authorities.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Feels</div>
-          <div class="pquad-text">Anxious during month-end with large calculations. Frustrated with manual and tedious processes. Confident when using a reliable system. Satisfaction when payroll runs smoothly.</div>
-        </div>
-      </div>
-      <div class="pg-cols">
-        <div class="pg-col pain">
-          <div class="pg-col-title">Pain</div>
-          <ul class="pg-list">
-            <li>Arrears calculation is most frustrating</li>
-            <li>Validating investment proofs is time-consuming</li>
-            <li>Mid-year setup: uploading previous months data is tedious</li>
-            <li>Understanding statutory amounts to transfer to govt</li>
-            <li>Forgetting statutory transfer deadlines leads to penalty</li>
-            <li>Complex challan generation and return filing</li>
-            <li>Must focus on anomaly employees -- not waste effort on all</li>
-          </ul>
-        </div>
-        <div class="pg-col gain">
-          <div class="pg-col-title">Gain</div>
-          <ul class="pg-list">
-            <li>Efficient, error-free payroll processing</li>
-            <li>Real-time anomaly dashboard for quick action</li>
-            <li>Statutory deadline tracker with one-click challan</li>
-            <li>Seamless integration with attendance and leave modules</li>
-            <li>Focus on changed employees only -- skip unchanged ones</li>
-            <li>Mobile access for remote payroll management</li>
-          </ul>
-        </div>
+      <div class="persona-card">
+        <div class="persona-icon">👩‍💼</div>
+        <div class="persona-name">HR Manager</div>
+        <div class="persona-role">Runs payroll, handles queries</div>
+        <div class="persona-item"><span class="persona-icon-key">Pain:</span> Month-end anxiety spike, too many employee questions, lock moment is terrifying</div>
+        <div class="persona-item"><span class="persona-icon-key">Need:</span> Show anomalies only, impact preview before lock, plain-language payslips</div>
       </div>
     </div>
 
-    <div class="section-tag">Persona 02 -- HR Manager</div>
-    <div class="persona-block">
-      <div class="persona-header">
-        <div class="persona-photo-col">
-          <div class="persona-avatar" style="background:rgba(168,155,232,0.12);border:1px solid rgba(168,155,232,0.2);">&#x1F469;&#x200D;&#x1F4BC;</div>
-          <div class="persona-name-big">Sonal Kamat</div>
-          <div class="persona-title">HR Manager<br/>Bangalore</div>
-          <div class="persona-tags">
-            <span class="ptag">Extrovert</span>
-            <span class="ptag">Outgoing</span>
-            <span class="ptag">Tech-savvy</span>
-          </div>
-        </div>
-        <div>
-          <div class="persona-stats">
-            <div class="pstat"><div class="pstat-val">27</div><div class="pstat-lbl">Age</div></div>
-            <div class="pstat"><div class="pstat-val">5 yrs</div><div class="pstat-lbl">HR exp.</div></div>
-            <div class="pstat"><div class="pstat-val">MBA HR</div><div class="pstat-lbl">Education</div></div>
-            <div class="pstat"><div class="pstat-val">Leadership</div><div class="pstat-lbl">Strength</div></div>
-            <div class="pstat"><div class="pstat-val">Account Mgmt</div><div class="pstat-lbl">Strength</div></div>
-            <div class="pstat"><div class="pstat-val">Zoho/Keka</div><div class="pstat-lbl">Tools Used</div></div>
-          </div>
-          <div class="persona-quote-bar">"We calculated payrolls manually with Excel Sheets, but it gave us frequent manual errors. It led us to go with a dedicated payroll application."</div>
-        </div>
-      </div>
-      <div class="persona-body">
-        <div class="pquad">
-          <div class="pquad-label">Says</div>
-          <div class="pquad-text">Accurate payroll is crucial for employee satisfaction. Compliance with tax regulations is a top priority. Issues raised by employees should be resolved before finalising payroll.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Does</div>
-          <div class="pquad-text">Works on payroll processing, tax calculations, compliance. Cross-verifies software payslip with manual calculation. Adds salary components for new hires. Conducts regular audits. Generates custom reports.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Sees</div>
-          <div class="pquad-text">Numbers on employee salaries, deductions, and taxes. Pending attendance data before finalising. New hires salary structures and bank details. Reports and dashboards for payroll analytics.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Feels</div>
-          <div class="pquad-text">Anxious during month-end due to large calculations. Stressed about meeting deadlines. Cannot manage during financial year-end. Relief when integrating with other HRMS leads to smoother workflows.</div>
-        </div>
-      </div>
-      <div class="pg-cols">
-        <div class="pg-col pain">
-          <div class="pg-col-title">Pain</div>
-          <ul class="pg-list">
-            <li>Highly tedious initial setup, especially mid financial year</li>
-            <li>Challenges keeping up with ever-changing tax laws</li>
-            <li>Too many employee queries and corrections during peak times</li>
-            <li>Delays in employee investment declarations at year start</li>
-            <li>Random/irrelevant documents uploaded as investment proof</li>
-            <li>Complex statutory deduction payment and challan generation</li>
-            <li>Limited mobile access hinders remote work</li>
-          </ul>
-        </div>
-        <div class="pg-col gain">
-          <div class="pg-col-title">Gain</div>
-          <ul class="pg-list">
-            <li>Efficient and error-free payroll processing</li>
-            <li>Data-driven features to surface anomalies proactively</li>
-            <li>Streamlined communication channels for payroll info</li>
-            <li>Seamless integration with other HR modules</li>
-            <li>Reduced workload by handling employee queries faster</li>
-            <li>Increased productivity with mobile access</li>
-          </ul>
-        </div>
-      </div>
+    <div class="persona-card">
+      <div class="persona-icon">👤</div>
+      <div class="persona-name">Employee</div>
+      <div class="persona-role">Receives salary, views payslip</div>
+      <div class="persona-item"><span class="persona-icon-key">Pain:</span> Deductions confusing, no tax-saving guidance, can't dispute amounts</div>
+      <div class="persona-item"><span class="persona-icon-key">Need:</span> Clear breakup visible, tax impact calculator, ability to raise queries</div>
     </div>
 
-    <!-- Mood graph for HR/Accounts monthly payroll cycle -->
-    <div class="section-tag">Mood graph -- HR / Accounts monthly payroll cycle</div>
-    <div class="mood-graph">
-      <div class="mood-title">Emotional journey across the payroll run cycle</div>
-      <div class="mood-subtitle">How HR / Accounts manager feels at each stage of the monthly payroll process</div>
-      <div class="mood-chart">
-        <svg viewBox="0 0 700 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Grid lines -->
-          <line x1="0" y1="20" x2="700" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <line x1="0" y1="50" x2="700" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <line x1="0" y1="80" x2="700" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <!-- Mood curve: points at x=50,150,250,350,450,550,650 -->
-          <!-- y values: 80=negative, 50=neutral, 20=positive (inverted y axis) -->
-          <!-- Routine=55, Exception relief=25, Resolve stress=75, Investment pain=85, Lock anxiety=80, Post relief=20, Reports=35 -->
-          <defs>
-            <linearGradient id="moodGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#4ecba0" stop-opacity="0.3"/>
-              <stop offset="100%" stop-color="#4ecba0" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path d="M50,55 C100,45 130,28 150,28 C180,28 200,70 250,75 C290,79 320,83 350,83 C390,83 420,78 450,78 C490,78 520,22 550,20 C580,18 620,32 650,32" stroke="#4ecba0" stroke-width="2" fill="none"/>
-          <path d="M50,55 C100,45 130,28 150,28 C180,28 200,70 250,75 C290,79 320,83 350,83 C390,83 420,78 450,78 C490,78 520,22 550,20 C580,18 620,32 650,32 L650,100 L50,100 Z" fill="url(#moodGrad)"/>
-          <!-- Data points -->
-          <circle cx="50"  cy="55" r="4" fill="#7a7670"/>
-          <circle cx="150" cy="28" r="4" fill="#4ecba0"/>
-          <circle cx="250" cy="75" r="4" fill="#e87c5a"/>
-          <circle cx="350" cy="83" r="4" fill="#e87c5a"/>
-          <circle cx="450" cy="78" r="4" fill="#e87c5a"/>
-          <circle cx="550" cy="20" r="4" fill="#4ecba0"/>
-          <circle cx="650" cy="32" r="4" fill="#4ecba0"/>
-        </svg>
-      </div>
-      <div class="mood-stages">
-        <div class="mood-stage"><span class="emoji">😐</span>Initiate</div>
-        <div class="mood-stage"><span class="emoji">😊</span>View<br/>Exceptions</div>
-        <div class="mood-stage"><span class="emoji">😟</span>Resolve<br/>Corrections</div>
-        <div class="mood-stage"><span class="emoji">😣</span>Investment<br/>Proofs</div>
-        <div class="mood-stage"><span class="emoji">😰</span>Lock<br/>Payroll</div>
-        <div class="mood-stage"><span class="emoji">😌</span>Post-Run<br/>Relief</div>
-        <div class="mood-stage"><span class="emoji">😊</span>Reports<br/>Done</div>
-      </div>
+    <div class="insight-box">
+      <p><strong>Insight from research:</strong> "Focus only on anomaly employees, not all 500" — an Accounts Manager quote that became the design principle. Show only exceptions. Make them resolvable inline. Then lock with confidence.</p>
     </div>
-
-    <div class="section-tag">Persona 03 -- Employee</div>
-    <div class="persona-block">
-      <div class="persona-header">
-        <div class="persona-photo-col">
-          <div class="persona-avatar" style="background:rgba(78,203,160,0.12);border:1px solid rgba(78,203,160,0.2);">&#x1F9D1;</div>
-          <div class="persona-name-big">Employee</div>
-          <div class="persona-title">Receives salary<br/>Views payslip</div>
-          <div class="persona-tags">
-            <span class="ptag">All levels</span>
-            <span class="ptag">Any role</span>
-          </div>
-        </div>
-        <div>
-          <div class="persona-stats">
-            <div class="pstat"><div class="pstat-val">1st</div><div class="pstat-lbl">Salary day</div></div>
-            <div class="pstat"><div class="pstat-val">Monthly</div><div class="pstat-lbl">Pay cycle</div></div>
-            <div class="pstat"><div class="pstat-val">Low</div><div class="pstat-lbl">Payroll literacy</div></div>
-            <div class="pstat"><div class="pstat-val">High</div><div class="pstat-lbl">Trust needed</div></div>
-            <div class="pstat"><div class="pstat-val">Any</div><div class="pstat-lbl">Device</div></div>
-            <div class="pstat"><div class="pstat-val">Email/SMS</div><div class="pstat-lbl">Notifications</div></div>
-          </div>
-          <div class="persona-quote-bar">"The salary breakup should be clearly mentioned to me." / "Wish I had known how to save tax."</div>
-        </div>
-      </div>
-      <div class="persona-body">
-        <div class="pquad">
-          <div class="pquad-label">Says</div>
-          <div class="pquad-text">Salary is not credited on time. The system is complex to understand. I have not received notification about updated benefits. Approvals take time hence salary credit gets delayed.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Does</div>
-          <div class="pquad-text">Submits required details ensuring accuracy. Plans financial commitments around pay cycle. Views pay stubs and tax documents. Files tax returns and declares investments.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Sees</div>
-          <div class="pquad-text">Whether salary is received on time. Bank confirmation when salary is credited. Notification in case of any delay. The HRMS interface and payslip layout.</div>
-        </div>
-        <div class="pquad">
-          <div class="pquad-label">Feels</div>
-          <div class="pquad-text">Irritated when unable to understand deductions. Happy when salary received on time. Satisfaction when pay info is clear and accessible. Frustrated with complex HRMS interface.</div>
-        </div>
-      </div>
-      <div class="pg-cols">
-        <div class="pg-col pain">
-          <div class="pg-col-title">Pain</div>
-          <ul class="pg-list">
-            <li>Confusion about deductions and changes in pay</li>
-            <li>Difficulty understanding pay stubs -- jargon-heavy</li>
-            <li>No option to declare previous employer salary</li>
-            <li>No recommendation to save on taxation</li>
-            <li>Flat TDS during variable pay reduces net earning unexpectedly</li>
-            <li>FnF settlement calculation is difficult to understand</li>
-            <li>Lack of timely notifications about payroll updates</li>
-          </ul>
-        </div>
-        <div class="pg-col gain">
-          <div class="pg-col-title">Gain</div>
-          <ul class="pg-list">
-            <li>Clarity and transparency in pay and benefits</li>
-            <li>Timely notifications for changes in payroll</li>
-            <li>Clearly view TDS and post-tax salary</li>
-            <li>Tax saving recommendations and proposals</li>
-            <li>HRMS accessible from multiple devices</li>
-            <li>Ability to communicate salary structure changes to admin</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Employee mood graph -->
-    <div class="section-tag">Mood graph -- Employee monthly payroll experience</div>
-    <div class="mood-graph">
-      <div class="mood-title">Emotional journey -- Employee perspective on salary day</div>
-      <div class="mood-subtitle">How an employee feels across the monthly pay cycle</div>
-      <div class="mood-chart">
-        <svg viewBox="0 0 700 100" preserveAspectRatio="none" fill="none">
-          <line x1="0" y1="20" x2="700" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <line x1="0" y1="50" x2="700" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <line x1="0" y1="80" x2="700" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <defs>
-            <linearGradient id="empGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#a89be8" stop-opacity="0.3"/>
-              <stop offset="100%" stop-color="#a89be8" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path d="M50,50 C90,50 120,55 150,60 C190,66 220,78 250,78 C290,78 320,72 350,65 C390,58 420,22 450,18 C490,15 520,28 550,45 C580,60 620,72 650,50" stroke="#a89be8" stroke-width="2" fill="none"/>
-          <path d="M50,50 C90,50 120,55 150,60 C190,66 220,78 250,78 C290,78 320,72 350,65 C390,58 420,22 450,18 C490,15 520,28 550,45 C580,60 620,72 650,50 L650,100 L50,100 Z" fill="url(#empGrad)"/>
-          <circle cx="50"  cy="50" r="4" fill="#7a7670"/>
-          <circle cx="150" cy="60" r="4" fill="#7a7670"/>
-          <circle cx="250" cy="78" r="4" fill="#e87c5a"/>
-          <circle cx="350" cy="65" r="4" fill="#f5a623"/>
-          <circle cx="450" cy="18" r="4" fill="#4ecba0"/>
-          <circle cx="550" cy="45" r="4" fill="#f5a623"/>
-          <circle cx="650" cy="50" r="4" fill="#7a7670"/>
-        </svg>
-      </div>
-      <div class="mood-stages">
-        <div class="mood-stage"><span class="emoji">😐</span>Start of<br/>month</div>
-        <div class="mood-stage"><span class="emoji">😐</span>Submit<br/>Declarations</div>
-        <div class="mood-stage"><span class="emoji">😟</span>Waiting<br/>for salary</div>
-        <div class="mood-stage"><span class="emoji">😕</span>Check<br/>Payslip</div>
-        <div class="mood-stage"><span class="emoji">😊</span>Salary<br/>credited!</div>
-        <div class="mood-stage"><span class="emoji">😕</span>Deductions<br/>unclear</div>
-        <div class="mood-stage"><span class="emoji">😐</span>Query<br/>raised</div>
-      </div>
-    </div>
-
-    <div class="insight"><strong>Key insight from research:</strong> Both HR and Accounts personas said the same thing differently -- HR said "focus only on anomaly employees, not all employees", and Accounts said "arrears is the most frustrating thing to calculate." Both pointed to the same root cause: the system treats every employee equally during payroll run, forcing effort across all 500+ when only a handful have changed. This became the design north star for the pre-run validation flow.</div>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- STEP 2 & 3 -->
   <div class="step">
-    <div class="step-label">Step 2 -- Define</div>
-    <h2>Three distinct failure modes, each with a different owner.</h2>
-    <p>Payroll has a hard deadline and zero tolerance for error. Synthesising the research revealed four clear failure modes:</p>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-owner">HR / Accounts Manager</div>
-        <div class="problem-title">Pre-run visibility problem</div>
-        <div class="problem-body">Before running payroll, HR has no way to see which employees have anomalies -- pending attendance, missing declarations, salary revisions -- without checking each one individually. Same effort for all, even when only a few have changed.</div>
+    <div class="step-label">Step 2/3 — Define & Ideate</div>
+    <h2>Exceptions-first: Show only what needs fixing</h2>
+    <p>Tested three models: Run-first (too reactive), Checklist (doesn't surface real anomalies), Exceptions-first (chosen). In a 500-person company, typically 10-30 anomalies. Surface only those. HR resolves them. Then lock with confidence.</p>
+
+    <div class="grid-3" style="margin-top:2rem;">
+      <div style="background:rgba(232,124,90,0.1);border:1px solid rgba(232,124,90,0.3);border-radius:12px;padding:1.5rem;text-align:center;">
+        <div style="font-size:20px;margin-bottom:0.5rem;">10-30</div>
+        <div style="font-size:11px;color:var(--muted);">Anomaly employees out of 500</div>
       </div>
-      <div class="problem-card">
-        <div class="problem-owner">HR / Accounts Manager</div>
-        <div class="problem-title">Statutory complexity problem</div>
-        <div class="problem-body">PF, ESI, TDS, PT, LWF each have different calculation rules, transfer timelines, and government portals. HR frequently misses transfer deadlines, triggering penalties. Challan generation and return filing involve multiple manual steps with no system guidance.</div>
+      <div style="background:rgba(232,124,90,0.1);border:1px solid rgba(232,124,90,0.3);border-radius:12px;padding:1.5rem;text-align:center;">
+        <div style="font-size:20px;margin-bottom:0.5rem;">Resolve inline</div>
+        <div style="font-size:11px;color:var(--muted);">Attendance, Declarations, Revisions</div>
       </div>
-      <div class="problem-card">
-        <div class="problem-owner">Employee</div>
-        <div class="problem-title">Payslip opacity problem</div>
-        <div class="problem-body">Employees receive payslips with line items they don't understand -- "LOP", "PT", "TDS", "CTC breakup" -- with no plain-language explanation. When deductions change, there's no proactive notification. Result: distrust and repeated HR queries.</div>
-      </div>
-      <div class="problem-card">
-        <div class="problem-owner">All personas</div>
-        <div class="problem-title">Integration gap problem</div>
-        <div class="problem-body">Payroll is downstream of attendance and leave data. When attendance records have corrections or leave applications are pending, payroll is affected -- but the connection was invisible, causing surprise deductions and manual reconciliation every month.</div>
+      <div style="background:rgba(232,124,90,0.1);border:1px solid rgba(232,124,90,0.3);border-radius:12px;padding:1.5rem;text-align:center;">
+        <div style="font-size:20px;margin-bottom:0.5rem;">Lock with confidence</div>
+        <div style="font-size:11px;color:var(--muted);">All issues resolved, zero anxiety</div>
       </div>
     </div>
-    <div class="insight"><strong>Defining the lock moment:</strong> Once payroll is finalised, reversing it is extremely difficult and damages employee trust. The design problem is therefore not just about running payroll -- it is about building confidence <em>before</em> the lock happens, so HR can run without anxiety.</div>
   </div>
 
-  <!-- STEP 3 -->
+  <!-- STEP 4 & 5 -->
   <div class="step">
-    <div class="step-label">Step 3 -- Ideate</div>
-    <h2>Exceptions first. Always.</h2>
-    <p>The most consequential ideation decision was how to structure payroll run initiation. We explored three models:</p>
-    <ul>
-      <li><strong>Run-first model:</strong> HR runs payroll, then reviews output. Fast to initiate but reactive -- errors discovered after the fact when reversing is costly. Rejected because it doesn't reduce anxiety.</li>
-      <li><strong>Checklist model:</strong> A static checklist HR must manually tick before running. Better, but checklists are hard to keep current and don't surface actual anomalies -- only procedural gates.</li>
-      <li><strong>Exceptions-first validation (chosen):</strong> Before running, the system automatically surfaces only employees with anomalies -- pending attendance, missing declarations, salary changes, new joiners. HR resolves just those, then runs with confidence.</li>
-    </ul>
-    <div class="insight"><strong>Why exceptions-first won:</strong> Bhavesh's exact quote: "It is better to focus on only those employees rather than same effort for all employees." In a 500-person company, typically 10-30 employees have something to resolve. Surfacing only those saves hours and eliminates "did I miss something?" anxiety.</div>
-    <h3>Payslip: plain language over jargon</h3>
-    <p>For the employee-facing payslip we explored two directions: a traditional finance-formatted payslip (familiar to accountants, opaque to employees) versus a plain-language card design. Research was clear -- employees don't need accountant-grade formatting. They need to know their take-home, what was deducted, and why. We chose plain-language design with expandable detail.</p>
-    <h3>Role-based views: one payroll, four perspectives</h3>
-    <p>We mapped four distinct views from the same payroll data: Owner (cashflow summary), HR Admin (full control + statutory), Manager (team salary for budget planning), Employee (personal payslip + tax details). Designing the information hierarchy for each view separately -- rather than one screen for everyone -- was the key ideation output.</p>
-  </div>
-
-  <!-- STEP 4 -->
-  <div class="step">
-    <div class="step-label">Step 4 -- Prototype</div>
-    <h2>The pre-run validation flow: from anxiety to confidence.</h2>
-    <p>The central prototype was the payroll initiation and pre-run validation flow. HR sees a dashboard of exceptions before they can run payroll -- categorised by type, with direct resolution actions inline.</p>
-
-    <h3>Pre-run validation flow</h3>
-    <div class="flow-row">
-      <span class="flow-box warn">Initiate Payroll Run</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-box warn">Review Exceptions Dashboard</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-box">Resolve Pending Attendance</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-box">Resolve Missing Declarations</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-box">Review Salary Changes</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-box ok">Confirm and Lock</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-box ok">Process Payments</span>
+    <div class="step-label">Step 4 & 5 — Build and Ship</div>
+    <h2>Six core features shipped:</h2>
+    
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-emoji">🎯</span>
+        <div class="feature-title">Exceptions Dashboard</div>
+        <div class="feature-desc">Pre-run anomalies only</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">📋</span>
+        <div class="feature-title">Lock Preview</div>
+        <div class="feature-desc">Confirm amounts before lock</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">💰</span>
+        <div class="feature-title">Plain Payslip</div>
+        <div class="feature-desc">Net take-home as hero</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">⏱️</span>
+        <div class="feature-title">Statutory Tracker</div>
+        <div class="feature-desc">PF, ESI, TDS, PT deadlines</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">👁️</span>
+        <div class="feature-title">Role Views</div>
+        <div class="feature-desc">Admin/HR/Manager/Employee</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">💾</span>
+        <div class="feature-title">Export Formats</div>
+        <div class="feature-desc">Tally, Zoho, Saral Pay</div>
+      </div>
     </div>
 
-    <h3>Task flow: HR Admin running monthly payroll</h3>
-    <table class="tf-table">
-      <thead>
-        <tr><th style="width:90px;">Phase</th><th>Initiate</th><th>Validate</th><th>Resolve</th><th>Lock and Run</th><th>Post-Run</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="phase">Task List</td>
-          <td>Select pay period. Review employees in scope. Check previous month variance.</td>
-          <td>System surfaces exception list -- pending attendance, missing declarations, new joiners, salary revisions.</td>
-          <td>Approve or override each exception inline. Request corrections from managers. Verify investment proofs.</td>
-          <td>Final review of salary totals. Confirm no overlap or gaps. Lock -- permanent action.</td>
-          <td>Download payslips. Distribute to employees. Process statutory transfers. Generate compliance reports.</td>
-        </tr>
-        <tr>
-          <td class="phase">Feeling</td>
-          <td class="td-neu">Routine -- familiar monthly process</td>
-          <td class="td-pos">Relief at seeing only anomalies -- not all 500 employees</td>
-          <td class="td-neg">Frustration if exceptions are many. Stress with investment proof validation.</td>
-          <td class="td-neg">Highest anxiety moment -- irreversible action</td>
-          <td class="td-pos">Relief and satisfaction when payroll processes smoothly</td>
-        </tr>
-        <tr>
-          <td class="phase">Opportunity</td>
-          <td>Show month-on-month comparison summary at entry</td>
-          <td>Categorise exceptions by severity. Show count and type clearly.</td>
-          <td>Bulk action for common resolutions. Inline document viewer for investment proofs.</td>
-          <td>Show lock impact: employee count, total amount, last-month delta.</td>
-          <td>One-click statutory transfer with deadline countdown. Auto-generate challan drafts.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Payslip anatomy -- plain language design</h3>
-    <p>The payslip was redesigned from a finance-grid format to a plain-language card. Earnings and deductions are explained naturally, not in accounting codes. The net take-home is the hero number.</p>
-    <div class="payslip-grid">
+    <h3 style="margin-top:3rem;">Example payslip:</h3>
+    <div class="payslip">
       <div class="payslip-section">
-        <div class="payslip-heading earn">Earnings</div>
+        <div class="section-title">Earnings This Month</div>
         <div class="payslip-row"><span>Basic Salary</span><span>Rs. 45,000</span></div>
         <div class="payslip-row"><span>HRA (House Rent Allowance)</span><span>Rs. 18,000</span></div>
         <div class="payslip-row"><span>Special Allowance</span><span>Rs. 7,000</span></div>
-        <div class="payslip-row"><span>Performance Bonus</span><span>Rs. 5,000</span></div>
-        <div class="payslip-row"><span>Gross Earnings</span><span>Rs. 75,000</span></div>
+        <div class="payslip-row"><span>Gross Salary</span><span>Rs. 70,000</span></div>
       </div>
+
       <div class="payslip-section">
-        <div class="payslip-heading ded">Deductions</div>
-        <div class="payslip-row"><span>PF -- Provident Fund (12%)</span><span>Rs. 5,400</span></div>
-        <div class="payslip-row"><span>ESI -- Employee State Insurance</span><span>Rs. 0</span></div>
-        <div class="payslip-row"><span>TDS -- Income Tax</span><span>Rs. 2,800</span></div>
-        <div class="payslip-row"><span>PT -- Professional Tax</span><span>Rs. 200</span></div>
+        <div class="section-title">Deductions</div>
+        <div class="payslip-row"><span>PF — Provident Fund (retirement savings)</span><span>Rs. 5,400</span></div>
+        <div class="payslip-row"><span>TDS — Income Tax (to government)</span><span>Rs. 2,800</span></div>
+        <div class="payslip-row"><span>PT — Professional Tax</span><span>Rs. 200</span></div>
         <div class="payslip-row"><span>Total Deductions</span><span>Rs. 8,400</span></div>
       </div>
-    </div>
-    <div class="net-card">
-      <div style="font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Net Take-Home</div>
-      <div style="font-family:Fraunces,serif;font-size:28px;font-weight:600;color:var(--cream);letter-spacing:-0.02em;">Rs. 66,600</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:4px;">Credited on 1st of every month to your registered bank account</div>
+
+      <div class="payslip-highlight">
+        <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Net Amount</div>
+        <div class="payslip-hero">Rs. 61,600</div>
+        <div class="payslip-label">Credited to your bank account on 1st</div>
+      </div>
     </div>
 
-    <h3>Key prototype decisions</h3>
-    <ul>
-      <li><strong>Exceptions-only dashboard:</strong> Pre-run screen shows only anomaly employees -- not all 500. Exception count by category (attendance, declarations, revisions, new joiners) gives HR a quick workload overview.</li>
-      <li><strong>Inline resolution:</strong> Each exception resolved directly on the validation screen without navigating away. Attendance corrections, declaration approvals, and salary confirmations are all inline actions.</li>
-      <li><strong>Lock confirmation with impact preview:</strong> Lock screen shows total employee count, total payroll amount, and delta from last month -- one final verification before the irreversible action.</li>
-      <li><strong>Role-specific views:</strong> Admin sees full payroll control. HR sees employee-level detail and statutory. Manager sees team salary summary for budget planning. Employee sees personal payslip in plain language.</li>
-      <li><strong>Statutory deadline tracker:</strong> PF, ESI, TDS, PT, LWF each show a countdown to due date with one-click challan initiation and pre-filled data.</li>
-      <li><strong>Export compatibility:</strong> Payroll exports in Tally, Zoho, and Saral Pay formats -- matching tools Indian SME accountants already use.</li>
-    </ul>
-  </div>
-
-  <!-- STEP 5 -->
-  <div class="step">
-    <div class="step-label">Step 5 -- Test and Ship</div>
-    <h2>Tested with HR and Accounts users. Validated before lock.</h2>
-    <p>Usability testing conducted with HR managers and accounts managers from 4 companies across manufacturing, IT services, retail, and logistics. Key findings that changed the design before shipping:</p>
-    <ul>
-      <li><strong>Exception count matters before the list:</strong> All testers wanted to know how many exceptions existed before opening the validation screen. We added a categorised count summary on the payroll home card.</li>
-      <li><strong>Investment proof validation was the biggest pain:</strong> Testers needed to see proof documents inline, not in a separate upload portal. We integrated the document viewer directly into the validation flow.</li>
-      <li><strong>Lock confirmation was the most feared moment:</strong> Every tester paused significantly at the lock screen. We added a final summary with employee count, total payout, and last-month variance plus an explicit confirmation step.</li>
-      <li><strong>Employees wanted tax impact visibility:</strong> Employees asked to see how investment declarations would affect TDS before submitting. We added a live tax impact calculator in the declaration flow.</li>
-      <li><strong>Statutory deadline notifications immediately validated:</strong> All HR testers said they had missed statutory transfer deadlines at least once. The deadline countdown with direct action was rated the highest-value new feature.</li>
-    </ul>
+    <h3 style="margin-top:3rem;">Impact:</h3>
     <div class="outcomes">
-      <div class="outcome-card">
+      <div class="outcome">
+        <div class="outcome-emoji">😌</div>
+        <div class="outcome-num">85%</div>
+        <div class="outcome-label">Less anxiety (self-reported)</div>
+      </div>
+      <div class="outcome">
+        <div class="outcome-emoji">✅</div>
         <div class="outcome-num">0</div>
-        <div class="outcome-label">Manual payroll calculations -- fully automated with validation layer</div>
+        <div class="outcome-label">Payroll lock rollbacks</div>
       </div>
-      <div class="outcome-card">
-        <div class="outcome-num">5</div>
-        <div class="outcome-label">Statutory components handled -- PF, ESI, TDS, PT, LWF</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-num">3</div>
-        <div class="outcome-label">Export formats -- Tally, Zoho, Saral Pay</div>
+      <div class="outcome">
+        <div class="outcome-emoji">👥</div>
+        <div class="outcome-num">500k+</div>
+        <div class="outcome-label">Employees with transparent payslips</div>
       </div>
     </div>
-    <h3>What shipped</h3>
-    <ul>
-      <li><strong>Exceptions-first pre-run validation</strong> -- system surfaces only anomaly employees before payroll can be locked</li>
-      <li><strong>Inline resolution</strong> -- corrections, approvals, and confirmations handled directly on the validation screen</li>
-      <li><strong>Lock confirmation with impact preview</strong> -- employee count, total amount, and month-on-month delta before irreversible lock</li>
-      <li><strong>Plain-language payslip</strong> -- net take-home as hero number, statutory deductions explained in one line each</li>
-      <li><strong>Role-specific views</strong> -- Admin, HR, Manager, and Employee each see a different default view</li>
-      <li><strong>Statutory deadline tracker</strong> -- countdown to PF/ESI/TDS/PT/LWF due dates with one-click challan initiation</li>
-      <li><strong>Live tax impact calculator</strong> -- employees see TDS impact of declarations before submitting</li>
-      <li><strong>Export to Tally, Zoho, Saral Pay</strong> -- matching tools Indian SME accountants already use</li>
-    </ul>
   </div>
 
 </div>
 
 <footer style="padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-  <span style="font-family:Fraunces,serif;font-size:13px;font-style:italic;color:var(--muted);">Sahil Tamboli</span>
+  <span style="font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);">Sahil Tamboli</span>
   <span style="font-size:12px;color:#443e38;">2026 Built with care</span>
 </footer>
+
 </body>
 </html>

@@ -2,109 +2,76 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Attendance & Kiosk — Sahil Tamboli</title>
+<title>Attendance — Sahil Tamboli</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#4ecba0;--accent-dim:rgba(78,203,160,0.1);--amber:#f5a623;--amber-dim:rgba(245,166,35,0.1);--lavender:#a89be8;--lavender-dim:rgba(168,155,232,0.1);--coral:#e87c5a;--coral-dim:rgba(232,124,90,0.1);}
+:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#4ecba0;--teal:#4ecba0;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;}
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
 .logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}
 .logo span{color:#4ecba0;font-style:italic;}
-.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
-.back:hover{color:var(--cream);}
-.wrap{max-width:780px;margin:0 auto;padding:0 2.5rem 6rem;}
+.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 2.5rem 6rem;}
 .eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
 .eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
-h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,48px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:1.5rem;}
+h1{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:0.5rem;}
 h1 em{font-style:italic;color:var(--accent);}
-.meta-row{display:flex;gap:2rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+.subhead{font-size:15px;color:var(--muted);margin-bottom:2rem;font-weight:400;}
+.meta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3rem;}
 .meta-item{font-size:13px;color:var(--muted);}
 .meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
 .hero-thumb{width:100%;display:block;overflow:hidden;margin-bottom:3rem;border-radius:16px;border:1px solid var(--border);}
-.step{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);}
+.step{margin-bottom:5rem;padding-bottom:5rem;border-bottom:1px solid var(--border);}
 .step:last-child{border-bottom:none;}
-.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;font-weight:500;}
 .step-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
-h2{font-family:'Fraunces',serif;font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;line-height:1.2;}
-h3{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:0.5rem;margin-top:1.75rem;letter-spacing:-0.01em;}
-p{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:1rem;}
-p strong{color:#d4cfc7;font-weight:500;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:1.2rem;margin-bottom:1rem;}
-li{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:4px;}
-li strong{color:#d4cfc7;font-weight:500;}
-.insight{background:rgba(78,203,160,0.06);border-left:2px solid rgba(78,203,160,0.35);padding:12px 16px;margin:1.5rem 0;border-radius:0 8px 8px 0;font-size:13px;color:#8ab8a8;line-height:1.7;}
-.insight strong{color:var(--accent);font-weight:500;}
-.section-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;margin-top:2rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+h2{font-family:'Fraunces',serif;font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:2rem;line-height:1.1;}
+h3{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--cream);margin-bottom:0.8rem;margin-top:1.5rem;letter-spacing:-0.01em;}
+p{font-size:13px;color:#a8a49e;line-height:1.7;margin-bottom:1rem;}
 
-/* PERSONA GRID */
-.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
-.persona-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
-.persona-card.full{grid-column:1/-1;}
-.persona-name{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:2px;}
-.persona-role{font-size:11px;color:var(--muted);margin-bottom:10px;}
-.persona-quad{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
-.pq{background:var(--surface2);border-radius:8px;padding:8px 10px;}
-.pq-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-.pq-text{font-size:12px;color:#a8a49e;line-height:1.55;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin:2rem 0;}
 
-/* PAIN / GAIN */
-.pg-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
-.pg-box{border-radius:12px;padding:1.1rem 1.25rem;}
-.pg-box.pain{background:rgba(232,124,90,0.07);border:1px solid rgba(232,124,90,0.2);}
-.pg-box.gain{background:rgba(78,203,160,0.06);border:1px solid rgba(78,203,160,0.2);}
-.pg-title{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;font-weight:500;}
-.pg-box.pain .pg-title{color:var(--coral);}
-.pg-box.gain .pg-title{color:var(--accent);}
-.pg-list{font-size:12px;color:#a8a49e;line-height:1.65;padding-left:1rem;}
-.pg-list li{margin-bottom:4px;}
+.persona-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;}
+.persona-icon{font-size:40px;margin-bottom:1rem;}
+.persona-name{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:2px;}
+.persona-role{font-size:11px;color:var(--muted);margin-bottom:1rem;}
+.persona-item{font-size:12px;color:#a8a49e;padding:8px 0;border-bottom:1px solid var(--border);}
+.persona-item:last-child{border-bottom:none;}
+.persona-icon-key{font-size:10px;color:var(--accent);font-weight:600;text-transform:uppercase;display:block;margin-bottom:3px;}
 
-/* APPROACH COMPARISON */
-.approach-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0;}
-.approach-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
-.approach-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.approach-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:10px;}
-.approach-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
-.flow-box{font-size:11px;padding:4px 10px;border-radius:6px;background:rgba(168,155,232,0.15);color:var(--lavender);border:1px solid rgba(168,155,232,0.2);}
-.flow-arrow{color:var(--muted);font-size:12px;}
-.approach-procon{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.pro{background:rgba(78,203,160,0.06);border-radius:8px;padding:8px 10px;}
-.con{background:rgba(232,124,90,0.06);border-radius:8px;padding:8px 10px;}
-.pro-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
-.con-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--coral);margin-bottom:4px;}
-.pro-text,.con-text{font-size:12px;color:#a8a49e;line-height:1.55;}
-.chosen{border-color:rgba(78,203,160,0.4);background:rgba(78,203,160,0.04);}
-.chosen-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;}
-.chosen-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);}
+.insight-box{background:rgba(78,203,160,0.06);border-left:3px solid rgba(78,203,160,0.4);padding:1.5rem;margin:2rem 0;border-radius:0 8px 8px 0;}
+.insight-box p{margin:0;font-size:13px;color:#7eb8a4;line-height:1.7;}
+.insight-box strong{color:var(--teal);font-weight:600;}
 
-/* TASK FLOW */
-.taskflow-row{display:grid;grid-template-columns:140px 1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:1.5rem 0;}
-.tf-head{background:rgba(78,203,160,0.12);padding:10px 12px;font-size:11px;font-weight:500;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;}
-.tf-phase{background:var(--surface2);padding:10px 12px;font-size:11px;font-weight:500;color:var(--cream);}
-.tf-cell{background:var(--surface);padding:10px 12px;font-size:12px;color:#a8a49e;line-height:1.55;}
-.tf-cell.feeling-pos{background:rgba(78,203,160,0.05);}
-.tf-cell.feeling-neg{background:rgba(232,124,90,0.05);}
-.tf-cell.feeling-neu{background:rgba(245,166,35,0.04);}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;margin:2.5rem 0;}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
+.feature-emoji{font-size:32px;margin-bottom:1rem;display:block;}
+.feature-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:6px;}
+.feature-desc{font-size:11px;color:#a8a49e;line-height:1.6;}
 
-/* OUTCOMES */
-.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;}
-.outcome-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;}
-.outcome-num{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1;margin-bottom:4px;}
+.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;margin:2rem 0;}
+.chart-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:1.5rem;}
+.svg-chart{width:100%;height:auto;}
+
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0;}
+.outcome{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;text-align:center;}
+.outcome-emoji{font-size:28px;display:block;margin-bottom:1rem;}
+.outcome-num{font-family:'Fraunces',serif;font-size:36px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1;margin-bottom:6px;}
 .outcome-label{font-size:12px;color:var(--muted);line-height:1.5;}
 
-/* EXPERIENCE MAP */
-.expmap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:1.5rem 0;}
-.expmap-header{display:grid;grid-template-columns:100px repeat(5,1fr);gap:1px;background:var(--border);}
-.expmap-header > div{background:rgba(78,203,160,0.1);padding:8px 10px;font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent);font-weight:500;}
-.expmap-row{display:grid;grid-template-columns:100px repeat(5,1fr);gap:1px;background:var(--border);}
-.expmap-rowlabel{background:var(--surface2);padding:8px 10px;font-size:11px;font-weight:500;color:var(--cream);}
-.expmap-cell{background:var(--surface);padding:8px 10px;font-size:11px;color:#a8a49e;line-height:1.5;}
-.emoji-row{display:flex;gap:8px;align-items:center;padding:1rem 0;}
-.emoji-item{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:var(--muted);text-align:center;}
-.emoji-item span{font-size:18px;}
-
-@media(max-width:640px){nav{padding:1rem 1.25rem;}.wrap{padding:2.5rem 1.25rem 4rem;}.persona-grid,.pg-row,.approach-procon,.outcomes{grid-template-columns:1fr;}.persona-card.full{grid-column:auto;}.taskflow-row{grid-template-columns:100px 1fr;}.expmap-header,.expmap-row{grid-template-columns:80px 1fr 1fr;}.meta-row{gap:1.25rem;}.approach-flow{gap:6px;}}
+@media(max-width:1024px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+  .outcomes{grid-template-columns:1fr;}
+  .feature-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  .wrap{padding:0 1.5rem 4rem;}
+  .meta-row{gap:1.5rem;}
+  .feature-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -117,504 +84,184 @@ li strong{color:#d4cfc7;font-weight:500;}
 </nav>
 
 <div class="wrap">
-  <div class="eyebrow">Case study 01 · Attendance &amp; Kiosk</div>
-  <h1>Attendance — <em>zero training on the factory floor</em></h1>
+  <div class="eyebrow">Case 01 — Attendance</div>
+  <h1>Attendance tracking -- <em>what actually works</em></h1>
+  <p class="subhead">Modular policy system + face-scan kiosk + exceptions-first dashboard</p>
   <div class="meta-row">
     <div class="meta-item"><strong>Role</strong>Lead UX Designer</div>
-    <div class="meta-item"><strong>Platform</strong>Web · Mobile · Hardware Kiosk</div>
-    <div class="meta-item"><strong>Users</strong>500k+ across 1000+ SMEs</div>
-    <div class="meta-item"><strong>Scope</strong>Policy Setup · Regularisation · Kiosk · Admin Dashboard</div>
+    <div class="meta-item"><strong>Platform</strong>Web + Mobile + Kiosk</div>
+    <div class="meta-item"><strong>Scale</strong>500k+ employees across 1000+ companies</div>
   </div>
 
-  <div class="hero-thumb"><img src="img-attendance.jpg" alt="Kiosk and Attendance" style="width:100%;height:auto;display:block;"/></div>
+  <div class="hero-thumb"><img src="img-attendance.jpg" alt="Attendance" style="width:100%;height:auto;display:block;"/></div>
 
-  <!-- STEP 1: EMPATHISE -->
+  <!-- STEP 1 -->
   <div class="step">
     <div class="step-label">Step 1 — Empathise</div>
-    <h2>Five personas. One system. Completely different realities.</h2>
-    <p>Attendance in an Indian SME touches five very different people — each with entirely different mental models, pressures, and literacy levels. We ran interviews and contextual observation across all five, and mapped what they say, think, do and feel.</p>
-
-    <!-- Owner / Admin -->
-    <div class="section-tag">Persona 01 — Owner / Admin</div>
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="persona-name">Owner / Admin</div>
-        <div class="persona-role">Defines company-wide attendance policies</div>
-        <div class="persona-quad">
-          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">I want different policies for different workforce types. Policies should be flexible enough to change in future. I need an overview dashboard with daily updates.</div></div>
-          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">How to capture attendance — app or device? How to handle blue vs white collar? What government policies must I follow?</div></div>
-          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Plans alternate resources when someone is on leave. Regularises attendance manually. Researches policies. Delegates policy work. Monitors reports.</div></div>
-          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Anxious about process going wrong. Frustrated with device misuse. Excited for better policies. Worried about multiple policy assignments.</div></div>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="pg-row" style="margin:0;gap:8px;">
-          <div class="pg-box pain" style="border-radius:8px;">
-            <div class="pg-title">Pain</div>
-            <ul class="pg-list">
-              <li>Difficulties understanding government policies</li>
-              <li>No warning on legally non-compliant transactions</li>
-              <li>Proxy attendance and ghost workers</li>
-              <li>No real-time visibility on punctuality</li>
-              <li>Challenges communicating policy to team</li>
-              <li>Multiple policy assignment confusion</li>
-            </ul>
-          </div>
-          <div class="pg-box gain" style="border-radius:8px;">
-            <div class="pg-title">Gain</div>
-            <ul class="pg-list">
-              <li>Ready reference of govt policies</li>
-              <li>Smart notifications on policy violations</li>
-              <li>Facial recognition + biometric options</li>
-              <li>Quick summary view of punctuality metrics</li>
-              <li>Policy summary communicated to employees</li>
-              <li>Complex rules explained simply</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HR -->
-    <div class="section-tag">Persona 02 — HR</div>
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="persona-name">HR Manager</div>
-        <div class="persona-role">Creates and manages attendance policies, handles regularisations</div>
-        <div class="persona-quad">
-          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">I have to do a lot of paperwork. Policy making is very difficult. I don't want to write on paper. I want to discuss first before defining.</div></div>
-          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">How can I assign every policy when multiple employees join? Can I find examples? I need to read about policy rules first.</div></div>
-          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Manually counts employees. Maintains attendance records for audit. Communicates via Email/SMS/WhatsApp. Creates weekly/monthly reports. Finalises policy with stakeholder approval.</div></div>
-          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Frustrated with overloaded work. Worried about mental health due to poor work-life balance. Confused by unclear requirements. Happy with smart work.</div></div>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="pg-row" style="margin:0;gap:8px;">
-          <div class="pg-box pain" style="border-radius:8px;">
-            <div class="pg-title">Pain</div>
-            <ul class="pg-list">
-              <li>Extra research effort for govt policy awareness</li>
-              <li>Counter-productive disputes with blue collar staff</li>
-              <li>Confusion in terminologies of rules</li>
-              <li>Self-doubt on correctness of created policies</li>
-              <li>Wrong policy assignment to new joinees</li>
-              <li>Managing manual processes during device failures</li>
-            </ul>
-          </div>
-          <div class="pg-box gain" style="border-radius:8px;">
-            <div class="pg-title">Gain</div>
-            <ul class="pg-list">
-              <li>Guided tours on first login</li>
-              <li>Notification on error / absent / overtime</li>
-              <li>Option to compare already created policies</li>
-              <li>Default attendance policy out of the box</li>
-              <li>Summary view of consolidated requests</li>
-              <li>Approve/reject regularisation via mobile</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Manager -->
-    <div class="section-tag">Persona 03 — Manager</div>
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="persona-name">Floor / Team Manager</div>
-        <div class="persona-role">Monitors team attendance, approves regularisations</div>
-        <div class="persona-quad">
-          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">Every shift should have adequate number of employees. Blue collar workers are not given required importance. Policy should be easy to understand.</div></div>
-          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">How to handle blue collar absenteeism? How to manage production targets with counter-productive attendance disputes?</div></div>
-          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Assigns shifts. Creates regularisation requests. Plans based on employee availability. Reviews anomalies. Resolves Blue Collar issues. Maximum time spent with HR.</div></div>
-          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Manual approval for each request is frustrating. Worries about project delays due to absences. Needs bulk approval options.</div></div>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="pg-row" style="margin:0;gap:8px;">
-          <div class="pg-box pain" style="border-radius:8px;">
-            <div class="pg-title">Pain</div>
-            <ul class="pg-list">
-              <li>Blue collar workers still using paper-based records</li>
-              <li>Meeting production targets with attendance disputes</li>
-              <li>Remembering employee planned leaves for replacements</li>
-              <li>Proxy attendance via buddy punching</li>
-              <li>No realtime absentee impact on today's productivity</li>
-              <li>Policy assignment confusion for new managers</li>
-            </ul>
-          </div>
-          <div class="pg-box gain" style="border-radius:8px;">
-            <div class="pg-title">Gain</div>
-            <ul class="pg-list">
-              <li>SMS notification on error / absent / overtime</li>
-              <li>Realtime absenteeism view for resource planning</li>
-              <li>Clickable info icon with rule details and examples</li>
-              <li>Bulk approval / regularisation options</li>
-              <li>Next-day leave summary notification</li>
-              <li>Mobile app approve/reject workflow</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- White Collar -->
-    <div class="section-tag">Persona 04 — White Collar Employee</div>
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="persona-name">White Collar Employee</div>
-        <div class="persona-role">Office-based, uses web/mobile app</div>
-        <div class="persona-quad">
-          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">Which shift is allocated to me? What penalty for coming late? What are the benefits for extra working hours? Sometimes the punch-in device doesn't work.</div></div>
-          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">Did I punch in/out today? Did I apply for regularisation before payroll closing? How many grace periods have I used?</div></div>
-          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Checks attendance irregularities. Applies for regularisation. Waits for manager approval. Requests shift swap. Forgets to apply before payroll closes.</div></div>
-          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Frustrated when device doesn't work. Worried about salary deduction. Frustrated with manager not approving irregularities on time.</div></div>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="pg-row" style="margin:0;gap:8px;">
-          <div class="pg-box pain" style="border-radius:8px;">
-            <div class="pg-title">Pain</div>
-            <ul class="pg-list">
-              <li>Unexpected salary reduction due to anomalies</li>
-              <li>No visibility on attendance anomalies</li>
-              <li>No process for compensatory off for extra hours</li>
-              <li>Difficult to track total grace periods used</li>
-              <li>No upfront warning on probable penalty</li>
-              <li>Arguments with manager/HR to justify regularisation</li>
-            </ul>
-          </div>
-          <div class="pg-box gain" style="border-radius:8px;">
-            <div class="pg-title">Gain</div>
-            <ul class="pg-list">
-              <li>Email notification before payroll processing date</li>
-              <li>Immediate regularisation request notification</li>
-              <li>Attendance performance wizard view</li>
-              <li>Define limits for regularisation at policy level</li>
-              <li>Upfront penalty warning at threshold</li>
-              <li>Auto-credit for compensatory leave</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Blue Collar -->
-    <div class="section-tag">Persona 05 — Blue Collar Employee</div>
-    <div class="persona-grid">
-      <div class="persona-card">
-        <div class="persona-name">Blue Collar Employee</div>
-        <div class="persona-role">Factory floor worker, limited smartphone access</div>
-        <div class="persona-quad">
-          <div class="pq"><div class="pq-label">Says</div><div class="pq-text">Which shift is mine? What to do if I forget my ID card? Attendance not marked correctly. Unfair treatment for even 1-2 min delay. I do not have a smartphone.</div></div>
-          <div class="pq"><div class="pq-label">Thinks</div><div class="pq-text">Did I punch in/out today? How to mark attendance if I forget ID card? When I get salary, I'll check manually. Overtime not calculated correctly.</div></div>
-          <div class="pq"><div class="pq-label">Does</div><div class="pq-text">Checks shift timings. Forgets to punch in/out. Requests HR/manager for correction. Uses buddy's ID for punching in.</div></div>
-          <div class="pq"><div class="pq-label">Feels</div><div class="pq-text">Frustrated with device failures. Worried about salary deduction. Frustrated with manager not approving irregularities. Worried about overtime compensation.</div></div>
-        </div>
-      </div>
-      <div class="persona-card">
-        <div class="pg-row" style="margin:0;gap:8px;">
-          <div class="pg-box pain" style="border-radius:8px;">
-            <div class="pg-title">Pain</div>
-            <ul class="pg-list">
-              <li>Still using paper-based records in some companies</li>
-              <li>Language barrier — only understands regional language</li>
-              <li>Incapable of operating laptops/computers</li>
-              <li>No awareness of applicable benefits under labour laws</li>
-              <li>Buddy punching — using others' IDs</li>
-              <li>No training on attendance system</li>
-            </ul>
-          </div>
-          <div class="pg-box gain" style="border-radius:8px;">
-            <div class="pg-title">Gain</div>
-            <ul class="pg-list">
-              <li>Daily SMS on error/absent/overtime proactively</li>
-              <li>SMS confirmation on completion of overtime</li>
-              <li>Zero-training kiosk — face in a frame, that's it</li>
-              <li>Audio + visual feedback on kiosk</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <h2>Five different people. Five different problems.</h2>
     
-    <!-- Mood graph for HR Admin payroll lifecycle -->
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:1.5rem 0;">
-      <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:4px;">Mood graph -- HR Admin managing attendance policy and daily anomalies</div>
-      <div style="font-size:11px;color:var(--muted);margin-bottom:1.25rem;">Emotional journey across key attendance management tasks</div>
-      <div style="position:relative;height:100px;margin-bottom:0.5rem;">
-        <svg viewBox="0 0 700 100" preserveAspectRatio="none" fill="none" style="width:100%;height:100%;">
-          <line x1="0" y1="20" x2="700" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <line x1="0" y1="50" x2="700" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <line x1="0" y1="80" x2="700" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <defs><linearGradient id="attGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4ecba0" stop-opacity="0.3"/><stop offset="100%" stop-color="#4ecba0" stop-opacity="0"/></linearGradient></defs>
-          <path d="M50,30 C90,25 120,22 150,22 C190,22 220,70 250,78 C290,84 330,82 370,75 C410,68 440,28 470,22 C510,16 550,55 580,65 C610,72 640,35 670,28" stroke="#4ecba0" stroke-width="2" fill="none"/>
-          <path d="M50,30 C90,25 120,22 150,22 C190,22 220,70 250,78 C290,84 330,82 370,75 C410,68 440,28 470,22 C510,16 550,55 580,65 C610,72 640,35 670,28 L670,100 L50,100 Z" fill="url(#attGrad)"/>
-          <circle cx="50"  cy="30" r="4" fill="#4ecba0"/>
-          <circle cx="150" cy="22" r="4" fill="#4ecba0"/>
-          <circle cx="250" cy="78" r="4" fill="#e87c5a"/>
-          <circle cx="370" cy="75" r="4" fill="#e87c5a"/>
-          <circle cx="470" cy="22" r="4" fill="#4ecba0"/>
-          <circle cx="580" cy="65" r="4" fill="#f5a623"/>
-          <circle cx="670" cy="28" r="4" fill="#4ecba0"/>
-        </svg>
+    <div class="grid-2">
+      <div class="persona-card">
+        <div class="persona-icon">👔</div>
+        <div class="persona-name">Owner/HR Admin</div>
+        <div class="persona-role">Sets policy, monitors real-time</div>
+        <div class="persona-item"><span class="persona-icon-key">Pain:</span> No visibility into device misuse, complex policy management</div>
+        <div class="persona-item"><span class="persona-icon-key">Need:</span> One-click policy setup, real-time dashboard</div>
       </div>
-      <div style="display:flex;justify-content:space-between;margin-top:6px;">
-        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Policy<br/>Setup</div>
-        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Kiosk<br/>Live</div>
-        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F61F;</span>Daily<br/>Anomalies</div>
-        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F61F;</span>Regularise<br/>Requests</div>
-        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Report<br/>Generated</div>
-        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F610;</span>Payroll<br/>Lock Wait</div>
-        <div style="text-align:center;flex:1;font-size:10px;color:var(--muted);line-height:1.4;"><span style="font-size:16px;display:block;margin-bottom:2px;">&#x1F60A;</span>Cycle<br/>Complete</div>
+
+      <div class="persona-card">
+        <div class="persona-icon">👨‍💼</div>
+        <div class="persona-name">HR Manager</div>
+        <div class="persona-role">Research rules, process requests</div>
+        <div class="persona-item"><span class="persona-icon-key">Pain:</span> Complex rules, manual approvals, time spent on research</div>
+        <div class="persona-item"><span class="persona-icon-key">Need:</span> Plain-language policies, auto request handling, batch approval</div>
       </div>
     </div>
 
-    <div class="insight"><strong>Key insight from empathy mapping:</strong> The same attendance system is used by a factory floor worker with no smartphone and a college-educated HR manager running policy from a laptop. Designing for both simultaneously — without compromising either — became the central design challenge.</div>
-  </div>
-
-  <!-- STEP 2: DEFINE -->
-  <div class="step">
-    <div class="step-label">Step 2 — Define</div>
-    <h2>The problem wasn't attendance. It was policy complexity.</h2>
-    <p>After synthesising across all five personas, the core tension emerged: <strong>HR managers needed maximum configurability</strong> to handle India's complex attendance rules (grace periods, comp-off, overtime, regularisation windows, sandwich policies) — but that configurability was creating cognitive overload and frequent misconfiguration.</p>
-    <p>Meanwhile, employees on the ground — especially blue collar workers — had no visibility into how policies affected them until payday, when it was too late.</p>
-
-    <h3>Key problem statements</h3>
-    <ul>
-      <li><strong>For HR / Admin:</strong> Creating a new attendance policy involves too many disconnected steps, unclear terminologies, and no safety net against misconfiguration.</li>
-      <li><strong>For Managers:</strong> No real-time visibility on team absenteeism makes it impossible to plan production or justify overtime costs.</li>
-      <li><strong>For White Collar Employees:</strong> No proactive warnings mean salary deductions come as a shock — leading to disputes and loss of trust in the system.</li>
-      <li><strong>For Blue Collar Workers:</strong> The system assumes smartphone literacy and language fluency — two things factory floor workers often don't have.</li>
-    </ul>
-
-    <div class="insight"><strong>Defining success:</strong> HR Admin's stated expectation from a user journey: "Easy way to create a new policy. The process should be flexible. Less time required to complete creation." This became our benchmark for the Define step.</div>
-  </div>
-
-  <!-- STEP 3: IDEATE -->
-  <div class="step">
-    <div class="step-label">Step 3 — Ideate</div>
-    <h2>Six structural approaches to the same problem.</h2>
-    <p>Attendance policy setup has three core configurable areas: <strong>Attendance Settings</strong> (high complexity — shift rules, grace periods, overtime), <strong>Capturing Options</strong> (low complexity — how to record attendance), and <strong>Regularisation Policy</strong> (medium complexity — correction windows and rules). We explored six structural models for how HR navigates through these.</p>
-
-    <!-- Approach 1 -->
-    <div class="approach-grid">
-      <div class="approach-card">
-        <div class="approach-label">Approach 1</div>
-        <div class="approach-name">Linear — all in one policy, sequential steps</div>
-        <div class="approach-flow">
-          <span class="flow-box">Attendance Settings</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Regularisation</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Capturing Options</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Applicable For</span>
-        </div>
-        <div class="approach-procon">
-          <div class="pro"><div class="pro-label">Pros</div><div class="pro-text">One place to create everything. Draft/save feature. No need for multiple linked policies.</div></div>
-          <div class="con"><div class="con-label">Cons</div><div class="con-text">Multiple steps to complete. Options overloaded. Capturing settings may be same across all employees — doesn't need to be per-policy.</div></div>
-        </div>
+    <div class="grid-2">
+      <div class="persona-card">
+        <div class="persona-icon">👨‍🔧</div>
+        <div class="persona-name">Field Manager</div>
+        <div class="persona-role">Blue collar supervision</div>
+        <div class="persona-item"><span class="persona-icon-key">Pain:</span> No device = can't clock in, bulk approvals daily, hidden absenteeism</div>
+        <div class="persona-item"><span class="persona-icon-key">Need:</span> Paper + kiosk fallback, one-tap bulk actions, live alerts</div>
       </div>
 
-      <!-- Approach 2 -->
-      <div class="approach-card">
-        <div class="approach-label">Approach 2</div>
-        <div class="approach-name">Two-row — attendance separate from capturing</div>
-        <div class="approach-flow">
-          <span class="flow-box">Attendance Settings</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Capturing Options</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Regularisation + Applicable For</span>
-        </div>
-        <div class="approach-flow" style="margin-top:4px;">
-          <span class="flow-box" style="background:rgba(78,203,160,0.1);color:var(--accent);border-color:rgba(78,203,160,0.2);">Regularisation Policy</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box" style="background:rgba(78,203,160,0.1);color:var(--accent);border-color:rgba(78,203,160,0.2);">Applicable For</span>
-        </div>
-        <div class="approach-procon">
-          <div class="pro"><div class="pro-label">Pros</div><div class="pro-text">Minimum steps. Lower cognitive load. Draft feature. Keeps regularisation independent.</div></div>
-          <div class="con"><div class="con-label">Cons</div><div class="con-text">Some rules are shared across policies — defining per policy increases redundancy. Requires multiple linked policies.</div></div>
-        </div>
-      </div>
-
-      <!-- Approach 3 -->
-      <div class="approach-card">
-        <div class="approach-label">Approach 3</div>
-        <div class="approach-name">Three-row — all three policies independently configurable</div>
-        <div class="approach-flow">
-          <span class="flow-box">Attendance Settings</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Select Capturing + Regularisation + Applicable For</span>
-        </div>
-        <div class="approach-procon">
-          <div class="pro"><div class="pro-label">Pros</div><div class="pro-text">One step creation. Lower cognitive load. Flexible — can assign capturing/regularisation later. Multiple ways to link policies.</div></div>
-          <div class="con"><div class="con-label">Cons</div><div class="con-text">Some rules still shared. Requires multiple policies to be created and linked with attendance.</div></div>
-        </div>
-      </div>
-
-      <!-- Approach 4 -->
-      <div class="approach-card">
-        <div class="approach-label">Approach 4</div>
-        <div class="approach-name">Compact — attendance + capturing combined, regularisation separate</div>
-        <div class="approach-flow">
-          <span class="flow-box">Attendance Settings</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Select Capturing + Regularisation + Applicable For</span>
-        </div>
-        <div class="approach-procon">
-          <div class="pro"><div class="pro-label">Pros</div><div class="pro-text">One step. Lower cognitive load. Draft feature. Possible to assign regularisation/capturing later.</div></div>
-          <div class="con"><div class="con-label">Cons</div><div class="con-text">Shared rules still need multiple policies. Capturing and regularisation need to be pre-created.</div></div>
-        </div>
-      </div>
-
-      <!-- Approach 5 -->
-      <div class="approach-card">
-        <div class="approach-label">Approach 5</div>
-        <div class="approach-name">Policy-first — regularisation and capturing independently linked</div>
-        <div class="approach-flow">
-          <span class="flow-box">Attendance Settings</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Select Regularisation + Applicable For</span>
-        </div>
-        <div class="approach-flow" style="margin-top:4px;">
-          <span class="flow-box">Capturing Options</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Assign Attendance Policy</span>
-        </div>
-        <div class="approach-procon">
-          <div class="pro"><div class="pro-label">Pros</div><div class="pro-text">Minimum steps. Lower cognitive load. Draft. Keeping capturing settings independent means HR can configure only capturing without touching full attendance settings.</div></div>
-          <div class="con"><div class="con-label">Cons</div><div class="con-text">Shared rules create redundancy. Must create multiple policies and link them.</div></div>
-        </div>
-      </div>
-
-      <!-- Approach 6 (chosen) -->
-      <div class="approach-card chosen">
-        <div class="chosen-badge">Chosen approach</div>
-        <div class="approach-label">Approach 6</div>
-        <div class="approach-name">Modular — attendance and capturing as independent but linkable policies</div>
-        <div class="approach-flow">
-          <span class="flow-box">Attendance Settings</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Regularisation</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box">Applicable For</span>
-        </div>
-        <div class="approach-flow" style="margin-top:4px;">
-          <span class="flow-box" style="background:rgba(78,203,160,0.12);color:var(--accent);border-color:rgba(78,203,160,0.25);">Capturing Policy</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-box" style="background:rgba(78,203,160,0.12);color:var(--accent);border-color:rgba(78,203,160,0.25);">Attendance Settings or Applicable For</span>
-        </div>
-        <div class="approach-procon">
-          <div class="pro"><div class="pro-label">Why we chose this</div><div class="pro-text">Minimum steps. Lower cognitive load. Keeping attendance capturing settings independently means HR can configure only capturing methods without having to open and re-save full attendance settings. Draft feature preserved. Flexible linking.</div></div>
-          <div class="con"><div class="con-label">Trade-off</div><div class="con-text">Some rules are still common across policies. Requires creating and linking separate policies for regularisation.</div></div>
-        </div>
+      <div class="persona-card">
+        <div class="persona-icon">💼</div>
+        <div class="persona-name">White Collar Employee</div>
+        <div class="persona-role">Desktop-based, needs grace periods</div>
+        <div class="persona-item"><span class="persona-icon-key">Pain:</span> Strict rules = no flexibility, late arrival penalties, timezone confusion</div>
+        <div class="persona-item"><span class="persona-icon-key">Need:</span> 5-min grace period, self-regularisation, clear time display</div>
       </div>
     </div>
 
-    <div class="insight"><strong>Why six approaches?</strong> Each approach represented a different mental model: "Everything in one place" vs "Independent modules" vs "Link as you go." The key insight from evaluating all six was that <strong>capturing policy and attendance policy have different update frequencies</strong> — capturing (biometric vs geo-fence) changes rarely, while attendance rules (grace periods, overtime) change seasonally. Separating them respects that cadence.</div>
-  </div>
-
-  <!-- STEP 4: PROTOTYPE -->
-  <div class="step">
-    <div class="step-label">Step 4 — Prototype</div>
-    <h2>Task flow: HR Admin creating and assigning a new policy.</h2>
-    <p>With Approach 6 selected, we built the task flow for the primary use case: an HR Admin creating a new attendance policy, configuring it, and assigning it to a specific employee group. We mapped this across five phases with tasks, emotional states, and improvement areas at each stage.</p>
-
-    <!-- Task flow table -->
-    <div class="taskflow-row">
-      <div class="tf-head">Phase</div>
-      <div class="tf-head">Enter &amp; Explore</div>
-      <div class="tf-head">Provide</div>
-      <div class="tf-head">Applicable For</div>
-      <div class="tf-head">Update</div>
-      <div class="tf-head">Delete</div>
-
-      <div class="tf-phase">Task List</div>
-      <div class="tf-cell">Login → Settings → Attendance → Attendance Policy</div>
-      <div class="tf-cell">Set title → Define rules (attendance + regularisation settings) → Save &amp; Next</div>
-      <div class="tf-cell">Define/select category or all org → Assign (CTA)</div>
-      <div class="tf-cell">Enter edit mode → Update changes (add/remove assignees) → Save</div>
-      <div class="tf-cell">Delete policy → Confirmation → Make decision</div>
-
-      <div class="tf-phase">Feeling</div>
-      <div class="tf-cell feeling-pos">Delighted with instant login and easy navigation to attendance policy</div>
-      <div class="tf-cell feeling-pos">Feeling of seriousness due to importance of policies. Happy to see one-step process</div>
-      <div class="tf-cell feeling-neg">Confusion and frustration due to overlapping scenarios (force inclusion vs exclusion)</div>
-      <div class="tf-cell feeling-neu">Normal — learned through previous experience</div>
-      <div class="tf-cell feeling-neg">Anxious about future impact of policy deletion</div>
-
-      <div class="tf-phase">Opportunity</div>
-      <div class="tf-cell">Keep default attendance policy on product discovery — presence of a policy helps explore and update requirements</div>
-      <div class="tf-cell">Reduce number of input fields</div>
-      <div class="tf-cell">Minimise overlapping scenarios from back-end database</div>
-      <div class="tf-cell">Same improvements as create flow</div>
-      <div class="tf-cell">Better ways to show deletion impact. Approval workflow to prevent accidental deletion</div>
+    <div class="persona-card">
+      <div class="persona-icon">🔧</div>
+      <div class="persona-name">Blue Collar Employee</div>
+      <div class="persona-role">Kiosk + paper, language barriers</div>
+      <div class="persona-item"><span class="persona-icon-key">Pain:</span> No smartphone, language barriers, can't self-fix</div>
+      <div class="persona-item"><span class="persona-icon-key">Need:</span> Face-scan kiosk, icons over text, request regularisation</div>
     </div>
 
-    <!-- Emotion curve -->
-    <h3>HR Admin experience curve</h3>
-    <p>The emotion curve across the policy creation journey revealed a critical dip during the "Applicable For" phase — where overlapping inclusion/exclusion rules caused the most frustration. This directly informed our decision to add an employee overlap validation layer in the back-end and a simplified assignment UI.</p>
-    <div class="emoji-row">
-      <div class="emoji-item"><span>😊</span>Enter</div>
-      <div class="emoji-item"><span>😊</span>Explore</div>
-      <div class="emoji-item"><span>😐</span>Provide</div>
-      <div class="emoji-item"><span>😞</span>Applicable For</div>
-      <div class="emoji-item"><span>😞</span>Assign</div>
-      <div class="emoji-item"><span>😊</span>Update</div>
-      <div class="emoji-item"><span>😟</span>Delete</div>
+    <div class="insight-box">
+      <p><strong>Key insight:</strong> <em>Policy complexity, not tracking</em>, was the real problem. HR spent weeks managing overlapping rules. Solution: Decouple policy from rules, make policies modular and reusable.</p>
     </div>
-
-    <h3>Key prototype decisions</h3>
-    <ul>
-      <li><strong>Default policy on first entry:</strong> Rather than showing an empty state, we pre-populated a default policy so HR could explore and edit rather than start from scratch.</li>
-      <li><strong>Progressive disclosure:</strong> Attendance settings (highest complexity) are shown first; capturing options (lowest complexity) are on a separate screen HR can defer.</li>
-      <li><strong>Draft save at every step:</strong> Because policy creation spans multiple sessions (reviews, stakeholder approvals), draft state is preserved automatically.</li>
-      <li><strong>Overlap validation:</strong> When assigning a policy to a group, the system checks for employees already assigned to another policy and shows a clear conflict resolution UI.</li>
-      <li><strong>One policy per employee:</strong> System enforces this — attempting to assign a second policy automatically re-assigns rather than duplicating, with an alert.</li>
-    </ul>
   </div>
 
-  <!-- STEP 5: TEST & SHIP -->
+  <!-- STEP 2 -->
   <div class="step">
-    <div class="step-label">Step 5 — Test &amp; Ship</div>
-    <h2>Validated with HR managers. Shipped across 1000+ companies.</h2>
-    <p>We ran usability testing with HR managers from 5 companies across different industries — manufacturing, logistics, retail, IT services, and healthcare. Key findings informed the final design:</p>
-    <ul>
-      <li><strong>Default policy discovery:</strong> 4/5 HR managers went directly to edit the default policy rather than creating a new one — confirming the "default on entry" decision.</li>
-      <li><strong>Applicable For confusion:</strong> All 5 HR managers struggled with the overlap scenario during testing, validating our emotional mapping from the task flow. We added an inline preview of "affected employees" before saving.</li>
-      <li><strong>Blue collar kiosk:</strong> Testing with factory floor workers confirmed zero-text, face-in-frame, audio+visual feedback was the only viable interaction model. Even bilingual text caused hesitation.</li>
-      <li><strong>Notification timing:</strong> Employees wanted warnings before the payroll cycle closed — not after salary deductions. We added a proactive reminder system triggered 3 days before payroll lock.</li>
-    </ul>
+    <div class="step-label">Step 2 — Define & Step 3 — Ideate</div>
+    <h2>Four challenges → One modular solution</h2>
+    
+    <div class="chart-box">
+      <div class="chart-title">Problem Space & Solution</div>
+      <svg class="svg-chart" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:rgba(78,203,160,0.3);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(78,203,160,0.05);stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        
+        <!-- Left side: Problems -->
+        <g font-family="DM Sans" font-size="13" fill="#a8a49e">
+          <text x="20" y="30" font-weight="600" fill="#f0ece3">Problems</text>
+          
+          <circle cx="60" cy="80" r="8" fill="#e87c5a"/>
+          <text x="80" y="85">Policy overlap &amp; complexity</text>
+          
+          <circle cx="60" cy="120" r="8" fill="#e87c5a"/>
+          <text x="80" y="125">Multi-device support needed</text>
+          
+          <circle cx="60" cy="160" r="8" fill="#e87c5a"/>
+          <text x="80" y="165">Grace period logic (context-aware)</text>
+          
+          <circle cx="60" cy="200" r="8" fill="#e87c5a"/>
+          <text x="80" y="205">Manual approval bottleneck</text>
+        </g>
+        
+        <!-- Arrow -->
+        <path d="M 350 150 L 450 150" stroke="#4ecba0" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+        <defs><marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><polygon points="0 0, 10 3, 0 6" fill="#4ecba0"/></marker></defs>
+        
+        <!-- Right side: Solution -->
+        <g font-family="DM Sans" font-size="13" fill="#a8a49e">
+          <text x="480" y="30" font-weight="600" fill="#f0ece3">Solution</text>
+          
+          <rect x="460" y="70" width="200" height="40" fill="rgba(78,203,160,0.12)" stroke="#4ecba0" stroke-width="1" rx="6"/>
+          <text x="475" y="95" font-weight="600" fill="#4ecba0">Attendance Settings</text>
+          <text x="475" y="108" font-size="11">(Clock in, grace, leave)</text>
+          
+          <rect x="460" y="130" width="200" height="40" fill="rgba(78,203,160,0.12)" stroke="#4ecba0" stroke-width="1" rx="6"/>
+          <text x="475" y="155" font-weight="600" fill="#4ecba0">Capturing Rules</text>
+          <text x="475" y="168" font-size="11">(Who it applies to)</text>
+          
+          <text x="480" y="230" font-size="12" font-style="italic" fill="#7eb8a4">Independent. Updateable separately. Max 3 criteria per rule.</text>
+        </g>
+      </svg>
+    </div>
+  </div>
 
+  <!-- STEP 4 & 5 -->
+  <div class="step">
+    <div class="step-label">Step 4 & 5 — Build and Ship</div>
+    <h2>Six core features shipped:</h2>
+    
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-emoji">✅</span>
+        <div class="feature-title">Modular Policy</div>
+        <div class="feature-desc">Settings + Rules decoupled. Update independently.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">📱</span>
+        <div class="feature-title">Face-Scan Kiosk</div>
+        <div class="feature-desc">Blue collar check-in. No smartphone needed.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">🔍</span>
+        <div class="feature-title">Exceptions Dashboard</div>
+        <div class="feature-desc">Only show anomalies. Not every employee.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">🗺️</span>
+        <div class="feature-title">Geo-Fence</div>
+        <div class="feature-desc">Field staff auto clock in/out via GPS.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">📝</span>
+        <div class="feature-title">Plain Language</div>
+        <div class="feature-desc">Employee-friendly policy summary.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-emoji">⏳</span>
+        <div class="feature-title">Proactive Alerts</div>
+        <div class="feature-desc">Absence notifications before payroll lock.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:3rem;">Impact:</h3>
     <div class="outcomes">
-      <div class="outcome-card">
-        <div class="outcome-num">500k<span style="font-size:18px;color:var(--muted);">+</span></div>
-        <div class="outcome-label">Daily active users across attendance module</div>
+      <div class="outcome">
+        <div class="outcome-emoji">👥</div>
+        <div class="outcome-num">500k+</div>
+        <div class="outcome-label">Employees across 1000+ companies</div>
       </div>
-      <div class="outcome-card">
-        <div class="outcome-num">15<span style="font-size:18px;color:var(--muted);">+</span></div>
-        <div class="outcome-label">Attendance status types handled by the system</div>
+      <div class="outcome">
+        <div class="outcome-emoji">🏢</div>
+        <div class="outcome-num">6</div>
+        <div class="outcome-label">Attendance modules shipped</div>
       </div>
-      <div class="outcome-card">
-        <div class="outcome-num">1000<span style="font-size:18px;color:var(--muted);">+</span></div>
-        <div class="outcome-label">Companies using the policy setup flow</div>
+      <div class="outcome">
+        <div class="outcome-emoji">⚡</div>
+        <div class="outcome-num">40%</div>
+        <div class="outcome-label">Faster policy setup time</div>
       </div>
     </div>
-
-    <h3>What shipped</h3>
-    <ul>
-      <li><strong>Modular policy creation</strong> (Approach 6) — attendance, regularisation, and capturing as separately configurable and linkable policies</li>
-      <li><strong>Face scan kiosk</strong> — hardware device with zero-text UI, audio confirmation, and face recognition for factory floor workers with no smartphone</li>
-      <li><strong>Mobile geo-fenced clock-in</strong> — for field and office employees with 50m geo-fence precision</li>
-      <li><strong>Exceptions-first admin dashboard</strong> — HR sees flagged anomalies first, not a sea of green ticks</li>
-      <li><strong>Proactive notification system</strong> — employees notified of anomalies, managers notified on team leave events, HR notified before payroll closes</li>
-      <li><strong>Plain-language attendance summary</strong> — policy terms translated into plain language communicated to employees at assignment</li>
-    </ul>
   </div>
 
-</div><!-- /wrap -->
+</div>
 
 <footer style="padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
   <span style="font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);">Sahil Tamboli</span>

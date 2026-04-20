@@ -623,6 +623,201 @@ li strong{color:#d4cfc7;font-weight:500;}
       </div>
     </div>
 
+
+    <!-- BUTTONS -->
+    <div class="section-tag">Pattern 21 -- Buttons</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-buttons-3.png" alt="Button types" class="pattern-img short"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">4 button types</div>
+          <div class="pattern-desc">Primary (strong CTA, one per action), Secondary (alternative action), Text/Tertiary (miscellaneous actions), Icon Button. Each with Default, Hover, Disabled, and Loading states.</div>
+          <ul class="pattern-rules">
+            <li>Never use two primary buttons side by side</li>
+            <li>Primary goes right, secondary goes left when paired</li>
+            <li>Destructive actions use a danger variant</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-mobile-buttons-1.png" alt="Mobile buttons" class="pattern-img short"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-mob">Mobile</span>
+          <div class="pattern-name">Mobile button rules</div>
+          <div class="pattern-desc">One primary button per screen. Primary always right/above secondary. 3 sizes: Small (all pages at bottom), Medium (login pages), Large (full-width actions). Tertiary used for content title and filter clear.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMS -->
+    <div class="section-tag">Pattern 22 -- Forms</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-forms-1.png" alt="Form field rules" class="pattern-img"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">Form field selection rules</div>
+          <div class="pattern-desc">Numeric fields: up to 7 values use Dropdown, else Numeric Input. Text fields: up to 7 values use Simple Dropdown, else Search + Select. Radio groups: pre-select default unless the choice is critical enough that the user should think it through.</div>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-forms-2.png" alt="Form validation" class="pattern-img"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">Validation strategy</div>
+          <div class="pattern-desc">Field-level validation preferred — show errors inline immediately. Form-level validation only when server-side validation is unavoidable. Never wait until submit to surface errors that can be caught earlier.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATE PICKER -->
+    <div class="section-tag">Pattern 23 -- Date Picker and Time Picker</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-date-picker-1.png" alt="Date picker" class="pattern-img"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">Date picker features</div>
+          <div class="pattern-desc">Date format respects user's General Settings preference (DD/MM/YY, MM/DD/YY, YY/MM/DD). Date range selection with easy month/year navigation. Disabled dates for past/future based on business rules per module.</div>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-date-picker-3.png" alt="Date picker range" class="pattern-img"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-both">Web + Mobile</span>
+          <div class="pattern-name">Range selection</div>
+          <div class="pattern-desc">Start and end date highlight with range fill. Used across Leave application, Attendance reports, Payroll cycle selection. Mobile uses native OS date picker (react-native-date-picker) for platform familiarity.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHECKBOX -->
+    <div class="section-tag">Pattern 24 -- Checkbox</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-checkbox-2.jpg" alt="Checkbox usage" class="pattern-img short"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-both">Web + Mobile</span>
+          <div class="pattern-name">When to use checkboxes</div>
+          <div class="pattern-desc">For multiple independent choices — not mutually exclusive options (use radio for those). Used in forms, modals, side panels, and AG Grid for batch editing. Each checkbox works independently.</div>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-table-1.png" alt="Checkbox in table" class="pattern-img short"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">Bulk select in tables</div>
+          <div class="pattern-desc">Checkboxes in AG Grid tables enable bulk actions. Select all via header checkbox. Bulk approve/reject button appears at top when rows selected. Used consistently across all HRMS modules.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEFT NAV / BREADCRUMB -->
+    <div class="section-tag">Pattern 25 -- Left Navigation Detail and Breadcrumbs</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-left-nav-1.jpg" alt="Left nav" class="pattern-img tall"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">Left nav with sub-menu</div>
+          <div class="pattern-desc">3 or fewer levels: primary + secondary stacked left, tertiary as horizontal tabs above content. More than 3 levels: tertiary goes inside secondary nav. Secondary menu collapses to reveal more real estate, with hover preview remaining visible.</div>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-breadcrumb-1.png" alt="Breadcrumb" class="pattern-img short"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">Breadcrumb rules</div>
+          <div class="pattern-desc">L1/L2 are on sidebar — no breadcrumb needed. L3 simple page: page header suffices. L3/L4 internal page: "Back to parent" breadcrumb or "Back to parent + current page with dropdown". L5/L6: full breadcrumb trail shown.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIST VIEW / COUNT IN TABLE -->
+    <div class="section-tag">Pattern 26 -- List View and Count in Table</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-list-view-1.png" alt="List view" class="pattern-img"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">List view with AG Grid</div>
+          <div class="pattern-desc">Standard structure: External Filters → Summary Cards → AG Grid Table. Empty state, skeleton loader, column-level filters, row-level actions, multi-row bulk actions all follow shared guidelines.</div>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-count-table-1.png" alt="Count in table" class="pattern-img"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-web">Web</span>
+          <div class="pattern-name">Count badge in table</div>
+          <div class="pattern-desc">Entity count shown as badge in column header or above the table. Badge position: after label, never before. Used for showing sub-item counts, pending request counts, and assignment totals inline in rows.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOWNLOAD / EXPORT -->
+    <div class="section-tag">Pattern 27 -- Download and Export</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-download-export-1.png" alt="Download export" class="pattern-img tall"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-both">Web + Mobile</span>
+          <div class="pattern-name">Export flow</div>
+          <div class="pattern-desc">Export option present on all data-heavy pages. Format picker: CSV, Excel, PDF. Used in Reports, Payroll, Attendance Summary. Download triggers immediately or shows options inline — never redirects away from the current page.</div>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-download-export-2.png" alt="Export options" class="pattern-img tall"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-both">Web + Mobile</span>
+          <div class="pattern-name">Report automation</div>
+          <div class="pattern-desc">Advanced option: schedule and automate report sharing — define date, time, recipient, and delivery method (app notification or email). Used in Reports module for monthly HR owner reporting.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AVATAR AND COMPANY LOGO -->
+    <div class="section-tag">Pattern 28 -- Avatar and Company Logo</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-av-logo-1.png" alt="Avatar" class="pattern-img short"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-both">Web + Mobile</span>
+          <div class="pattern-name">Avatar system</div>
+          <div class="pattern-desc">Default: Single alphabet on one of 22 background colours. User profile: circular photo. Company logo: square shape, 2-alphabet default. Consistent across all modules — same component, same fallback logic everywhere.</div>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-av-logo-2.png" alt="Avatar sizes" class="pattern-img short"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-both">Web + Mobile</span>
+          <div class="pattern-name">Avatar sizes and usage</div>
+          <div class="pattern-desc">Multiple sizes for different contexts: large (profile pages), medium (list rows, cards), small (table cells, chips). Hover triggers Employee Card molecule with full contact details.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE CARDS AND TABS -->
+    <div class="section-tag">Pattern 29 -- Mobile Cards and Tabs</div>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-mobile-cards-1.png" alt="Mobile cards" class="pattern-img"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-mob">Mobile</span>
+          <div class="pattern-name">Mobile card rules</div>
+          <div class="pattern-desc">Border-radius 8px, 1px border #E7E7ED, white background, no shadow. 16px internal margin all sides. Selectable cards: Default vs Selected (primary blue border + light blue fill). Maximum 3 segments on screen.</div>
+        </div>
+      </div>
+      <div class="pattern-card">
+        <img src="ds-imgs/ds-mobile-tabs-1.png" alt="Mobile tabs" class="pattern-img"/>
+        <div class="pattern-body">
+          <span class="pattern-tag tag-mob">Mobile</span>
+          <div class="pattern-name">Mobile tabs</div>
+          <div class="pattern-desc">Active: 16px Inter, dark text, 2px underline indicator. Default: 16px Inter, muted secondary text. Maximum 3 tabs per screen. Used as first-level navigation within modules (e.g. Pending / Approved / Rejected).</div>
+        </div>
+      </div>
+    </div>
+
     <!-- POLICY CREATION PATTERN (reusable across modules) -->
     <div class="section-tag">Key finding -- Policy Creation as a reusable pattern</div>
     <p>One of the most valuable outputs of the design system audit was discovering that <strong>policy creation follows an identical structural pattern across 6 modules</strong> -- Attendance, Leave, Payroll, Field Visit, Shifts, and Expense. Once identified, we standardised it as a reusable template:</p>
