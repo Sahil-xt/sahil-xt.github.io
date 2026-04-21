@@ -103,6 +103,39 @@ li strong{color:#d4cfc7;font-weight:500;}
   .meta-row{gap:1.5rem;}
   .tf-table th,.tf-table td{font-size:11px;padding:8px 10px;}
 }
+
+/* DESIGN SHOWCASE */
+.design-section{margin:2.5rem 0;}
+.design-section-title{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.design-section-title::before{content:'';display:inline-block;width:12px;height:12px;border-radius:3px;}
+.design-section-title.wireframe::before{background:rgba(90,158,232,0.4);}
+.design-section-title.visual::before{background:rgba(78,203,160,0.4);}
+.design-section-title.mobile::before{border-radius:6px;}
+
+.screen-grid{display:grid;gap:1.25rem;margin:1.25rem 0;}
+.screen-grid.web-2{grid-template-columns:1fr 1fr;}
+.screen-grid.web-3{grid-template-columns:1fr 1fr 1fr;}
+.screen-grid.mobile-4{grid-template-columns:repeat(4,1fr);}
+.screen-grid.mobile-2{grid-template-columns:1fr 1fr;}
+
+.screen-item{background:var(--surface2);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.screen-item img{width:100%;display:block;}
+.screen-caption{padding:10px 12px;font-size:11px;color:var(--muted);line-height:1.5;border-top:1px solid var(--border);}
+.screen-caption strong{color:#c8c4be;font-weight:600;display:block;margin-bottom:2px;}
+
+.design-note{background:rgba(78,203,160,0.05);border:1px solid rgba(78,203,160,0.15);border-radius:8px;padding:1rem 1.25rem;margin:1.25rem 0;font-size:13px;color:#7eb8a4;line-height:1.7;}
+.design-note strong{color:var(--teal);}
+
+.platform-divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0;}
+.platform-divider span{font-size:13px;font-weight:600;color:var(--cream);white-space:nowrap;}
+.platform-divider::before,.platform-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+@media(max-width:800px){
+  .screen-grid.web-2,.screen-grid.web-3{grid-template-columns:1fr;}
+  .screen-grid.mobile-4{grid-template-columns:1fr 1fr;}
+  .screen-grid.mobile-2{grid-template-columns:1fr;}
+}
+
 </style>
 </head>
 <body>
@@ -409,6 +442,113 @@ li strong{color:#d4cfc7;font-weight:500;}
         </tr>
       </tbody>
     </table>
+
+
+    <div class="platform-divider"><span>📱 Mobile — Wireframes to Visual Design</span></div>
+
+    <div class="design-section">
+      <div class="design-section-title wireframe mobile">Mobile Wireframes — Low fidelity exploration</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">Wireframes explored the core employee-facing flows: the Home screen with the live Field Force card, the field team tracker overlaid on a map, the route map with numbered visit stops, and the detailed visit timeline. Each screen was tested for cognitive load — could an employee understand their status at a glance?</p>
+      <div class="screen-grid mobile-4">
+        <div class="screen-item">
+          <img src="fv-mob-wf-home.jpg" alt="Mobile wireframe - Home screen with Field Force card"/>
+          <div class="screen-caption"><strong>Home — Clock Out</strong>Home card shows active field session, remaining hours counter, and map preview with a prominent Check Out CTA.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-mob-wf-team-tracker.jpg" alt="Mobile wireframe - Field team tracker"/>
+          <div class="screen-caption"><strong>Team Tracker</strong>On Field / Off Field toggle. Employee list overlaid on map. Each card shows last visit and clock-in status.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-mob-wf-route-map.jpg" alt="Mobile wireframe - Route map with visit stops"/>
+          <div class="screen-caption"><strong>Route Map</strong>Numbered stop pins connected by route path. Summary bar at bottom: visit count, meeting duration, distance. CTA to detailed timeline.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-mob-wf-timeline.jpg" alt="Mobile wireframe - Visit timeline detail"/>
+          <div class="screen-caption"><strong>Visit Timeline</strong>Trip Start → Client visits in order → Trip End. Distance between stops. IN/OUT timestamps per visit. Visit notes section per entry.</div>
+        </div>
+      </div>
+      <div class="design-note"><strong>Key wireframe decision:</strong> The route map and timeline are separate screens accessed progressively — map gives spatial context, timeline gives sequential detail. Tested both combined and split; split won because each serves a different decision (where vs when).</div>
+    </div>
+
+    <div class="design-section">
+      <div class="design-section-title visual mobile">Mobile Visual Design — Final shipped screens</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">The visual design applied the Mewurk design system: blue primary, white backgrounds, Inter font, card-based layout. Key decisions: the Check Out button uses a distinct orange CTA to prevent accidental misses. Clocked In/Not Clocked In status uses green/red text for instant scan-ability on the team tracker.</p>
+      <div class="screen-grid mobile-4">
+        <div class="screen-item">
+          <img src="fv-mob-vd-home.jpg" alt="Mobile visual - Home screen final"/>
+          <div class="screen-caption"><strong>Home — Final</strong>Field Force card shows active session time, Whitefield Office location, map preview. Orange Check Out button. Leave and Attendance widgets alongside. Tasks list below.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-mob-vd-team-tracker.jpg" alt="Mobile visual - Team tracker final"/>
+          <div class="screen-caption"><strong>Team Tracker — Final</strong>Employee cards on map. Photo + name + ID + last visit + status. Green "Clocked In" vs red "Not Clocked In". Visit count badge on active employees.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-mob-vd-route-map.jpg" alt="Mobile visual - Route map final"/>
+          <div class="screen-caption"><strong>Route Map — Final</strong>Date navigator. Numbered stop pins on live map. Stats: Visits, Meeting Duration (pink), Distance (green). "View Detailed Timeline" CTA.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-mob-vd-timeline.jpg" alt="Mobile visual - Visit timeline final"/>
+          <div class="screen-caption"><strong>Timeline — Final</strong>Trip Start → Client: Infogain (1h 30m, IN→OUT) → Client: Mewurk Technologies (1h 30m). Distance between stops. Visit notes visible inline.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="platform-divider"><span>🖥️ Web — Wireframes to Visual Design</span></div>
+
+    <div class="design-section">
+      <div class="design-section-title wireframe">Web Wireframes — Manager dashboard exploration</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">Web wireframes covered the manager's four key workflows: Field Visit Settings (policy + client setup), the Daily Tracker with list + map split, the Visit Timeline detail view with route overlaid, and the Employee Visit Summary Report table with summary metrics.</p>
+      <div class="screen-grid web-2">
+        <div class="screen-item">
+          <img src="fv-web-wf-settings-policy.jpg" alt="Web wireframe - Field visit settings"/>
+          <div class="screen-caption"><strong>Settings — Policy + Clients</strong>Two-tab settings: "Field Visit Policy" (title, GPS tracking toggle, auto-checkout duration, manager notifications) and "Clients" (client list with map). Policy applicable-for panel on right.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-web-wf-daily-tracker.jpg" alt="Web wireframe - Daily tracker list + map"/>
+          <div class="screen-caption"><strong>Daily Tracker</strong>Left panel: On Field / Off Field toggle, employee list with last client visit and status. Right: live map with employee pins. Split layout chosen over map-only for review workflow support.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-web-wf-timeline-detail.jpg" alt="Web wireframe - Visit timeline detail"/>
+          <div class="screen-caption"><strong>Visit Timeline Detail</strong>Date navigator at top. Left: timeline of Trip Start → visits → Trip End with distance between. Right: route drawn on map with numbered pins. Meeting duration + distance summary top-right.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-web-wf-report-table.jpg" alt="Web wireframe - employee report table"/>
+          <div class="screen-caption"><strong>Report Table</strong>Summary cards at top (new clients, visits, duration, distance). AG Grid table with employee photo, name, and metrics per column. Date range and employee filter controls.</div>
+        </div>
+        <div class="screen-item" style="grid-column:1/-1;">
+          <img src="fv-web-wf-clients-tab.jpg" alt="Web wireframe - settings clients tab"/>
+          <div class="screen-caption"><strong>Settings — Clients Tab</strong>Client list with address, map pins. Active/Inactive state for client management. Map shows all registered client locations. Used for geo-fence optional enhancement.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-section">
+      <div class="design-section-title visual">Web Visual Design — Final shipped screens</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">The web visual design brought in the Mewurk dark navigation sidebar, real map tiles (Google Maps), and the established design system components. The timeline detail page became the most-used screen by managers — the combination of numbered timeline entries on the left and the route path on the right gave full context without switching views.</p>
+      <div class="screen-grid web-2">
+        <div class="screen-item">
+          <img src="fv-web-vd-daily-tracker.jpg" alt="Web visual - Daily tracker with real map"/>
+          <div class="screen-caption"><strong>Daily Tracker — Final</strong>On Field / Off Field tabs. Employee cards with photo, ID, role, last client visit, status. Real map with named employee pins (KARAN SHARMA, KIRAN SHARMA, KARAN VARMA).</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-web-vd-timeline-detail.jpg" alt="Web visual - Timeline detail with route"/>
+          <div class="screen-caption"><strong>Visit Timeline Detail — Final</strong>Date navigator (08 Dec 2023). Timeline: Trip Start → Client Infogain (AUTO OUT) → Client Mewurk → Trip End. Red route path on real map. Meeting duration + estimated distance top-right.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-web-vd-settings-policy.jpg" alt="Web visual - Field visit settings policy"/>
+          <div class="screen-caption"><strong>Settings: Policy — Final</strong>Policy title, default visit duration, GPS auto-checkout toggle with helper text, manager notifications (on Check In + Check Out), add notes toggle. Policy applicable-for panel with assignee list.</div>
+        </div>
+        <div class="screen-item">
+          <img src="fv-web-vd-clients.jpg" alt="Web visual - Settings clients with map"/>
+          <div class="screen-caption"><strong>Settings: Clients — Final</strong>Client list (Pampering Woods Resort, Liam Johnson, Admins Dynamics etc.) with add date and address. Map pins show all registered clients. Inactive state badge for deactivated clients.</div>
+        </div>
+        <div class="screen-item" style="grid-column:1/-1;">
+          <img src="fv-web-vd-report.jpg" alt="Web visual - Employee visit summary report"/>
+          <div class="screen-caption"><strong>Employee Visit Summary Report — Final</strong>Date range filter + employee search. Summary row: New Clients Added (15), Client Visits (35), Total Visit Duration (84 hrs), Total Distance (150 km). AG Grid table with per-employee breakdown of distance, duration, visits, new clients.</div>
+        </div>
+      </div>
+    </div>
+
 
     <h3>Key prototype decisions</h3>
     <ul>
