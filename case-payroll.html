@@ -108,6 +108,34 @@ li strong{color:#d4cfc7;font-weight:500;}
   .meta-row{gap:1.5rem;}
   .tf-table th,.tf-table td{font-size:11px;padding:8px 10px;}
 }
+
+/* DESIGN SHOWCASE */
+.design-section{margin:2.5rem 0;}
+.design-section-title{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.design-section-title::before{content:'';display:inline-block;width:12px;height:12px;border-radius:3px;}
+.design-section-title.mobile-d::before{background:rgba(232,124,90,0.5);}
+.design-section-title.web-d::before{background:rgba(245,166,35,0.5);}
+.design-section-title.payslip-d::before{background:rgba(78,203,160,0.5);}
+.screen-grid{display:grid;gap:1.25rem;margin:1.25rem 0;}
+.screen-grid.cols-2{grid-template-columns:1fr 1fr;}
+.screen-grid.cols-3{grid-template-columns:1fr 1fr 1fr;}
+.screen-grid.mob-5{grid-template-columns:repeat(5,1fr);}
+.screen-item{background:var(--surface2);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.screen-item img{width:100%;display:block;}
+.screen-caption{padding:10px 12px;font-size:11px;color:var(--muted);line-height:1.5;border-top:1px solid var(--border);}
+.screen-caption strong{color:#c8c4be;font-weight:600;display:block;margin-bottom:2px;}
+.design-note{background:rgba(232,124,90,0.05);border:1px solid rgba(232,124,90,0.15);border-radius:8px;padding:1rem 1.25rem;margin:1.25rem 0;font-size:13px;color:#c4907a;line-height:1.7;}
+.design-note strong{color:var(--coral);}
+.platform-divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0;}
+.platform-divider span{font-size:13px;font-weight:600;color:var(--cream);white-space:nowrap;}
+.platform-divider::before,.platform-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+@media(max-width:800px){
+  .screen-grid.cols-2,.screen-grid.cols-3,.screen-grid.mob-5{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:500px){
+  .screen-grid.cols-2,.screen-grid.cols-3,.screen-grid.mob-5{grid-template-columns:1fr;}
+}
+
 </style>
 </head>
 <body>
@@ -461,6 +489,84 @@ li strong{color:#d4cfc7;font-weight:500;}
       <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--cream);letter-spacing:-0.02em;">Rs. 66,600</div>
       <div style="font-size:12px;color:var(--muted);margin-top:4px;">Credited on 1st of every month to your registered bank account</div>
     </div>
+
+    <div class="platform-divider"><span>📱 Mobile — Visual Design</span></div>
+
+    <div class="design-section">
+      <div class="design-section-title mobile-d">Mobile Payroll — 5 screens shipped</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">The mobile payroll experience was designed for the employee — not the HR manager. The home card shows net salary with a donut chart at a glance. Deeper screens reveal salary structure, payslip history, and per-payslip detail with a Download PDF CTA. Managers get a separate view with annual CTC breakdown.</p>
+      <div class="screen-grid mob-5">
+        <div class="screen-item">
+          <img src="pay-mob-home.jpg" alt="Mobile - Payroll home"/>
+          <div class="screen-caption"><strong>Payroll Home</strong>January 2024 card: Gross ₹1,00,000 / Net ₹70,000 / Deduction ₹20,000. Donut chart. Payroll Services: Salary, Payslips, Declaration, Proof of Investment, Form 16.</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-mob-salary.jpg" alt="Mobile - Salary structure"/>
+          <div class="screen-caption"><strong>Salary Structure</strong>Yearly/Monthly toggle. CTC = A+B+C. Section A: Fixed Earnings (Basic, DA, HRA, Conveyance). B: Employer Contribution (EPF, ESI). C: Variable Earnings (Milestone Bonus, Performance Bonus).</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-mob-payslips.jpg" alt="Mobile - Payslips list"/>
+          <div class="screen-caption"><strong>Payslips List</strong>Financial year navigator (2023–24). Monthly list: August to April 2024. Each row: month, amount paid, working days. Download icon + detail chevron per row.</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-mob-payslip-detail.jpg" alt="Mobile - Payslip detail"/>
+          <div class="screen-caption"><strong>Payslip Detail</strong>Summary card: Gross ₹1,00,000 / Net ₹70,000 / Deduction ₹20,000 / 24 Paid Days &amp; 2 LOP. Net Salary (A−B) hero. Gross Salary section A (expandable). Gross Deduction section B (EPF, TDS). Download PDF button.</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-mob-manager.jpg" alt="Mobile - Manager view"/>
+          <div class="screen-caption"><strong>Manager View</strong>Employee header (Peter Alan). Annual CTC ₹1,00,000 breakdown: Fixed ₹60k / Employer ₹25k / Variable ₹15k. Donut chart. View Salary Structure CTA. Payroll Services shortcuts below.</div>
+        </div>
+      </div>
+      <div class="design-note"><strong>Mobile design decision:</strong> Net Salary is the hero number everywhere — not Gross. Employees care about take-home. Deductions are revealed progressively, not upfront. This reduced "why is my salary low?" queries to HR by giving employees clear, self-serviceable answers.</div>
+    </div>
+
+    <div class="platform-divider"><span>🖥️ Web — Visual Design</span></div>
+
+    <div class="design-section">
+      <div class="design-section-title web-d">Web Payroll — 6 core screens shipped</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">The web experience covers the full payroll lifecycle: salary structure configuration with statutory toggles, the payroll run two-step flow (attendance finalization → salary finalization), final salary summary with audit trail, loan management, and the payslip template builder. Each screen was designed to reduce a specific anxiety identified in research.</p>
+      <div class="screen-grid cols-2">
+        <div class="screen-item">
+          <img src="pay-web-payroll-run-step1.jpg" alt="Web - Payroll run step 1: Attendance Finalization"/>
+          <div class="screen-caption"><strong>Payroll Run — Step 1: Attendance Finalization</strong>Two-step progress: Attendance Finalization → Salary Finalization. Summary cards: Employees (90 Active / 10 Offboarded), Incomplete Profiles (5 salary unassigned), Pending Requests (15 Attendance + 5 Leave), Attendance Errors (10). "20 Employees review pending" with Review All CTA. Table: Employee, Payable Days, LOP, Errors, Pending Requests, Attendance Summary, Review checkbox.</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-web-payroll-run-step2.jpg" alt="Web - Payroll run step 2: Salary Finalization"/>
+          <div class="screen-caption"><strong>Payroll Run — Step 2: Salary Finalization</strong>Top summary: Payroll Cost ₹12,00,00,000 (+1,70,000 from Sep), Net Salary ₹9,80,00,000, Total Contribution ₹1,00,00,000, Taxes ₹1,20,00,000. Table per employee: Payable Days, LOP, Gross Salary, Employee Contribution, Taxes, Net Salary, Employer Contribution. Reset Pay Run + Audit Trail actions.</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-web-salary-structure.jpg" alt="Web - Employee salary structure with statutory panel"/>
+          <div class="screen-caption"><strong>Employee Salary Structure</strong>Monthly ₹1,00,000 + Annual ₹12,00,000. Effective from April 2023 + Revise button. Salary revision timeline on right: Future Revision (Approved), Dec 2024, Dec 2023, Dec 2022. Statutory Components panel: EPF (on), ESI (off, with contribution period note), PT (on), LWF (on).</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-web-employee-payroll.jpg" alt="Web - Employee payroll tab (Dunzo)"/>
+          <div class="screen-caption"><strong>Employee Payroll — My Info View</strong>Monthly Take-home ₹1,00,000 (12,00,000/year). Donut chart: Fixed A (₹60k), Variable B (₹20k), Employer Contribution (₹15k), Deductions (₹5k). Salary component table: Monthly + Yearly columns. Fixed Earnings(A): Basic 40% CTC, DA 10%, HRA 40% of Basic, Conveyance. Variable(B): Milestone + Performance Bonus.</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-web-loan-details.jpg" alt="Web - Loan details screen"/>
+          <div class="screen-caption"><strong>Loan Details</strong>Employee: Natwar Lal (Senior Full Stack Dev). Medical Loan, ₹75,000, Outside Payroll, 9.55% fixed, 12 months. Loan Summary: Total Pending ₹90,000, Next EMI Jan 2025, Monthly EMI ₹6,578. Principal/Interest/Balance chart over repayment period. Tax exemption notice.</div>
+        </div>
+        <div class="screen-item">
+          <img src="pay-web-template.jpg" alt="Web - Payslip template builder"/>
+          <div class="screen-caption"><strong>Payslip Template Builder</strong>Settings: company logo, address, footer text. Configuration toggles: Show Salary Master, Show Pie Chart. Employee detail checkboxes: Office, Department, Mobile, Date of Joining, PF A/C, UAN, PAN, Account No. 3 template layouts (Sample 1 Applied). Live preview of payslip PDF on right.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="platform-divider"><span>📄 Payslip — Final PDF Design</span></div>
+
+    <div class="design-section">
+      <div class="design-section-title payslip-d">Payslip PDF — Shipped format</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">The payslip PDF was redesigned to lead with what employees care about — Net Pay as the hero, prominently placed top-right. Company and employee identity at top-left. Earnings and Deductions in clear two-column layout with plain-English labels. Month-on-month delta shown at the bottom (↑₹1000 from Apr 2023). Auto-generated footer eliminates signature confusion.</p>
+      <div class="screen-grid cols-2">
+        <div class="screen-item" style="grid-column:1/-1;">
+          <img src="pay-payslip-pdf.jpg" alt="Payslip PDF final design"/>
+          <div class="screen-caption"><strong>Payslip PDF — May 2023 (John Doe)</strong>Company header: MeWurk Technologies address + logo. Employee info left: Name/ID, Office, Dept, Designation, Work Days, PF A/C, UAN, PAN, Account No. Right: Net Pay hero (₹1,00,000), LOP Days (2), donut chart. Earnings table: Basic, Arrear, HRA, Education Allowance, Uniform, Newspaper, Fuel &amp; Car, Driver, LTA, Bonus, Taxable Benefit. Deductions: TDS, EPF, Income Tax, Professional Tax. Footer: "Auto-generated — no signature required."</div>
+        </div>
+      </div>
+      <div class="design-note"><strong>Key payslip decision:</strong> Net Pay as hero top-right (not buried at the bottom) directly resolved the most common employee complaint: "I can't find how much I actually received." The month-on-month delta (↑₹1000 from Apr 2023) at the bottom proactively answered "why did my salary change?" without requiring an HR call.</div>
+    </div>
+
 
     <h3>Key prototype decisions</h3>
     <ul>
