@@ -123,6 +123,34 @@ li strong{color:#d4cfc7;font-weight:500;}
   .tf-table{font-size:11px;}
   .tf-table th,.tf-table td{padding:8px 10px;}
 }
+
+/* DESIGN SHOWCASE */
+.design-section{margin:2.5rem 0;}
+.design-section-title{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.design-section-title::before{content:'';display:inline-block;width:12px;height:12px;border-radius:3px;}
+.design-section-title.wireframe::before{background:rgba(78,203,160,0.4);}
+.design-section-title.visual::before{background:rgba(245,166,35,0.4);}
+
+.screen-grid{display:grid;gap:1.25rem;margin:1.25rem 0;}
+.screen-grid.cols-2{grid-template-columns:1fr 1fr;}
+.screen-grid.cols-3{grid-template-columns:1fr 1fr 1fr;}
+
+.screen-item{background:var(--surface2);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.screen-item img{width:100%;display:block;}
+.screen-caption{padding:10px 12px;font-size:11px;color:var(--muted);line-height:1.5;border-top:1px solid var(--border);}
+.screen-caption strong{color:#c8c4be;font-weight:600;display:block;margin-bottom:2px;}
+
+.design-note{background:rgba(78,203,160,0.05);border:1px solid rgba(78,203,160,0.15);border-radius:8px;padding:1rem 1.25rem;margin:1.25rem 0;font-size:13px;color:#7eb8a4;line-height:1.7;}
+.design-note strong{color:var(--teal);}
+
+.platform-divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0;}
+.platform-divider span{font-size:13px;font-weight:600;color:var(--cream);white-space:nowrap;}
+.platform-divider::before,.platform-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+@media(max-width:800px){
+  .screen-grid.cols-2,.screen-grid.cols-3{grid-template-columns:1fr;}
+}
+
 </style>
 </head>
 <body>
@@ -511,6 +539,79 @@ li strong{color:#d4cfc7;font-weight:500;}
     <div class="step-label">Step 5 — Test and Ship</div>
     <h2>Validated. Iterated. Shipped across 100+ companies.</h2>
     <p>Usability testing with 8 HR managers across 3 industries (manufacturing, IT, retail) surfaced four changes before final release. The exceptions dashboard and modular policy setup were the highest-rated features.</p>
+
+    <div class="platform-divider"><span>🖥️ Wireframes → Visual Design</span></div>
+
+    <div class="design-section">
+      <div class="design-section-title wireframe">Wireframes — Early-stage flow exploration</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">Wireframes covered the four core HR workflows: the regularisation request list with filter/search, the reports menu structure, and the two main report formats (Daily Summary and Monthly Summary). These early flows validated the information hierarchy before visual polish was applied.</p>
+      <div class="screen-grid cols-2">
+        <div class="screen-item">
+          <img src="att-wf-regularisation.jpg" alt="Wireframe - Attendance Requests list"/>
+          <div class="screen-caption"><strong>Attendance Requests (Wireframe)</strong>Attendance Requests tab with name, date, first clock-in/last clock-out, reason, status (Approved/Rejected) and approver. Month + status + shift filters. Approve/reject actions inline. Toast notification on action.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-wf-reports-menu.jpg" alt="Wireframe - Reports menu"/>
+          <div class="screen-caption"><strong>Reports Menu (Wireframe)</strong>Standard Reports library split into Attendance Reports and Leave Reports. Two templates each: Daily Summary (in/out/total hours/status per day) and Monthly Report (late in, early out, OT hours). Create new template CTA.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-wf-daily-report-wf.jpg" alt="Wireframe - Daily Summary Report empty"/>
+          <div class="screen-caption"><strong>Daily Report — Empty State (Wireframe)</strong>Date range + filter controls at top. Grouped by employee (John, Charles). Columns: Date, Shift, In time, Out time, Total hrs, OT hrs, Status. Empty rows show structure before data loads.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-wf-monthly-report-wf.jpg" alt="Wireframe - Monthly Summary Report empty"/>
+          <div class="screen-caption"><strong>Monthly Report — Empty State (Wireframe)</strong>Month selector + filters. Blank canvas in early wireframe — validated navigation and filter placement before data rows were added in visual design.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-section">
+      <div class="design-section-title wireframe">Reports — Visual Design Final</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">The final report screens applied real data and the Mewurk design language. Daily Summary shows per-employee, per-date rows grouped by name with Sub Status (Late In). Monthly Summary uses a date-column matrix showing Status, First In, Last Out, Late In, Early Out, Overtime and Total Hours — all scannable across the month at a glance.</p>
+      <div class="screen-grid cols-2">
+        <div class="screen-item">
+          <img src="att-wf-daily-report-vd.jpg" alt="Visual - Daily Summary Report with data"/>
+          <div class="screen-caption"><strong>Daily Summary Report — Final</strong>Grouped by employee (Vidya Shastri, Tracy Price). Columns: Date, Shift, First In, Last Out, Working Hours, Overtime, Status (green Present / red Absent), Sub Status (Late In). Real attendance data per row.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-wf-monthly-report-vd.jpg" alt="Visual - Monthly Summary Report with data"/>
+          <div class="screen-caption"><strong>Monthly Summary Report — Final</strong>Date-column matrix (1 May → 31 May). Rows: Status, First In, Last Out, Late In, Early Out, Overtime, Total Hours. Weekend/holiday columns greyed. Status uses colour: Present (green), Absent (red). Holiday and W.O. labelled.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-section">
+      <div class="design-section-title visual">Visual Design — Core screens shipped</div>
+      <p style="font-size:13px;color:#a8a49e;margin-bottom:1.25rem;">Six final screens covering the complete attendance lifecycle — from policy configuration through daily monitoring, exception management, geo-fence setup, employee-level analytics, and location verification. Each screen resolved a specific pain point identified in research.</p>
+      <div class="screen-grid cols-2">
+        <div class="screen-item">
+          <img src="att-vd-policy-setup.jpg" alt="Visual - Add Policy screen"/>
+          <div class="screen-caption"><strong>Add Policy — Final</strong>Title + Attendance Settings (shift-driven times, break calculation, consecutive shifts toggle). On Duty Settings section. Regularisation Settings. Capturing Options: Web / Kiosk / Mobile / Geo Location / Geo Fencing / Face Recognition — all selectable as icons. Policy Applicable For panel on right with employee list.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-vd-summary.jpg" alt="Visual - Attendance Summary calendar"/>
+          <div class="screen-caption"><strong>Attendance Summary — Final</strong>Calendar grid: employees as rows, dates as columns. Cells show P (Present), A (Absent), HL (Half Day), E (Error), L (Leave), H (Holiday), WO (Week Off). Summary columns: Present/Absent/Leave days + OT hours. Month navigator. Legend tooltip. Tabs: Regularisation Request, Overtime Request, Employee Type.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-vd-bulk-correction.jpg" alt="Visual - Bulk Attendance Correction"/>
+          <div class="screen-caption"><strong>Bulk Attendance Correction — Final</strong>Filter by policy, date range, status (ERROR / ABSENT). Table: Employee, Date, Status badge, Shift, Time (auto-generated clock-out highlighted in red). Toast: "Auto Generated Clock Out Timings has been added — check values, undo if wrong." Checkbox multi-select for batch correction.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-vd-employee-card.jpg" alt="Visual - Employee attendance analytics card"/>
+          <div class="screen-caption"><strong>Employee Attendance Card — Final</strong>Three summary widgets: Attendance donut (Present/Not Present/Off Days + Regularisations), Productivity bar (avg working hrs vs benchmark with delta), Punctuality comparison (your avg vs top employees). Log table below: Date, Status, Shift, First In, Last Out, Working Hours, OT.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-vd-geofence.jpg" alt="Visual - Geofencing Location setup"/>
+          <div class="screen-caption"><strong>Geofencing Location Setup — Final</strong>Location list (Novel Office, DLF Corporate, ITPL Whitefield). Search + set location on map. Fencing Radius selector: 100m / 200m / 300m / 400m / 500m / 600m / 700m. Blue circle drawn on map showing radius. Address confirmed below map before save.</div>
+        </div>
+        <div class="screen-item">
+          <img src="att-vd-location-punch.jpg" alt="Visual - Location Details punch log"/>
+          <div class="screen-caption"><strong>Location Details — Punch Log — Final</strong>Employee punch log modal: date + shift shown top right. Map with green (In) and red (Out) pins per punch. Table: In/Out, Time, Location address. Multiple In/Out pairs visible for the same day — surfaces anomalies like double punches or wrong locations at a glance.</div>
+        </div>
+      </div>
+      <div class="design-note"><strong>Design decision — Capturing Options as icon grid:</strong> Instead of checkboxes, capturing methods (Web, Kiosk, Mobile, Geo Location, Geo Fencing, Face Recognition) were designed as selectable icon tiles. This made the difference between devices visually clear and reduced setup errors — HR admins could instantly see which capture modes were active.</div>
+    </div>
+
 
     <h3>Key findings that changed the design</h3>
     <ul>
