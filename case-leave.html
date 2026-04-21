@@ -1,81 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Leave Management — Sahil Tamboli</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#a89be8;--lavender:#a89be8;}
+:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#a89be8;--lavender:#a89be8;--teal:#4ecba0;--coral:#e87c5a;--amber:#f5a623;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;}
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
-.logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}
-.logo span{color:#4ecba0;font-style:italic;}
-.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;}
-.wrap{max-width:1200px;margin:0 auto;padding:0 2.5rem 6rem;}
+.logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}.logo span{color:#4ecba0;font-style:italic;}
+.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;}.back:hover{color:var(--cream);}
+.wrap{max-width:960px;margin:0 auto;padding:0 2.5rem 6rem;}
 .eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
 .eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
-h1{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:0.5rem;}
+h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,52px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:0.75rem;}
 h1 em{font-style:italic;color:var(--accent);}
-.subhead{font-size:15px;color:var(--muted);margin-bottom:2rem;font-weight:400;}
-.meta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3rem;}
-.meta-item{font-size:13px;color:var(--muted);}
-.meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
-.hero-thumb{width:100%;display:block;overflow:hidden;margin-bottom:3rem;border-radius:16px;border:1px solid var(--border);}
-.step{margin-bottom:5rem;padding-bottom:5rem;border-bottom:1px solid var(--border);}
-.step:last-child{border-bottom:none;}
-.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;font-weight:500;}
+.hero-sub{font-size:15px;color:var(--muted);margin-bottom:2rem;}
+.meta-row{display:flex;gap:2.5rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3rem;}
+.meta-item{font-size:13px;color:var(--muted);}.meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
+.hero-thumb{width:100%;display:block;overflow:hidden;margin-bottom:4rem;border-radius:16px;border:1px solid var(--border);}
+.step{margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid var(--border);}.step:last-child{border-bottom:none;}
+.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-weight:500;}
 .step-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
-h2{font-family:'Fraunces',serif;font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:2rem;line-height:1.1;}
-p{font-size:13px;color:#a8a49e;line-height:1.7;margin-bottom:1rem;}
-
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0;}
-.persona-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;}
-.persona-icon{font-size:40px;margin-bottom:1rem;}
-.persona-name{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:2px;}
-.persona-role{font-size:11px;color:var(--muted);margin-bottom:1rem;}
-.persona-item{font-size:12px;color:#a8a49e;padding:8px 0;border-bottom:1px solid var(--border);}
-.persona-item:last-child{border-bottom:none;}
-.persona-icon-key{font-size:10px;color:var(--accent);font-weight:600;text-transform:uppercase;display:block;margin-bottom:3px;}
-
-.insight-box{background:rgba(168,155,232,0.06);border-left:3px solid rgba(168,155,232,0.4);padding:1.5rem;margin:2rem 0;border-radius:0 8px 8px 0;}
-.insight-box p{margin:0;font-size:13px;color:#b8a8d8;line-height:1.7;}
-.insight-box strong{color:var(--lavender);font-weight:600;}
-
-.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0;}
-.problem-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
-.problem-emoji{font-size:32px;display:block;margin-bottom:1rem;}
-.problem-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:8px;}
-.problem-desc{font-size:11px;color:#a8a49e;line-height:1.6;}
-
-.timeline{display:flex;gap:0;margin:2rem 0;overflow-x:auto;padding:1rem 0;}
-.timeline-item{flex:1;min-width:120px;text-align:center;padding:1.5rem 1rem;background:var(--surface);border:1px solid var(--border);border-right:none;}
-.timeline-item:last-child{border-right:1px solid var(--border);}
-.timeline-emoji{font-size:28px;display:block;margin-bottom:8px;}
-.timeline-label{font-size:11px;font-weight:600;color:var(--cream);margin-bottom:4px;}
-.timeline-desc{font-size:10px;color:var(--muted);}
-
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;}
-.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
-.feature-emoji{font-size:32px;margin-bottom:1rem;display:block;}
-.feature-title{font-size:12px;font-weight:600;color:var(--cream);margin-bottom:6px;}
-.feature-desc{font-size:11px;color:#a8a49e;line-height:1.5;}
-
-.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0;}
-.outcome{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;text-align:center;}
-.outcome-emoji{font-size:28px;display:block;margin-bottom:1rem;}
+h2{font-family:'Fraunces',serif;font-size:clamp(22px,4vw,32px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:1.25rem;line-height:1.15;}
+h3{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:0.6rem;margin-top:2rem;letter-spacing:-0.01em;}
+p{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:1rem;}
+p strong{color:#d4cfc7;font-weight:500;}
+ul{padding-left:1.25rem;margin-bottom:1rem;}
+li{font-size:13.5px;color:#a8a49e;line-height:1.75;margin-bottom:3px;}
+li strong{color:#d4cfc7;font-weight:500;}
+.section-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:2rem 0 1.25rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.insight{background:rgba(168,155,232,0.05);border-left:2px solid rgba(168,155,232,0.4);padding:14px 18px;margin:2rem 0;border-radius:0 8px 8px 0;font-size:13px;color:#b4a8e0;line-height:1.75;}
+.insight strong{color:var(--lavender);font-weight:600;}
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0;}
+.persona-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
+.persona-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.persona-emoji{font-size:32px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:rgba(168,155,232,0.1);border-radius:10px;flex-shrink:0;}
+.persona-name{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:1px;}
+.persona-role{font-size:11px;color:var(--muted);}
+.persona-quote{font-size:12px;color:var(--lavender);font-style:italic;line-height:1.6;margin-bottom:1.25rem;padding:10px 12px;background:rgba(168,155,232,0.05);border-radius:8px;border-left:2px solid rgba(168,155,232,0.35);}
+.empathy-quad{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:1rem;}
+.eq{background:var(--surface2);border-radius:8px;padding:9px 11px;}
+.eq-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.eq-text{font-size:12px;color:#a8a49e;line-height:1.55;}
+.pg-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:1rem;}
+.pg-box{border-radius:8px;padding:10px 12px;}
+.pg-box.pain{background:rgba(232,124,90,0.07);border:1px solid rgba(232,124,90,0.2);}
+.pg-box.gain{background:rgba(78,203,160,0.06);border:1px solid rgba(78,203,160,0.2);}
+.pg-title{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:7px;font-weight:600;}
+.pg-box.pain .pg-title{color:var(--coral);}
+.pg-box.gain .pg-title{color:var(--teal);}
+.pg-list{font-size:12px;color:#a8a49e;line-height:1.65;padding-left:1rem;}
+.pg-list li{margin-bottom:4px;}
+.mood-graph{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:2rem 0;}
+.mood-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:3px;}
+.mood-subtitle{font-size:11px;color:var(--muted);margin-bottom:1.5rem;}
+.mood-stages{display:flex;justify-content:space-between;margin-top:12px;gap:4px;}
+.mood-stage{text-align:center;flex:1;min-width:0;}
+.mood-stage .emo{font-size:18px;display:block;margin-bottom:4px;}
+.mood-stage .lbl{font-size:10px;color:var(--muted);line-height:1.4;}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.problem-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
+.problem-owner{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.problem-title{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:8px;}
+.problem-body{font-size:13px;color:#a8a49e;line-height:1.65;}
+.ideation-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.ideation-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;position:relative;}
+.ideation-card.chosen{border-color:rgba(168,155,232,0.5);}
+.chosen-badge{position:absolute;top:12px;right:12px;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--lavender);background:rgba(168,155,232,0.1);padding:3px 8px;border-radius:20px;}
+.idea-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:6px;}
+.idea-body{font-size:12.5px;color:#a8a49e;line-height:1.65;}
+.flow-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;margin:1.5rem 0;}
+.flow-box{font-size:11px;padding:6px 11px;border-radius:6px;white-space:nowrap;background:rgba(168,155,232,0.1);color:var(--lavender);border:1px solid rgba(168,155,232,0.2);}
+.flow-box.ok{background:rgba(78,203,160,0.1);color:var(--teal);border-color:rgba(78,203,160,0.2);}
+.flow-arrow{color:var(--muted);font-size:14px;}
+.tf-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.tf-table th{background:rgba(168,155,232,0.08);padding:10px 14px;font-size:11px;font-weight:600;color:var(--lavender);letter-spacing:0.06em;text-transform:uppercase;text-align:left;border-bottom:1px solid var(--border);}
+.tf-table td{padding:10px 14px;font-size:12.5px;color:#a8a49e;line-height:1.6;border-bottom:1px solid var(--border);vertical-align:top;background:var(--surface);}
+.tf-table tr:last-child td{border-bottom:none;}
+.tf-table td.phase{background:var(--surface2);font-size:11px;font-weight:600;color:var(--cream);white-space:nowrap;min-width:90px;}
+.td-pos{background:rgba(78,203,160,0.04)!important;}
+.td-neg{background:rgba(232,124,90,0.04)!important;}
+.td-neu{background:rgba(245,166,35,0.03)!important;}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:grid;grid-template-columns:46px 1fr;gap:1rem;align-items:start;}
+.feature-icon{font-size:24px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(168,155,232,0.08);border-radius:8px;flex-shrink:0;}
+.feature-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.feature-desc{font-size:12px;color:#a8a49e;line-height:1.6;}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2.5rem 0;}
+.outcome-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
 .outcome-num{font-family:'Fraunces',serif;font-size:36px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1;margin-bottom:6px;}
 .outcome-label{font-size:12px;color:var(--muted);line-height:1.5;}
-
-@media(max-width:1024px){
-  .grid-2{grid-template-columns:1fr;}
+@media(max-width:800px){
+  .persona-grid,.empathy-quad,.pg-row,.problem-grid,.ideation-grid,.features{grid-template-columns:1fr;}
   .outcomes{grid-template-columns:1fr;}
-}
-@media(max-width:640px){
   .wrap{padding:0 1.5rem 4rem;}
   .meta-row{gap:1.5rem;}
-  .timeline{flex-wrap:wrap;}
-  .timeline-item{min-width:100px;}
+  .tf-table th,.tf-table td{font-size:11px;padding:8px 10px;}
 }
 </style>
 </head>
@@ -89,186 +111,383 @@ p{font-size:13px;color:#a8a49e;line-height:1.7;margin-bottom:1rem;}
 </nav>
 
 <div class="wrap">
-  <div class="eyebrow">Case 02 — Leave Management</div>
-  <h1>Leave policy -- <em>year-end automation wins</em></h1>
-  <p class="subhead">Modular policies + auto carry-forward + team availability calendar</p>
+  <div class="eyebrow">Case study 02 — Leave Management</div>
+  <h1>Leave management — <em>year-end should not be a crisis</em></h1>
+  <p class="hero-sub">From manual carry-forward calculations and December chaos to modular policies, automation, and team availability visibility</p>
   <div class="meta-row">
     <div class="meta-item"><strong>Role</strong>Lead UX Designer</div>
     <div class="meta-item"><strong>Platform</strong>Web + Mobile</div>
-    <div class="meta-item"><strong>Scale</strong>500k+ employees</div>
+    <div class="meta-item"><strong>Users</strong>4 personas — 500k+ employees, 1000+ companies</div>
+    <div class="meta-item"><strong>Scope</strong>Policy Setup · Balance Tracking · Approvals · Holiday Calendar · Year-end</div>
   </div>
-
-  <div class="hero-thumb"><img src="img-leave.jpg" alt="Leave" style="width:100%;height:auto;display:block;"/></div>
+  <div class="hero-thumb"><img src="img-leave.jpg" alt="Leave Management" style="width:100%;height:auto;display:block;"/></div>
 
   <!-- STEP 1 -->
   <div class="step">
     <div class="step-label">Step 1 — Empathise</div>
-    <h2>December was a nightmare.</h2>
-    <p>Surveyed 500+ companies. Unanimous: December (year-end leave) was the most stressful month. HR spent 3-4 weeks on manual carry-forward calculations, chasing manager approvals, fixing compliance issues.</p>
-    
-    <div class="grid-2">
+    <h2>December was a crisis. Every year. For every HR manager.</h2>
+    <p>Research sessions with 30+ companies revealed a consistent pattern: year-end leave processing was the single most stressful moment in the HR calendar. HR managers spent 3–4 weeks manually calculating carry-forward, chasing manager approvals, and reconciling policy compliance under payroll pressure.</p>
+
+    <div class="section-tag">Persona 01 — Owner</div>
+    <div class="persona-grid">
       <div class="persona-card">
-        <div class="persona-icon">🏢</div>
-        <div class="persona-name">Owner</div>
-        <div class="persona-role">Policy oversight, compliance</div>
-        <div class="persona-item"><span class="persona-icon-key">Pain:</span> Carry-forward complexity, compliance risk, manual processing</div>
-        <div class="persona-item"><span class="persona-icon-key">Need:</span> Auto year-end processing, clear rules, audit trail</div>
+        <div class="persona-header">
+          <div class="persona-emoji">🏢</div>
+          <div><div class="persona-name">Owner / Company Admin</div><div class="persona-role">Sets leave policy, monitors compliance, manages year-end</div></div>
+        </div>
+        <div class="persona-quote">"I don't want to think about carry-forward every year. Just automate it based on the rules I've already set."</div>
+        <div class="empathy-quad">
+          <div class="eq"><div class="eq-label">Says</div><div class="eq-text">Leave policies should match our company culture. Carry-forward rules must comply with labour law. I need to see leave liability as part of cash flow planning.</div></div>
+          <div class="eq"><div class="eq-label">Thinks</div><div class="eq-text">Are our leave policies actually working? Are we compliant? What is our total leave liability for the year?</div></div>
+          <div class="eq"><div class="eq-label">Does</div><div class="eq-text">Approves leave policy changes. Reviews overall leave utilisation. Monitors compliance risks. Signs off on year-end carry-forward decisions.</div></div>
+          <div class="eq"><div class="eq-label">Feels</div><div class="eq-text">Concerned about labour law compliance. Satisfied when policies are enforced automatically. Worried about leave liability accumulation in balance sheets.</div></div>
+        </div>
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Carry-forward must be manually calculated at year-end</li>
+              <li>Leave accumulation becomes complex with multiple policies</li>
+              <li>Compliance risk when rules are not uniformly applied</li>
+              <li>No visibility into total leave liability for financial planning</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Need</div>
+            <ul class="pg-list">
+              <li>Automatic year-end carry-forward based on set rules</li>
+              <li>Clear leave liability summary for financial reporting</li>
+              <li>Compliance audit trail for every leave decision</li>
+              <li>Policy effective-date control (changes apply from date X)</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="persona-card">
-        <div class="persona-icon">👩‍💼</div>
-        <div class="persona-name">HR Manager</div>
-        <div class="persona-role">Approvals, year-end processing</div>
-        <div class="persona-item"><span class="persona-icon-key">Pain:</span> Month-long bottleneck, delayed manager approvals, late declarations</div>
-        <div class="persona-item"><span class="persona-icon-key">Need:</span> Auto reminders, batch approvals, auto calculations</div>
+        <div class="persona-header">
+          <div class="persona-emoji">👩‍💼</div>
+          <div><div class="persona-name">HR Manager</div><div class="persona-role">Daily approvals, policy implementation, year-end processing</div></div>
+        </div>
+        <div class="persona-quote">"December is the worst month of my year. I'm calling managers to approve leaves while simultaneously trying to calculate carry-forward in Excel. All before payroll closes."</div>
+        <div class="empathy-quad">
+          <div class="eq"><div class="eq-label">Says</div><div class="eq-text">I need to close leave balances before payroll runs. Managers don't approve pending leaves on time. Carry-forward has too many edge cases.</div></div>
+          <div class="eq"><div class="eq-label">Does</div><div class="eq-text">Creates and assigns leave policies. Processes leave requests. Calculates carry-forward manually. Sends reminders to managers. Handles year-end compliance.</div></div>
+          <div class="eq"><div class="eq-label">Sees</div><div class="eq-text">All pending leave requests across teams. Employees with unused leave approaching expiry. Manager approval delays. Payroll deadline on the calendar.</div></div>
+          <div class="eq"><div class="eq-label">Feels</div><div class="eq-text">Overwhelmed in December. Frustrated when managers delay approvals. Anxious about compliance. Satisfied when year-end closes cleanly.</div></div>
+        </div>
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Year-end carry-forward is manual and error-prone</li>
+              <li>Managers don't approve pending leaves before year-end</li>
+              <li>Late declarations from employees</li>
+              <li>Policy rules are complex and have overlaps</li>
+              <li>No automated reminders for pending actions</li>
+              <li>Cannot see team coverage when approving leaves</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Need</div>
+            <ul class="pg-list">
+              <li>Auto carry-forward calculation based on defined rules</li>
+              <li>Automated reminders to managers 30 days before year-end</li>
+              <li>Batch approval tools for pending leave backlog</li>
+              <li>Team availability calendar for coverage decisions</li>
+              <li>Policy overlap validation built into setup flow</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="grid-2">
+    <div class="section-tag">Persona 02 — Team Manager and Employee</div>
+    <div class="persona-grid">
       <div class="persona-card">
-        <div class="persona-icon">👔</div>
-        <div class="persona-name">Team Manager</div>
-        <div class="persona-role">Approves requests, plans coverage</div>
-        <div class="persona-item"><span class="persona-icon-key">Pain:</span> Too many requests, no team availability view, last-minute surprises</div>
-        <div class="persona-item"><span class="persona-icon-key">Need:</span> Calendar view, batch approval, advance visibility</div>
+        <div class="persona-header">
+          <div class="persona-emoji">👔</div>
+          <div><div class="persona-name">Team Manager</div><div class="persona-role">Approves team requests, manages coverage, plans projects</div></div>
+        </div>
+        <div class="persona-quote">"I have 50 leave requests in December I haven't seen. HR calls me but I'm in end-of-year project crunch."</div>
+        <div class="empathy-quad">
+          <div class="eq"><div class="eq-label">Says</div><div class="eq-text">I approve leaves but I need to see team availability first. I don't want to have half the team on leave during a critical delivery.</div></div>
+          <div class="eq"><div class="eq-label">Thinks</div><div class="eq-text">Who else is on leave this week? If I approve this, will I have enough coverage? I need to see the impact before I click approve.</div></div>
+          <div class="eq"><div class="eq-label">Does</div><div class="eq-text">Reviews leave requests one by one. Checks informally with team for coverage. Approves or declines based on gut feeling. Forgets to process requests during busy periods.</div></div>
+          <div class="eq"><div class="eq-label">Feels</div><div class="eq-text">Burdened by approval volume. Blind when making coverage decisions. Guilty about delays. Frustrated when HR escalates overdue approvals.</div></div>
+        </div>
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Too many approval requests pile up</li>
+              <li>No team availability calendar to check coverage</li>
+              <li>Approving blind — can't see who else is on leave</li>
+              <li>No reminder until HR escalates urgently</li>
+              <li>December backlog is overwhelming</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Need</div>
+            <ul class="pg-list">
+              <li>Team calendar showing leave vs availability by day</li>
+              <li>Batch approval for backlog clearance</li>
+              <li>Automatic reminders 7 days before requests expire</li>
+              <li>Mobile approval — quick actions from anywhere</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="persona-card">
-        <div class="persona-icon">👤</div>
-        <div class="persona-name">Employee</div>
-        <div class="persona-role">Requests leave, checks balance</div>
-        <div class="persona-item"><span class="persona-icon-key">Pain:</span> Unclear balance, slow approvals, no clarity on carry-forward</div>
-        <div class="persona-item"><span class="persona-icon-key">Need:</span> Live balance, fast decisions, plain-language policies</div>
+        <div class="persona-header">
+          <div class="persona-emoji">👤</div>
+          <div><div class="persona-name">Employee</div><div class="persona-role">Applies for leave, checks balance, plans personal time</div></div>
+        </div>
+        <div class="persona-quote">"I applied for leave and still don't know if it's approved. My manager hasn't said anything."</div>
+        <div class="empathy-quad">
+          <div class="eq"><div class="eq-label">Says</div><div class="eq-text">I don't know how many leaves I have left. When does carry-forward happen? Will my leaves expire? How long does approval take?</div></div>
+          <div class="eq"><div class="eq-label">Does</div><div class="eq-text">Applies for leave via HRMS. Waits for notification. Checks status manually. Asks HR or manager directly for updates. Plans personal events around uncertainty.</div></div>
+          <div class="eq"><div class="eq-label">Sees</div><div class="eq-text">Opaque leave balance numbers. No clear breakdown of casual, sick, earned. No indication of when leaves expire or carry-forward.</div></div>
+          <div class="eq"><div class="eq-label">Feels</div><div class="eq-text">Uncertain about balance. Frustrated waiting for approval. Anxious about year-end leave expiry. Relieved when quickly notified.</div></div>
+        </div>
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Unclear leave balance breakdown</li>
+              <li>Slow approvals — no timeline visibility</li>
+              <li>No alerts before leaves are about to expire</li>
+              <li>No clarity on year-end carry-forward rules</li>
+              <li>Blue collar workers: SMS only, no app visibility</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Need</div>
+            <ul class="pg-list">
+              <li>Live balance breakdown by leave type</li>
+              <li>Push notification when leave approved/declined</li>
+              <li>Warning when leaves are expiring</li>
+              <li>Plain-language summary of their leave policy</li>
+              <li>SMS fallback for blue collar workers</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="insight-box">
-      <p><strong>Key insight:</strong> <em>Year-end carry-forward calculations were discovered wrong in November</em>. Too late to fix without reconciliation. Solution: Automate before the problem occurs.</p>
+    <!-- MOOD GRAPH -->
+    <div class="mood-graph">
+      <div class="mood-title">HR Admin emotional journey — leave management throughout the year</div>
+      <div class="mood-subtitle">From policy creation through routine approvals to year-end carry-forward chaos and recovery</div>
+      <svg viewBox="0 0 840 100" preserveAspectRatio="none" fill="none" style="width:100%;height:110px;">
+        <defs><linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a89be8" stop-opacity="0.25"/><stop offset="100%" stop-color="#a89be8" stop-opacity="0"/></linearGradient></defs>
+        <line x1="0" y1="25" x2="840" y2="25" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="0" y1="55" x2="840" y2="55" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="0" y1="85" x2="840" y2="85" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <path d="M60,65 C110,70 150,75 200,78 C250,80 290,35 340,28 C390,22 430,25 470,28 C510,32 550,42 590,50 C630,60 670,82 720,88 C760,92 800,38 830,25" stroke="#a89be8" stroke-width="2.5" fill="none"/>
+        <path d="M60,65 C110,70 150,75 200,78 C250,80 290,35 340,28 C390,22 430,25 470,28 C510,32 550,42 590,50 C630,60 670,82 720,88 C760,92 800,38 830,25 L830,100 L60,100 Z" fill="url(#lg1)"/>
+        <circle cx="60" cy="65" r="5" fill="#f5a623"/>
+        <circle cx="200" cy="78" r="5" fill="#e87c5a"/>
+        <circle cx="340" cy="28" r="5" fill="#a89be8"/>
+        <circle cx="470" cy="28" r="5" fill="#a89be8"/>
+        <circle cx="590" cy="50" r="5" fill="#f5a623"/>
+        <circle cx="720" cy="88" r="5" fill="#e87c5a"/>
+        <circle cx="830" cy="25" r="5" fill="#4ecba0"/>
+      </svg>
+      <div class="mood-stages">
+        <div class="mood-stage"><span class="emo">😐</span><span class="lbl">Policy<br/>Creation</span></div>
+        <div class="mood-stage"><span class="emo">😟</span><span class="lbl">Assign to<br/>Employees</span></div>
+        <div class="mood-stage"><span class="emo">😊</span><span class="lbl">Routine<br/>Approvals</span></div>
+        <div class="mood-stage"><span class="emo">😊</span><span class="lbl">Mid-year<br/>Running</span></div>
+        <div class="mood-stage"><span class="emo">😐</span><span class="lbl">Year-end<br/>Prep</span></div>
+        <div class="mood-stage"><span class="emo">😡</span><span class="lbl">Carry-forward<br/>Chaos</span></div>
+        <div class="mood-stage"><span class="emo">😌</span><span class="lbl">New Year<br/>Set</span></div>
+      </div>
     </div>
+
+    <div class="insight"><strong>Key insight from research:</strong> The most painful moment in leave management is not an approval workflow problem — it's a timing and automation problem. By the time HR realises carry-forward calculations are wrong, it's already November. The fix: automate carry-forward based on policy rules 30+ days before year-end, not on January 1st.</div>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- STEP 2 DEFINE -->
   <div class="step">
     <div class="step-label">Step 2 — Define</div>
-    <h2>Four problems at different times of year:</h2>
-    
+    <h2>Four distinct failure modes across the leave lifecycle.</h2>
+
     <div class="problem-grid">
       <div class="problem-card">
-        <div class="problem-emoji">📋</div>
-        <div class="problem-title">Policy Confusion</div>
-        <div class="problem-desc">Complex, overlapping rules. Employees don't know balance.</div>
+        <div class="problem-owner">HR Manager · Owner</div>
+        <div class="problem-title">Policy complexity problem</div>
+        <div class="problem-body">Leave rules vary by employment type, grade, location, and tenure. Multiple overlapping policies create edge cases — one employee can fall under two policies with different carry-forward rules, with no system validation to catch the conflict.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-emoji">⏳</div>
-        <div class="problem-title">Year-End Backlog</div>
-        <div class="problem-desc">Manual carry-forward calculations. Compliance reviews. Declarations trickling in.</div>
+        <div class="problem-owner">HR Manager</div>
+        <div class="problem-title">Year-end processing bottleneck</div>
+        <div class="problem-body">December: managers haven't processed pending leaves, HR must manually calculate carry-forward across hundreds of employees in Excel, declarations from employees still trickling in, payroll deadline immovable. Result: 3–4 weeks of high-stress manual work.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-emoji">📅</div>
-        <div class="problem-title">Coverage Blind Spot</div>
-        <div class="problem-desc">Managers approve one-by-one. No team-wide availability view.</div>
+        <div class="problem-owner">Team Manager</div>
+        <div class="problem-title">Coverage visibility blind spot</div>
+        <div class="problem-body">Managers approve leave requests one-by-one without seeing team-wide availability. A manager can approve 5 requests in a week without knowing 3 others were already approved — leaving critical projects understaffed.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-emoji">📱</div>
-        <div class="problem-title">Communication Lag</div>
-        <div class="problem-desc">Blue collar workers only get SMS. No app transparency.</div>
+        <div class="problem-owner">Employee · Blue Collar</div>
+        <div class="problem-title">Communication and transparency gap</div>
+        <div class="problem-body">Employees don't know their leave balance, when it expires, or what carry-forward rules apply to them. Blue collar workers receive no app notifications at all — only SMS after decisions are made, with no context.</div>
       </div>
     </div>
   </div>
 
-  <!-- STEP 3, 4, 5 -->
+  <!-- STEP 3 IDEATE -->
   <div class="step">
-    <div class="step-label">Step 3 — Ideate & Step 4/5 — Ship</div>
-    <h2>Year-end automation flow:</h2>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-emoji">📋</div>
-        <div class="timeline-label">Create</div>
-        <div class="timeline-desc">Policy draft</div>
+    <div class="step-label">Step 3 — Ideate</div>
+    <h2>Modular policies again. But this time, year-end automation is the centrepiece.</h2>
+    <p>We mapped the leave policy creation flow across 5 approaches (from single-form to wizard-based), validating each with HR managers. The modular approach (same structure as attendance) won again — but the bigger ideation breakthrough was the year-end automation trigger.</p>
+
+    <h3>Year-end automation concept</h3>
+    <div class="ideation-grid">
+      <div class="ideation-card">
+        <div class="idea-title">January 1st auto-reset</div>
+        <div class="idea-body">Apply carry-forward rules on January 1st automatically. Simple, but gives HR no advance warning and no opportunity to fix edge cases before it happens. Managers haven't approved all pending leaves yet. <strong style="color:#e87c5a;">Rejected.</strong></div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-emoji">⚙️</div>
-        <div class="timeline-label">Configure</div>
-        <div class="timeline-desc">Define rules</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-emoji">📌</div>
-        <div class="timeline-label">Applicable</div>
-        <div class="timeline-desc">Who it affects</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-emoji">👥</div>
-        <div class="timeline-label">Assign</div>
-        <div class="timeline-desc">Roll it out</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-emoji">✅</div>
-        <div class="timeline-label">Automate</div>
-        <div class="timeline-desc">Year-end</div>
+      <div class="ideation-card chosen">
+        <div class="chosen-badge">Chosen</div>
+        <div class="idea-title">30-day advance automation</div>
+        <div class="idea-body">System starts the year-end process 30 days before December 31: sends reminders to managers, calculates projected carry-forward, surfaces pending leaves for batch approval, flags compliance issues. HR has time to fix problems before they're locked. <strong style="color:#4ecba0;">Chosen.</strong></div>
       </div>
     </div>
 
-    <h3 style="margin-top:2rem;margin-bottom:1rem;">Six shipped features:</h3>
-    <div class="feature-grid">
+    <h3>Holiday calendar mental model</h3>
+    <p>Research showed HR managers had a natural mental hierarchy for holidays: National + Compulsory first, then Optional floaters, then State-specific. We mirrored this hierarchy in the UI — build National foundation first, layer Optional on top, add State-level last. This reduced setup confusion significantly.</p>
+
+    <h3>Leave balance widget for employees</h3>
+    <div class="ideation-grid">
+      <div class="ideation-card">
+        <div class="idea-title">Single number balance</div>
+        <div class="idea-body">Show one total leave balance. Simple, but hides type breakdown (casual vs sick vs earned) which employees need for planning. Creates confusion when different leave types have different rules. <strong style="color:#e87c5a;">Rejected.</strong></div>
+      </div>
+      <div class="ideation-card chosen">
+        <div class="chosen-badge">Chosen</div>
+        <div class="idea-title">Breakdown widget with expiry</div>
+        <div class="idea-body">Used / Available / Carry-forward / Expiring soon — all visible at a glance per leave type. Green/amber/red indicators for expiry timeline. Employee can plan accurately and won't be surprised at year-end. <strong style="color:#4ecba0;">Chosen.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 PROTOTYPE -->
+  <div class="step">
+    <div class="step-label">Step 4 — Prototype</div>
+    <h2>Modular setup + automated year-end + team availability calendar.</h2>
+
+    <h3>HR Admin — Leave policy setup flow</h3>
+    <div class="flow-row">
+      <span class="flow-box">Create Policy</span><span class="flow-arrow">→</span>
+      <span class="flow-box">Define Rules</span><span class="flow-arrow">→</span>
+      <span class="flow-box">Carry-forward Settings</span><span class="flow-arrow">→</span>
+      <span class="flow-box">Applicable For</span><span class="flow-arrow">→</span>
+      <span class="flow-box">Assign Employees</span><span class="flow-arrow">→</span>
+      <span class="flow-box ok">Policy Active</span>
+    </div>
+
+    <h3>HR Admin — Leave management task flow</h3>
+    <table class="tf-table">
+      <thead>
+        <tr>
+          <th style="min-width:90px;">Phase</th>
+          <th>Policy Creation</th>
+          <th>Daily Approvals</th>
+          <th>Mid-year</th>
+          <th>Year-end (Nov)</th>
+          <th>Year-end (Dec)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="phase">Activity</td>
+          <td>Create leave policy with types, limits, carry-forward rules. Assign to employee groups. Configure holiday calendar by level.</td>
+          <td>Review and approve leave requests. Handle escalations from managers. Monitor team availability dashboard.</td>
+          <td>Review leave utilisation trends. Check employees with high unused balances. Send usage reminders.</td>
+          <td>System triggers 30-day warning. Send reminders to managers for pending approvals. Preview projected carry-forward.</td>
+          <td>Final batch approval of pending requests. Auto carry-forward applied per rules. New year policies activate. Compliance report generated.</td>
+        </tr>
+        <tr>
+          <td class="phase">Feeling</td>
+          <td class="td-neu">Neutral — familiar setup process</td>
+          <td class="td-pos">Satisfied — streamlined with team calendar view</td>
+          <td class="td-neu">Neutral — proactive checks prevent surprises</td>
+          <td class="td-pos">Relieved — system flags issues early, not late</td>
+          <td class="td-pos">Satisfied — year-end closes cleanly without Excel</td>
+        </tr>
+        <tr>
+          <td class="phase">Design decision</td>
+          <td>Policy preview showing affected employee count and any overlap before activation</td>
+          <td>Team availability calendar shown alongside approval form — coverage context before clicking Approve</td>
+          <td>Proactive expiry alerts sent to employees 2 weeks before year-end</td>
+          <td>Auto-generated carry-forward preview report for HR to review and adjust before lock</td>
+          <td>One-click confirm for automated carry-forward calculation. Audit trail generated automatically.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- STEP 5 TEST & SHIP -->
+  <div class="step">
+    <div class="step-label">Step 5 — Test and Ship</div>
+    <h2>Validated with HR teams from 6 companies. Three changes before final release.</h2>
+    <ul>
+      <li><strong>Team availability calendar was the highest-rated new feature:</strong> Managers said the calendar "completely changes how I approve leaves" — they could now see coverage impact before deciding, rather than after a staffing problem emerged.</li>
+      <li><strong>30-day advance warning was not early enough for large companies:</strong> Companies with 500+ employees wanted 45 days. We made the trigger configurable (15, 30, 45, 60 days) per company settings.</li>
+      <li><strong>Leave balance widget needed expiry countdown:</strong> Employees and managers both asked for days-until-expiry on the balance widget. We added an amber/red indicator for leaves expiring within 30/7 days.</li>
+    </ul>
+
+    <h3>What shipped</h3>
+    <div class="features">
       <div class="feature-card">
-        <span class="feature-emoji">📅</span>
-        <div class="feature-title">Team Calendar</div>
-        <div class="feature-desc">Who's on leave, week by week</div>
+        <div class="feature-icon">🧩</div>
+        <div><div class="feature-title">Modular policy system</div><div class="feature-desc">Policy rules and employee assignment decoupled. Update carry-forward rules without recreating assignments.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">🤖</span>
-        <div class="feature-title">Year-End Auto</div>
-        <div class="feature-desc">Reminders + carry-forward calc</div>
+        <div class="feature-icon">🤖</div>
+        <div><div class="feature-title">Year-end automation</div><div class="feature-desc">Configurable advance trigger. Auto-reminders, carry-forward preview, batch approval, then auto-process on December 31.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">📱</span>
-        <div class="feature-title">SMS for Blue Collar</div>
-        <div class="feature-desc">Instant notifications</div>
+        <div class="feature-icon">📅</div>
+        <div><div class="feature-title">Team availability calendar</div><div class="feature-desc">Managers see team coverage week-by-week before approving — not one-by-one in isolation.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">📊</span>
-        <div class="feature-title">Balance Widget</div>
-        <div class="feature-desc">Used + Available + Pending</div>
+        <div class="feature-icon">📊</div>
+        <div><div class="feature-title">Leave balance widget</div><div class="feature-desc">Used / Available / Carry-forward / Expiring per type. Expiry countdown in amber/red.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">🏆</span>
-        <div class="feature-title">Modular System</div>
-        <div class="feature-desc">Create + Assign separately</div>
+        <div class="feature-icon">📱</div>
+        <div><div class="feature-title">SMS for blue collar workers</div><div class="feature-desc">Leave approvals, balance notifications and year-end alerts via SMS for workers without app access.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">🗓️</span>
-        <div class="feature-title">Holiday Calendar</div>
-        <div class="feature-desc">National + Optional + State</div>
+        <div class="feature-icon">🗓️</div>
+        <div><div class="feature-title">Holiday calendar (3-tier)</div><div class="feature-desc">National + Compulsory → Optional floaters → State-specific. International date support. Employee self-selection for optional holidays.</div></div>
       </div>
     </div>
 
-    <h3 style="margin-top:3rem;">Impact:</h3>
     <div class="outcomes">
-      <div class="outcome">
-        <div class="outcome-emoji">📉</div>
-        <div class="outcome-num">92%</div>
-        <div class="outcome-label">Less manual year-end calculations</div>
+      <div class="outcome-card">
+        <div class="outcome-num">3–4 wks</div>
+        <div class="outcome-label">Year-end manual effort eliminated by automation</div>
       </div>
-      <div class="outcome">
-        <div class="outcome-emoji">👥</div>
+      <div class="outcome-card">
         <div class="outcome-num">500k+</div>
-        <div class="outcome-label">Employees, monthly usage</div>
+        <div class="outcome-label">Employees on leave policies — monthly active usage</div>
       </div>
-      <div class="outcome">
-        <div class="outcome-emoji">⏱️</div>
-        <div class="outcome-num">3 weeks</div>
-        <div class="outcome-label">Time saved per HR admin at year-end</div>
+      <div class="outcome-card">
+        <div class="outcome-num">92%</div>
+        <div class="outcome-label">Reduction in manual carry-forward calculations (self-reported)</div>
       </div>
     </div>
   </div>
 
 </div>
-
 <footer style="padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
   <span style="font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);">Sahil Tamboli</span>
-  <span style="font-size:12px;color:#443e38;">2026 Built with care</span>
+  <span style="font-size:12px;color:#443e38;">2026 — Built with care</span>
 </footer>
-
 </body>
 </html>

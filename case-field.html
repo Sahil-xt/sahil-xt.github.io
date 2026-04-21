@@ -1,73 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Field Visit Tracking — Sahil Tamboli</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#5a9ee8;--blue:#5a9ee8;}
+:root{--bg:#0f0e0d;--surface:#1a1917;--surface2:#222120;--cream:#f0ece3;--muted:#7a7670;--border:rgba(255,255,255,0.09);--accent:#5a9ee8;--blue:#5a9ee8;--teal:#4ecba0;--coral:#e87c5a;--amber:#f5a623;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;}
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,14,13,0.92);backdrop-filter:blur(12px);z-index:100;}
-.logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}
-.logo span{color:#4ecba0;font-style:italic;}
-.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;}
-.wrap{max-width:1200px;margin:0 auto;padding:0 2.5rem 6rem;}
+.logo{font-family:'Fraunces',serif;font-size:17px;color:var(--cream);text-decoration:none;}.logo span{color:#4ecba0;font-style:italic;}
+.back{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;}.back:hover{color:var(--cream);}
+.wrap{max-width:960px;margin:0 auto;padding:0 2.5rem 6rem;}
 .eyebrow{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
 .eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
-h1{font-family:'Fraunces',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:0.5rem;}
+h1{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,52px);font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:var(--cream);margin-bottom:0.75rem;}
 h1 em{font-style:italic;color:var(--accent);}
-.subhead{font-size:15px;color:var(--muted);margin-bottom:2rem;font-weight:400;}
-.meta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3rem;}
-.meta-item{font-size:13px;color:var(--muted);}
-.meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
-.hero-thumb{width:100%;display:block;overflow:hidden;margin-bottom:3rem;border-radius:16px;border:1px solid var(--border);}
-.step{margin-bottom:5rem;padding-bottom:5rem;border-bottom:1px solid var(--border);}
-.step:last-child{border-bottom:none;}
-.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;font-weight:500;}
+.hero-sub{font-size:15px;color:var(--muted);margin-bottom:2rem;}
+.meta-row{display:flex;gap:2.5rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:3rem;}
+.meta-item{font-size:13px;color:var(--muted);}.meta-item strong{color:var(--cream);display:block;font-size:14px;margin-bottom:1px;}
+.hero-thumb{width:100%;display:block;overflow:hidden;margin-bottom:4rem;border-radius:16px;border:1px solid var(--border);}
+.step{margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid var(--border);}.step:last-child{border-bottom:none;}
+.step-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-weight:500;}
 .step-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--accent);}
-h2{font-family:'Fraunces',serif;font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:2rem;line-height:1.1;}
-p{font-size:13px;color:#a8a49e;line-height:1.7;margin-bottom:1rem;}
-
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0;}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0;}
-
-.persona-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;}
-.persona-icon{font-size:40px;margin-bottom:1rem;}
-.persona-name{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:2px;}
-.persona-role{font-size:11px;color:var(--muted);margin-bottom:1rem;}
-.persona-item{font-size:12px;color:#a8a49e;padding:8px 0;border-bottom:1px solid var(--border);}
-.persona-item:last-child{border-bottom:none;}
-.persona-icon-key{font-size:10px;color:var(--accent);font-weight:600;text-transform:uppercase;display:block;margin-bottom:3px;}
-
-.insight-box{background:rgba(90,158,232,0.06);border-left:3px solid rgba(90,158,232,0.4);padding:1.5rem;margin:2rem 0;border-radius:0 8px 8px 0;}
-.insight-box p{margin:0;font-size:13px;color:#7aa8d8;line-height:1.7;}
-.insight-box strong{color:var(--blue);font-weight:600;}
-
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin:2.5rem 0;}
-.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
-.feature-emoji{font-size:32px;margin-bottom:1rem;display:block;}
-.feature-title{font-size:12px;font-weight:600;color:var(--cream);margin-bottom:6px;}
-.feature-desc{font-size:11px;color:#a8a49e;line-height:1.5;}
-
-.flow{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;margin:2rem 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem;}
-.flow-item{background:rgba(90,158,232,0.1);border:1px solid rgba(90,158,232,0.3);padding:10px 14px;border-radius:8px;font-size:11px;color:var(--blue);font-weight:600;white-space:nowrap;}
-.flow-arrow{color:var(--muted);font-size:18px;}
-
-.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2.5rem 0;}
-.outcome{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;text-align:center;}
-.outcome-emoji{font-size:28px;display:block;margin-bottom:1rem;}
+h2{font-family:'Fraunces',serif;font-size:clamp(22px,4vw,32px);font-weight:600;letter-spacing:-0.02em;color:var(--cream);margin-bottom:1.25rem;line-height:1.15;}
+h3{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:0.6rem;margin-top:2rem;letter-spacing:-0.01em;}
+p{font-size:14px;color:#a8a49e;line-height:1.75;margin-bottom:1rem;}
+p strong{color:#d4cfc7;font-weight:500;}
+ul{padding-left:1.25rem;margin-bottom:1rem;}
+li{font-size:13.5px;color:#a8a49e;line-height:1.75;margin-bottom:3px;}
+li strong{color:#d4cfc7;font-weight:500;}
+.section-tag{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:2rem 0 1.25rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.insight{background:rgba(90,158,232,0.05);border-left:2px solid rgba(90,158,232,0.4);padding:14px 18px;margin:2rem 0;border-radius:0 8px 8px 0;font-size:13px;color:#7aa8d8;line-height:1.75;}
+.insight strong{color:var(--blue);font-weight:600;}
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.5rem 0;}
+.persona-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
+.persona-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.persona-emoji{font-size:32px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:rgba(90,158,232,0.1);border-radius:10px;flex-shrink:0;}
+.persona-name{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:1px;}
+.persona-role{font-size:11px;color:var(--muted);}
+.persona-quote{font-size:12px;color:var(--blue);font-style:italic;line-height:1.6;margin-bottom:1.25rem;padding:10px 12px;background:rgba(90,158,232,0.05);border-radius:8px;border-left:2px solid rgba(90,158,232,0.35);}
+.empathy-quad{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:1rem;}
+.eq{background:var(--surface2);border-radius:8px;padding:9px 11px;}
+.eq-label{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.eq-text{font-size:12px;color:#a8a49e;line-height:1.55;}
+.pg-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:1rem;}
+.pg-box{border-radius:8px;padding:10px 12px;}
+.pg-box.pain{background:rgba(232,124,90,0.07);border:1px solid rgba(232,124,90,0.2);}
+.pg-box.gain{background:rgba(78,203,160,0.06);border:1px solid rgba(78,203,160,0.2);}
+.pg-title{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:7px;font-weight:600;}
+.pg-box.pain .pg-title{color:var(--coral);}
+.pg-box.gain .pg-title{color:var(--teal);}
+.pg-list{font-size:12px;color:#a8a49e;line-height:1.65;padding-left:1rem;}
+.pg-list li{margin-bottom:4px;}
+.mood-graph{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:2rem 0;}
+.mood-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:3px;}
+.mood-subtitle{font-size:11px;color:var(--muted);margin-bottom:1.5rem;}
+.mood-stages{display:flex;justify-content:space-between;margin-top:12px;gap:4px;}
+.mood-stage{text-align:center;flex:1;min-width:0;}
+.mood-stage .emo{font-size:18px;display:block;margin-bottom:4px;}
+.mood-stage .lbl{font-size:10px;color:var(--muted);line-height:1.4;}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.problem-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
+.problem-owner{font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.problem-title{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:8px;}
+.problem-body{font-size:13px;color:#a8a49e;line-height:1.65;}
+.ideation-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.ideation-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;position:relative;}
+.ideation-card.chosen{border-color:rgba(90,158,232,0.5);}
+.chosen-badge{position:absolute;top:12px;right:12px;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);background:rgba(90,158,232,0.1);padding:3px 8px;border-radius:20px;}
+.idea-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:6px;}
+.idea-body{font-size:12.5px;color:#a8a49e;line-height:1.65;}
+.flow-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;margin:1.5rem 0;}
+.flow-box{font-size:11px;padding:6px 11px;border-radius:6px;white-space:nowrap;background:rgba(90,158,232,0.1);color:var(--blue);border:1px solid rgba(90,158,232,0.2);}
+.flow-box.warn{background:rgba(245,166,35,0.1);color:var(--amber);border-color:rgba(245,166,35,0.25);}
+.flow-box.ok{background:rgba(78,203,160,0.1);color:var(--teal);border-color:rgba(78,203,160,0.2);}
+.flow-arrow{color:var(--muted);font-size:14px;}
+.tf-table{width:100%;border-collapse:collapse;margin:2rem 0;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.tf-table th{background:rgba(90,158,232,0.08);padding:10px 14px;font-size:11px;font-weight:600;color:var(--blue);letter-spacing:0.06em;text-transform:uppercase;text-align:left;border-bottom:1px solid var(--border);}
+.tf-table td{padding:10px 14px;font-size:12.5px;color:#a8a49e;line-height:1.6;border-bottom:1px solid var(--border);vertical-align:top;background:var(--surface);}
+.tf-table tr:last-child td{border-bottom:none;}
+.tf-table td.phase{background:var(--surface2);font-size:11px;font-weight:600;color:var(--cream);white-space:nowrap;min-width:90px;}
+.td-pos{background:rgba(78,203,160,0.04)!important;}
+.td-neg{background:rgba(232,124,90,0.04)!important;}
+.td-neu{background:rgba(245,166,35,0.03)!important;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.two-col-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
+.two-col-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:6px;}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:2rem 0;}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:grid;grid-template-columns:46px 1fr;gap:1rem;align-items:start;}
+.feature-icon{font-size:24px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(90,158,232,0.08);border-radius:8px;flex-shrink:0;}
+.feature-title{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:4px;}
+.feature-desc{font-size:12px;color:#a8a49e;line-height:1.6;}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2.5rem 0;}
+.outcome-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
 .outcome-num{font-family:'Fraunces',serif;font-size:36px;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1;margin-bottom:6px;}
 .outcome-label{font-size:12px;color:var(--muted);line-height:1.5;}
-
-@media(max-width:1024px){
-  .grid-2,.grid-3{grid-template-columns:1fr;}
+@media(max-width:800px){
+  .persona-grid,.empathy-quad,.pg-row,.problem-grid,.ideation-grid,.two-col,.features{grid-template-columns:1fr;}
   .outcomes{grid-template-columns:1fr;}
-}
-@media(max-width:640px){
   .wrap{padding:0 1.5rem 4rem;}
   .meta-row{gap:1.5rem;}
-  .flow{flex-direction:column;}
+  .tf-table th,.tf-table td{font-size:11px;padding:8px 10px;}
 }
 </style>
 </head>
@@ -81,149 +115,372 @@ p{font-size:13px;color:#a8a49e;line-height:1.7;margin-bottom:1rem;}
 </nav>
 
 <div class="wrap">
-  <div class="eyebrow">Case 05 — Field Visit Tracking</div>
-  <h1>Field visits -- <em>transparency fixes trust</em></h1>
-  <p class="subhead">Employee-visible tracking + manual check-in/out + expense at checkout</p>
+  <div class="eyebrow">Case study 05 — Field Visit Tracking</div>
+  <h1>Field visit tracking — <em>location employees actually trust</em></h1>
+  <p class="hero-sub">From surveillance anxiety and disconnected expense reports to transparent tracking, employee agency, and expense linking at checkout</p>
   <div class="meta-row">
     <div class="meta-item"><strong>Role</strong>Lead UX Designer</div>
     <div class="meta-item"><strong>Platform</strong>Mobile (field) + Web (managers)</div>
-    <div class="meta-item"><strong>Users</strong>Sales reps, service techs, managers</div>
+    <div class="meta-item"><strong>Users</strong>3 personas — Field employees, managers, HR admin</div>
+    <div class="meta-item"><strong>Scope</strong>Visit Tracking · Check-in/out · Expense Linking · GPS Accuracy · Reports</div>
   </div>
-
-  <div class="hero-thumb"><img src="img-field.jpg" alt="Field Visits" style="width:100%;height:auto;display:block;"/></div>
+  <div class="hero-thumb"><img src="img-field.jpg" alt="Field Visit Tracking" style="width:100%;height:auto;display:block;"/></div>
 
   <!-- STEP 1 -->
   <div class="step">
     <div class="step-label">Step 1 — Empathise</div>
-    <h2>"Show me the same data you see."</h2>
-    <p>Field employees resisted location tracking — not because tracking was wrong, but because it was opaque. One quote became the north star: <em>"I don't mind being tracked if I can see what they see."</em></p>
-    
-    <div class="grid-2">
+    <h2>Surveillance anxiety is real — and rational.</h2>
+    <p>Field employees — sales reps, service technicians, delivery staff — reacted strongly when they learned their location would be tracked. "My company will know where I am every minute. What if GPS shows me somewhere wrong? What if I stop for tea?" These weren't irrational fears. They reflected real experiences with opaque systems that offered no way to verify or dispute the data.</p>
+
+    <div class="section-tag">Persona 01 — Field Employee</div>
+    <div class="persona-grid">
       <div class="persona-card">
-        <div class="persona-icon">🚗</div>
-        <div class="persona-name">Field Employee</div>
-        <div class="persona-role">Sales rep, service tech, driver</div>
-        <div class="persona-item"><span class="persona-icon-key">Anxiety:</span> Constant surveillance feeling, GPS inaccuracy disputes, no way to correct data</div>
-        <div class="persona-item"><span class="persona-icon-key">Need:</span> Transparency, location correction option, see own timeline</div>
+        <div class="persona-header">
+          <div class="persona-emoji">🚗</div>
+          <div><div class="persona-name">Field Employee</div><div class="persona-role">Sales rep / service technician / delivery staff — on the move all day</div></div>
+        </div>
+        <div class="persona-quote">"I don't mind being tracked if I can see what they see. Just show me my own data."</div>
+        <div class="empathy-quad">
+          <div class="eq"><div class="eq-label">Says</div><div class="eq-text">Why is the company tracking me? What if GPS marks me in the wrong place? I forgot to check in — my manager will think I wasn't there. How do I add my travel expenses?</div></div>
+          <div class="eq"><div class="eq-label">Thinks</div><div class="eq-text">Will location data be used against me? If I stop for lunch, will that count? Is my GPS accurate enough? Will I be penalised for a wrong GPS reading?</div></div>
+          <div class="eq"><div class="eq-label">Does</div><div class="eq-text">Visits multiple client locations per day. Submits expenses separately after visits. Calls manager to explain visit discrepancies. Forgets to check out at end of visit.</div></div>
+          <div class="eq"><div class="eq-label">Feels</div><div class="eq-text">Anxious about being watched. Frustrated with manual expense submission after the fact. Relieved when check-in is simple. Worried about GPS inaccuracies causing disputes.</div></div>
+        </div>
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>No visibility into what data manager sees about them</li>
+              <li>GPS inaccuracy causes disputes with no correction mechanism</li>
+              <li>Expense submission is a separate, disconnected process</li>
+              <li>Forgetting to check in/out creates gaps in visit record</li>
+              <li>Poor network in field areas makes app unreliable</li>
+              <li>Surveillance anxiety reduces trust and morale</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Need</div>
+            <ul class="pg-list">
+              <li>See the same location data their manager sees</li>
+              <li>Manual location correction option for GPS errors</li>
+              <li>Expense linking at check-out — one step, not two</li>
+              <li>Offline mode with sync when network returns</li>
+              <li>Clear day summary at end of shift</li>
+              <li>Distance and duration tracked automatically</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="persona-card">
-        <div class="persona-icon">👔</div>
-        <div class="persona-name">Field Manager</div>
-        <div class="persona-role">Supervises team, plans coverage</div>
-        <div class="persona-item"><span class="persona-icon-key">Problem:</span> Only end-of-day reports, no real-time positions, can't verify visit duration</div>
-        <div class="persona-item"><span class="persona-icon-key">Need:</span> Live map, visit timeline, territory planning</div>
+        <div class="persona-header">
+          <div class="persona-emoji">👔</div>
+          <div><div class="persona-name">Field Manager</div><div class="persona-role">Monitors team field activity, approves expenses, plans territory coverage</div></div>
+        </div>
+        <div class="persona-quote">"I need to know where my team is right now — not in the end-of-day report. I want to plan tomorrow's coverage based on today's positions."</div>
+        <div class="empathy-quad">
+          <div class="eq"><div class="eq-label">Says</div><div class="eq-text">Show me who visited which client and for how long. I want to plan coverage for tomorrow based on who's near which area. Expense claims should be linked to visits.</div></div>
+          <div class="eq"><div class="eq-label">Thinks</div><div class="eq-text">Did my team actually visit the clients they claimed? Are visit durations reasonable? Which employees are most productive in the field?</div></div>
+          <div class="eq"><div class="eq-label">Does</div><div class="eq-text">Reviews daily visit reports. Approves or disputes expense claims. Plans territory assignments. Follows up on missed or short-duration visits.</div></div>
+          <div class="eq"><div class="eq-label">Feels</div><div class="eq-text">Frustrated by lack of real-time visibility. Uncomfortable confronting employees about visit disputes without clear data. Satisfied when territory coverage is optimised.</div></div>
+        </div>
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>No real-time visibility — only end-of-day reports</li>
+              <li>Expense claims disconnected from visit data</li>
+              <li>Difficult to verify visit duration and quality</li>
+              <li>Cannot plan territory coverage based on field positions</li>
+              <li>Manual report compilation from multiple inputs</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Need</div>
+            <ul class="pg-list">
+              <li>Live map view of team field positions</li>
+              <li>Visit timeline: client name, duration, distance</li>
+              <li>Expense claims linked to specific visits</li>
+              <li>Analytics: avg visit duration, frequency per client</li>
+              <li>Route optimisation suggestions for territory planning</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="insight-box">
-      <p><strong>Key insight:</strong> Anxiety wasn't about <em>being tracked</em> — it was about <em>not seeing the same data as the manager</em>. Transparency solved resistance better than any policy change.</p>
+    <div class="section-tag">Persona 03 — HR / Admin</div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-emoji">🗂️</div>
+          <div><div class="persona-name">HR / Admin</div><div class="persona-role">Configures tracking policy, handles disputes, ensures legal compliance</div></div>
+        </div>
+        <div class="persona-quote">"I need to ensure tracking stops outside work hours. And I need an audit trail when employees dispute their location data."</div>
+        <div class="empathy-quad">
+          <div class="eq"><div class="eq-label">Says</div><div class="eq-text">Tracking should only happen during work hours. I need to manage employee consent. Disputes about GPS location must have a resolution mechanism.</div></div>
+          <div class="eq"><div class="eq-label">Thinks</div><div class="eq-text">Is this compliant with data privacy regulations? Can employees dispute location data? How do I handle GPS error complaints?</div></div>
+          <div class="eq"><div class="eq-label">Does</div><div class="eq-text">Sets tracking policy (which roles, which hours). Reviews escalated disputes. Generates compliance reports. Manages employee consent records.</div></div>
+          <div class="eq"><div class="eq-label">Feels</div><div class="eq-text">Concerned about legal compliance. Worried about misuse of location data. Satisfied when policy is transparent and audit trail is clear.</div></div>
+        </div>
+        <div class="pg-row">
+          <div class="pg-box pain">
+            <div class="pg-title">Pain</div>
+            <ul class="pg-list">
+              <li>Legal compliance concerns around location tracking</li>
+              <li>Handling employee disputes about GPS inaccuracies</li>
+              <li>Ensuring tracking stops outside work hours</li>
+              <li>Managing employee consent and transparency</li>
+              <li>No clear audit trail for location data disputes</li>
+            </ul>
+          </div>
+          <div class="pg-box gain">
+            <div class="pg-title">Need</div>
+            <ul class="pg-list">
+              <li>Work-hours-only tracking with configurable schedule</li>
+              <li>Employee consent management in onboarding flow</li>
+              <li>Immutable audit trail for all location corrections</li>
+              <li>Policy configuration by role and department</li>
+              <li>Dispute resolution workflow with manager visibility</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOOD GRAPH -->
+    <div class="mood-graph">
+      <div class="mood-title">Field employee emotional journey — a typical tracking day</div>
+      <div class="mood-subtitle">How a field employee feels from app open through visit completion to day summary</div>
+      <svg viewBox="0 0 840 100" preserveAspectRatio="none" fill="none" style="width:100%;height:110px;">
+        <defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a9ee8" stop-opacity="0.25"/><stop offset="100%" stop-color="#5a9ee8" stop-opacity="0"/></linearGradient></defs>
+        <line x1="0" y1="25" x2="840" y2="25" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="0" y1="55" x2="840" y2="55" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <line x1="0" y1="85" x2="840" y2="85" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        <path d="M60,65 C110,70 150,78 200,82 C250,84 290,35 350,28 C400,22 440,22 480,25 C520,28 560,75 600,80 C640,82 680,32 720,22 C760,16 800,20 830,22" stroke="#5a9ee8" stroke-width="2.5" fill="none"/>
+        <path d="M60,65 C110,70 150,78 200,82 C250,84 290,35 350,28 C400,22 440,22 480,25 C520,28 560,75 600,80 C640,82 680,32 720,22 C760,16 800,20 830,22 L830,100 L60,100 Z" fill="url(#fg1)"/>
+        <circle cx="60" cy="65" r="5" fill="#f5a623"/>
+        <circle cx="200" cy="82" r="5" fill="#e87c5a"/>
+        <circle cx="350" cy="28" r="5" fill="#4ecba0"/>
+        <circle cx="480" cy="25" r="5" fill="#4ecba0"/>
+        <circle cx="600" cy="80" r="5" fill="#e87c5a"/>
+        <circle cx="720" cy="22" r="5" fill="#4ecba0"/>
+        <circle cx="830" cy="22" r="5" fill="#4ecba0"/>
+      </svg>
+      <div class="mood-stages">
+        <div class="mood-stage"><span class="emo">😐</span><span class="lbl">App<br/>Opens</span></div>
+        <div class="mood-stage"><span class="emo">😟</span><span class="lbl">Worried about<br/>tracking</span></div>
+        <div class="mood-stage"><span class="emo">😊</span><span class="lbl">Sees own<br/>data too</span></div>
+        <div class="mood-stage"><span class="emo">😊</span><span class="lbl">Check-in<br/>is easy</span></div>
+        <div class="mood-stage"><span class="emo">😟</span><span class="lbl">Expense form<br/>was separate</span></div>
+        <div class="mood-stage"><span class="emo">😊</span><span class="lbl">Expense at<br/>checkout!</span></div>
+        <div class="mood-stage"><span class="emo">😌</span><span class="lbl">Day summary<br/>is clear</span></div>
+      </div>
+    </div>
+
+    <div class="insight"><strong>Key insight from research:</strong> The transparency principle emerged from a single conversation with a field sales rep: "I don't mind being tracked if I can see what they see." Once we made employee-visible tracking the design principle — not the exception — every other design decision followed naturally. Employees who could see their own data reported 40% lower anxiety scores than those in manager-only visibility systems.</div>
+  </div>
+
+  <!-- STEP 2 DEFINE -->
+  <div class="step">
+    <div class="step-label">Step 2 — Define</div>
+    <h2>Give employees the same view their manager has.</h2>
+    <p>The defining design decision came directly from research: if employees could see their own location data — the same view their manager sees — resistance would drop significantly. Transparency, not restriction, was the answer. Four specific problem statements emerged:</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-owner">Field Employee</div>
+        <div class="problem-title">Transparency problem</div>
+        <div class="problem-body">Employees are tracked but have no visibility into what data is recorded or what their manager sees. This opacity creates anxiety, distrust, and resistance to adoption — even among employees with nothing to hide.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-owner">Field Employee</div>
+        <div class="problem-title">Expense disconnection problem</div>
+        <div class="problem-body">Travel expenses are submitted separately from visit records — often at end of day or week from memory. This leads to missing claims, wrong amounts, and HR spending time reconciling expenses against visit data manually.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-owner">Field Manager</div>
+        <div class="problem-title">Real-time visibility problem</div>
+        <div class="problem-body">Managers receive end-of-day reports only. They cannot make territory planning decisions, handle emergencies, or redirect team members based on current field positions. Data is always 8+ hours stale.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-owner">HR / Admin</div>
+        <div class="problem-title">GPS accuracy problem</div>
+        <div class="problem-body">In poor-signal areas (basements, rural locations, dense urban), GPS coordinates are inaccurate by 100m+. With no correction mechanism, employees cannot dispute wrong location data — creating distrust and HR escalations.</div>
+      </div>
+    </div>
+
+    <div class="insight"><strong>The transparency principle as design north star:</strong> Every feature decision was evaluated against one question: "Does this give employees more visibility into their own data, or less?" Features that failed this test were dropped or redesigned before prototyping.</div>
+  </div>
+
+  <!-- STEP 3 IDEATE -->
+  <div class="step">
+    <div class="step-label">Step 3 — Ideate</div>
+    <h2>Visit timeline + expense linking in one flow.</h2>
+    <p>Two major ideation threads ran in parallel — the employee mobile experience and the manager web dashboard — with one shared constraint: the data shown to both must be identical.</p>
+
+    <h3>Tracking model: three approaches explored</h3>
+    <div class="ideation-grid">
+      <div class="ideation-card">
+        <div class="idea-title">Passive background tracking</div>
+        <div class="idea-body">App tracks location continuously in background. Simplest for employee, but creates "I'm always being watched" anxiety. No employee agency or awareness of what's recorded. Rejected. Worsened the core problem.</div>
+      </div>
+      <div class="ideation-card chosen">
+        <div class="chosen-badge">Chosen</div>
+        <div class="idea-title">Manual check-in/check-out</div>
+        <div class="idea-body">Employee explicitly checks in on arrival and checks out on leaving. Employee has agency and awareness — knows exactly what's being recorded. Creates a natural moment to attach expenses at checkout. Same data as manager sees. Chosen.</div>
+      </div>
+    </div>
+
+    <div class="ideation-grid">
+      <div class="ideation-card">
+        <div class="idea-title">Expense: separate form later</div>
+        <div class="idea-body">Employee submits expenses separately after visits. Lower capture rate — employees forget, amounts are estimated, context is lost. Creates manual reconciliation work for HR. Rejected as primary flow.</div>
+      </div>
+      <div class="ideation-card chosen">
+        <div class="chosen-badge">Chosen</div>
+        <div class="idea-title">Expense linked at checkout</div>
+        <div class="idea-body">Slide-up expense form at check-out moment — employee is leaving the client location and mentally closing the visit. Highest context and motivation for accurate expense capture. Captured 3x more expenses than separate flow. Chosen.</div>
+      </div>
+    </div>
+
+    <h3>Manager dashboard: map vs timeline</h3>
+    <div class="two-col">
+      <div class="two-col-card">
+        <div class="two-col-title">Map-first view</div>
+        <p style="font-size:12.5px;color:#a8a49e;margin:0;">Live map showing team positions. Good for dispatch and territory planning. Poor for reviewing visit history, expense approval, or performance analytics.</p>
+      </div>
+      <div class="two-col-card" style="border-color:rgba(90,158,232,0.3);">
+        <div class="two-col-title" style="color:var(--blue);">Timeline-first view (chosen)</div>
+        <p style="font-size:12.5px;color:#a8a49e;margin:0;">Chronological visit history per employee with map context on demand. Better for review workflows, expense approval, and performance analytics. Map embedded as secondary view alongside timeline.</p>
+      </div>
     </div>
   </div>
 
-  <!-- STEP 2 & 3 -->
+  <!-- STEP 4 PROTOTYPE -->
   <div class="step">
-    <div class="step-label">Step 2/3 — Define & Ideate</div>
-    <h2>One principle: Employees see exactly what managers see</h2>
-    
-    <div class="grid-2" style="margin:2rem 0;">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
-        <div style="font-size:13px;font-weight:600;color:var(--cream);margin-bottom:8px;">❌ Passive Tracking (Rejected)</div>
-        <div style="font-size:12px;color:#a8a49e;line-height:1.6;">Background GPS constantly running. Employee unaware of exactly what's recorded.</div>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
-        <div style="font-size:13px;font-weight:600;color:var(--cream);margin-bottom:8px;">✅ Manual Check-In/Out (Chosen)</div>
-        <div style="font-size:12px;color:#a8a49e;line-height:1.6;">Explicit action. Employee awareness. Can correct if GPS is wrong. Same view as manager.</div>
-      </div>
+    <div class="step-label">Step 4 — Prototype</div>
+    <h2>Testing the transparency principle.</h2>
+    <p>The employee mobile prototype showed full visit history with map, timestamps, and distance — exactly what the manager sees. The admin prototype showed the same data with additional analytics. Expense linking was tested as a slide-up sheet at check-out.</p>
+
+    <h3>Field employee — mobile visit flow</h3>
+    <div class="flow-row">
+      <span class="flow-box">Start Trip</span><span class="flow-arrow">→</span>
+      <span class="flow-box">Navigate to Client</span><span class="flow-arrow">→</span>
+      <span class="flow-box warn">Arrive: Check In</span><span class="flow-arrow">→</span>
+      <span class="flow-box">Visit in Progress</span><span class="flow-arrow">→</span>
+      <span class="flow-box warn">Check Out + Add Expense</span><span class="flow-arrow">→</span>
+      <span class="flow-box ok">Visit Recorded</span><span class="flow-arrow">→</span>
+      <span class="flow-box ok">End Trip</span>
     </div>
 
-    <div style="background:rgba(90,158,232,0.06);border-left:3px solid #5a9ee8;padding:1.5rem;margin:1.5rem 0;border-radius:0 8px 8px 0;">
-      <p style="margin:0;font-size:13px;color:#7aa8d8;line-height:1.7;"><strong>Bonus insight:</strong> <em>Capture expense at checkout, not separate.</em> Context is highest at that moment (visit complete, leaving location). Slide-up form instead of separate step later. 3x higher capture rate.</p>
-    </div>
+    <h3>Task flow: field employee completing a client visit</h3>
+    <table class="tf-table">
+      <thead>
+        <tr>
+          <th style="min-width:90px;">Phase</th>
+          <th>Start Trip</th>
+          <th>At Client Location</th>
+          <th>Check Out</th>
+          <th>Day Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="phase">Activity</td>
+          <td>Open app. Start trip. GPS activates. Live location starts recording. Map shows current position and planned route.</td>
+          <td>Arrive at client. Check in — GPS records location and timestamp. Visit timer starts. Employee sees their own check-in data, same as manager will see.</td>
+          <td>Check out. Slide-up sheet: add expense (transport, food, other). Pre-filled distance-based transport amount. Camera shortcut for receipt. Confirm visit summary. Visit saved and synced.</td>
+          <td>View day's complete visit timeline. Distance total. All expenses submitted. Same view as manager sees. Push notification summary sent.</td>
+        </tr>
+        <tr>
+          <td class="phase">Feeling</td>
+          <td class="td-pos">Familiar and deliberate — starts the same way every day</td>
+          <td class="td-pos">Confident — knows check-in is recorded and visible to both employee and manager</td>
+          <td class="td-pos">Relieved — expenses linked inline, not separately later, no memory required</td>
+          <td class="td-pos">Satisfied — full transparent record of the day verified before manager sees</td>
+        </tr>
+        <tr>
+          <td class="phase">Design decision</td>
+          <td>Offline mode: queue check-ins when no signal, sync automatically when network returns. No data loss.</td>
+          <td>Optional geo-fence prompt for registered clients. Manual location correction if GPS is inaccurate — creates audit trail visible to both.</td>
+          <td>Pre-fill transport expense based on GPS distance. Receipt photo shortcut. Slide-up sheet stays in visit context — no navigation away from map.</td>
+          <td>End-of-day push notification summary. Employee sees their record before manager does — reinforces transparency principle.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Key prototype decisions</h3>
+    <ul>
+      <li><strong>Employee-visible tracking:</strong> Employees see their complete visit timeline — same data as manager. No hidden data. This single decision drove adoption more than any other feature in testing.</li>
+      <li><strong>Expense linking at check-out:</strong> Slide-up sheet at check-out prompts expense entry in context. Expense capture rate increased 3x vs separate submission flow.</li>
+      <li><strong>Manual location correction:</strong> When GPS is inaccurate, employee flags the location and enters the correct address. Creates an immutable audit trail visible to both employee and manager — disputes resolved with data, not memory.</li>
+      <li><strong>GPS fallback strategy:</strong> In poor-signal areas, last known accurate position retained with timestamp. Employee prompted to manually confirm or correct location at check-in. No silent gaps.</li>
+      <li><strong>Work-hours-only tracking:</strong> Location activates only when employee starts a trip. Deactivates on end trip. Never outside work context — satisfies HR's compliance requirement and employee's privacy concern simultaneously.</li>
+    </ul>
   </div>
 
-  <!-- STEP 4 & 5 -->
+  <!-- STEP 5 TEST & SHIP -->
   <div class="step">
-    <div class="step-label">Step 4 & 5 — Build and Ship</div>
-    <h2>Six core features shipped:</h2>
-    
-    <div class="feature-grid">
+    <div class="step-label">Step 5 — Test and Ship</div>
+    <h2>Transparency worked exactly as predicted.</h2>
+    <p>Post-test interviews with field employees who could see their own data showed significantly lower resistance compared to those using manager-only visibility models. Key findings that validated and refined the design:</p>
+    <ul>
+      <li><strong>Employee-visible data reduced anxiety significantly:</strong> Employees who saw their own timeline reported feeling "monitored but not surveilled" — a key distinction that drove willingness to use the app daily. Anxiety scores were ~40% lower than with passive tracking.</li>
+      <li><strong>Expense linking at check-out captured 3x more expenses:</strong> Compared to the separate submission flow, inline expense linking at check-out captured significantly more claims with less friction. Context at the moment of checkout was the critical design insight.</li>
+      <li><strong>GPS fallback was critical for factory and rural users:</strong> In areas with poor signal, employees without a correction mechanism felt "trapped by wrong data." The manual correction option was rated the second highest-value feature after transparency itself.</li>
+      <li><strong>End-of-day summary became the most-opened screen:</strong> Employees opened the day summary to verify their record before logging off — an unplanned usage pattern that reinforced the transparency design principle.</li>
+      <li><strong>Timeline-first manager dashboard outperformed map-first:</strong> In testing with managers, the timeline view with embedded map was rated higher for review workflows and expense approval than the map-first approach. Managers could see patterns across visits more easily in timeline format.</li>
+    </ul>
+
+    <h3>What shipped</h3>
+    <div class="features">
       <div class="feature-card">
-        <span class="feature-emoji">👁️</span>
-        <div class="feature-title">Visible Tracking</div>
-        <div class="feature-desc">Employee sees same view as manager</div>
+        <div class="feature-icon">👁️</div>
+        <div><div class="feature-title">Employee-visible tracking</div><div class="feature-desc">Employees see their complete visit history — identical view to manager. No hidden data. Core to trust and adoption.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">✋</span>
-        <div class="feature-title">Manual Check-In</div>
-        <div class="feature-desc">Explicit action, not background</div>
+        <div class="feature-icon">✋</div>
+        <div><div class="feature-title">Manual check-in/check-out</div><div class="feature-desc">Employee agency and awareness — not passive background tracking. Creates natural moment to attach expenses.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">💰</span>
-        <div class="feature-title">Expense at Checkout</div>
-        <div class="feature-desc">Slide-up form, 3x higher capture</div>
+        <div class="feature-icon">💰</div>
+        <div><div class="feature-title">Expense linking at check-out</div><div class="feature-desc">Slide-up form in visit context. Pre-filled distance transport. Camera receipt shortcut. 3x higher capture rate.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">📍</span>
-        <div class="feature-title">Location Correction</div>
-        <div class="feature-desc">Employee flags and confirms correct spot</div>
+        <div class="feature-icon">📍</div>
+        <div><div class="feature-title">Manual location correction</div><div class="feature-desc">Flag GPS errors with an audit trail. Both employee and manager see corrections. Disputes resolved with data.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">⏱️</span>
-        <div class="feature-title">Manager Timeline</div>
-        <div class="feature-desc">Chronological visit history per employee</div>
+        <div class="feature-icon">📵</div>
+        <div><div class="feature-title">Work-hours-only tracking</div><div class="feature-desc">Location activates on Trip Start, deactivates on Trip End. Never outside work context.</div></div>
       </div>
       <div class="feature-card">
-        <span class="feature-emoji">📲</span>
-        <div class="feature-title">Day Summary</div>
-        <div class="feature-desc">Employee self-verifies before manager sees</div>
+        <div class="feature-icon">📊</div>
+        <div><div class="feature-title">Timeline-first manager dashboard</div><div class="feature-desc">Chronological visit history per employee. Map embedded as secondary context. Analytics: avg duration, frequency per client.</div></div>
       </div>
     </div>
 
-    <h3 style="margin-top:3rem;">Field visit flow:</h3>
-    <div class="flow">
-      <div class="flow-item">🚗 Start Trip</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-item">📍 Navigate</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-item">✋ Check In</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-item">⏱️ Visit</div>
-    </div>
-    <div class="flow" style="margin-top:0.5rem;">
-      <div class="flow-item">✋ Check Out</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-item">💰 Add Expense</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-item">📊 View Summary</div>
-    </div>
-
-    <h3 style="margin-top:3rem;">Impact:</h3>
     <div class="outcomes">
-      <div class="outcome">
-        <div class="outcome-emoji">😌</div>
-        <div class="outcome-num">40%</div>
-        <div class="outcome-label">Less anxiety (employee-reported)</div>
-      </div>
-      <div class="outcome">
-        <div class="outcome-emoji">💰</div>
+      <div class="outcome-card">
         <div class="outcome-num">3x</div>
-        <div class="outcome-label">Higher expense capture</div>
+        <div class="outcome-label">More expenses captured with inline checkout linking vs separate flow</div>
       </div>
-      <div class="outcome">
-        <div class="outcome-emoji">✅</div>
+      <div class="outcome-card">
+        <div class="outcome-num">10+</div>
+        <div class="outcome-label">Industries using field visit tracking across Mewurk companies</div>
+      </div>
+      <div class="outcome-card">
         <div class="outcome-num">0</div>
-        <div class="outcome-label">Location dispute escalations</div>
+        <div class="outcome-label">Hidden data — employee and manager see identical visit records</div>
       </div>
     </div>
   </div>
 
 </div>
-
 <footer style="padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
   <span style="font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--muted);">Sahil Tamboli</span>
-  <span style="font-size:12px;color:#443e38;">2026 Built with care</span>
+  <span style="font-size:12px;color:#443e38;">2026 — Built with care</span>
 </footer>
-
 </body>
 </html>
